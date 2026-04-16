@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es" x-data="{
+  lang: localStorage.getItem('lang') || 'es',
+  page: 'modelo',
+  init() {
+    this.$watch('lang', v => localStorage.setItem('lang', v));
+  },
+  t(key) {
+    return i18n[key] ? (i18n[key][this.lang] || i18n[key]['es']) : key;
+  }
+}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accelerate Impact — Modelo de Liderazgo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tef: { blue: '#0066FF', dark: '#0B2739', light: '#E8F0FF' },
+            pex: { red: '#E84C48', teal: '#6DAFBF' },
+            prog: { gold: '#F5A623', purple: '#7C4DFF', green: '#2EC4B6', orange: '#FF6B35' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    const i18n = {
+      nav_home: { es: 'Inicio', en: 'Home' },
+      nav_modelo: { es: 'Modelo', en: 'Model' },
+      nav_journey: { es: 'Journey', en: 'Journey' },
+      nav_auto: { es: 'Autodiag.', en: 'Self-Diag.' },
+      nav_agenda: { es: 'Agenda', en: 'Agenda' },
+      nav_info: { es: 'Más info', en: 'More info' },
+      footer_contact: { es: 'Contacto', en: 'Contact' },
+
+      hero_tag: {
+        es: 'Modelo de Liderazgo',
+        en: 'Leadership Model'
+      },
+      hero_title: {
+        es: 'Conoce nuestro Modelo de Liderazgo',
+        en: 'Our Leadership Model'
+      },
+      hero_subtitle: {
+        es: 'Una cultura de alto impacto — Tres actitudes que definen a todos los profesionales de Telefónica, expresadas a través de seis comportamientos de liderazgo.',
+        en: 'A high-impact culture — Three attitudes that define every Telefónica professional, expressed through six leadership behaviours.'
+      },
+
+      block1_badge: { es: 'Para IMPACTO', en: 'For IMPACT' },
+      block1_title: { es: 'GIVE YOUR BEST', en: 'GIVE YOUR BEST' },
+      block1_sub: { es: 'Damos lo mejor de nosotros', en: 'We give our best' },
+      block1_desc: {
+        es: 'La excelencia no es un objetivo puntual, es nuestro estándar diario. Dos comportamientos concretos nos definen en este eje.',
+        en: 'Excellence is not a one-time goal; it is our daily standard. Two concrete behaviours define us in this axis.'
+      },
+      val1a_title: { es: 'Customer First', en: 'Customer First' },
+      val1a_sub: { es: 'Cliente en el centro', en: 'Client at the core' },
+      val1a_desc: {
+        es: 'Ponemos las necesidades del cliente en el centro de cada decisión. Anticipamos, escuchamos y actuamos para generar valor real.',
+        en: 'We place customer needs at the heart of every decision. We anticipate, listen and act to create real value.'
+      },
+      val1b_title: { es: 'Delivering Excellence', en: 'Delivering Excellence' },
+      val1b_sub: { es: 'Excelencia estándar', en: 'Excellence as standard' },
+      val1b_desc: {
+        es: 'Nos comprometemos con la calidad y la entrega, superando expectativas y mejorando continuamente cómo hacemos las cosas.',
+        en: 'We commit to quality and delivery, exceeding expectations and continuously improving how we do things.'
+      },
+
+      block2_badge: { es: 'Para TRANSFORMAR', en: 'For TRANSFORMATION' },
+      block2_title: { es: 'CHALLENGE YOUR LIMITS', en: 'CHALLENGE YOUR LIMITS' },
+      block2_sub: { es: 'Cuestionamos nuestros propios límites', en: 'We challenge our own limits' },
+      block2_desc: {
+        es: 'La transformación nace de la valentía para cuestionar el statu quo. Innovamos y tomamos decisiones con claridad.',
+        en: 'Transformation stems from the courage to challenge the status quo. We innovate and make decisions with clarity.'
+      },
+      val2a_title: { es: 'Digital Innovation', en: 'Digital Innovation' },
+      val2a_sub: { es: 'Innovar con tech', en: 'Innovate with tech' },
+      val2a_desc: {
+        es: 'Adoptamos la tecnología como palanca de cambio, explorando nuevas formas de resolver problemas y crear oportunidades.',
+        en: 'We embrace technology as a lever for change, exploring new ways to solve problems and create opportunities.'
+      },
+      val2b_title: { es: 'Clarity & Courage', en: 'Clarity & Courage' },
+      val2b_sub: { es: 'Hablar claro, decidir', en: 'Speak clearly, decide boldly' },
+      val2b_desc: {
+        es: 'Comunicamos con transparencia, tomamos decisiones difíciles con confianza y aportamos claridad en la ambigüedad.',
+        en: 'We communicate transparently, make tough decisions with confidence, and bring clarity in ambiguity.'
+      },
+
+      block3_badge: { es: 'Para CRECER', en: 'For GROWTH' },
+      block3_title: { es: 'RISE TOGETHER', en: 'RISE TOGETHER' },
+      block3_sub: { es: 'Nos superamos juntos', en: 'We rise together' },
+      block3_desc: {
+        es: 'El crecimiento colectivo es más potente que el individual. Creamos equipos responsables que se desarrollan mutuamente.',
+        en: 'Collective growth is more powerful than individual growth. We build accountable teams that develop each other.'
+      },
+      val3a_title: { es: 'Driving Ownership', en: 'Driving Ownership' },
+      val3a_sub: { es: 'Responsabilidad', en: 'Ownership & accountability' },
+      val3a_desc: {
+        es: 'Asumimos la responsabilidad de nuestras acciones y resultados, empujando a los equipos a comprometerse con el impacto.',
+        en: 'We take ownership of our actions and outcomes, driving teams to commit to real impact.'
+      },
+      val3b_title: { es: 'Growing People', en: 'Growing People' },
+      val3b_sub: { es: 'Desarrollar talento', en: 'Develop talent' },
+      val3b_desc: {
+        es: 'Invertimos en el desarrollo de las personas, creando entornos donde el talento florece y cada uno alcanza su potencial.',
+        en: 'We invest in developing people, creating environments where talent flourishes and everyone reaches their potential.'
+      },
+
+      model_intro_title: {
+        es: '¿Por qué este modelo?',
+        en: 'Why this model?'
+      },
+      model_intro_text: {
+        es: 'El Modelo de Liderazgo de Telefónica no es un marco teórico, sino un lenguaje común para los líderes del Top 200. Estas tres actitudes y seis comportamientos definen cómo se espera que actuemos y cómo medimos el impacto del liderazgo en la organización.',
+        en: 'Telefónica\'s Leadership Model is not a theoretical framework but a common language for Top 200 leaders. These three attitudes and six behaviours define how we are expected to act and how we measure the impact of leadership across the organisation.'
+      },
+
+      quick_access: { es: 'Accesos rápidos', en: 'Quick access' },
+      nadia_cta: { es: '→ Conéctate a Nadia', en: '→ Connect to Nadia' },
+      journey_link: { es: 'Ver tu Journey', en: 'Your Journey' },
+      agenda_link: { es: 'Ver Agenda', en: 'View Agenda' },
+      dl_agenda: { es: 'Descargar agenda', en: 'Download agenda' },
+
+      kf_title: { es: 'Desarrollado con Korn Ferry', en: 'Developed with Korn Ferry' },
+      kf_text: {
+        es: 'El modelo ha sido diseñado y validado en colaboración con Korn Ferry, referente global en evaluación y desarrollo de talento directivo.',
+        en: 'The model has been designed and validated in collaboration with Korn Ferry, a global leader in executive talent assessment and development.'
+      }
+    };
+  </script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50 font-sans antialiased">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-tef-blue rounded-full flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <span class="font-bold text-tef-dark text-sm hidden sm:block">Accelerate Impact</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-0.5 text-sm">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='home' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_home')"></a>
+        <a href="modelo.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='modelo' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_modelo')"></a>
+        <a href="journey.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='journey' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_journey')"></a>
+        <a href="autodiagnostico.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='auto' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_auto')"></a>
+        <a href="agenda.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='agenda' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_agenda')"></a>
+        <a href="nadia.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='nadia' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'">Nadia</a>
+        <a href="info.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='info' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_info')"></a>
+      </nav>
+      <div class="flex items-center gap-1 border border-gray-200 rounded-full px-1 py-0.5">
+        <button @click="lang='es'" :class="lang==='es' ? 'bg-tef-blue text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">ES</button>
+        <button @click="lang='en'" :class="lang==='en' ? 'bg-tef-blue text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-1">
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-br from-tef-dark via-[#0d3454] to-tef-blue text-white relative overflow-hidden">
+      <!-- Subtle geometric pattern overlay -->
+      <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px); background-size: 48px 48px;"></div>
+      <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
+        <div class="max-w-3xl">
+          <!-- Tag -->
+          <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
+            <svg class="w-3.5 h-3.5 text-prog-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span class="text-sm font-semibold tracking-wide" x-text="t('hero_tag')"></span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-5" x-text="t('hero_title')"></h1>
+          <p class="text-lg md:text-xl text-blue-100 leading-relaxed max-w-2xl" x-text="t('hero_subtitle')"></p>
+
+          <!-- 3 attitudes pills -->
+          <div class="flex flex-wrap gap-3 mt-8">
+            <span class="bg-purple-500/30 border border-purple-400/40 text-white text-sm font-semibold px-4 py-1.5 rounded-full">Give Your Best</span>
+            <span class="bg-orange-500/30 border border-orange-400/40 text-white text-sm font-semibold px-4 py-1.5 rounded-full">Challenge Your Limits</span>
+            <span class="bg-green-500/30 border border-green-400/40 text-white text-sm font-semibold px-4 py-1.5 rounded-full">Rise Together</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT + SIDEBAR -->
+    <div class="flex gap-6 max-w-7xl mx-auto px-6 py-8 items-start">
+
+      <!-- MAIN COLUMN -->
+      <div class="flex-1 min-w-0 space-y-6">
+
+        <!-- Why this model intro -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <h2 class="text-lg font-bold text-tef-dark mb-2" x-text="t('model_intro_title')"></h2>
+          <p class="text-gray-500 text-sm leading-relaxed" x-text="t('model_intro_text')"></p>
+        </div>
+
+        <!-- BLOQUE 1: GIVE YOUR BEST -->
+        <div class="bg-purple-50 border-l-4 border-purple-500 rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div>
+              <span class="inline-block bg-purple-100 text-purple-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3" x-text="t('block1_badge')"></span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-purple-800 tracking-tight" x-text="t('block1_title')"></h2>
+              <p class="text-purple-600 font-semibold mt-1" x-text="t('block1_sub')"></p>
+            </div>
+            <div class="w-12 h-12 bg-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3l14 9-14 9V3z"/></svg>
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm mb-5 leading-relaxed" x-text="t('block1_desc')"></p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Customer First -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-purple-100">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 text-sm" x-text="t('val1a_title')"></p>
+                  <p class="text-xs text-purple-600 font-medium" x-text="t('val1a_sub')"></p>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 leading-relaxed" x-text="t('val1a_desc')"></p>
+            </div>
+            <!-- Delivering Excellence -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-purple-100">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 text-sm" x-text="t('val1b_title')"></p>
+                  <p class="text-xs text-purple-600 font-medium" x-text="t('val1b_sub')"></p>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 leading-relaxed" x-text="t('val1b_desc')"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOQUE 2: CHALLENGE YOUR LIMITS -->
+        <div class="bg-orange-50 border-l-4 border-orange-500 rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div>
+              <span class="inline-block bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3" x-text="t('block2_badge')"></span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-orange-800 tracking-tight" x-text="t('block2_title')"></h2>
+              <p class="text-orange-600 font-semibold mt-1" x-text="t('block2_sub')"></p>
+            </div>
+            <div class="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm mb-5 leading-relaxed" x-text="t('block2_desc')"></p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Digital Innovation -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-orange-100">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 text-sm" x-text="t('val2a_title')"></p>
+                  <p class="text-xs text-orange-600 font-medium" x-text="t('val2a_sub')"></p>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 leading-relaxed" x-text="t('val2a_desc')"></p>
+            </div>
+            <!-- Clarity & Courage -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-orange-100">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 text-sm" x-text="t('val2b_title')"></p>
+                  <p class="text-xs text-orange-600 font-medium" x-text="t('val2b_sub')"></p>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 leading-relaxed" x-text="t('val2b_desc')"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOQUE 3: RISE TOGETHER -->
+        <div class="bg-green-50 border-l-4 border-green-500 rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div>
+              <span class="inline-block bg-green-100 text-green-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3" x-text="t('block3_badge')"></span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-green-800 tracking-tight" x-text="t('block3_title')"></h2>
+              <p class="text-green-600 font-semibold mt-1" x-text="t('block3_sub')"></p>
+            </div>
+            <div class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm mb-5 leading-relaxed" x-text="t('block3_desc')"></p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Driving Ownership -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-green-100">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 text-sm" x-text="t('val3a_title')"></p>
+                  <p class="text-xs text-green-600 font-medium" x-text="t('val3a_sub')"></p>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 leading-relaxed" x-text="t('val3a_desc')"></p>
+            </div>
+            <!-- Growing People -->
+            <div class="bg-white rounded-xl shadow-sm p-4 border border-green-100">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900 text-sm" x-text="t('val3b_title')"></p>
+                  <p class="text-xs text-green-600 font-medium" x-text="t('val3b_sub')"></p>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 leading-relaxed" x-text="t('val3b_desc')"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Korn Ferry note -->
+        <div class="bg-tef-light border border-blue-200 rounded-2xl p-5 flex items-start gap-4">
+          <div class="w-10 h-10 bg-tef-blue/10 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-tef-blue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <p class="font-bold text-tef-dark text-sm mb-1" x-text="t('kf_title')"></p>
+            <p class="text-sm text-gray-500 leading-relaxed" x-text="t('kf_text')"></p>
+          </div>
+        </div>
+
+      </div><!-- /main column -->
+
+      <!-- SIDEBAR -->
+      <aside class="w-56 flex-shrink-0 space-y-4 hidden lg:block">
+        <!-- Quick access -->
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 space-y-3">
+          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest" x-text="t('quick_access')"></p>
+          <a href="nadia.html" class="block w-full text-center bg-tef-blue text-white text-sm font-semibold rounded-xl px-4 py-2.5 hover:bg-blue-700 transition-colors" x-text="t('nadia_cta')"></a>
+          <div class="space-y-2 pt-1">
+            <a href="journey.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors group">
+              <span class="text-tef-blue font-bold">→</span>
+              <span x-text="t('journey_link')"></span>
+            </a>
+            <a href="agenda.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors">
+              <span class="text-tef-blue font-bold">→</span>
+              <span x-text="t('agenda_link')"></span>
+            </a>
+            <a href="#" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors">
+              <span class="text-tef-blue font-bold">→</span>
+              <span x-text="t('dl_agenda')"></span>
+            </a>
+          </div>
+          <hr class="border-amber-200" />
+          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Partners</p>
+          <div class="space-y-2">
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>Korn Ferry</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>Universitas</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>WALK</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>People Excellence</span></a>
+          </div>
+        </div>
+
+        <!-- Model summary card -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3">
+          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">En resumen</p>
+          <div class="space-y-2">
+            <div class="flex items-start gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></span>
+              <div>
+                <p class="text-xs font-bold text-gray-800">Give Your Best</p>
+                <p class="text-[11px] text-gray-400">Customer First · Delivering Excellence</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-orange-500 mt-1.5 flex-shrink-0"></span>
+              <div>
+                <p class="text-xs font-bold text-gray-800">Challenge Your Limits</p>
+                <p class="text-[11px] text-gray-400">Digital Innovation · Clarity &amp; Courage</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500 mt-1.5 flex-shrink-0"></span>
+              <div>
+                <p class="text-xs font-bold text-gray-800">Rise Together</p>
+                <p class="text-[11px] text-gray-400">Driving Ownership · Growing People</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /flex layout -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-tef-dark text-white mt-auto">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 bg-tef-blue rounded-full flex items-center justify-center">
+          <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <span class="text-sm text-gray-300">Accelerate Impact Leadership Program</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:accelerateimpact@universitas.com" class="text-sm text-gray-400 hover:text-white transition-colors" x-text="t('footer_contact')"></a>
+        <span class="text-gray-600">|</span>
+        <div class="flex items-center gap-1.5">
+          <button @click="lang='es'" :class="lang==='es' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">ES</button>
+          <span class="text-gray-600 text-xs">|</span>
+          <button @click="lang='en'" :class="lang==='en' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">EN</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

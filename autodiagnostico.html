@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es" x-data="{ lang: localStorage.getItem('lang') || 'es', page: 'auto' }" x-init="$watch('lang', v => localStorage.setItem('lang', v))">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title x-text="lang === 'es' ? 'Tu Autodiagnóstico — Accelerate Impact' : 'Your Self-Diagnosis — Accelerate Impact'"></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tef: { blue: '#0066FF', dark: '#0B2739', light: '#E8F0FF' },
+            pex: { red: '#E84C48', teal: '#6DAFBF' },
+            prog: { gold: '#F5A623', purple: '#7C4DFF', green: '#2EC4B6', orange: '#FF6B35' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-tef-blue rounded-full flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <span class="font-bold text-tef-dark text-sm hidden sm:block">Accelerate Impact</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-0.5 text-sm">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-tef-blue hover:bg-tef-light transition-colors font-medium" :class="{'text-tef-blue bg-tef-light font-semibold': page==='home'}" x-text="lang==='es' ? 'Inicio' : 'Home'"></a>
+        <a href="modelo.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-tef-blue hover:bg-tef-light transition-colors font-medium" :class="{'text-tef-blue bg-tef-light font-semibold': page==='modelo'}" x-text="lang==='es' ? 'Modelo' : 'Model'"></a>
+        <a href="journey.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-tef-blue hover:bg-tef-light transition-colors font-medium" :class="{'text-tef-blue bg-tef-light font-semibold': page==='journey'}">Journey</a>
+        <a href="autodiagnostico.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-tef-blue hover:bg-tef-light transition-colors font-medium" :class="{'text-tef-blue bg-tef-light font-semibold': page==='auto'}" x-text="lang==='es' ? 'Autodiag.' : 'Self-Diag.'"></a>
+        <a href="agenda.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-tef-blue hover:bg-tef-light transition-colors font-medium" :class="{'text-tef-blue bg-tef-light font-semibold': page==='agenda'}" x-text="lang==='es' ? 'Agenda' : 'Agenda'"></a>
+        <a href="nadia.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-tef-blue hover:bg-tef-light transition-colors font-medium" :class="{'text-tef-blue bg-tef-light font-semibold': page==='nadia'}">Nadia</a>
+        <a href="info.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-tef-blue hover:bg-tef-light transition-colors font-medium" :class="{'text-tef-blue bg-tef-light font-semibold': page==='info'}" x-text="lang==='es' ? 'Más info' : 'More info'"></a>
+      </nav>
+      <div class="flex items-center gap-1 border border-gray-200 rounded-full px-1 py-0.5">
+        <button @click="lang='es'" :class="lang==='es' ? 'bg-tef-blue text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">ES</button>
+        <button @click="lang='en'" :class="lang==='en' ? 'bg-tef-blue text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-r from-[#1a0533] to-purple-800 text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full" x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Diagnosis'"></span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-3" x-text="lang==='es' ? 'Tu Autodiagnóstico' : 'Your Self-Diagnosis'"></h1>
+        <p class="text-lg text-purple-200 leading-relaxed">
+          <span x-show="lang==='es'">Leadership Self-Diagnosis — Una experiencia de autoconocimiento basada en ciencia para entender cómo lideras hoy</span>
+          <span x-show="lang==='en'">Leadership Self-Diagnosis — A science-based self-knowledge experience to understand how you lead today</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1">
+    <div class="max-w-7xl mx-auto px-6 py-8 flex gap-6">
+
+      <!-- COLUMNA PRINCIPAL -->
+      <div class="flex-1 space-y-8">
+
+        <!-- SECCIÓN: Los 3 módulos del assessment -->
+        <section>
+          <div class="mb-5">
+            <h2 class="text-xl font-extrabold text-gray-900" x-text="lang==='es' ? 'Los 3 módulos del assessment' : 'The 3 assessment modules'"></h2>
+            <p class="text-gray-500 text-sm mt-1" x-text="lang==='es' ? 'Una evaluación completa de tu perfil de liderazgo desde tres dimensiones' : 'A complete assessment of your leadership profile from three dimensions'"></p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <!-- Competencias -->
+            <div class="bg-purple-100 border border-purple-200 rounded-2xl p-5 flex flex-col">
+              <div class="w-10 h-10 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-extrabold text-purple-900" x-text="lang==='es' ? 'Competencias' : 'Competencies'"></h3>
+                <span class="text-xs font-bold text-purple-600 bg-purple-200 px-2 py-0.5 rounded-full">~20 min</span>
+              </div>
+              <p class="text-purple-700 text-sm mt-1 flex-1" x-text="lang==='es' ? 'Habilidades observables' : 'Observable skills'"></p>
+              <div class="mt-4 pt-4 border-t border-purple-200">
+                <p class="text-xs text-purple-600" x-text="lang==='es' ? 'Evalúa tus capacidades de liderazgo basadas en el modelo TEF' : 'Evaluates your leadership capabilities based on the TEF model'"></p>
+              </div>
+            </div>
+
+            <!-- Drivers -->
+            <div class="bg-orange-100 border border-orange-200 rounded-2xl p-5 flex flex-col">
+              <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              </div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-extrabold text-orange-900">Drivers</h3>
+                <span class="text-xs font-bold text-orange-600 bg-orange-200 px-2 py-0.5 rounded-full">~10 min</span>
+              </div>
+              <p class="text-orange-700 text-sm mt-1 flex-1" x-text="lang==='es' ? 'Motivaciones y valores' : 'Motivations and values'"></p>
+              <div class="mt-4 pt-4 border-t border-orange-200">
+                <p class="text-xs text-orange-600" x-text="lang==='es' ? 'Descubre qué te impulsa y qué valoras en tu rol de líder' : 'Discover what drives you and what you value in your leadership role'"></p>
+              </div>
+            </div>
+
+            <!-- Traits -->
+            <div class="bg-green-100 border border-green-200 rounded-2xl p-5 flex flex-col">
+              <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              </div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-extrabold text-green-900">Traits</h3>
+                <span class="text-xs font-bold text-green-600 bg-green-200 px-2 py-0.5 rounded-full">~15 min</span>
+              </div>
+              <p class="text-green-700 text-sm mt-1 flex-1" x-text="lang==='es' ? 'Personalidad' : 'Personality'"></p>
+              <div class="mt-4 pt-4 border-t border-green-200">
+                <p class="text-xs text-green-600" x-text="lang==='es' ? 'Explora los rasgos de personalidad que definen tu estilo de liderazgo' : 'Explore the personality traits that define your leadership style'"></p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Tiempo total -->
+          <div class="mt-4 bg-white border border-gray-200 rounded-xl p-4 flex items-center gap-3">
+            <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-800" x-text="lang==='es' ? 'Tiempo total estimado: 45-60 minutos' : 'Total estimated time: 45-60 minutes'"></p>
+              <p class="text-xs text-gray-500" x-text="lang==='es' ? 'Puedes completar los módulos en sesiones separadas' : 'You can complete the modules in separate sessions'"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN: Tus informes -->
+        <section>
+          <div class="mb-5">
+            <h2 class="text-xl font-extrabold text-gray-900" x-text="lang==='es' ? 'Tus informes' : 'Your reports'"></h2>
+            <p class="text-gray-500 text-sm mt-1" x-text="lang==='es' ? 'Dos perspectivas complementarias de tu perfil de liderazgo' : 'Two complementary perspectives of your leadership profile'"></p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <!-- Executive Report -->
+            <div class="bg-tef-blue text-white rounded-2xl p-6 flex flex-col">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-200">Report 1</span>
+              </div>
+              <h3 class="text-xl font-extrabold mb-1">Executive Report</h3>
+              <p class="text-blue-100 text-sm font-medium mb-2">Leadership Snapshot</p>
+              <p class="text-blue-200 text-sm flex-1" x-text="lang==='es' ? 'Vista rápida vs modelo TEF' : 'Quick view vs TEF model'"></p>
+              <div class="mt-5 pt-4 border-t border-white/20">
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-sm text-blue-100">
+                    <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span x-text="lang==='es' ? 'Perfil visual de competencias' : 'Visual competency profile'"></span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm text-blue-100">
+                    <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span x-text="lang==='es' ? 'Comparativa con el modelo de liderazgo TEF' : 'Comparison with the TEF leadership model'"></span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm text-blue-100">
+                    <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span x-text="lang==='es' ? 'Resumen ejecutivo de fortalezas' : 'Executive summary of strengths'"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- In-Depth Report -->
+            <div class="bg-tef-dark text-white rounded-2xl p-6 flex flex-col">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Report 2</span>
+              </div>
+              <h3 class="text-xl font-extrabold mb-1">In-Depth Report</h3>
+              <p class="text-gray-300 text-sm font-medium mb-2" x-text="lang==='es' ? 'Modelo Iceberg' : 'Iceberg Model'"></p>
+              <p class="text-gray-400 text-sm">Competencias + Traits + Drivers</p>
+              <div class="mt-5 pt-4 border-t border-white/10 flex-1">
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-sm text-gray-300">
+                    <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span x-text="lang==='es' ? 'Análisis profundo de las 3 dimensiones' : 'Deep analysis of all 3 dimensions'"></span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm text-gray-300">
+                    <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span x-text="lang==='es' ? 'Áreas de desarrollo priorizadas' : 'Prioritized development areas'"></span>
+                  </div>
+                  <div class="flex items-center gap-2 text-sm text-gray-300">
+                    <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span x-text="lang==='es' ? 'Base para el coaching individual' : 'Foundation for individual coaching'"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECCIÓN: Partner -->
+        <section>
+          <div class="mb-5">
+            <h2 class="text-xl font-extrabold text-gray-900" x-text="lang==='es' ? 'Partner del assessment' : 'Assessment partner'"></h2>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-center gap-4">
+            <div class="bg-orange-400 text-white rounded-xl w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">KF</div>
+            <div class="flex-1">
+              <p class="font-bold text-gray-800">Korn Ferry</p>
+              <p class="text-gray-600 text-sm" x-text="lang==='es' ? 'Líder mundial en evaluación de liderazgo y talento' : 'Global leader in leadership and talent assessment'"></p>
+            </div>
+            <a href="info.html" class="text-sm text-tef-blue font-semibold hover:text-blue-700 transition-colors flex-shrink-0" x-text="lang==='es' ? 'Más info →' : 'More info →'"></a>
+          </div>
+        </section>
+
+        <!-- CTA BANNER -->
+        <section>
+          <div class="bg-gradient-to-r from-purple-600 to-tef-blue text-white rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-left">
+              <h3 class="font-extrabold text-lg mb-1" x-text="lang==='es' ? '¿Aún no has completado tu autodiagnóstico?' : &quot;Haven't completed your self-diagnosis yet?&quot;"></h3>
+              <p class="text-purple-200 text-sm" x-text="lang==='es' ? 'Recibirás el enlace por email' : &quot;You'll receive the link by email&quot;"></p>
+            </div>
+            <a href="#" class="flex-shrink-0 bg-white text-purple-700 text-sm font-bold px-6 py-3 rounded-xl hover:bg-purple-50 transition-colors" x-text="lang==='es' ? 'Completar assessment →' : 'Complete assessment →'"></a>
+          </div>
+        </section>
+
+        <!-- SECCIÓN: ¿Cómo funciona el proceso? -->
+        <section>
+          <div class="mb-5">
+            <h2 class="text-xl font-extrabold text-gray-900" x-text="lang==='es' ? '¿Cómo funciona el proceso?' : 'How does the process work?'"></h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <div class="bg-white border border-gray-200 rounded-xl p-4 text-center">
+              <div class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-3">1</div>
+              <p class="text-sm font-semibold text-gray-800" x-text="lang==='es' ? 'Recibe el enlace' : 'Receive the link'"></p>
+              <p class="text-xs text-gray-500 mt-1" x-text="lang==='es' ? 'Por email de Korn Ferry' : 'By email from Korn Ferry'"></p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-4 text-center">
+              <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-3">2</div>
+              <p class="text-sm font-semibold text-gray-800" x-text="lang==='es' ? 'Completa los 3 módulos' : 'Complete 3 modules'"></p>
+              <p class="text-xs text-gray-500 mt-1" x-text="lang==='es' ? '45-60 minutos en total' : '45-60 minutes total'"></p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-4 text-center">
+              <div class="w-8 h-8 bg-tef-blue text-white rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-3">3</div>
+              <p class="text-sm font-semibold text-gray-800" x-text="lang==='es' ? 'Recibe tus informes' : 'Receive your reports'"></p>
+              <p class="text-xs text-gray-500 mt-1" x-text="lang==='es' ? 'Executive + In-Depth' : 'Executive + In-Depth'"></p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-4 text-center">
+              <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-3">4</div>
+              <p class="text-sm font-semibold text-gray-800" x-text="lang==='es' ? 'Sesión de coaching' : 'Coaching session'"></p>
+              <p class="text-xs text-gray-500 mt-1" x-text="lang==='es' ? 'Para revisar resultados' : 'To review your results'"></p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="w-56 flex-shrink-0 space-y-4">
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 space-y-3">
+          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest" x-text="lang==='es' ? 'Accesos rápidos' : 'Quick access'"></p>
+          <a href="nadia.html" class="block w-full text-center bg-tef-blue text-white text-sm font-semibold rounded-xl px-4 py-2.5 hover:bg-blue-700 transition-colors" x-text="lang==='es' ? '→ Conéctate a Nadia' : '→ Connect to Nadia'"></a>
+          <div class="space-y-2 pt-1">
+            <a href="journey.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span x-text="lang==='es' ? 'Ver tu Journey' : 'Your Journey'"></span></a>
+            <a href="agenda.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span x-text="lang==='es' ? 'Ver Agenda' : 'View Agenda'"></span></a>
+            <a href="#" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span x-text="lang==='es' ? 'Descargar agenda' : 'Download agenda'"></span></a>
+          </div>
+          <hr class="border-amber-200" />
+          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Partners</p>
+          <div class="space-y-2">
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>Korn Ferry</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>Universitas</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>WALK</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>People Excellence</span></a>
+          </div>
+        </div>
+
+        <!-- Resumen assessment -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-4 space-y-3">
+          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest" x-text="lang==='es' ? 'Resumen' : 'Summary'"></p>
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-600" x-text="lang==='es' ? 'Competencias' : 'Competencies'"></span>
+              <span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">~20 min</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-600">Drivers</span>
+              <span class="text-xs font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full">~10 min</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-600">Traits</span>
+              <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">~15 min</span>
+            </div>
+            <hr class="border-gray-100" />
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-700" x-text="lang==='es' ? 'Total' : 'Total'"></span>
+              <span class="text-xs font-bold text-gray-800">~45-60 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tip card -->
+        <div class="bg-purple-50 border border-purple-200 rounded-2xl p-4 space-y-2">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            <p class="text-xs font-bold text-purple-800">Tip</p>
+          </div>
+          <p class="text-xs text-purple-700" x-text="lang==='es' ? 'Responde con honestidad. No hay respuestas correctas o incorrectas.' : 'Answer honestly. There are no right or wrong answers.'"></p>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-tef-dark text-white">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 bg-tef-blue rounded-full flex items-center justify-center">
+          <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <span class="text-sm text-gray-300">Accelerate Impact Leadership Program</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:accelerateimpact@universitas.com" class="text-sm text-gray-400 hover:text-white transition-colors" x-text="lang==='es' ? 'Contacto' : 'Contact'"></a>
+        <span class="text-gray-600">|</span>
+        <div class="flex items-center gap-1.5">
+          <button @click="lang='es'" :class="lang==='es' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">ES</button>
+          <span class="text-gray-600 text-xs">|</span>
+          <button @click="lang='en'" :class="lang==='en' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">EN</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

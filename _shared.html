@@ -1,0 +1,158 @@
+<!--
+  SHARED COMPONENTS — copy into each page
+  =======================================
+  1. <head> block (styles, fonts, scripts)
+  2. <nav> header
+  3. #sidebar
+  4. <footer>
+  5. Alpine.js i18n base
+-->
+
+<!-- ═══════════════════════════════════════
+     HEAD
+════════════════════════════════════════ -->
+<!--
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accelerate Impact</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tef: {
+              blue:    '#0066FF',
+              dark:    '#0B2739',
+              light:   '#E8F0FF',
+            },
+            pex: {
+              red:     '#E84C48',
+              teal:    '#6DAFBF',
+            },
+            program: {
+              gold:    '#F5A623',
+              purple:  '#7C4DFF',
+              green:   '#2EC4B6',
+              orange:  '#FF6B35',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Rubik', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+    .nav-link { @apply text-sm font-medium text-gray-600 hover:text-tef-blue transition-colors px-3 py-1 rounded-md hover:bg-tef-light; }
+    .nav-link.active { @apply text-tef-blue font-semibold; }
+    .sidebar-link { @apply flex items-center gap-2 text-sm text-gray-700 hover:text-tef-blue transition-colors py-1; }
+    .card-module { @apply rounded-xl p-4 cursor-pointer hover:scale-[1.02] transition-transform duration-200 shadow-sm; }
+    .quick-btn { @apply w-full text-left text-sm font-medium bg-tef-blue text-white rounded-lg px-4 py-2.5 hover:bg-blue-700 transition-colors; }
+    .tag-pill { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium; }
+    .phase-badge { @apply rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider; }
+  </style>
+</head>
+-->
+
+<!-- ═══════════════════════════════════════
+     NAV HEADER
+════════════════════════════════════════ -->
+<!--
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14">
+      <!-- Logo + Program name -->
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-tef-blue rounded-full flex items-center justify-center">
+          <span class="text-white text-xs font-bold">T</span>
+        </div>
+        <span class="text-sm font-semibold text-tef-dark hidden sm:block">Accelerate Impact</span>
+      </div>
+      <!-- Nav links -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="index.html" class="nav-link" x-text="t('nav_home')">Home</a>
+        <a href="modelo.html" class="nav-link" x-text="t('nav_modelo')">Modelo</a>
+        <a href="journey.html" class="nav-link" x-text="t('nav_journey')">Journey</a>
+        <a href="autodiagnostico.html" class="nav-link" x-text="t('nav_auto')">Autodiag</a>
+        <a href="agenda.html" class="nav-link" x-text="t('nav_agenda')">Agenda</a>
+        <a href="nadia.html" class="nav-link" x-text="t('nav_nadia')">Nadia</a>
+        <a href="info.html" class="nav-link" x-text="t('nav_info')">Info</a>
+      </nav>
+      <!-- Lang toggle -->
+      <div class="flex items-center gap-1 border border-gray-200 rounded-full px-1 py-0.5">
+        <button @click="lang='es'" :class="lang==='es' ? 'bg-tef-blue text-white' : 'text-gray-500'" class="text-xs font-semibold px-2.5 py-1 rounded-full transition-colors">ES</button>
+        <button @click="lang='en'" :class="lang==='en' ? 'bg-tef-blue text-white' : 'text-gray-500'" class="text-xs font-semibold px-2.5 py-1 rounded-full transition-colors">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+-->
+
+<!-- ═══════════════════════════════════════
+     SIDEBAR (right)
+════════════════════════════════════════ -->
+<!--
+<aside class="w-56 flex-shrink-0 space-y-5">
+  <div class="bg-amber-50 border border-amber-100 rounded-xl p-4 space-y-3">
+    <p class="text-xs font-bold text-gray-500 uppercase tracking-wider" x-text="t('quick_access')">Accesos rápidos</p>
+    <a href="nadia.html" class="quick-btn block text-center" x-text="t('connect_nadia')">→ Conéctate a Nadia</a>
+    <div class="space-y-1.5 pt-1">
+      <a href="journey.html" class="sidebar-link">
+        <span class="text-tef-blue">→</span>
+        <span x-text="t('quick_journey')">Ver tu Journey</span>
+      </a>
+      <a href="agenda.html" class="sidebar-link">
+        <span class="text-tef-blue">→</span>
+        <span x-text="t('quick_agenda')">Ver Agenda</span>
+      </a>
+      <a href="#" class="sidebar-link">
+        <span class="text-tef-blue">→</span>
+        <span x-text="t('quick_download')">Descargar agenda PDF</span>
+      </a>
+    </div>
+    <hr class="border-amber-200" />
+    <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Partners</p>
+    <div class="space-y-1.5">
+      <a href="info.html" class="sidebar-link"><span class="text-tef-blue">→</span><span>Korn Ferry</span></a>
+      <a href="info.html" class="sidebar-link"><span class="text-tef-blue">→</span><span>Universitas</span></a>
+      <a href="info.html" class="sidebar-link"><span class="text-tef-blue">→</span><span>WALK</span></a>
+      <a href="info.html" class="sidebar-link"><span class="text-tef-blue">→</span><span>People Excellence</span></a>
+    </div>
+  </div>
+</aside>
+-->
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<!--
+<footer class="bg-tef-dark text-white mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 bg-tef-blue rounded-full flex items-center justify-center">
+          <span class="text-white text-[10px] font-bold">T</span>
+        </div>
+        <span class="text-sm text-gray-300">Accelerate Impact Leadership Program</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:accelerateimpact@universitas.com" class="text-sm text-gray-400 hover:text-white transition-colors" x-text="t('footer_contact')">Contacto</a>
+        <span class="text-gray-600">|</span>
+        <div class="flex items-center gap-1">
+          <button @click="lang='es'" :class="lang==='es' ? 'text-white font-semibold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">ES</button>
+          <span class="text-gray-600 text-xs">|</span>
+          <button @click="lang='en'" :class="lang==='en' ? 'text-white font-semibold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+-->
