@@ -116,23 +116,23 @@
   <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-tef-blue rounded-full flex items-center justify-center">
+        <div class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
           <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
         </div>
-        <span class="font-bold text-tef-dark text-sm hidden sm:block">Accelerate Impact</span>
+        <span class="font-bold text-gray-900 text-sm hidden sm:block">Accelerate Impact</span>
       </div>
       <nav class="hidden md:flex items-center gap-0.5 text-sm">
-        <a href="index.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='home' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_home')"></a>
-        <a href="modelo.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='modelo' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_modelo')"></a>
-        <a href="journey.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='journey' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_journey')"></a>
-        <a href="autodiagnostico.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='auto' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_auto')"></a>
-        <a href="agenda.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='agenda' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_agenda')"></a>
-        <a href="nadia.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='nadia' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'">Nadia</a>
-        <a href="info.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='info' ? 'text-tef-blue bg-tef-light font-semibold' : 'text-gray-600 hover:text-tef-blue hover:bg-tef-light'" x-text="t('nav_info')"></a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='home' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_home')"></a>
+        <a href="modelo.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='modelo' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_modelo')"></a>
+        <a href="journey.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='journey' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_journey')"></a>
+        <a href="autodiagnostico.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='auto' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_auto')"></a>
+        <a href="agenda.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='agenda' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_agenda')"></a>
+        <a href="nadia.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='nadia' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'">Nadia</a>
+        <a href="info.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='info' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_info')"></a>
       </nav>
       <div class="flex items-center gap-1 border border-gray-200 rounded-full px-1 py-0.5">
-        <button @click="lang='es'" :class="lang==='es' ? 'bg-tef-blue text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">ES</button>
-        <button @click="lang='en'" :class="lang==='en' ? 'bg-tef-blue text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">EN</button>
+        <button @click="lang='es'" :class="lang==='es' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">ES</button>
+        <button @click="lang='en'" :class="lang==='en' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">EN</button>
       </div>
     </div>
   </header>
@@ -141,25 +141,25 @@
   <main class="flex-1">
 
     <!-- HERO -->
-    <section class="bg-gradient-to-br from-tef-dark to-tef-blue text-white">
+    <section class="bg-gradient-to-br from-gray-900 to-gray-700 text-white">
       <div class="max-w-7xl mx-auto px-6 py-8 md:py-12">
         <div class="max-w-3xl">
           <!-- Badge -->
-          <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5 mb-6">
-            <span class="w-2 h-2 rounded-full bg-prog-gold"></span>
+          <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5 mb-6">
+            <span class="w-2 h-2 rounded-full bg-gray-400"></span>
             <span class="text-sm font-semibold tracking-wide" x-text="t('hero_badge')"></span>
           </div>
 
           <!-- Title -->
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 font-sans" x-text="t('hero_title')"></h1>
-          <p class="text-xl md:text-2xl text-blue-100 font-medium mb-10" x-text="t('hero_subtitle')"></p>
+          <p class="text-xl md:text-2xl text-gray-300 font-medium mb-10" x-text="t('hero_subtitle')"></p>
 
           <!-- Phase indicator -->
           <div class="flex items-center gap-0 flex-wrap sm:flex-nowrap">
             <!-- Phase 1: ASSESS (active) -->
             <div class="flex flex-col items-center">
               <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg">
-                <span class="text-tef-blue font-extrabold text-xs">1</span>
+                <span class="text-gray-800 font-extrabold text-xs">1</span>
               </div>
               <span class="mt-2 text-xs font-bold text-white tracking-wider" x-text="t('phase_assess')"></span>
             </div>
@@ -194,126 +194,126 @@
 
         <!-- EXPLORE SECTION -->
         <section>
-          <h2 class="text-xl font-bold text-tef-dark mb-5" x-text="t('explore_title')"></h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-5" x-text="t('explore_title')"></h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
             <!-- Card 1: Modelo -->
-            <a href="modelo.html" class="group bg-purple-100 border border-purple-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <a href="modelo.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
+              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
               </div>
               <div class="flex-1">
                 <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_modelo_title')"></h3>
                 <p class="text-sm text-gray-500 leading-snug" x-text="t('card_modelo_sub')"></p>
               </div>
-              <span class="text-purple-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
             </a>
 
             <!-- Card 2: Journey -->
-            <a href="journey.html" class="group bg-green-100 border border-green-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <a href="journey.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
+              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
               </div>
               <div class="flex-1">
                 <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_journey_title')"></h3>
                 <p class="text-sm text-gray-500 leading-snug" x-text="t('card_journey_sub')"></p>
               </div>
-              <span class="text-green-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
             </a>
 
             <!-- Card 3: Autodiagnóstico -->
-            <a href="autodiagnostico.html" class="group bg-orange-100 border border-orange-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            <a href="autodiagnostico.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
+              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
               </div>
               <div class="flex-1">
                 <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_auto_title')"></h3>
                 <p class="text-sm text-gray-500 leading-snug" x-text="t('card_auto_sub')"></p>
               </div>
-              <span class="text-orange-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
             </a>
 
             <!-- Card 4: Agenda -->
-            <a href="agenda.html" class="group bg-blue-100 border border-blue-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <a href="agenda.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
+              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
               </div>
               <div class="flex-1">
                 <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_agenda_title')"></h3>
                 <p class="text-sm text-gray-500 leading-snug" x-text="t('card_agenda_sub')"></p>
               </div>
-              <span class="text-blue-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
             </a>
 
             <!-- Card 5: Nadia (highlighted) -->
-            <a href="nadia.html" class="group bg-tef-blue rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
+            <a href="nadia.html" class="group bg-gray-800 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
               <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               </div>
               <div class="flex-1">
                 <h3 class="font-bold text-white mb-1" x-text="t('card_nadia_title')"></h3>
-                <p class="text-sm text-blue-100 leading-snug" x-text="t('card_nadia_sub')"></p>
+                <p class="text-sm text-gray-300 leading-snug" x-text="t('card_nadia_sub')"></p>
               </div>
               <span class="text-white font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
             </a>
 
             <!-- Card 6: Más info -->
-            <a href="info.html" class="group bg-amber-100 border border-amber-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <a href="info.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
+              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div class="flex-1">
                 <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_info_title')"></h3>
                 <p class="text-sm text-gray-500 leading-snug" x-text="t('card_info_sub')"></p>
               </div>
-              <span class="text-amber-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
             </a>
 
           </div>
         </section>
 
         <!-- BANNER: Conoce a tus compañeros -->
-        <section class="bg-tef-light border border-blue-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5">
-          <div class="flex-shrink-0 w-14 h-14 bg-tef-blue/10 rounded-2xl flex items-center justify-center">
-            <svg class="w-7 h-7 text-tef-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <section class="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5">
+          <div class="flex-shrink-0 w-14 h-14 bg-gray-800/10 rounded-2xl flex items-center justify-center">
+            <svg class="w-7 h-7 text-gray-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
           </div>
           <div class="flex-1 text-center sm:text-left">
-            <h3 class="font-bold text-tef-dark text-lg mb-1" x-text="t('banner_title')"></h3>
+            <h3 class="font-bold text-gray-900 text-lg mb-1" x-text="t('banner_title')"></h3>
             <p class="text-sm text-gray-500" x-text="t('banner_sub')"></p>
           </div>
-          <a href="#" class="flex-shrink-0 bg-tef-blue text-white text-sm font-semibold rounded-xl px-5 py-2.5 hover:bg-blue-700 transition-colors whitespace-nowrap" x-text="t('banner_cta')"></a>
+          <a href="#" class="flex-shrink-0 bg-gray-800 text-white text-sm font-semibold rounded-xl px-5 py-2.5 hover:bg-gray-700 transition-colors whitespace-nowrap" x-text="t('banner_cta')"></a>
         </section>
 
       </div><!-- /main column -->
 
       <!-- SIDEBAR -->
       <aside class="w-56 flex-shrink-0 space-y-4 hidden lg:block">
-        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 space-y-3">
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 space-y-3">
           <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest" x-text="t('quick_access')"></p>
-          <a href="nadia.html" class="block w-full text-center bg-tef-blue text-white text-sm font-semibold rounded-xl px-4 py-2.5 hover:bg-blue-700 transition-colors" x-text="t('nadia_cta')"></a>
+          <a href="nadia.html" class="block w-full text-center bg-gray-800 text-white text-sm font-semibold rounded-xl px-4 py-2.5 hover:bg-gray-700 transition-colors" x-text="t('nadia_cta')"></a>
           <div class="space-y-2 pt-1">
-            <a href="journey.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors group">
-              <span class="text-tef-blue font-bold">→</span>
+            <a href="journey.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors group">
+              <span class="text-gray-800 font-bold">→</span>
               <span x-text="t('journey_link')"></span>
             </a>
-            <a href="agenda.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors">
-              <span class="text-tef-blue font-bold">→</span>
+            <a href="agenda.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">
+              <span class="text-gray-800 font-bold">→</span>
               <span x-text="t('agenda_link')"></span>
             </a>
-            <a href="#" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors">
-              <span class="text-tef-blue font-bold">→</span>
+            <a href="#" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">
+              <span class="text-gray-800 font-bold">→</span>
               <span x-text="t('dl_agenda')"></span>
             </a>
           </div>
-          <hr class="border-amber-200" />
+          <hr class="border-gray-200" />
           <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Partners</p>
           <div class="space-y-2">
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>Korn Ferry</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>Universitas</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>WALK</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-tef-blue transition-colors"><span class="text-tef-blue font-bold">→</span><span>People Excellence</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>Korn Ferry</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>Universitas</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>WALK</span></a>
+            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>People Excellence</span></a>
           </div>
         </div>
       </aside>
@@ -322,10 +322,10 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-tef-dark text-white mt-auto">
+  <footer class="bg-gray-900 text-white mt-auto">
     <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
       <div class="flex items-center gap-3">
-        <div class="w-6 h-6 bg-tef-blue rounded-full flex items-center justify-center">
+        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
           <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
         </div>
         <span class="text-sm text-gray-300">Accelerate Impact Leadership Program</span>
