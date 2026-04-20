@@ -12,10 +12,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accelerate Impact — Home</title>
+  <title>Inicio — Accelerate Impact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,28 +23,45 @@
         extend: {
           colors: {
             tef: { blue: '#0066FF', dark: '#0B2739', light: '#E8F0FF' },
-            pex: { red: '#E84C48', teal: '#6DAFBF' },
-            prog: { gold: '#F5A623', purple: '#7C4DFF', green: '#2EC4B6', orange: '#FF6B35' }
+            ink: { DEFAULT: '#0F0F0F', soft: '#2A2A28', mute: '#6B6B66' },
+            paper: { DEFAULT: '#FAFAF7', warm: '#F3EFE8', deep: '#0B0B0B' }
           },
-          fontFamily: { sans: ['Inter', 'sans-serif'] }
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Inter', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace']
+          }
         }
       }
     }
   </script>
+  <style>
+    body { font-feature-settings: "cv11", "ss01"; }
+    .grain { position: relative; }
+    .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>"); opacity: 0.06; mix-blend-mode: overlay; }
+    .rule { height: 1px; background: currentColor; opacity: 0.2; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .reveal-1 { animation-delay: 0.05s; }
+    .reveal-2 { animation-delay: 0.15s; }
+    .reveal-3 { animation-delay: 0.25s; }
+    .reveal-4 { animation-delay: 0.35s; }
+    .reveal-5 { animation-delay: 0.45s; }
+  </style>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script>
     const i18n = {
       hero_title: {
-        es: 'Bienvenido/a a Accelerate Impact',
+        es: 'Te damos la bienvenida a Accelerate Impact',
         en: 'Welcome to Accelerate Impact'
       },
       hero_subtitle: {
-        es: 'El presente nos reta. Y estamos preparados.',
-        en: 'The present challenges us. And we are ready.'
+        es: 'Un programa de liderazgo estratégico diseñado para la comunidad de líderes de Telefónica. A lo largo de 10 meses desarrollarás tu impacto a través de autoconocimiento, aprendizaje inmersivo y acción sostenida, apoyado por un ecosistema de coaching, compañeros y herramientas digitales.',
+        en: 'A strategic leadership program designed for the Telefónica leadership community. Over 10 months you will develop your impact through self-awareness, immersive learning and sustained action, supported by an ecosystem of coaching, peers and digital tools.'
       },
       hero_badge: {
-        es: 'Top 200 Telefónica',
-        en: 'Top 200 Telefónica'
+        es: 'Comunidad de Líderes',
+        en: 'Leadership Community'
       },
       phase_assess: { es: 'ASSESS', en: 'ASSESS' },
       phase_activate: { es: 'ACTIVATE', en: 'ACTIVATE' },
@@ -55,41 +72,36 @@
       },
       card_modelo_title: { es: 'Modelo de Liderazgo', en: 'Leadership Model' },
       card_modelo_sub: {
-        es: 'Nuestras 3 actitudes y 6 comportamientos',
-        en: 'Our 3 attitudes and 6 behaviours'
+        es: 'Tres actitudes y seis comportamientos que definen nuestro liderazgo',
+        en: 'Three attitudes and six behaviours that define our leadership'
       },
       card_journey_title: { es: 'Tu Journey', en: 'Your Journey' },
       card_journey_sub: {
         es: 'Tu camino desde el autoconocimiento al impacto real',
         en: 'Your path from self-awareness to real impact'
       },
-      card_auto_title: { es: 'Autodiagnóstico', en: 'Self-Diagnosis' },
+      card_auto_title: { es: 'Assessment', en: 'Assessment' },
       card_auto_sub: {
-        es: 'Assessment KF — Conoce tu perfil de liderazgo',
-        en: 'KF Assessment — Discover your leadership profile'
+        es: 'Conoce tu perfil de liderazgo desde tres dimensiones clave',
+        en: 'Discover your leadership profile across three key dimensions'
       },
       card_agenda_title: { es: 'Agenda', en: 'Agenda' },
       card_agenda_sub: {
         es: 'Action Learning Week — 3 días presenciales',
         en: 'Action Learning Week — 3 in-person days'
       },
-      card_nadia_title: { es: 'Conéctate a Nadia', en: 'Connect to Nadia' },
+      card_nadia_title: { es: 'Tu AI Coach', en: 'Your AI Coach' },
       card_nadia_sub: {
         es: 'Tu AI Leadership Coach personal',
         en: 'Your personal AI Leadership Coach'
       },
-      card_info_title: { es: 'Más información', en: 'More information' },
-      card_info_sub: {
-        es: 'Partners, facilitadores y más',
-        en: 'Partners, facilitators and more'
-      },
       banner_title: {
-        es: 'Conoce a tus compañeros',
-        en: 'Meet your colleagues'
+        es: 'Conecta con tus compañeros',
+        en: 'Connect with your peers'
       },
       banner_sub: {
-        es: 'Conéctate con el resto del Top 200 en Teams',
-        en: 'Connect with the Top 200 in Microsoft Teams'
+        es: 'Conéctate con la comunidad de líderes en Teams',
+        en: 'Connect with the leadership community in Microsoft Teams'
       },
       banner_cta: {
         es: '→ Ir a Microsoft Teams',
@@ -103,36 +115,71 @@
       nav_home: { es: 'Inicio', en: 'Home' },
       nav_modelo: { es: 'Modelo', en: 'Model' },
       nav_journey: { es: 'Journey', en: 'Journey' },
-      nav_auto: { es: 'Autodiag.', en: 'Self-Diag.' },
+      nav_auto: { es: 'Assessment', en: 'Assessment' },
       nav_agenda: { es: 'Agenda', en: 'Agenda' },
-      nav_info: { es: 'Más info', en: 'More info' },
+      nav_info: { es: 'Contacto', en: 'Contact' },
       footer_contact: { es: 'Contacto', en: 'Contact' }
     };
   </script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 font-sans antialiased">
+<body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
-          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+      <!-- Brand -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <!-- Telefónica T-dots isotype -->
+        <svg class="w-5 h-6 flex-shrink-0" viewBox="0 0 20 24" fill="currentColor" aria-hidden="true">
+          <circle cx="3" cy="3" r="2.5" class="text-tef-blue" fill="currentColor"/>
+          <circle cx="10" cy="3" r="2.5" class="text-tef-blue" fill="currentColor"/>
+          <circle cx="17" cy="3" r="2.5" class="text-tef-blue" fill="currentColor"/>
+          <circle cx="10" cy="12" r="2.5" class="text-tef-blue" fill="currentColor"/>
+          <circle cx="10" cy="21" r="2.5" class="text-tef-blue" fill="currentColor"/>
+        </svg>
+        <div class="leading-none">
+          <p class="text-[15px] font-semibold text-ink tracking-tight">Accelerate Impact</p>
+          <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute mt-0.5">by Telefónica · Universitas</p>
         </div>
-        <span class="font-bold text-gray-900 text-sm hidden sm:block">Accelerate Impact</span>
-      </div>
-      <nav class="hidden md:flex items-center gap-0.5 text-sm">
-        <a href="index.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='home' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_home')"></a>
-        <a href="modelo.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='modelo' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_modelo')"></a>
-        <a href="journey.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='journey' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_journey')"></a>
-        <a href="autodiagnostico.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='auto' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_auto')"></a>
-        <a href="agenda.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='agenda' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_agenda')"></a>
-        <a href="nadia.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='nadia' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'">Nadia</a>
-        <a href="info.html" class="px-3 py-1.5 rounded-lg transition-colors font-medium" :class="page==='info' ? 'text-gray-800 bg-gray-100 font-semibold' : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'" x-text="t('nav_info')"></a>
+      </a>
+
+      <!-- Nav -->
+      <nav class="hidden md:flex items-center gap-7 text-[13px]">
+        <a href="index.html" class="relative py-1 transition-colors" :class="page==='home' ? 'text-ink' : 'text-ink-mute hover:text-ink'">
+          <span x-text="t('nav_home')"></span>
+          <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='home' ? 'opacity-100' : 'opacity-0'"></span>
+        </a>
+        <a href="modelo.html" class="relative py-1 transition-colors" :class="page==='modelo' ? 'text-ink' : 'text-ink-mute hover:text-ink'">
+          <span x-text="t('nav_modelo')"></span>
+          <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='modelo' ? 'opacity-100' : 'opacity-0'"></span>
+        </a>
+        <a href="journey.html" class="relative py-1 transition-colors" :class="page==='journey' ? 'text-ink' : 'text-ink-mute hover:text-ink'">
+          <span x-text="t('nav_journey')"></span>
+          <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='journey' ? 'opacity-100' : 'opacity-0'"></span>
+        </a>
+        <a href="autodiagnostico.html" class="relative py-1 transition-colors" :class="page==='auto' ? 'text-ink' : 'text-ink-mute hover:text-ink'">
+          <span x-text="t('nav_auto')"></span>
+          <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='auto' ? 'opacity-100' : 'opacity-0'"></span>
+        </a>
+        <a href="agenda.html" class="relative py-1 transition-colors" :class="page==='agenda' ? 'text-ink' : 'text-ink-mute hover:text-ink'">
+          <span x-text="t('nav_agenda')"></span>
+          <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='agenda' ? 'opacity-100' : 'opacity-0'"></span>
+        </a>
+        <a href="nadia.html" class="relative py-1 transition-colors" :class="page==='nadia' ? 'text-ink' : 'text-ink-mute hover:text-ink'">
+          Nadia
+          <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='nadia' ? 'opacity-100' : 'opacity-0'"></span>
+        </a>
+        <a href="info.html" class="relative py-1 transition-colors" :class="page==='info' ? 'text-ink' : 'text-ink-mute hover:text-ink'">
+          <span x-text="t('nav_info')"></span>
+          <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='info' ? 'opacity-100' : 'opacity-0'"></span>
+        </a>
       </nav>
-      <div class="flex items-center gap-1 border border-gray-200 rounded-full px-1 py-0.5">
-        <button @click="lang='es'" :class="lang==='es' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">ES</button>
-        <button @click="lang='en'" :class="lang==='en' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">EN</button>
+
+      <!-- Lang toggle -->
+      <div class="flex items-center gap-0 font-mono text-[11px] tracking-widest">
+        <button @click="lang='es'" :class="lang==='es' ? 'text-ink' : 'text-ink-mute hover:text-ink'" class="px-2 py-1 transition-colors">ES</button>
+        <span class="text-ink/20">/</span>
+        <button @click="lang='en'" :class="lang==='en' ? 'text-ink' : 'text-ink-mute hover:text-ink'" class="px-2 py-1 transition-colors">EN</button>
       </div>
     </div>
   </header>
@@ -141,202 +188,226 @@
   <main class="flex-1">
 
     <!-- HERO -->
-    <section class="bg-gradient-to-br from-gray-900 to-gray-700 text-white">
-      <div class="max-w-7xl mx-auto px-6 py-8 md:py-12">
-        <div class="max-w-3xl">
-          <!-- Badge -->
-          <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5 mb-6">
-            <span class="w-2 h-2 rounded-full bg-gray-400"></span>
-            <span class="text-sm font-semibold tracking-wide" x-text="t('hero_badge')"></span>
-          </div>
-
-          <!-- Title -->
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 font-sans" x-text="t('hero_title')"></h1>
-          <p class="text-xl md:text-2xl text-gray-300 font-medium mb-10" x-text="t('hero_subtitle')"></p>
-
-          <!-- Phase indicator -->
-          <div class="flex items-center gap-0 flex-wrap sm:flex-nowrap">
-            <!-- Phase 1: ASSESS (active) -->
-            <div class="flex flex-col items-center">
-              <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg">
-                <span class="text-gray-800 font-extrabold text-xs">1</span>
-              </div>
-              <span class="mt-2 text-xs font-bold text-white tracking-wider" x-text="t('phase_assess')"></span>
-            </div>
-            <!-- Connector -->
-            <div class="flex-1 h-0.5 bg-white/30 mx-2 mt-[-18px] min-w-[40px]"></div>
-            <!-- Phase 2: ACTIVATE -->
-            <div class="flex flex-col items-center">
-              <div class="w-10 h-10 rounded-full bg-white/20 border-2 border-white/40 flex items-center justify-center">
-                <span class="text-white font-extrabold text-xs">2</span>
-              </div>
-              <span class="mt-2 text-xs font-bold text-white/70 tracking-wider" x-text="t('phase_activate')"></span>
-            </div>
-            <!-- Connector -->
-            <div class="flex-1 h-0.5 bg-white/30 mx-2 mt-[-18px] min-w-[40px]"></div>
-            <!-- Phase 3: DRIVE ACTION -->
-            <div class="flex flex-col items-center">
-              <div class="w-10 h-10 rounded-full bg-white/20 border-2 border-white/40 flex items-center justify-center">
-                <span class="text-white font-extrabold text-xs">3</span>
-              </div>
-              <span class="mt-2 text-xs font-bold text-white/70 tracking-wider" x-text="t('phase_drive')"></span>
+    <section class="bg-paper-deep text-paper grain relative overflow-hidden">
+      <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div class="grid grid-cols-12 gap-6">
+          <!-- Meta label left -->
+          <div class="col-span-12 md:col-span-3 reveal reveal-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-8 h-px bg-paper/40"></span>
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/60" x-text="t('hero_badge')"></span>
             </div>
           </div>
+
+          <!-- Title + subtitle -->
+          <div class="col-span-12 md:col-span-9">
+            <h1 class="font-sans font-light leading-[0.95] tracking-[-0.02em] text-5xl md:text-7xl lg:text-[5.5rem] mb-8 reveal reveal-2">
+              <span x-show="lang==='es'" class="block">Te damos la<br/>bienvenida a <em class="italic font-normal text-paper">Accelerate</em> Impact.</span>
+              <span x-show="lang==='en'" class="block">Welcome to<br/><em class="italic font-normal text-paper">Accelerate</em> Impact.</span>
+            </h1>
+            <p class="text-sm md:text-base text-paper/70 max-w-2xl leading-relaxed reveal reveal-3" x-text="t('hero_subtitle')"></p>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom meta bar -->
+      <div class="relative border-t border-paper/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[10px] tracking-[0.18em] uppercase text-paper/50">
+          <span>Telefónica · Universitas</span>
+          <span class="hidden md:inline">10 meses · 3 fases · 1 comunidad</span>
+
         </div>
       </div>
     </section>
 
-    <!-- MAIN CONTENT + SIDEBAR -->
-    <div class="flex gap-6 max-w-7xl mx-auto px-6 py-8 items-start">
-
-      <!-- MAIN COLUMN -->
-      <div class="flex-1 min-w-0 space-y-8">
+    <!-- MAIN CONTENT -->
+    <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
+      <div class="space-y-16 md:space-y-20">
 
         <!-- EXPLORE SECTION -->
         <section>
-          <h2 class="text-xl font-bold text-gray-900 mb-5" x-text="t('explore_title')"></h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="flex items-center gap-4 mb-10">
+            <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">§ 01</span>
+            <span class="w-12 h-px bg-ink/20"></span>
+            <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('explore_title')"></span>
+          </div>
 
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-ink/10">
             <!-- Card 1: Modelo -->
-            <a href="modelo.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <a href="modelo.html" class="group relative p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[260px] hover:bg-paper-warm transition-colors duration-300">
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">01 / Modelo</span>
+              <div class="mt-auto">
+                <h3 class="font-sans font-light text-2xl md:text-[28px] leading-[1.15] tracking-tight mb-3" x-text="t('card_modelo_title')"></h3>
+                <p class="text-[13px] text-ink-mute leading-relaxed" x-text="t('card_modelo_sub')"></p>
               </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_modelo_title')"></h3>
-                <p class="text-sm text-gray-500 leading-snug" x-text="t('card_modelo_sub')"></p>
-              </div>
-              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="absolute top-6 right-6 font-sans font-light text-xl text-ink-mute group-hover:text-tef-blue group-hover:translate-x-1 transition-all">→</span>
             </a>
 
             <!-- Card 2: Journey -->
-            <a href="journey.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <a href="journey.html" class="group relative p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[260px] hover:bg-paper-warm transition-colors duration-300">
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">02 / Journey</span>
+              <div class="mt-auto">
+                <h3 class="font-sans font-light text-2xl md:text-[28px] leading-[1.15] tracking-tight mb-3" x-text="t('card_journey_title')"></h3>
+                <p class="text-[13px] text-ink-mute leading-relaxed" x-text="t('card_journey_sub')"></p>
               </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_journey_title')"></h3>
-                <p class="text-sm text-gray-500 leading-snug" x-text="t('card_journey_sub')"></p>
-              </div>
-              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="absolute top-6 right-6 font-sans font-light text-xl text-ink-mute group-hover:text-tef-blue group-hover:translate-x-1 transition-all">→</span>
             </a>
 
-            <!-- Card 3: Autodiagnóstico -->
-            <a href="autodiagnostico.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            <!-- Card 3: Assessment -->
+            <a href="autodiagnostico.html" class="group relative p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[260px] hover:bg-paper-warm transition-colors duration-300">
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">03 / Assessment</span>
+              <div class="mt-auto">
+                <h3 class="font-sans font-light text-2xl md:text-[28px] leading-[1.15] tracking-tight mb-3" x-text="t('card_auto_title')"></h3>
+                <p class="text-[13px] text-ink-mute leading-relaxed" x-text="t('card_auto_sub')"></p>
               </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_auto_title')"></h3>
-                <p class="text-sm text-gray-500 leading-snug" x-text="t('card_auto_sub')"></p>
-              </div>
-              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="absolute top-6 right-6 font-sans font-light text-xl text-ink-mute group-hover:text-tef-blue group-hover:translate-x-1 transition-all">→</span>
             </a>
 
             <!-- Card 4: Agenda -->
-            <a href="agenda.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <a href="agenda.html" class="group relative p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[260px] hover:bg-paper-warm transition-colors duration-300">
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">04 / Agenda</span>
+              <div class="mt-auto">
+                <h3 class="font-sans font-light text-2xl md:text-[28px] leading-[1.15] tracking-tight mb-3" x-text="t('card_agenda_title')"></h3>
+                <p class="text-[13px] text-ink-mute leading-relaxed" x-text="t('card_agenda_sub')"></p>
               </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_agenda_title')"></h3>
-                <p class="text-sm text-gray-500 leading-snug" x-text="t('card_agenda_sub')"></p>
-              </div>
-              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              <span class="absolute top-6 right-6 font-sans font-light text-xl text-ink-mute group-hover:text-tef-blue group-hover:translate-x-1 transition-all">→</span>
             </a>
-
-            <!-- Card 5: Nadia (highlighted) -->
-            <a href="nadia.html" class="group bg-gray-800 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-white mb-1" x-text="t('card_nadia_title')"></h3>
-                <p class="text-sm text-gray-300 leading-snug" x-text="t('card_nadia_sub')"></p>
-              </div>
-              <span class="text-white font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
-            </a>
-
-            <!-- Card 6: Más info -->
-            <a href="info.html" class="group bg-gray-100 border border-gray-300 rounded-2xl p-5 flex flex-col gap-3 hover:scale-105 hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-gray-900 mb-1" x-text="t('card_info_title')"></h3>
-                <p class="text-sm text-gray-500 leading-snug" x-text="t('card_info_sub')"></p>
-              </div>
-              <span class="text-gray-600 font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
-            </a>
-
           </div>
         </section>
 
-        <!-- BANNER: Conoce a tus compañeros -->
-        <section class="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5">
-          <div class="flex-shrink-0 w-14 h-14 bg-gray-800/10 rounded-2xl flex items-center justify-center">
-            <svg class="w-7 h-7 text-gray-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-            </svg>
+        <!-- NADIA — AI Coach transversal -->
+        <section class="relative grain overflow-hidden bg-paper-deep text-paper">
+          <div class="max-w-7xl mx-auto px-6 md:px-10 py-14 md:py-16 grid grid-cols-12 gap-6 items-end">
+            <div class="col-span-12 md:col-span-2">
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50">§ 02</span>
+              <div class="mt-2 h-px w-12 bg-paper/30"></div>
+            </div>
+            <div class="col-span-12 md:col-span-7">
+              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-3" x-text="lang==='es' ? 'Siempre contigo' : 'Always with you'"></p>
+              <h3 class="font-sans font-light text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-[-0.01em] mb-3">
+                <span x-show="lang==='es'"><em class="italic font-normal">Tu</em> AI Coach.</span>
+                <span x-show="lang==='en'"><em class="italic font-normal">Your</em> AI Coach.</span>
+              </h3>
+              <p class="text-sm md:text-base text-paper/70 max-w-md leading-relaxed" x-text="t('card_nadia_sub')"></p>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex md:justify-end">
+              <a href="nadia.html" class="group inline-flex items-center gap-3 text-paper border-b border-paper/40 hover:border-paper transition-colors pb-1">
+                <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="lang==='es' ? 'Conectar con Nadia' : 'Connect with Nadia'"></span>
+                <span class="font-sans font-light text-xl group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
           </div>
-          <div class="flex-1 text-center sm:text-left">
-            <h3 class="font-bold text-gray-900 text-lg mb-1" x-text="t('banner_title')"></h3>
-            <p class="text-sm text-gray-500" x-text="t('banner_sub')"></p>
+        </section>
+
+        <!-- BANNER: Conecta con tus compañeros -->
+        <section class="border-t border-b border-ink/10 py-10 md:py-12">
+          <div class="grid grid-cols-12 gap-6 items-end">
+            <div class="col-span-12 md:col-span-2">
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">§ 03</span>
+              <div class="mt-2 h-px w-12 bg-ink/20"></div>
+            </div>
+            <div class="col-span-12 md:col-span-7">
+              <h3 class="font-sans font-light text-3xl md:text-4xl leading-[1] tracking-[-0.01em] mb-2" x-text="t('banner_title')"></h3>
+              <p class="text-sm text-ink-mute max-w-md" x-text="t('banner_sub')"></p>
+            </div>
+            <div class="col-span-12 md:col-span-3 flex md:justify-end">
+              <a href="#" class="group inline-flex items-center gap-3 text-ink border-b border-ink/40 hover:border-tef-blue hover:text-tef-blue transition-colors pb-1">
+                <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="lang==='es' ? 'Ir a Teams' : 'Go to Teams'"></span>
+                <span class="font-sans font-light text-xl group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
           </div>
-          <a href="#" class="flex-shrink-0 bg-gray-800 text-white text-sm font-semibold rounded-xl px-5 py-2.5 hover:bg-gray-700 transition-colors whitespace-nowrap" x-text="t('banner_cta')"></a>
         </section>
 
       </div><!-- /main column -->
-
-      <!-- SIDEBAR -->
-      <aside class="w-56 flex-shrink-0 space-y-4 hidden lg:block">
-        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 space-y-3">
-          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest" x-text="t('quick_access')"></p>
-          <a href="nadia.html" class="block w-full text-center bg-gray-800 text-white text-sm font-semibold rounded-xl px-4 py-2.5 hover:bg-gray-700 transition-colors" x-text="t('nadia_cta')"></a>
-          <div class="space-y-2 pt-1">
-            <a href="journey.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors group">
-              <span class="text-gray-800 font-bold">→</span>
-              <span x-text="t('journey_link')"></span>
-            </a>
-            <a href="agenda.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">
-              <span class="text-gray-800 font-bold">→</span>
-              <span x-text="t('agenda_link')"></span>
-            </a>
-            <a href="#" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">
-              <span class="text-gray-800 font-bold">→</span>
-              <span x-text="t('dl_agenda')"></span>
-            </a>
-          </div>
-          <hr class="border-gray-200" />
-          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Partners</p>
-          <div class="space-y-2">
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>Korn Ferry</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>Universitas</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>WALK</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>People Excellence</span></a>
-          </div>
-        </div>
-      </aside>
-
-    </div><!-- /flex layout -->
+    </div><!-- /container -->
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white mt-auto">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
-          <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+  <footer class="bg-paper-deep text-paper mt-auto grain relative">
+    <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-16">
+      <!-- Top row: brand + CTA -->
+      <div class="grid grid-cols-12 gap-6 pb-10 border-b border-paper/10">
+        <div class="col-span-12 md:col-span-6 flex items-start gap-4">
+          <svg class="w-6 h-7 flex-shrink-0 mt-1" viewBox="0 0 20 24" fill="#0066FF" aria-hidden="true">
+            <circle cx="3" cy="3" r="2.5"/>
+            <circle cx="10" cy="3" r="2.5"/>
+            <circle cx="17" cy="3" r="2.5"/>
+            <circle cx="10" cy="12" r="2.5"/>
+            <circle cx="10" cy="21" r="2.5"/>
+          </svg>
+          <div>
+            <p class="font-sans font-light text-3xl md:text-4xl leading-[1] tracking-[-0.01em]">Accelerate Impact</p>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mt-2">Leadership Program · 2026</p>
+          </div>
         </div>
-        <span class="text-sm text-gray-300">Accelerate Impact Leadership Program</span>
+        <div class="col-span-12 md:col-span-6 flex md:justify-end items-start">
+          <a href="mailto:accelerateimpact@universitas.com" class="group inline-flex items-center gap-3 border-b border-paper/30 hover:border-tef-blue pb-1 transition-colors">
+            <span class="font-mono text-[11px] tracking-[0.2em] uppercase" x-text="lang==='es' ? 'Escríbenos' : 'Get in touch'"></span>
+            <span class="text-lg group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
       </div>
-      <div class="flex items-center gap-4">
-        <a href="mailto:accelerateimpact@universitas.com" class="text-sm text-gray-400 hover:text-white transition-colors" x-text="t('footer_contact')"></a>
-        <span class="text-gray-600">|</span>
-        <div class="flex items-center gap-1.5">
-          <button @click="lang='es'" :class="lang==='es' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">ES</button>
-          <span class="text-gray-600 text-xs">|</span>
-          <button @click="lang='en'" :class="lang==='en' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">EN</button>
+
+      <!-- Middle row: columns -->
+      <div class="grid grid-cols-12 gap-6 py-10 border-b border-paper/10">
+        <div class="col-span-12 md:col-span-4">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4" x-text="lang==='es' ? 'Partners del programa' : 'Program partners'"></p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://www.kornferry.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Korn Ferry</a></li>
+            <li><a href="https://www.egonzehnder.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Egon Zehnder</a></li>
+            <li><a href="https://universitas.telefonica.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Telefónica Universitas</a></li>
+            <li><a href="https://walkconsulting.net" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">WALK</a></li>
+            <li><a href="https://peopleexcellence.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">People Excellence</a></li>
+          </ul>
+        </div>
+        <div class="col-span-6 md:col-span-4">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4" x-text="lang==='es' ? 'Explorar' : 'Explore'"></p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="modelo.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_modelo')"></a></li>
+            <li><a href="journey.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
+            <li><a href="autodiagnostico.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_auto')"></a></li>
+            <li><a href="agenda.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_agenda')"></a></li>
+            <li><a href="nadia.html" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
+          </ul>
+        </div>
+        <div class="col-span-6 md:col-span-4">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4" x-text="lang==='es' ? 'El programa' : 'The program'"></p>
+          <ul class="space-y-2 text-sm text-paper/80">
+            <li x-text="lang==='es' ? '10 meses · 3 fases' : '10 months · 3 phases'"></li>
+            <li x-text="lang==='es' ? 'Comunidad de Líderes' : 'Leadership Community'"></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom row: legal + YG + lang -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+        <p class="font-mono text-[10px] tracking-[0.18em] uppercase text-paper/40">© 2026 Telefónica S.A. · <span x-text="lang==='es' ? 'Uso interno' : 'Internal use'"></span></p>
+        <div class="flex items-center gap-5">
+          <a href="https://yellowglasses.es" target="_blank" rel="noopener" class="text-paper/50 hover:text-paper transition-colors" aria-label="Powered by Yellow Glasses">
+            <svg class="h-6 w-auto" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.78 19.5V12.7H11.11C12.65 12.7 13.62 13.52 13.62 14.85C13.62 16.22 12.64 17.02 11.12 17.02H9.7V19.5H8.78ZM11.1 13.45H9.7V16.27H11.07C12.08 16.27 12.67 15.73 12.67 14.86C12.67 14 12.07 13.45 11.1 13.45ZM16.8756 19.62C15.3556 19.62 14.4456 18.58 14.4456 16.85C14.4456 15.05 15.3856 14.06 16.8756 14.06C18.3956 14.06 19.3056 15.12 19.3056 16.85C19.3056 18.64 18.3656 19.62 16.8756 19.62ZM16.8756 18.86C17.8656 18.86 18.4056 18.15 18.4056 16.85C18.4056 15.56 17.8556 14.82 16.8756 14.82C15.8856 14.82 15.3456 15.54 15.3456 16.85C15.3456 18.13 15.8956 18.86 16.8756 18.86ZM24.9406 19.5L23.7906 15.53L23.6706 14.93L23.5506 15.53L22.4106 19.5H21.3206L19.7406 14.19H20.6906L21.7806 18.31L21.9106 18.85L22.0406 18.31L23.2506 14.19H24.2006L25.4106 18.31L25.5306 18.83L25.6406 18.31L26.7306 14.19H27.6406L26.0506 19.5H24.9406ZM32.9775 17.77C32.6875 19.01 31.7975 19.62 30.5875 19.62C29.0475 19.62 28.1175 18.58 28.1175 16.85C28.1175 15.05 29.0475 14.06 30.5375 14.06C32.0375 14.06 32.9375 15.09 32.9375 16.78V17H29.0175C29.0675 18.19 29.6275 18.86 30.5875 18.86C31.3375 18.86 31.8675 18.5 32.0575 17.77H32.9775ZM30.5375 14.82C29.6875 14.82 29.1775 15.35 29.0475 16.34H32.0175C31.8975 15.36 31.3675 14.82 30.5375 14.82ZM34.1102 19.5V14.19H34.9902V15.01C35.3502 14.36 35.9202 14.06 36.5602 14.06C36.7702 14.06 36.9602 14.11 37.0602 14.19V14.98C36.9102 14.93 36.7202 14.91 36.5102 14.91C35.4502 14.91 34.9902 15.57 34.9902 16.53V19.5H34.1102ZM42.333 17.77C42.043 19.01 41.153 19.62 39.943 19.62C38.403 19.62 37.473 18.58 37.473 16.85C37.473 15.05 38.403 14.06 39.893 14.06C41.393 14.06 42.293 15.09 42.293 16.78V17H38.373C38.423 18.19 38.983 18.86 39.943 18.86C40.693 18.86 41.223 18.5 41.413 17.77H42.333ZM39.893 14.82C39.043 14.82 38.533 15.35 38.403 16.34H41.373C41.253 15.36 40.723 14.82 39.893 14.82ZM45.4556 19.62C44.0456 19.62 43.1956 18.58 43.1956 16.85C43.1956 15.05 44.0656 14.06 45.4556 14.06C46.0856 14.06 46.5956 14.32 46.9456 14.81V12.3H47.8256V19.5H46.9456V18.83C46.5956 19.33 46.0856 19.62 45.4556 19.62ZM45.5156 18.86C46.4456 18.86 46.9456 18.15 46.9456 16.85C46.9456 15.56 46.4256 14.82 45.5156 14.82C44.5956 14.82 44.0956 15.54 44.0956 16.85C44.0956 18.13 44.6156 18.86 45.5156 18.86ZM52.1093 19.5H51.2293V12.3H52.1093V14.85C52.4593 14.35 52.9693 14.06 53.5993 14.06C55.0093 14.06 55.8593 15.1 55.8593 16.83C55.8593 18.63 54.9893 19.62 53.5993 19.62C52.9693 19.62 52.4593 19.36 52.1093 18.87V19.5ZM53.5393 14.82C52.6093 14.82 52.1093 15.53 52.1093 16.83C52.1093 18.12 52.6293 18.86 53.5393 18.86C54.4593 18.86 54.9593 18.14 54.9593 16.83C54.9593 15.55 54.4393 14.82 53.5393 14.82ZM57.0845 21.82C56.8845 21.82 56.6745 21.77 56.5645 21.74V21.06H56.8345C57.4845 21.06 57.6645 20.93 58.1845 19.74L58.3645 19.33L56.1945 14.19H57.1445L58.5845 17.7L58.8245 18.41L59.0645 17.7L60.4645 14.19H61.3645L58.8845 20.2C58.3545 21.48 58.0045 21.82 57.0845 21.82Z" fill="currentColor"/>
+              <path d="M95.6346 12.9639V13.0209C95.5901 14.3491 94.5211 15.3927 93.1975 15.3927H89.2205V13.9949H93.1975C93.7193 13.9949 94.1584 13.6217 94.2411 13.1031V13.0841V13.0145H92.1348C90.5249 13.0145 89.2205 11.7116 89.2205 10.1177V7.41699H90.6267V10.1177C90.6267 10.5162 90.7858 10.8957 91.0722 11.1803C91.3585 11.4649 91.7339 11.6167 92.1412 11.6167H94.2538V7.41699H95.6346V12.9639Z" fill="#FDC614"/>
+              <path d="M98.8483 12.0916H103.729V13.2111H98.6255C97.4038 13.2111 96.4111 12.2244 96.4111 11.0101V9.6249C96.4111 8.41052 97.4038 7.42383 98.6255 7.42383H102.558C103.118 7.42383 103.576 7.87922 103.576 8.43582V8.86591C103.576 9.22643 103.379 9.56165 103.067 9.73875C102.164 10.2574 101.222 10.7824 100.395 11.2441L98.8546 12.0979L98.8483 12.0916ZM98.1992 11.1745C98.6701 10.9089 99.1919 10.6179 99.8346 10.2637C100.35 9.97277 100.885 9.6755 101.432 9.3719L102.921 8.53701H98.6255C98.021 8.53701 97.5311 9.02403 97.5311 9.6249V11.5603L98.1992 11.1808V11.1745Z" fill="#FDC614"/>
+              <path d="M104.499 6H105.899V13.2041H104.499V6Z" fill="#FDC614"/>
+              <path d="M106.662 6H108.062V13.2041H106.662V6Z" fill="#FDC614"/>
+              <path d="M115.984 9.04882V11.5725C115.984 12.4706 115.246 13.2043 114.33 13.2043H110.48C109.57 13.2043 108.826 12.4706 108.826 11.5725V9.04882C108.826 8.15068 109.57 7.41699 110.48 7.41699H114.33C115.24 7.41699 115.984 8.15068 115.984 9.04882ZM114.591 8.80215H110.219V11.8255H114.591V8.80215Z" fill="#FDC614"/>
+              <path d="M125.714 7.41699L123.843 13.2043H122.061L120.941 9.73824L119.821 13.2043H118.04L116.169 7.41699H117.632L118.931 11.4333L120.229 7.41699H121.654L122.952 11.4333L124.25 7.41699H125.714Z" fill="#FDC614"/>
+              <path d="M95.9909 19.6183V23.4891C95.9909 24.8743 94.9983 26.0001 93.7829 26.0001H90.2513V24.6529H93.7829C94.1392 24.6529 94.521 24.2671 94.591 23.6789H90.4931C89.5831 23.6789 88.8386 22.9642 88.8386 22.085V19.6183C88.8386 18.7391 89.5768 18.0244 90.4931 18.0244H94.3365C95.2464 18.0244 95.9909 18.7391 95.9909 19.6183ZM94.5974 22.4329V19.4096H90.2258V22.4329H94.5974Z" fill="currentColor"/>
+              <path d="M96.7546 16.6074H98.1546V23.8115H96.7546V16.6074Z" fill="currentColor"/>
+              <path d="M105.396 23.8186H104.002V22.2626H101.864C101.024 22.2626 100.337 22.9457 100.337 23.7806V23.8186H98.918V23.7806C98.918 22.1677 100.242 20.8522 101.864 20.8522H104.072L103.989 20.3398C103.907 19.8212 103.461 19.4417 102.933 19.4417H98.918V18.0312H102.933C104.289 18.0312 105.396 19.1444 105.396 20.5106V23.8186Z" fill="currentColor"/>
+              <path d="M113.019 22.0476V22.0602C113.019 23.0279 112.23 23.8122 111.256 23.8122H106.821V22.5599H111.256C111.536 22.5599 111.759 22.3322 111.759 22.0602V22.0476C111.759 21.7693 111.53 21.5479 111.256 21.5479H107.935C106.961 21.5479 106.172 20.7636 106.172 19.7959V19.7833C106.172 18.8155 106.961 18.0312 107.935 18.0312H112.338V19.2836H107.935C107.655 19.2836 107.432 19.5113 107.432 19.7833V19.7959C107.432 20.0742 107.661 20.2956 107.935 20.2956H111.256C112.23 20.2956 113.019 21.0799 113.019 22.0476Z" fill="currentColor"/>
+              <path d="M120.636 22.0476V22.0602C120.636 23.0279 119.847 23.8122 118.873 23.8122H114.438V22.5599H118.873C119.153 22.5599 119.376 22.3322 119.376 22.0602V22.0476C119.376 21.7693 119.147 21.5479 118.873 21.5479H115.552C114.578 21.5479 113.789 20.7636 113.789 19.7959V19.7833C113.789 18.8155 114.578 18.0312 115.552 18.0312H119.955V19.2836H115.552C115.272 19.2836 115.049 19.5113 115.049 19.7833V19.7959C115.049 20.0742 115.278 20.2956 115.552 20.2956H118.873C119.847 20.2956 120.636 21.0799 120.636 22.0476Z" fill="currentColor"/>
+              <path d="M123.849 22.699H128.73V23.8186H123.627C122.405 23.8186 121.412 22.8319 121.412 21.6175V20.2323C121.412 19.0179 122.405 18.0312 123.627 18.0312H127.559C128.119 18.0312 128.577 18.4866 128.577 19.0432V19.4733C128.577 19.8339 128.38 20.1691 128.068 20.3462C127.164 20.8648 126.223 21.3898 125.396 21.8515L123.856 22.7054L123.849 22.699ZM123.207 21.7883C123.677 21.5226 124.199 21.2317 124.842 20.8775C125.357 20.5865 125.892 20.2892 126.439 19.9857L127.928 19.1508H123.633C123.028 19.1508 122.538 19.6378 122.538 20.2386V22.1741L123.207 21.7946V21.7883Z" fill="currentColor"/>
+              <path d="M136.353 22.0476V22.0602C136.353 23.0279 135.564 23.8122 134.59 23.8122H130.155V22.5599H134.59C134.87 22.5599 135.093 22.3322 135.093 22.0602V22.0476C135.093 21.7693 134.864 21.5479 134.59 21.5479H131.269C130.295 21.5479 129.506 20.7636 129.506 19.7959V19.7833C129.506 18.8155 130.295 18.0312 131.269 18.0312H135.672V19.2836H131.269C130.989 19.2836 130.766 19.5113 130.766 19.7833V19.7959C130.766 20.0742 130.995 20.2956 131.269 20.2956H134.59C135.564 20.2956 136.353 21.0799 136.353 22.0476Z" fill="currentColor"/>
+              <path d="M78.7657 7.58105H70.5316C68.5845 7.58105 67 9.11169 67 10.9902V11.8567H69.9716V10.5348H79.3193V11.8567H82.2909V10.9902C82.2909 9.11169 80.7065 7.58105 78.7593 7.58105" fill="#FDC614"/>
+              <path d="M79.3256 13.2041V18.3526H71.4606C70.6398 18.3526 69.978 17.6948 69.978 16.8789V13.2041H67V17.6126C67 19.4974 68.5845 21.0217 70.5316 21.0217H79.3002C79.1538 22.2804 78.3266 23.1089 77.5694 23.1089H70.0098V25.9931H77.5694C80.1783 25.9931 82.2973 23.5833 82.2973 20.6169V13.2041H79.3256Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <div class="flex items-center gap-0 font-mono text-[10px] tracking-widest">
+            <button @click="lang='es'" :class="lang==='es' ? 'text-paper' : 'text-paper/40 hover:text-paper'" class="px-2 py-1 transition-colors">ES</button>
+            <span class="text-paper/20">/</span>
+            <button @click="lang='en'" :class="lang==='en' ? 'text-paper' : 'text-paper/40 hover:text-paper'" class="px-2 py-1 transition-colors">EN</button>
+          </div>
         </div>
       </div>
     </div>

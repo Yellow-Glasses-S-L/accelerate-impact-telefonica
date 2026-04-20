@@ -1,213 +1,346 @@
 <!DOCTYPE html>
-<html
-  lang="es"
-  x-data="{
-    lang: localStorage.getItem('lang') || 'es',
-    page: 'nadia',
-    init() {
-      this.$watch('lang', v => localStorage.setItem('lang', v))
-    }
-  }"
->
+<html lang="es" x-data="{
+  lang: localStorage.getItem('lang') || 'es',
+  page: 'nadia',
+  init() {
+    this.$watch('lang', v => localStorage.setItem('lang', v));
+  },
+  t(key) {
+    return i18n[key] ? (i18n[key][this.lang] || i18n[key]['es']) : key;
+  }
+}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title x-text="lang === 'es' ? 'Nadia — Accelerate Impact' : 'Nadia — Accelerate Impact'">Nadia — Accelerate Impact</title>
+  <title>Nadia — Accelerate Impact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             tef: { blue: '#0066FF', dark: '#0B2739', light: '#E8F0FF' },
-            pex: { red: '#E84C48', teal: '#6DAFBF' },
-            prog: { gold: '#F5A623', purple: '#7C4DFF', green: '#2EC4B6', orange: '#FF6B35' }
+            ink: { DEFAULT: '#0F0F0F', soft: '#2A2A28', mute: '#6B6B66' },
+            paper: { DEFAULT: '#FAFAF7', warm: '#F3EFE8', deep: '#0B0B0B' }
           },
-          fontFamily: { sans: ['Inter', 'sans-serif'] }
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Inter', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace']
+          }
         }
       }
     }
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
-    [x-cloak] { display: none !important; }
+    body { font-feature-settings: "cv11", "ss01"; }
+    .grain { position: relative; }
+    .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>"); opacity: 0.06; mix-blend-mode: overlay; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .reveal-1 { animation-delay: 0.05s; }
+    .reveal-2 { animation-delay: 0.15s; }
+    .reveal-3 { animation-delay: 0.25s; }
+    @keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.15); opacity: 0.6; } }
+    .breathe { animation: breathe 6s ease-in-out infinite; }
   </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    const i18n = {
+      nav_home: { es: 'Inicio', en: 'Home' },
+      nav_modelo: { es: 'Modelo', en: 'Model' },
+      nav_journey: { es: 'Journey', en: 'Journey' },
+      nav_auto: { es: 'Assessment', en: 'Assessment' },
+      nav_agenda: { es: 'Agenda', en: 'Agenda' },
+      nav_info: { es: 'Contacto', en: 'Contact' },
+
+      hero_eyebrow: { es: 'AI Leadership Coach', en: 'AI Leadership Coach' },
+      hero_intro: {
+        es: 'Tu coach personal, disponible en cualquier momento del journey.',
+        en: 'Your personal coach, available at any point in the journey.'
+      },
+
+      purpose_label: { es: 'Propósito', en: 'Purpose' },
+      purpose_text: {
+        es: 'Nadia está diseñada para acompañarte en las decisiones que importan: las que requieren claridad, valentía y contexto. No es una herramienta de respuestas — es un espacio para pensar mejor antes de actuar.',
+        en: 'Nadia is designed to accompany you in the decisions that matter: those that require clarity, courage and context. It is not an answer-tool — it is a space to think better before acting.'
+      },
+
+      uses_label: { es: 'Cuatro usos', en: 'Four uses' },
+
+      use1_num: '01',
+      use1_t: { es: 'Preparar tu Action Plan', en: 'Prepare your Action Plan' },
+      use1_d: { es: 'Define tus compromisos de liderazgo con claridad: qué dejas de hacer (Kill), qué harás rápido (Quick Win) y qué elevarás de nivel (Raise the Bar).', en: 'Define your leadership commitments clearly: what to stop (Kill), what to do fast (Quick Win), and what to raise (Raise the Bar).' },
+
+      use2_num: '02',
+      use2_t: { es: 'Reflexionar sobre resultados', en: 'Reflect on your results' },
+      use2_d: { es: 'Conecta tu assessment con acciones concretas. Traduce insights en pequeños pasos que puedas medir en tu día a día.', en: 'Connect your assessment with concrete actions. Turn insights into small, measurable steps for your day-to-day.' },
+
+      use3_num: '03',
+      use3_t: { es: 'Practicar conversaciones difíciles', en: 'Rehearse difficult conversations' },
+      use3_d: { es: 'Simula diálogos antes de que ocurran: feedback, decisiones duras, gestión de conflicto. Ensaya, anticipa reacciones, afina tu mensaje.', en: 'Rehearse dialogues before they happen: feedback, hard decisions, conflict. Practice, anticipate reactions, refine your message.' },
+
+      use4_num: '04',
+      use4_t: { es: 'Sostener el momentum', en: 'Sustain the momentum' },
+      use4_d: { es: 'Acompañamiento post-programa para consolidar hábitos y que las decisiones de liderazgo sobrevivan al día 1, al mes 3 y al trimestre siguiente.', en: 'Post-program support to consolidate habits — so leadership decisions survive day 1, month 3, and the next quarter.' },
+
+      tips_label: { es: 'Tres recordatorios', en: 'Three reminders' },
+      tips_intro: { es: 'Para sacar el máximo provecho de las conversaciones.', en: 'To get the most out of your conversations.' },
+
+      tip1: { es: 'Sé específico. Cuanto más contexto aportas, más útil es la respuesta. La vaguedad produce vaguedad.', en: 'Be specific. The more context you share, the more useful the response. Vagueness produces vagueness.' },
+      tip2: { es: 'Comparte tus resultados del assessment. Nadia personaliza las respuestas a tu perfil real de liderazgo, no a uno genérico.', en: 'Share your assessment results. Nadia tailors responses to your real leadership profile, not a generic one.' },
+      tip3: { es: 'Úsala antes de las conversaciones importantes. Estructurar el mensaje por adelantado cambia lo que dices cuando llega el momento.', en: 'Use it before important conversations. Structuring your message in advance changes what you say when the moment arrives.' },
+
+      cta_title_1: { es: '¿Empezamos?', en: 'Shall we start?' },
+      cta_title_2: { es: 'Estoy aquí.', en: "I'm here." },
+      cta_sub: { es: 'Disponible 24/7 durante todo el programa.', en: 'Available 24/7 throughout the program.' },
+      cta_button: { es: 'Abrir conversación', en: 'Open conversation' }
+    };
+  </script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 font-sans text-gray-900">
+<body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
-          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <svg class="w-5 h-6 flex-shrink-0" viewBox="0 0 20 24" aria-hidden="true">
+          <circle cx="3" cy="3" r="2.5" fill="#0066FF"/><circle cx="10" cy="3" r="2.5" fill="#0066FF"/><circle cx="17" cy="3" r="2.5" fill="#0066FF"/><circle cx="10" cy="12" r="2.5" fill="#0066FF"/><circle cx="10" cy="21" r="2.5" fill="#0066FF"/>
+        </svg>
+        <div class="leading-none">
+          <p class="text-[15px] font-semibold text-ink tracking-tight">Accelerate Impact</p>
+          <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute mt-0.5">by Telefónica · Universitas</p>
         </div>
-        <span class="font-bold text-gray-900 text-sm hidden sm:block">Accelerate Impact</span>
-      </div>
-      <nav class="hidden md:flex items-center gap-0.5 text-sm">
-        <a href="index.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors font-medium" :class="{'text-gray-800 bg-gray-100 font-semibold': page==='home'}" x-text="lang==='es' ? 'Inicio' : 'Home'"></a>
-        <a href="modelo.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors font-medium" :class="{'text-gray-800 bg-gray-100 font-semibold': page==='modelo'}" x-text="lang==='es' ? 'Modelo' : 'Model'"></a>
-        <a href="journey.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors font-medium" :class="{'text-gray-800 bg-gray-100 font-semibold': page==='journey'}">Journey</a>
-        <a href="autodiagnostico.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors font-medium" :class="{'text-gray-800 bg-gray-100 font-semibold': page==='auto'}" x-text="lang==='es' ? 'Autodiag.' : 'Self-Diag.'"></a>
-        <a href="agenda.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors font-medium" :class="{'text-gray-800 bg-gray-100 font-semibold': page==='agenda'}" x-text="lang==='es' ? 'Agenda' : 'Agenda'"></a>
-        <a href="nadia.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors font-medium" :class="{'text-gray-800 bg-gray-100 font-semibold': page==='nadia'}">Nadia</a>
-        <a href="info.html" class="px-3 py-1.5 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors font-medium" :class="{'text-gray-800 bg-gray-100 font-semibold': page==='info'}" x-text="lang==='es' ? 'Más info' : 'More info'"></a>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-[13px]">
+        <a href="index.html" class="relative py-1 transition-colors" :class="page==='home' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_home')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='home' ? 'opacity-100' : 'opacity-0'"></span></a>
+        <a href="modelo.html" class="relative py-1 transition-colors" :class="page==='modelo' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_modelo')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='modelo' ? 'opacity-100' : 'opacity-0'"></span></a>
+        <a href="journey.html" class="relative py-1 transition-colors" :class="page==='journey' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_journey')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='journey' ? 'opacity-100' : 'opacity-0'"></span></a>
+        <a href="autodiagnostico.html" class="relative py-1 transition-colors" :class="page==='auto' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_auto')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='auto' ? 'opacity-100' : 'opacity-0'"></span></a>
+        <a href="agenda.html" class="relative py-1 transition-colors" :class="page==='agenda' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_agenda')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='agenda' ? 'opacity-100' : 'opacity-0'"></span></a>
+        <a href="nadia.html" class="relative py-1 transition-colors" :class="page==='nadia' ? 'text-ink' : 'text-ink-mute hover:text-ink'">Nadia<span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='nadia' ? 'opacity-100' : 'opacity-0'"></span></a>
+        <a href="info.html" class="relative py-1 transition-colors" :class="page==='info' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_info')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='info' ? 'opacity-100' : 'opacity-0'"></span></a>
       </nav>
-      <div class="flex items-center gap-1 border border-gray-200 rounded-full px-1 py-0.5">
-        <button @click="lang='es'" :class="lang==='es' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">ES</button>
-        <button @click="lang='en'" :class="lang==='en' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-gray-600'" class="text-xs font-bold px-2.5 py-1 rounded-full transition-colors">EN</button>
+      <div class="flex items-center gap-0 font-mono text-[11px] tracking-widest">
+        <button @click="lang='es'" :class="lang==='es' ? 'text-ink' : 'text-ink-mute hover:text-ink'" class="px-2 py-1 transition-colors">ES</button>
+        <span class="text-ink/20">/</span>
+        <button @click="lang='en'" :class="lang==='en' ? 'text-ink' : 'text-ink-mute hover:text-ink'" class="px-2 py-1 transition-colors">EN</button>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-700 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-14 flex flex-col items-center text-center gap-6">
-      <!-- Avatar -->
-      <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-gray-700 rounded-full flex items-center justify-center text-3xl font-bold text-white shadow-xl ring-4 ring-white/20">
-        N
-      </div>
-      <div>
-        <h1 class="text-5xl font-extrabold mb-2 tracking-tight" style="font-family: 'Rubik', sans-serif;">Nadia</h1>
-        <p class="text-purple-200 text-lg font-medium mb-1" x-text="lang==='es' ? 'Tu AI Leadership Coach personal' : 'Your personal AI Leadership Coach'"></p>
-        <p class="text-purple-300 text-sm" x-text="lang==='es' ? 'Disponible durante todo tu journey de desarrollo' : 'Available throughout your development journey'"></p>
-      </div>
-      <a
-        href="#"
-        class="bg-white text-gray-700 font-bold rounded-xl px-8 py-3 hover:bg-gray-50 transition-colors text-base shadow-lg mt-2"
-        x-text="lang==='es' ? 'CONÉCTATE A NADIA →' : 'CONNECT TO NADIA →'"
-      ></a>
-    </div>
-  </section>
-
   <!-- MAIN -->
   <main class="flex-1">
-    <div class="max-w-7xl mx-auto px-6 py-8 flex gap-6">
 
-      <!-- CONTENT -->
-      <div class="flex-1 min-w-0 space-y-8">
-
-        <!-- How Nadia can help -->
-        <div>
-          <h2 class="text-xl font-bold text-gray-900 mb-1" x-text="lang==='es' ? '¿Cómo puede ayudarte?' : 'How can Nadia help you?'"></h2>
-          <p class="text-gray-500 text-sm mb-5" x-text="lang==='es' ? 'Nadia es tu coach de IA personal durante todo el programa Accelerate Impact.' : 'Nadia is your personal AI coach throughout the Accelerate Impact program.'"></p>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-            <!-- Card 1 -->
-            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
-              <div class="text-3xl mb-3">🎯</div>
-              <h3 class="font-bold text-gray-900 mb-2" x-text="lang==='es' ? 'Preparar tu Action Plan' : 'Prepare your Action Plan'"></h3>
-              <p class="text-sm text-gray-600 leading-relaxed" x-text="lang==='es' ? 'Kill / Quick Win / Raise the Bar — Define tus compromisos de liderazgo con claridad y propósito.' : 'Kill / Quick Win / Raise the Bar — Define your leadership commitments with clarity and purpose.'"></p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
-              <div class="text-3xl mb-3">🔍</div>
-              <h3 class="font-bold text-gray-900 mb-2" x-text="lang==='es' ? 'Reflexionar sobre resultados' : 'Reflect on your results'"></h3>
-              <p class="text-sm text-gray-600 leading-relaxed" x-text="lang==='es' ? 'Conecta tu autodiagnóstico con acciones concretas para maximizar tu impacto como líder.' : 'Connect your self-assessment with concrete actions to maximise your impact as a leader.'"></p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
-              <div class="text-3xl mb-3">💬</div>
-              <h3 class="font-bold text-gray-900 mb-2" x-text="lang==='es' ? 'Practicar conversaciones' : 'Practice conversations'"></h3>
-              <p class="text-sm text-gray-600 leading-relaxed" x-text="lang==='es' ? 'Simula diálogos difíciles — Feedback, decisiones, gestión del conflicto — antes de que ocurran de verdad.' : 'Simulate difficult dialogues — Feedback, decisions, conflict management — before they happen for real.'"></p>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
-              <div class="text-3xl mb-3">🌱</div>
-              <h3 class="font-bold text-gray-900 mb-2" x-text="lang==='es' ? 'Desarrollo continuo' : 'Continuous development'"></h3>
-              <p class="text-sm text-gray-600 leading-relaxed" x-text="lang==='es' ? 'Acompañamiento post-programa — Mantén el momentum y consolida los hábitos de liderazgo.' : 'Post-program support — Maintain momentum and consolidate leadership habits.'"></p>
-            </div>
-
+    <!-- HERO — centered avatar + big name -->
+    <section class="bg-paper-deep text-paper grain relative overflow-hidden">
+      <div class="relative max-w-5xl mx-auto px-6 pt-24 md:pt-32 pb-20 md:pb-24 text-center">
+        <!-- Avatar with breathing glow -->
+        <div class="relative inline-flex items-center justify-center mb-10 reveal reveal-1">
+          <div class="absolute inset-0 rounded-full bg-tef-blue/40 blur-3xl breathe"></div>
+          <div class="relative w-24 h-24 md:w-28 md:h-28 rounded-full border border-paper/20 bg-paper-deep flex items-center justify-center">
+            <span class="text-5xl md:text-6xl font-light italic text-paper">N</span>
           </div>
         </div>
-
-        <!-- Tips section -->
-        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-xl">💡</span>
-            <h3 class="font-bold text-gray-900" x-text="lang==='es' ? 'Tips para sacar el máximo partido' : 'Tips to get the most out of Nadia'"></h3>
-          </div>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 flex-shrink-0 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-bold text-xs mt-0.5">1</span>
-              <p class="text-sm text-gray-700" x-text="lang==='es' ? 'Sé específico/a: cuanto más contexto des, mejor podrá ayudarte a encontrar soluciones relevantes.' : 'Be specific: the more context you give, the better Nadia can help you find relevant solutions.'"></p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 flex-shrink-0 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-bold text-xs mt-0.5">2</span>
-              <p class="text-sm text-gray-700" x-text="lang==='es' ? 'Comparte tus resultados del assessment para personalizar las respuestas a tu perfil de liderazgo.' : 'Share your assessment results to personalise responses to your leadership profile.'"></p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 flex-shrink-0 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-bold text-xs mt-0.5">3</span>
-              <p class="text-sm text-gray-700" x-text="lang==='es' ? 'Úsala antes de conversaciones importantes para prepararte, estructurar tu mensaje y anticipar reacciones.' : 'Use it before important conversations to prepare, structure your message and anticipate reactions.'"></p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Final CTA -->
-        <div class="bg-gradient-to-r from-gray-800 to-gray-700 rounded-2xl p-8 text-white text-center">
-          <p class="text-2xl font-extrabold mb-2" x-text="lang==='es' ? '¿Listo/a para empezar?' : 'Ready to start?'"></p>
-          <p class="text-purple-200 text-sm mb-6" x-text="lang==='es' ? 'Nadia está disponible ahora mismo para acompañarte en tu journey de liderazgo.' : 'Nadia is available right now to support you on your leadership journey.'"></p>
-          <a
-            href="#"
-            class="inline-block bg-white text-gray-700 font-bold rounded-xl px-10 py-3.5 hover:bg-gray-50 transition-colors text-sm shadow-lg"
-            x-text="lang==='es' ? 'EMPEZAR CONVERSACIÓN CON NADIA →' : 'START CONVERSATION WITH NADIA →'"
-          ></a>
-        </div>
-
+        <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-paper/60 mb-5 reveal reveal-2" x-text="t('hero_eyebrow')"></p>
+        <h1 class="font-light leading-[0.9] tracking-[-0.03em] text-6xl md:text-8xl lg:text-[9rem] mb-8 reveal reveal-2">
+          <em class="italic font-normal">Nadia</em>.
+        </h1>
+        <p class="font-light text-lg md:text-xl text-paper/70 max-w-xl mx-auto reveal reveal-3" x-text="t('hero_intro')"></p>
       </div>
+      <div class="relative border-t border-paper/10">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-center gap-6 font-mono text-[10px] tracking-[0.18em] uppercase text-paper/50">
+          <span>24/7</span>
+          <span class="w-px h-3 bg-paper/20"></span>
+          <span x-text="lang==='es' ? 'Confidencial' : 'Confidential'"></span>
+          <span class="w-px h-3 bg-paper/20"></span>
+          <span x-text="lang==='es' ? 'Contextual' : 'Contextual'"></span>
+        </div>
+      </div>
+    </section>
 
-      <!-- SIDEBAR -->
-      <aside class="w-56 flex-shrink-0 space-y-4">
-        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 space-y-3">
-          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest" x-text="lang==='es' ? 'Accesos rápidos' : 'Quick access'"></p>
-          <a href="nadia.html" class="block w-full text-center bg-gray-800 text-white text-sm font-semibold rounded-xl px-4 py-2.5 hover:bg-gray-700 transition-colors" x-text="lang==='es' ? '→ Conéctate a Nadia' : '→ Connect to Nadia'"></a>
-          <div class="space-y-2 pt-1">
-            <a href="journey.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span x-text="lang==='es' ? 'Ver tu Journey' : 'Your Journey'"></span></a>
-            <a href="agenda.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span x-text="lang==='es' ? 'Ver Agenda' : 'View Agenda'"></span></a>
-            <a href="#" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span x-text="lang==='es' ? 'Descargar agenda' : 'Download agenda'"></span></a>
-          </div>
-          <hr class="border-gray-200" />
-          <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Partners</p>
-          <div class="space-y-2">
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>Korn Ferry</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>Universitas</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>WALK</span></a>
-            <a href="info.html" class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"><span class="text-gray-800 font-bold">→</span><span>People Excellence</span></a>
-          </div>
+    <!-- PURPOSE — centered essay -->
+    <section class="max-w-3xl mx-auto px-6 py-20 md:py-24 text-center">
+      <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-6" x-text="t('purpose_label')"></p>
+      <p class="font-light text-2xl md:text-[2rem] leading-[1.35] tracking-tight text-ink" x-text="t('purpose_text')"></p>
+    </section>
+
+    <!-- USES — 4 numbered sections, alternating alignment -->
+    <section class="border-t border-ink/10 bg-paper-warm">
+      <div class="max-w-4xl mx-auto px-6 py-16 md:py-20">
+        <div class="text-center mb-14">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('uses_label')"></p>
         </div>
 
-        <!-- Nadia info card -->
-        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 space-y-2">
-          <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Nadia AI</p>
-          <p class="text-xs text-gray-600 leading-relaxed" x-text="lang==='es' ? 'Basada en los marcos de liderazgo del programa. Disponible 24/7.' : 'Built on the program leadership frameworks. Available 24/7.'"></p>
-          <p class="text-xs text-gray-400" x-text="lang==='es' ? 'Powered by People Excellence' : 'Powered by People Excellence'"></p>
-        </div>
-      </aside>
+        <div class="space-y-14 md:space-y-16">
+          <!-- Use 01 — left aligned -->
+          <article class="grid grid-cols-12 gap-6 items-baseline">
+            <p class="col-span-12 md:col-span-2 font-light text-6xl md:text-7xl tracking-[-0.03em] text-tef-blue leading-none" x-text="use1_num = '01'">01</p>
+            <div class="col-span-12 md:col-span-10 md:pl-6">
+              <h3 class="font-light text-3xl md:text-4xl tracking-tight leading-tight mb-3" x-text="t('use1_t')"></h3>
+              <p class="text-[15px] text-ink-soft leading-relaxed max-w-xl" x-text="t('use1_d')"></p>
+            </div>
+          </article>
 
-    </div>
+          <!-- Use 02 — right aligned -->
+          <article class="grid grid-cols-12 gap-6 items-baseline">
+            <div class="col-span-12 md:col-span-10 md:order-1 md:text-right md:pr-6">
+              <h3 class="font-light text-3xl md:text-4xl tracking-tight leading-tight mb-3" x-text="t('use2_t')"></h3>
+              <p class="text-[15px] text-ink-soft leading-relaxed max-w-xl md:ml-auto" x-text="t('use2_d')"></p>
+            </div>
+            <p class="col-span-12 md:col-span-2 md:order-2 md:text-right font-light text-6xl md:text-7xl tracking-[-0.03em] text-tef-blue leading-none">02</p>
+          </article>
+
+          <!-- Use 03 — left aligned -->
+          <article class="grid grid-cols-12 gap-6 items-baseline">
+            <p class="col-span-12 md:col-span-2 font-light text-6xl md:text-7xl tracking-[-0.03em] text-tef-blue leading-none">03</p>
+            <div class="col-span-12 md:col-span-10 md:pl-6">
+              <h3 class="font-light text-3xl md:text-4xl tracking-tight leading-tight mb-3" x-text="t('use3_t')"></h3>
+              <p class="text-[15px] text-ink-soft leading-relaxed max-w-xl" x-text="t('use3_d')"></p>
+            </div>
+          </article>
+
+          <!-- Use 04 — right aligned -->
+          <article class="grid grid-cols-12 gap-6 items-baseline">
+            <div class="col-span-12 md:col-span-10 md:order-1 md:text-right md:pr-6">
+              <h3 class="font-light text-3xl md:text-4xl tracking-tight leading-tight mb-3" x-text="t('use4_t')"></h3>
+              <p class="text-[15px] text-ink-soft leading-relaxed max-w-xl md:ml-auto" x-text="t('use4_d')"></p>
+            </div>
+            <p class="col-span-12 md:col-span-2 md:order-2 md:text-right font-light text-6xl md:text-7xl tracking-[-0.03em] text-tef-blue leading-none">04</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPS — aphorisms -->
+    <section class="border-t border-ink/10">
+      <div class="max-w-4xl mx-auto px-6 py-20 md:py-24">
+        <div class="text-center mb-14">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('tips_label')"></p>
+          <p class="text-sm text-ink-mute" x-text="t('tips_intro')"></p>
+        </div>
+        <ol class="space-y-10 md:space-y-12">
+          <li class="text-center">
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 01 —</p>
+            <p class="font-light text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip1')"></p>
+          </li>
+          <li class="text-center">
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 02 —</p>
+            <p class="font-light text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip2')"></p>
+          </li>
+          <li class="text-center">
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 03 —</p>
+            <p class="font-light text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip3')"></p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CTA — dark centered -->
+    <section class="bg-paper-deep text-paper grain relative overflow-hidden">
+      <div class="relative max-w-3xl mx-auto px-6 py-24 md:py-32 text-center">
+        <div class="relative inline-flex items-center justify-center mb-8">
+          <div class="absolute inset-0 rounded-full bg-tef-blue/30 blur-2xl breathe"></div>
+          <div class="relative w-16 h-16 rounded-full border border-paper/20 bg-paper-deep flex items-center justify-center">
+            <span class="text-2xl font-light italic text-paper">N</span>
+          </div>
+        </div>
+        <h2 class="font-light leading-[1] tracking-[-0.02em] text-5xl md:text-7xl mb-6">
+          <span x-text="t('cta_title_1')"></span>
+          <em class="italic font-normal" x-text="t('cta_title_2')"></em>
+        </h2>
+        <p class="text-sm md:text-base text-paper/60 mb-10" x-text="t('cta_sub')"></p>
+        <a href="#" class="group inline-flex items-center gap-3 bg-paper text-paper-deep font-mono text-xs tracking-[0.18em] uppercase px-8 py-4 hover:bg-tef-blue hover:text-paper transition-colors">
+          <span x-text="t('cta_button')"></span>
+          <span class="text-lg group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </section>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-        <span class="text-sm text-gray-300">Accelerate Impact Leadership Program</span>
+  <footer class="bg-paper-deep text-paper mt-auto grain relative border-t border-paper/10">
+    <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-16">
+      <div class="grid grid-cols-12 gap-6 pb-10 border-b border-paper/10">
+        <div class="col-span-12 md:col-span-6 flex items-start gap-4">
+          <svg class="w-6 h-7 flex-shrink-0 mt-1" viewBox="0 0 20 24" fill="#0066FF" aria-hidden="true">
+            <circle cx="3" cy="3" r="2.5"/><circle cx="10" cy="3" r="2.5"/><circle cx="17" cy="3" r="2.5"/><circle cx="10" cy="12" r="2.5"/><circle cx="10" cy="21" r="2.5"/>
+          </svg>
+          <div>
+            <p class="font-sans font-light text-3xl md:text-4xl leading-[1] tracking-[-0.01em]">Accelerate Impact</p>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mt-2">Leadership Program · 2026</p>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-6 flex md:justify-end items-start">
+          <a href="mailto:accelerateimpact@universitas.com" class="group inline-flex items-center gap-3 border-b border-paper/30 hover:border-tef-blue pb-1 transition-colors">
+            <span class="font-mono text-[11px] tracking-[0.2em] uppercase" x-text="lang==='es' ? 'Escríbenos' : 'Get in touch'"></span>
+            <span class="text-lg group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
       </div>
-      <div class="flex items-center gap-4">
-        <a href="mailto:accelerateimpact@universitas.com" class="text-sm text-gray-400 hover:text-white transition-colors" x-text="lang==='es' ? 'Contacto' : 'Contact'"></a>
-        <span class="text-gray-600">|</span>
-        <div class="flex items-center gap-1.5">
-          <button @click="lang='es'" :class="lang==='es' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">ES</button>
-          <span class="text-gray-600 text-xs">|</span>
-          <button @click="lang='en'" :class="lang==='en' ? 'text-white font-bold' : 'text-gray-400'" class="text-xs hover:text-white transition-colors">EN</button>
+
+      <div class="grid grid-cols-12 gap-6 py-10 border-b border-paper/10">
+        <div class="col-span-12 md:col-span-4">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4" x-text="lang==='es' ? 'Partners del programa' : 'Program partners'"></p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://www.kornferry.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Korn Ferry</a></li>
+            <li><a href="https://www.egonzehnder.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Egon Zehnder</a></li>
+            <li><a href="https://universitas.telefonica.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Telefónica Universitas</a></li>
+            <li><a href="https://walkconsulting.net" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">WALK</a></li>
+            <li><a href="https://peopleexcellence.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">People Excellence</a></li>
+          </ul>
+        </div>
+        <div class="col-span-6 md:col-span-4">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4" x-text="lang==='es' ? 'Explorar' : 'Explore'"></p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="modelo.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_modelo')"></a></li>
+            <li><a href="journey.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
+            <li><a href="autodiagnostico.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_auto')"></a></li>
+            <li><a href="agenda.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_agenda')"></a></li>
+            <li><a href="nadia.html" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
+          </ul>
+        </div>
+        <div class="col-span-6 md:col-span-4">
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4" x-text="lang==='es' ? 'El programa' : 'The program'"></p>
+          <ul class="space-y-2 text-sm text-paper/80">
+            <li x-text="lang==='es' ? '10 meses · 3 fases' : '10 months · 3 phases'"></li>
+            <li x-text="lang==='es' ? 'Comunidad de Líderes' : 'Leadership Community'"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+        <p class="font-mono text-[10px] tracking-[0.18em] uppercase text-paper/40">© 2026 Telefónica S.A. · <span x-text="lang==='es' ? 'Uso interno' : 'Internal use'"></span></p>
+        <div class="flex items-center gap-5">
+          <a href="https://yellowglasses.es" target="_blank" rel="noopener" class="text-paper/50 hover:text-paper transition-colors" aria-label="Powered by Yellow Glasses">
+            <svg class="h-6 w-auto" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.78 19.5V12.7H11.11C12.65 12.7 13.62 13.52 13.62 14.85C13.62 16.22 12.64 17.02 11.12 17.02H9.7V19.5H8.78ZM11.1 13.45H9.7V16.27H11.07C12.08 16.27 12.67 15.73 12.67 14.86C12.67 14 12.07 13.45 11.1 13.45ZM16.8756 19.62C15.3556 19.62 14.4456 18.58 14.4456 16.85C14.4456 15.05 15.3856 14.06 16.8756 14.06C18.3956 14.06 19.3056 15.12 19.3056 16.85C19.3056 18.64 18.3656 19.62 16.8756 19.62ZM16.8756 18.86C17.8656 18.86 18.4056 18.15 18.4056 16.85C18.4056 15.56 17.8556 14.82 16.8756 14.82C15.8856 14.82 15.3456 15.54 15.3456 16.85C15.3456 18.13 15.8956 18.86 16.8756 18.86ZM24.9406 19.5L23.7906 15.53L23.6706 14.93L23.5506 15.53L22.4106 19.5H21.3206L19.7406 14.19H20.6906L21.7806 18.31L21.9106 18.85L22.0406 18.31L23.2506 14.19H24.2006L25.4106 18.31L25.5306 18.83L25.6406 18.31L26.7306 14.19H27.6406L26.0506 19.5H24.9406ZM32.9775 17.77C32.6875 19.01 31.7975 19.62 30.5875 19.62C29.0475 19.62 28.1175 18.58 28.1175 16.85C28.1175 15.05 29.0475 14.06 30.5375 14.06C32.0375 14.06 32.9375 15.09 32.9375 16.78V17H29.0175C29.0675 18.19 29.6275 18.86 30.5875 18.86C31.3375 18.86 31.8675 18.5 32.0575 17.77H32.9775ZM30.5375 14.82C29.6875 14.82 29.1775 15.35 29.0475 16.34H32.0175C31.8975 15.36 31.3675 14.82 30.5375 14.82ZM34.1102 19.5V14.19H34.9902V15.01C35.3502 14.36 35.9202 14.06 36.5602 14.06C36.7702 14.06 36.9602 14.11 37.0602 14.19V14.98C36.9102 14.93 36.7202 14.91 36.5102 14.91C35.4502 14.91 34.9902 15.57 34.9902 16.53V19.5H34.1102ZM42.333 17.77C42.043 19.01 41.153 19.62 39.943 19.62C38.403 19.62 37.473 18.58 37.473 16.85C37.473 15.05 38.403 14.06 39.893 14.06C41.393 14.06 42.293 15.09 42.293 16.78V17H38.373C38.423 18.19 38.983 18.86 39.943 18.86C40.693 18.86 41.223 18.5 41.413 17.77H42.333ZM39.893 14.82C39.043 14.82 38.533 15.35 38.403 16.34H41.373C41.253 15.36 40.723 14.82 39.893 14.82ZM45.4556 19.62C44.0456 19.62 43.1956 18.58 43.1956 16.85C43.1956 15.05 44.0656 14.06 45.4556 14.06C46.0856 14.06 46.5956 14.32 46.9456 14.81V12.3H47.8256V19.5H46.9456V18.83C46.5956 19.33 46.0856 19.62 45.4556 19.62ZM45.5156 18.86C46.4456 18.86 46.9456 18.15 46.9456 16.85C46.9456 15.56 46.4256 14.82 45.5156 14.82C44.5956 14.82 44.0956 15.54 44.0956 16.85C44.0956 18.13 44.6156 18.86 45.5156 18.86ZM52.1093 19.5H51.2293V12.3H52.1093V14.85C52.4593 14.35 52.9693 14.06 53.5993 14.06C55.0093 14.06 55.8593 15.1 55.8593 16.83C55.8593 18.63 54.9893 19.62 53.5993 19.62C52.9693 19.62 52.4593 19.36 52.1093 18.87V19.5ZM53.5393 14.82C52.6093 14.82 52.1093 15.53 52.1093 16.83C52.1093 18.12 52.6293 18.86 53.5393 18.86C54.4593 18.86 54.9593 18.14 54.9593 16.83C54.9593 15.55 54.4393 14.82 53.5393 14.82ZM57.0845 21.82C56.8845 21.82 56.6745 21.77 56.5645 21.74V21.06H56.8345C57.4845 21.06 57.6645 20.93 58.1845 19.74L58.3645 19.33L56.1945 14.19H57.1445L58.5845 17.7L58.8245 18.41L59.0645 17.7L60.4645 14.19H61.3645L58.8845 20.2C58.3545 21.48 58.0045 21.82 57.0845 21.82Z" fill="currentColor"/>
+              <path d="M95.6346 12.9639V13.0209C95.5901 14.3491 94.5211 15.3927 93.1975 15.3927H89.2205V13.9949H93.1975C93.7193 13.9949 94.1584 13.6217 94.2411 13.1031V13.0841V13.0145H92.1348C90.5249 13.0145 89.2205 11.7116 89.2205 10.1177V7.41699H90.6267V10.1177C90.6267 10.5162 90.7858 10.8957 91.0722 11.1803C91.3585 11.4649 91.7339 11.6167 92.1412 11.6167H94.2538V7.41699H95.6346V12.9639Z" fill="#FDC614"/>
+              <path d="M98.8483 12.0916H103.729V13.2111H98.6255C97.4038 13.2111 96.4111 12.2244 96.4111 11.0101V9.6249C96.4111 8.41052 97.4038 7.42383 98.6255 7.42383H102.558C103.118 7.42383 103.576 7.87922 103.576 8.43582V8.86591C103.576 9.22643 103.379 9.56165 103.067 9.73875C102.164 10.2574 101.222 10.7824 100.395 11.2441L98.8546 12.0979L98.8483 12.0916ZM98.1992 11.1745C98.6701 10.9089 99.1919 10.6179 99.8346 10.2637C100.35 9.97277 100.885 9.6755 101.432 9.3719L102.921 8.53701H98.6255C98.021 8.53701 97.5311 9.02403 97.5311 9.6249V11.5603L98.1992 11.1808V11.1745Z" fill="#FDC614"/>
+              <path d="M104.499 6H105.899V13.2041H104.499V6Z" fill="#FDC614"/>
+              <path d="M106.662 6H108.062V13.2041H106.662V6Z" fill="#FDC614"/>
+              <path d="M115.984 9.04882V11.5725C115.984 12.4706 115.246 13.2043 114.33 13.2043H110.48C109.57 13.2043 108.826 12.4706 108.826 11.5725V9.04882C108.826 8.15068 109.57 7.41699 110.48 7.41699H114.33C115.24 7.41699 115.984 8.15068 115.984 9.04882ZM114.591 8.80215H110.219V11.8255H114.591V8.80215Z" fill="#FDC614"/>
+              <path d="M125.714 7.41699L123.843 13.2043H122.061L120.941 9.73824L119.821 13.2043H118.04L116.169 7.41699H117.632L118.931 11.4333L120.229 7.41699H121.654L122.952 11.4333L124.25 7.41699H125.714Z" fill="#FDC614"/>
+              <path d="M95.9909 19.6183V23.4891C95.9909 24.8743 94.9983 26.0001 93.7829 26.0001H90.2513V24.6529H93.7829C94.1392 24.6529 94.521 24.2671 94.591 23.6789H90.4931C89.5831 23.6789 88.8386 22.9642 88.8386 22.085V19.6183C88.8386 18.7391 89.5768 18.0244 90.4931 18.0244H94.3365C95.2464 18.0244 95.9909 18.7391 95.9909 19.6183ZM94.5974 22.4329V19.4096H90.2258V22.4329H94.5974Z" fill="currentColor"/>
+              <path d="M96.7546 16.6074H98.1546V23.8115H96.7546V16.6074Z" fill="currentColor"/>
+              <path d="M105.396 23.8186H104.002V22.2626H101.864C101.024 22.2626 100.337 22.9457 100.337 23.7806V23.8186H98.918V23.7806C98.918 22.1677 100.242 20.8522 101.864 20.8522H104.072L103.989 20.3398C103.907 19.8212 103.461 19.4417 102.933 19.4417H98.918V18.0312H102.933C104.289 18.0312 105.396 19.1444 105.396 20.5106V23.8186Z" fill="currentColor"/>
+              <path d="M113.019 22.0476V22.0602C113.019 23.0279 112.23 23.8122 111.256 23.8122H106.821V22.5599H111.256C111.536 22.5599 111.759 22.3322 111.759 22.0602V22.0476C111.759 21.7693 111.53 21.5479 111.256 21.5479H107.935C106.961 21.5479 106.172 20.7636 106.172 19.7959V19.7833C106.172 18.8155 106.961 18.0312 107.935 18.0312H112.338V19.2836H107.935C107.655 19.2836 107.432 19.5113 107.432 19.7833V19.7959C107.432 20.0742 107.661 20.2956 107.935 20.2956H111.256C112.23 20.2956 113.019 21.0799 113.019 22.0476Z" fill="currentColor"/>
+              <path d="M120.636 22.0476V22.0602C120.636 23.0279 119.847 23.8122 118.873 23.8122H114.438V22.5599H118.873C119.153 22.5599 119.376 22.3322 119.376 22.0602V22.0476C119.376 21.7693 119.147 21.5479 118.873 21.5479H115.552C114.578 21.5479 113.789 20.7636 113.789 19.7959V19.7833C113.789 18.8155 114.578 18.0312 115.552 18.0312H119.955V19.2836H115.552C115.272 19.2836 115.049 19.5113 115.049 19.7833V19.7959C115.049 20.0742 115.278 20.2956 115.552 20.2956H118.873C119.847 20.2956 120.636 21.0799 120.636 22.0476Z" fill="currentColor"/>
+              <path d="M123.849 22.699H128.73V23.8186H123.627C122.405 23.8186 121.412 22.8319 121.412 21.6175V20.2323C121.412 19.0179 122.405 18.0312 123.627 18.0312H127.559C128.119 18.0312 128.577 18.4866 128.577 19.0432V19.4733C128.577 19.8339 128.38 20.1691 128.068 20.3462C127.164 20.8648 126.223 21.3898 125.396 21.8515L123.856 22.7054L123.849 22.699ZM123.207 21.7883C123.677 21.5226 124.199 21.2317 124.842 20.8775C125.357 20.5865 125.892 20.2892 126.439 19.9857L127.928 19.1508H123.633C123.028 19.1508 122.538 19.6378 122.538 20.2386V22.1741L123.207 21.7946V21.7883Z" fill="currentColor"/>
+              <path d="M136.353 22.0476V22.0602C136.353 23.0279 135.564 23.8122 134.59 23.8122H130.155V22.5599H134.59C134.87 22.5599 135.093 22.3322 135.093 22.0602V22.0476C135.093 21.7693 134.864 21.5479 134.59 21.5479H131.269C130.295 21.5479 129.506 20.7636 129.506 19.7959V19.7833C129.506 18.8155 130.295 18.0312 131.269 18.0312H135.672V19.2836H131.269C130.989 19.2836 130.766 19.5113 130.766 19.7833V19.7959C130.766 20.0742 130.995 20.2956 131.269 20.2956H134.59C135.564 20.2956 136.353 21.0799 136.353 22.0476Z" fill="currentColor"/>
+              <path d="M78.7657 7.58105H70.5316C68.5845 7.58105 67 9.11169 67 10.9902V11.8567H69.9716V10.5348H79.3193V11.8567H82.2909V10.9902C82.2909 9.11169 80.7065 7.58105 78.7593 7.58105" fill="#FDC614"/>
+              <path d="M79.3256 13.2041V18.3526H71.4606C70.6398 18.3526 69.978 17.6948 69.978 16.8789V13.2041H67V17.6126C67 19.4974 68.5845 21.0217 70.5316 21.0217H79.3002C79.1538 22.2804 78.3266 23.1089 77.5694 23.1089H70.0098V25.9931H77.5694C80.1783 25.9931 82.2973 23.5833 82.2973 20.6169V13.2041H79.3256Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <div class="flex items-center gap-0 font-mono text-[10px] tracking-widest">
+            <button @click="lang='es'" :class="lang==='es' ? 'text-paper' : 'text-paper/40 hover:text-paper'" class="px-2 py-1 transition-colors">ES</button>
+            <span class="text-paper/20">/</span>
+            <button @click="lang='en'" :class="lang==='en' ? 'text-paper' : 'text-paper/40 hover:text-paper'" class="px-2 py-1 transition-colors">EN</button>
+          </div>
         </div>
       </div>
     </div>
