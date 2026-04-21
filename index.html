@@ -15,20 +15,20 @@
   <title>Inicio — Accelerate Impact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            tef: { blue: '#0066FF', dark: '#0B2739', light: '#E8F0FF' },
-            ink: { DEFAULT: '#0F0F0F', soft: '#2A2A28', mute: '#6B6B66' },
-            paper: { DEFAULT: '#FAFAF7', warm: '#F3EFE8', deep: '#0B0B0B' }
+                        tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
+            paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
           },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Inter', 'sans-serif'],
+                    fontFamily: {
+            sans: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
+            display: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             mono: ['"IBM Plex Mono"', 'monospace']
           }
         }
@@ -36,6 +36,13 @@
     }
   </script>
   <style>
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Light_Italic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_DemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
     body { font-feature-settings: "cv11", "ss01"; }
     .grain { position: relative; }
     .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>"); opacity: 0.06; mix-blend-mode: overlay; }
