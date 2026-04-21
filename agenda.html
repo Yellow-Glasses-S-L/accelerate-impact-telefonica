@@ -89,7 +89,22 @@
       d3_title: { es: 'Driving Ownership & Action Plan', en: 'Driving Ownership & Action Plan' },
       d3_hours: '9:00 — 18:00',
       d3_obj1: { es: 'Traducir los aprendizajes en compromisos concretos de liderazgo.', en: 'Turn learnings into concrete leadership commitments.' },
-      d3_obj2: { es: 'Cerrar la semana con una visión compartida de impacto.', en: 'Close the week with a shared vision of impact.' }
+      d3_obj2: { es: 'Cerrar la semana con una visión compartida de impacto.', en: 'Close the week with a shared vision of impact.' },
+
+      d1_intro: { es: 'Primer día dedicado a asentar el modelo de liderazgo y tomar perspectiva estratégica del contexto. [Texto provisional — Laura confirma jueves].', en: 'First day focused on grounding the leadership model and taking strategic perspective on context. [Placeholder — final text Thursday].' },
+      d1_hl1: { es: 'Sesión inaugural con dirección estratégica', en: 'Opening session with strategic leadership' },
+      d1_hl2: { es: 'Modelo de liderazgo en profundidad', en: 'Leadership model in depth' },
+      d1_hl3: { es: 'Primera conversación con peer group', en: 'First peer group conversation' },
+
+      d2_intro: { es: 'Segundo día centrado en la práctica: cómo liderar en contextos complejos con herramientas accionables. [Texto provisional].', en: 'Second day focused on practice: how to lead complex contexts with actionable tools. [Placeholder].' },
+      d2_hl1: { es: 'Casos reales de Telefónica', en: 'Real Telefónica case studies' },
+      d2_hl2: { es: 'Simulación de decisiones ejecutivas', en: 'Executive decision-making simulation' },
+      d2_hl3: { es: 'Feedback estructurado entre pares', en: 'Structured peer feedback' },
+
+      d3_intro: { es: 'Tercer día para convertir insight en compromiso: tu plan de acción personal y la comunidad que te sostiene. [Texto provisional].', en: 'Third day to turn insight into commitment: your personal action plan and the community that sustains you. [Placeholder].' },
+      d3_hl1: { es: 'Plan de acción individual', en: 'Individual action plan' },
+      d3_hl2: { es: 'Compromisos con tu cohorte', en: 'Cohort commitments' },
+      d3_hl3: { es: 'Cierre con dirección y siguiente hito', en: 'Closing with leadership and next milestone' }
     };
   </script>
 </head>
@@ -156,23 +171,23 @@
     <section class="border-b border-ink/10 sticky top-16 z-40 bg-paper/95 backdrop-blur-md">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-3">
-          <button @click="activeDay=1" class="relative py-5 md:py-6 text-left transition-colors" :class="activeDay===1 ? 'text-ink' : 'text-ink-mute hover:text-ink'">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1">Día · 01</p>
+          <button @click="activeDay=1" class="relative py-5 md:py-6 text-left transition-all" :class="activeDay===1 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===1 ? 'text-tef-blue' : ''">Día · 01</p>
             <p class="font-light text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d1_title')"></p>
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-2" x-text="t('d1_hours')"></p>
-            <span class="absolute left-0 right-0 -bottom-px h-0.5 bg-tef-blue transition-opacity" :class="activeDay===1 ? 'opacity-100' : 'opacity-0'"></span>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===1 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d1_hours')"></p>
+            <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===1 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
-          <button @click="activeDay=2" class="relative py-5 md:py-6 text-left transition-colors border-l border-ink/10 pl-6" :class="activeDay===2 ? 'text-ink' : 'text-ink-mute hover:text-ink'">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1">Día · 02</p>
+          <button @click="activeDay=2" class="relative py-5 md:py-6 text-left transition-all border-l border-ink/10 pl-6" :class="activeDay===2 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===2 ? 'text-tef-blue' : ''">Día · 02</p>
             <p class="font-light text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d2_title')"></p>
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-2" x-text="t('d2_hours')"></p>
-            <span class="absolute left-0 right-0 -bottom-px h-0.5 bg-tef-blue transition-opacity" :class="activeDay===2 ? 'opacity-100' : 'opacity-0'"></span>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===2 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d2_hours')"></p>
+            <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===2 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
-          <button @click="activeDay=3" class="relative py-5 md:py-6 text-left transition-colors border-l border-ink/10 pl-6" :class="activeDay===3 ? 'text-ink' : 'text-ink-mute hover:text-ink'">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1">Día · 03</p>
+          <button @click="activeDay=3" class="relative py-5 md:py-6 text-left transition-all border-l border-ink/10 pl-6" :class="activeDay===3 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===3 ? 'text-tef-blue' : ''">Día · 03</p>
             <p class="font-light text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d3_title')"></p>
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-2" x-text="t('d3_hours')"></p>
-            <span class="absolute left-0 right-0 -bottom-px h-0.5 bg-tef-blue transition-opacity" :class="activeDay===3 ? 'opacity-100' : 'opacity-0'"></span>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===3 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d3_hours')"></p>
+            <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===3 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
         </div>
       </div>
@@ -193,6 +208,22 @@
             <ul class="space-y-2 text-[15px] text-ink-soft max-w-2xl">
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">01·</span><span x-text="t('d1_obj1')"></span></li>
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">02·</span><span x-text="t('d1_obj2')"></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Intro + Highlights del día -->
+        <div class="grid grid-cols-12 gap-6 md:gap-10 mb-10 md:mb-14 pt-2">
+          <div class="col-span-12 md:col-span-7">
+            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-3" x-text="lang==='es' ? 'Introducción del día' : 'Day intro'"></p>
+            <p class="text-[15px] md:text-base text-ink-soft leading-relaxed" x-text="t('d1_intro')"></p>
+          </div>
+          <div class="col-span-12 md:col-span-5">
+            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Highlights' : 'Highlights'"></p>
+            <ul class="space-y-2 text-sm text-ink">
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d1_hl1')"></span></li>
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d1_hl2')"></span></li>
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d1_hl3')"></span></li>
             </ul>
           </div>
         </div>
@@ -316,6 +347,22 @@
           </div>
         </div>
 
+        <!-- Intro + Highlights del día -->
+        <div class="grid grid-cols-12 gap-6 md:gap-10 mb-10 md:mb-14 pt-2">
+          <div class="col-span-12 md:col-span-7">
+            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-3" x-text="lang==='es' ? 'Introducción del día' : 'Day intro'"></p>
+            <p class="text-[15px] md:text-base text-ink-soft leading-relaxed" x-text="t('d2_intro')"></p>
+          </div>
+          <div class="col-span-12 md:col-span-5">
+            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Highlights' : 'Highlights'"></p>
+            <ul class="space-y-2 text-sm text-ink">
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d2_hl1')"></span></li>
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d2_hl2')"></span></li>
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d2_hl3')"></span></li>
+            </ul>
+          </div>
+        </div>
+
         <div class="border-t border-ink/10">
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
@@ -405,6 +452,22 @@
             <ul class="space-y-2 text-[15px] text-ink-soft max-w-2xl">
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">01·</span><span x-text="t('d3_obj1')"></span></li>
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">02·</span><span x-text="t('d3_obj2')"></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Intro + Highlights del día -->
+        <div class="grid grid-cols-12 gap-6 md:gap-10 mb-10 md:mb-14 pt-2">
+          <div class="col-span-12 md:col-span-7">
+            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-3" x-text="lang==='es' ? 'Introducción del día' : 'Day intro'"></p>
+            <p class="text-[15px] md:text-base text-ink-soft leading-relaxed" x-text="t('d3_intro')"></p>
+          </div>
+          <div class="col-span-12 md:col-span-5">
+            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Highlights' : 'Highlights'"></p>
+            <ul class="space-y-2 text-sm text-ink">
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d3_hl1')"></span></li>
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d3_hl2')"></span></li>
+              <li class="flex gap-2"><span class="text-tef-blue">·</span><span x-text="t('d3_hl3')"></span></li>
             </ul>
           </div>
         </div>

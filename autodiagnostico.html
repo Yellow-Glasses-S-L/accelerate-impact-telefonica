@@ -129,7 +129,28 @@
       s3_t: { es: 'Recibe tus informes', en: 'Receive your reports' },
       s3_d: { es: 'Executive Report + In-Depth Report personalizados.', en: 'Personalized Executive Report + In-Depth Report.' },
       s4_t: { es: 'Coaching individual', en: 'Individual coaching' },
-      s4_d: { es: 'Sesión 1:1 para interpretar y priorizar tu desarrollo.', en: 'One-on-one session to interpret and prioritize your development.' }
+      s4_d: { es: 'Sesión 1:1 para interpretar y priorizar tu desarrollo.', en: 'One-on-one session to interpret and prioritize your development.' },
+
+      disc_banner: { es: 'Este diagnóstico es puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. No es una evaluación de desempeño.', en: 'This diagnosis is purely developmental. Your individual results are only accessible to you and the designated People team. This is not a performance evaluation.' },
+
+      ice_eyebrow: { es: 'El modelo en profundidad', en: 'The model in depth' },
+      ice_title: { es: 'Lo que ves. Y lo que no se ve.', en: 'What you see. And what lies beneath.' },
+      ice_intro: { es: 'El modelo de liderazgo tiene cuatro capas. Las dos visibles son comportamiento observable. Las dos invisibles son lo que impulsa ese comportamiento.', en: 'The leadership model has four layers. The two visible ones are observable behaviour. The two invisible ones are what drives that behaviour.' },
+
+      ice_above: { es: 'Sobre la superficie · lo observable', en: 'Above the surface · observable' },
+      ice_below: { es: 'Bajo la superficie · lo que impulsa', en: 'Below the surface · what drives' },
+
+      ice_c1_t: { es: 'Competencias', en: 'Competencies' },
+      ice_c1_d: { es: 'Lo que eres capaz de hacer como líder.', en: 'What you are able to do as a leader.' },
+
+      ice_c2_t: { es: 'Leadership Skills', en: 'Leadership Skills' },
+      ice_c2_d: { es: 'Habilidades específicas de liderazgo aplicadas.', en: 'Specific leadership skills in action.' },
+
+      ice_c3_t: { es: 'Traits', en: 'Traits' },
+      ice_c3_d: { es: 'Rasgos de personalidad que te definen.', en: 'Personality traits that define you.' },
+
+      ice_c4_t: { es: 'Drivers', en: 'Drivers' },
+      ice_c4_d: { es: 'Lo que te motiva y te mueve internamente.', en: 'What motivates and moves you internally.' }
     };
   </script>
 </head>
@@ -162,6 +183,17 @@
 
   <!-- MAIN -->
   <main class="flex-1">
+
+    <!-- DISCLAIMER BANNER -->
+    <aside class="bg-tef-blue/5 border-b border-tef-blue/20">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-start gap-3">
+        <svg class="w-5 h-5 text-tef-blue flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="10" cy="10" r="8"/>
+          <path d="M10 6v5M10 13.5v.5" stroke-linecap="round"/>
+        </svg>
+        <p class="text-[13px] text-ink-soft leading-relaxed" x-text="t('disc_banner')"></p>
+      </div>
+    </aside>
 
     <!-- HERO -->
     <section class="bg-paper-deep text-paper grain relative overflow-hidden">
@@ -197,6 +229,55 @@
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-3">
         <svg class="w-4 h-4 text-tef-blue flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         <p class="font-mono text-[11px] tracking-[0.15em] uppercase text-ink" x-text="t('email_notice')"></p>
+      </div>
+    </section>
+
+    <!-- § 00 — ICEBERG MODEL -->
+    <section class="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
+      <div class="text-center mb-12">
+        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3" x-text="t('ice_eyebrow')"></p>
+        <h2 class="font-sans font-light text-4xl md:text-5xl text-ink tracking-tight leading-tight mb-5" x-text="t('ice_title')"></h2>
+        <p class="max-w-2xl mx-auto text-[15px] text-ink-soft leading-relaxed" x-text="t('ice_intro')"></p>
+      </div>
+
+      <!-- Iceberg diagram placeholder -->
+      <div class="relative mx-auto max-w-4xl">
+        <!-- Línea de agua -->
+        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-tef-blue/40 z-10">
+          <div class="absolute left-0 -top-2 font-mono text-[9px] tracking-[0.2em] uppercase text-tef-blue/70 bg-paper pr-3">LÍNEA DE AGUA · WATERLINE</div>
+        </div>
+
+        <!-- ARRIBA (competencias + skills) -->
+        <div class="bg-gradient-to-b from-[#E8F0FF] to-[#F0F5FF] p-8 md:p-12 rounded-t-2xl border-x border-t border-tef-blue/20">
+          <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6" x-text="t('ice_above')"></p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-ink text-lg mb-2" x-text="t('ice_c1_t')"></h3>
+              <p class="text-sm text-ink-soft leading-relaxed" x-text="t('ice_c1_d')"></p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-ink text-lg mb-2" x-text="t('ice_c2_t')"></h3>
+              <p class="text-sm text-ink-soft leading-relaxed" x-text="t('ice_c2_d')"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABAJO (traits + drivers) - darker -->
+        <div class="bg-gradient-to-b from-tef-dark to-[#020d1f] text-paper p-8 md:p-12 rounded-b-2xl border-x border-b border-tef-blue/20">
+          <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#7FB3FF] mb-6" x-text="t('ice_below')"></p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-white text-lg mb-2" x-text="t('ice_c3_t')"></h3>
+              <p class="text-sm text-white/70 leading-relaxed" x-text="t('ice_c3_d')"></p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-white text-lg mb-2" x-text="t('ice_c4_t')"></h3>
+              <p class="text-sm text-white/70 leading-relaxed" x-text="t('ice_c4_d')"></p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-center text-[11px] text-ink-mute mt-6 italic" x-text="lang==='es' ? 'Diagrama esquemático. Rebeca preparará el visual final del iceberg.' : 'Schematic diagram. Rebeca will prepare the final iceberg visual.'"></p>
       </div>
     </section>
 
