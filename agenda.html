@@ -14,9 +14,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agenda — Accelerate Impact</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -30,7 +27,7 @@
                     fontFamily: {
             sans: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             display: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
-            mono: ['"IBM Plex Mono"', 'monospace']
+            mono: ['"Telefonica Sans"', 'sans-serif']
           }
         }
       }
@@ -44,6 +41,8 @@
     @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_DemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+    *, *::before, *::after { font-family: "Telefonica Sans", sans-serif !important; }
+    body, p, span, a, li, td, th, label, input, button, textarea, select { font-family: "Telefonica Sans", sans-serif !important; }
     body { font-feature-settings: "cv11", "ss01"; }
     [x-cloak] { display: none !important; }
     .grain { position: relative; }
@@ -111,29 +110,7 @@
 <body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <svg class="w-5 h-6 flex-shrink-0" viewBox="0 0 20 24" aria-hidden="true">
-          <circle cx="3" cy="3" r="2.5" fill="#0066FF"/><circle cx="10" cy="3" r="2.5" fill="#0066FF"/><circle cx="17" cy="3" r="2.5" fill="#0066FF"/><circle cx="10" cy="12" r="2.5" fill="#0066FF"/><circle cx="10" cy="21" r="2.5" fill="#0066FF"/>
-        </svg>
-        <div class="leading-none">
-          <p class="text-[15px] font-semibold text-ink tracking-tight">Accelerate Impact</p>
-          <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute mt-0.5">by Telefónica · Universitas</p>
-        </div>
-      </a>
-      <nav class="hidden md:flex items-center gap-7 text-[13px]">
-        <a href="journey.html" class="relative py-1 transition-colors" :class="page==='journey' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_journey')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='journey' ? 'opacity-100' : 'opacity-0'"></span></a>
-        <a href="nadia.html" class="relative py-1 transition-colors" :class="page==='nadia' ? 'text-ink' : 'text-ink-mute hover:text-ink'">Nadia<span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='nadia' ? 'opacity-100' : 'opacity-0'"></span></a>
-        <a href="info.html" class="relative py-1 transition-colors" :class="page==='info' ? 'text-ink' : 'text-ink-mute hover:text-ink'"><span x-text="t('nav_info')"></span><span class="absolute left-0 right-0 -bottom-0.5 h-px bg-tef-blue transition-opacity" :class="page==='info' ? 'opacity-100' : 'opacity-0'"></span></a>
-      </nav>
-      <div class="flex items-center gap-0 font-mono text-[11px] tracking-widest">
-        <button @click="lang='es'" :class="lang==='es' ? 'text-ink' : 'text-ink-mute hover:text-ink'" class="px-2 py-1 transition-colors">ES</button>
-        <span class="text-ink/20">/</span>
-        <button @click="lang='en'" :class="lang==='en' ? 'text-ink' : 'text-ink-mute hover:text-ink'" class="px-2 py-1 transition-colors">EN</button>
-      </div>
-    </div>
-  </header>
+  <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
 
   <!-- MAIN -->
   <main class="flex-1">
@@ -150,7 +127,7 @@
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/60">§ 05 / 07</p>
           </div>
           <div class="col-span-12 md:col-span-9">
-            <h1 class="font-light leading-[0.95] tracking-[-0.02em] text-5xl md:text-7xl lg:text-[5.5rem] mb-8 reveal reveal-2">
+            <h1 class="font-normal leading-[0.95] tracking-[-0.02em] text-5xl md:text-7xl lg:text-[5.5rem] mb-8 reveal reveal-2">
               <span x-text="t('hero_title_1')"></span>
               <em class="italic font-normal" x-text="t('hero_title_2')"></em>
             </h1>
@@ -173,19 +150,19 @@
         <div class="grid grid-cols-3">
           <button @click="activeDay=1" class="relative py-5 md:py-6 text-left transition-all" :class="activeDay===1 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===1 ? 'text-tef-blue' : ''">Día · 01</p>
-            <p class="font-light text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d1_title')"></p>
+            <p class="font-normal text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d1_title')"></p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===1 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d1_hours')"></p>
             <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===1 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
           <button @click="activeDay=2" class="relative py-5 md:py-6 text-left transition-all border-l border-ink/10 pl-6" :class="activeDay===2 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===2 ? 'text-tef-blue' : ''">Día · 02</p>
-            <p class="font-light text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d2_title')"></p>
+            <p class="font-normal text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d2_title')"></p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===2 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d2_hours')"></p>
             <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===2 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
           <button @click="activeDay=3" class="relative py-5 md:py-6 text-left transition-all border-l border-ink/10 pl-6" :class="activeDay===3 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===3 ? 'text-tef-blue' : ''">Día · 03</p>
-            <p class="font-light text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d3_title')"></p>
+            <p class="font-normal text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d3_title')"></p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===3 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d3_hours')"></p>
             <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===3 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
@@ -201,10 +178,10 @@
         <!-- Day intro -->
         <div class="grid grid-cols-12 gap-6 mb-12">
           <div class="col-span-12 md:col-span-3">
-            <p class="font-light leading-none tracking-[-0.03em] text-ink text-[6rem] md:text-[8rem]">01</p>
+            <p class="font-normal leading-none tracking-[-0.03em] text-ink text-[6rem] md:text-[8rem]">01</p>
           </div>
           <div class="col-span-12 md:col-span-9 md:pt-4">
-            <h2 class="font-light text-3xl md:text-4xl leading-tight tracking-tight mb-4" x-text="t('d1_title')"></h2>
+            <h2 class="font-normal text-3xl md:text-4xl leading-tight tracking-tight mb-4" x-text="t('d1_title')"></h2>
             <ul class="space-y-2 text-[15px] text-ink-soft max-w-2xl">
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">01·</span><span x-text="t('d1_obj1')"></span></li>
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">02·</span><span x-text="t('d1_obj2')"></span></li>
@@ -237,7 +214,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Apertura' : 'Opening'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Bienvenida al programa' : 'Program Welcome'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Bienvenida al programa' : 'Program Welcome'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Check-in y expectativas del grupo.' : 'Check-in and group expectations.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Bienvenida e introducción al programa' : 'Welcome and program introduction'"></span></li>
@@ -261,7 +238,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Driving Ownership</p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Embedding the New Telefónica' : 'Embedding the New Telefónica'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Embedding the New Telefónica' : 'Embedding the New Telefónica'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión interactiva para entender, internalizar y traducir la estrategia Transform & Grow y el modelo de liderazgo en comportamientos del día a día.' : 'Interactive session to understand, internalize and translate the Transform & Grow strategy and leadership model into day-to-day behaviours.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Comprensión clara del Transform & Grow y su propósito' : 'Clear understanding of Transform & Grow and its purpose'"></span></li>
@@ -286,7 +263,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Clarity & Courage</p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Clarity & Courage' : 'Clarity & Courage'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Clarity & Courage' : 'Clarity & Courage'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Simulación de negocio en grupos pequeños para practicar cómo liderar con claridad y valentía en situaciones reales de Telefónica.' : 'A hands-on business simulation to practice leading with clarity & courage in complex, high-stakes situations.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Construir confianza psicológica en el equipo' : 'Build psychological trust in the team'"></span></li>
@@ -311,7 +288,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Digital Innovation</p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Innovation Mindset — DStagE' : 'Innovation Mindset — DStagE'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Innovation Mindset — DStagE' : 'Innovation Mindset — DStagE'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión inmersiva en un entorno de innovación para explorar cómo la experimentación constante y la colaboración multidisciplinar habilitan la innovación radical.' : 'Immersive session in an innovation-driven environment exploring how constant experimentation and multidisciplinary collaboration enable radical innovation.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Visita guiada al DSpot Lab (DStagE Innovation Lab)' : 'Guided visit to DSpot Lab (DStagE Innovation Lab)'"></span></li>
@@ -336,10 +313,10 @@
       <div x-show="activeDay===2" x-cloak>
         <div class="grid grid-cols-12 gap-6 mb-12">
           <div class="col-span-12 md:col-span-3">
-            <p class="font-light leading-none tracking-[-0.03em] text-ink text-[6rem] md:text-[8rem]">02</p>
+            <p class="font-normal leading-none tracking-[-0.03em] text-ink text-[6rem] md:text-[8rem]">02</p>
           </div>
           <div class="col-span-12 md:col-span-9 md:pt-4">
-            <h2 class="font-light text-3xl md:text-4xl leading-tight tracking-tight mb-4" x-text="t('d2_title')"></h2>
+            <h2 class="font-normal text-3xl md:text-4xl leading-tight tracking-tight mb-4" x-text="t('d2_title')"></h2>
             <ul class="space-y-2 text-[15px] text-ink-soft max-w-2xl">
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">01·</span><span x-text="t('d2_obj1')"></span></li>
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">02·</span><span x-text="t('d2_obj2')"></span></li>
@@ -370,7 +347,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Digital Innovation</p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Digital Innovation Leadership in the Age of AI' : 'Digital Innovation Leadership in the Age of AI'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Digital Innovation Leadership in the Age of AI' : 'Digital Innovation Leadership in the Age of AI'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión interactiva sobre liderazgo en la era de la IA, combinando el framework 4Cs con uso práctico y ligero de IA.' : 'Interactive session on leading in the era of AI, combining the 4Cs framework with light, hands-on AI use.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Cómo liderar a través de la incertidumbre que la IA provoca' : 'How to lead through uncertainty triggered by AI and automation'"></span></li>
@@ -395,7 +372,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Innovación' : 'Innovation'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Experimentación y aprendizaje ágil' : 'Experimentation and agile learning'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Experimentación y aprendizaje ágil' : 'Experimentation and agile learning'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Marco práctico para diseñar experimentos: definir objetivo, identificar stakeholders, mitigar riesgos y medir impacto.' : 'Practical framework to design experiments: define objective, identify stakeholders, mitigate risks and measure impact.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Definir experimentos con KPIs claros' : 'Define experiments with clear KPIs'"></span></li>
@@ -420,7 +397,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Inner Leadership</p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Inner Leadership Response' : 'Inner Leadership Response'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Inner Leadership Response' : 'Inner Leadership Response'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión reflexiva e interactiva para profundizar en el autoconocimiento, definir propósito personal y aplicarlo al contexto de Telefónica.' : 'Reflective and interactive session to deepen self-knowledge, define your personal purpose and vision, and apply them at Telefónica.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Definir tu propósito, valores y visión personal' : 'Define your personal purpose, values and vision'"></span></li>
@@ -445,10 +422,10 @@
       <div x-show="activeDay===3" x-cloak>
         <div class="grid grid-cols-12 gap-6 mb-12">
           <div class="col-span-12 md:col-span-3">
-            <p class="font-light leading-none tracking-[-0.03em] text-ink text-[6rem] md:text-[8rem]">03</p>
+            <p class="font-normal leading-none tracking-[-0.03em] text-ink text-[6rem] md:text-[8rem]">03</p>
           </div>
           <div class="col-span-12 md:col-span-9 md:pt-4">
-            <h2 class="font-light text-3xl md:text-4xl leading-tight tracking-tight mb-4" x-text="t('d3_title')"></h2>
+            <h2 class="font-normal text-3xl md:text-4xl leading-tight tracking-tight mb-4" x-text="t('d3_title')"></h2>
             <ul class="space-y-2 text-[15px] text-ink-soft max-w-2xl">
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">01·</span><span x-text="t('d3_obj1')"></span></li>
               <li class="flex gap-3"><span class="font-mono text-ink-mute flex-shrink-0">02·</span><span x-text="t('d3_obj2')"></span></li>
@@ -479,7 +456,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Driving Ownership</p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Driving Ownership' : 'Driving Ownership'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Driving Ownership' : 'Driving Ownership'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Explora la evolución del liderazgo: del rendimiento individual a sostener resultados a través del equipo y expandir el impacto en la organización.' : 'Explore the evolution of leadership: from individual performance to driving outcomes through teams and expanding impact across the organization.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Conciencia de los shifts de liderazgo para operar a mayor impacto' : 'Awareness of leadership shifts to operate at higher impact'"></span></li>
@@ -504,7 +481,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Plan de Acción' : 'Action Plan'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Action Plan & Cierre' : 'Action Plan & Closure'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Action Plan & Cierre' : 'Action Plan & Closure'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Consolidación del journey y traducción de los aprendizajes en compromisos concretos: Kill / Quick Win / Raise the Bar, con apoyo de Nadia.' : 'Consolidation of the journey and translating learnings into concrete commitments: Kill / Quick Win / Raise the Bar, supported by Nadia.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Plan de acción personal para eliminar trabajo de bajo valor' : 'Personal action plan to eliminate low-value work'"></span></li>
@@ -529,7 +506,7 @@
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Celebración' : 'Celebration'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
-              <h3 class="font-light text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Celebración y clausura' : 'Celebration and closing ceremony'"></h3>
+              <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Celebración y clausura' : 'Celebration and closing ceremony'"></h3>
               <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Reconocimiento de logros, despedida y próximos pasos del journey.' : 'Recognizing achievements, farewell and next steps in the journey.'"></p>
               <ul class="space-y-1.5 text-[13px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Reconocimiento de logros colectivos e individuales' : 'Recognition of collective and individual achievements'"></span></li>
@@ -559,7 +536,7 @@
           <div class="mt-2 h-px w-12 bg-ink/20"></div>
         </div>
         <div class="col-span-12 md:col-span-7">
-          <h3 class="font-light text-3xl md:text-4xl leading-[1] tracking-[-0.01em] mb-2" x-text="lang==='es' ? 'Conecta con Nadia.' : 'Connect with Nadia.'"></h3>
+          <h3 class="font-normal text-3xl md:text-4xl leading-[1] tracking-[-0.01em] mb-2" x-text="lang==='es' ? 'Conecta con Nadia.' : 'Connect with Nadia.'"></h3>
           <p class="text-sm text-ink-mute max-w-md" x-text="lang==='es' ? 'Prepara tu action plan con tu AI Coach antes de llegar a Madrid.' : 'Prepare your action plan with your AI Coach before arriving in Madrid.'"></p>
         </div>
         <div class="col-span-12 md:col-span-3 flex md:justify-end">
@@ -578,12 +555,9 @@
     <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-16">
       <div class="grid grid-cols-12 gap-6 pb-10 border-b border-paper/10">
         <div class="col-span-12 md:col-span-6 flex items-start gap-4">
-          <svg class="w-6 h-7 flex-shrink-0 mt-1" viewBox="0 0 20 24" fill="#0066FF" aria-hidden="true">
-            <circle cx="3" cy="3" r="2.5"/><circle cx="10" cy="3" r="2.5"/><circle cx="17" cy="3" r="2.5"/><circle cx="10" cy="12" r="2.5"/><circle cx="10" cy="21" r="2.5"/>
-          </svg>
           <div>
-            <p class="font-sans font-light text-3xl md:text-4xl leading-[1] tracking-[-0.01em]">Accelerate Impact</p>
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mt-2">Leadership Program · 2026</p>
+            <img src="accelerate-impact-logo.svg" class="h-10 md:h-12 w-auto brightness-0 invert" alt="Accelerate Impact">
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mt-3">Leadership Program · 2026</p>
           </div>
         </div>
         <div class="col-span-12 md:col-span-6 flex md:justify-end items-start">
@@ -657,5 +631,6 @@
     </div>
   </footer>
 
+  <script src="components.js"></script>
 </body>
 </html>
