@@ -520,7 +520,7 @@
           </div>
           <div class="relative" @click.outside="cohortOpen=false">
             <button @click="cohortOpen = !cohortOpen"
-                    class="w-full group flex items-center justify-between gap-4 bg-paper border border-ink/15 hover:border-tef-blue transition-colors px-5 py-4">
+                    class="w-full group flex items-center justify-between gap-4 bg-white border border-ink/15 hover:border-tef-blue transition-colors px-5 py-4">
               <div class="flex items-center gap-3">
                 <svg class="w-5 h-5 text-tef-blue" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <rect x="3" y="3" width="14" height="14" rx="2"/>
@@ -533,7 +533,7 @@
               </svg>
             </button>
             <div x-show="cohortOpen" x-transition.opacity
-                 class="absolute top-full left-0 right-0 mt-2 bg-paper border border-ink/15 shadow-xl overflow-hidden z-10"
+                 class="absolute top-full left-0 right-0 mt-2 bg-white border border-ink/15 shadow-xl overflow-hidden z-10"
                  style="display:none" x-cloak>
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute px-5 pt-4 pb-2" x-text="t('cohort_select')"></p>
               <template x-for="n in [1,2,3,4,5,6]" :key="n">
