@@ -18,55 +18,66 @@
   /* ── NAVBAR ── */
   const navEl = document.getElementById('site-navbar');
   if (navEl) {
+    navEl.className = 'sticky top-0 z-50';
+    navEl.setAttribute('style', 'background:transparent;border:none;backdrop-filter:none;padding:12px 16px 0;pointer-events:none;');
     navEl.setAttribute('x-data', '{ menuOpen: false }');
     navEl.innerHTML = `
-      <!-- Bar principal -->
-      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
-        <a href="index.html" class="flex items-center gap-3 group">
-          <img src="accelerate-impact-logo.svg" class="h-7 w-auto" alt="Accelerate Impact">
-        </a>
-        <div class="flex items-center gap-6">
-          <!-- Nav desktop -->
-          <nav class="hidden md:flex items-center gap-8">
+      <div class="max-w-3xl mx-auto relative">
+
+        <!-- Pill -->
+        <div class="navbar-pill pointer-events-auto flex items-center h-14 px-5 gap-3 rounded-full border border-black/[0.08] shadow-md"
+             style="background:rgba(247,247,255,0.84);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);">
+
+          <!-- Logo -->
+          <a href="index.html" class="flex-shrink-0">
+            <img src="accelerate-impact-logo.svg" class="h-6 w-auto" alt="Accelerate Impact">
+          </a>
+
+          <!-- Nav desktop (centered) -->
+          <nav class="hidden md:flex flex-1 items-center justify-center gap-8">
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
             ${navLink('nadia.html', 'Nadia', 'nadia')}
             ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
           </nav>
-          <!-- Idioma -->
-          <div class="flex items-center gap-0 font-mono text-xs tracking-[0.18em]">
-            <button @click="lang='es'" :class="lang==='es' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">ES</button>
-            <span class="text-tef-dark/20">/</span>
-            <button @click="lang='en'" :class="lang==='en' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">EN</button>
-          </div>
-          <!-- Hamburguesa (solo mobile) -->
-          <button @click="menuOpen = !menuOpen"
-                  class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none"
-                  aria-label="Menú">
-            <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
-                  :class="menuOpen ? 'rotate-45 translate-y-[7px]' : ''"></span>
-            <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
-                  :class="menuOpen ? 'opacity-0' : ''"></span>
-            <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
-                  :class="menuOpen ? '-rotate-45 -translate-y-[7px]' : ''"></span>
-          </button>
-        </div>
-      </div>
 
-      <!-- Menú mobile desplegable -->
-      <div x-show="menuOpen"
-           x-transition:enter="transition ease-out duration-200"
-           x-transition:enter-start="opacity-0 -translate-y-2"
-           x-transition:enter-end="opacity-100 translate-y-0"
-           x-transition:leave="transition ease-in duration-150"
-           x-transition:leave-start="opacity-100 translate-y-0"
-           x-transition:leave-end="opacity-0 -translate-y-2"
-           class="md:hidden absolute top-full left-0 right-0 bg-paper/95 backdrop-blur-md border-b border-ink/10 z-40"
-           style="display:none" x-cloak>
-        <nav class="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-5">
-          ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-base ')}
-          ${navLink('nadia.html', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-base ')}
-          ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-base ')}
-        </nav>
+          <!-- Right: lang + hamburger -->
+          <div class="flex items-center gap-1 ml-auto md:ml-0 flex-shrink-0">
+            <div class="flex items-center gap-0 font-mono text-xs tracking-[0.18em]">
+              <button @click="lang='es'" :class="lang==='es' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">ES</button>
+              <span class="text-tef-dark/20">/</span>
+              <button @click="lang='en'" :class="lang==='en' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">EN</button>
+            </div>
+            <button @click="menuOpen = !menuOpen"
+                    class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none ml-1"
+                    aria-label="Menú">
+              <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
+                    :class="menuOpen ? 'rotate-45 translate-y-[7px]' : ''"></span>
+              <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
+                    :class="menuOpen ? 'opacity-0' : ''"></span>
+              <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
+                    :class="menuOpen ? '-rotate-45 -translate-y-[7px]' : ''"></span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Mobile dropdown card -->
+        <div x-show="menuOpen"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-2"
+             class="md:hidden absolute top-full left-0 right-0 mt-2 rounded-2xl border border-black/[0.08] shadow-lg pointer-events-auto overflow-hidden"
+             style="background:rgba(247,247,255,0.95);backdrop-filter:blur(18px);display:none" x-cloak>
+          <nav class="px-6 py-5 flex flex-col gap-4">
+            ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-base ')}
+            ${navLink('nadia.html', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-base ')}
+            ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-base ')}
+          </nav>
+        </div>
+
       </div>`;
   }
 
