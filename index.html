@@ -78,16 +78,26 @@
       .path-breathe, .orbital-spin, .orbital-spin-rev, .drift, .drift-delayed, .reveal { animation: none; }
     }
 
-    /* INTRO cinematográfico — pre-hero welcome scene */
-    .intro-hero {
-      background:
-        radial-gradient(ellipse at 50% 30%, rgba(0,102,255,0.22) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 90%, rgba(0,102,255,0.12) 0%, transparent 55%),
-        linear-gradient(180deg, #020914 0%, #050e22 50%, #020914 100%);
+    /* Fondo oscuro continuo — compartido por intro + hero (sin seams) */
+    .intro-hero,
+    .hero-sequential {
+      background: #020914;
       position: relative;
-      min-height: 100vh;
-      overflow: hidden;
     }
+    .intro-hero { min-height: 100vh; overflow: hidden; }
+
+    /* Glow atmosférico fixed al viewport — visible solo detrás de secciones oscuras */
+    .dark-atmosphere {
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80vw 60vh at 50% 30%, rgba(0,102,255,0.16) 0%, transparent 55%),
+        radial-gradient(ellipse 70vw 55vh at 50% 80%, rgba(0,102,255,0.10) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .dark-atmosphere.visible { opacity: 1; }
     .intro-hero::before {
       content:""; position:absolute; inset:0; pointer-events:none;
       background-image:
@@ -225,14 +235,7 @@
       pointer-events:none; z-index:1;
     }
 
-    /* HERO sequential 3 actos — fondo continuo del intro */
-    .hero-sequential {
-      background:
-        radial-gradient(ellipse at 50% 30%, rgba(0,102,255,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 90%, rgba(0,102,255,0.10) 0%, transparent 55%),
-        linear-gradient(180deg, #020914 0%, #050e22 50%, #020914 100%);
-      position: relative;
-    }
+    /* HERO sequential — hereda fondo del .intro-hero/.hero-sequential shared rule */
     .hero-stage { will-change: transform; }
     .hero-act { will-change: opacity, transform, filter; pointer-events: none; }
     .act-label {
@@ -533,6 +536,9 @@
 
   <!-- Global scroll progress bar -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Atmospheric glow fixed — visible sobre secciones oscuras para unificar intro+hero+globe -->
+  <div class="dark-atmosphere" id="darkAtmosphere" aria-hidden="true"></div>
 
   <!-- MAIN -->
   <main class="flex-1">
@@ -1665,6 +1671,7 @@
           const darkSections = Array.from(document.querySelectorAll('[data-nav-dark]'));
           const navH = 65;
 
+          const atmosphere = document.getElementById('darkAtmosphere');
           const updateNavbar = () => {
             let isDark = false;
             const y = window.scrollY;
@@ -1687,6 +1694,7 @@
               }
             }
             navbar.classList.toggle('nav-on-dark', isDark);
+            if (atmosphere) atmosphere.classList.toggle('visible', isDark);
           };
 
           window.addEventListener('scroll', updateNavbar, { passive: true });
