@@ -486,7 +486,7 @@
     <section class="relative bg-tef-gradient-dark text-paper overflow-hidden">
       <!-- Orbital arcs left — aligned with "It's on Us" title level -->
       <!-- Circle center at (150,170) in 270×340 viewBox. Radii 138/112. Gap opens RIGHT (±45°) -->
-      <svg data-parallax="0.6" class="absolute left-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift"
+      <svg data-parallax="1.6" class="absolute left-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift"
            width="270" height="340" viewBox="0 0 270 340" fill="none" aria-hidden="true">
         <!-- Outer white arc r=138 -->
         <path d="M 247.6 72.4 A 138 138 0 1 0 247.6 267.6"
@@ -502,7 +502,7 @@
 
       <!-- Orbital arcs right — mirror: gap opens LEFT (±45° from west) -->
       <!-- Circle center at (120,170) in 270×340 viewBox -->
-      <svg data-parallax="0.8" class="absolute right-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift-delayed"
+      <svg data-parallax="2.0" class="absolute right-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift-delayed"
            width="270" height="340" viewBox="0 0 270 340" fill="none" aria-hidden="true">
         <!-- Outer white arc r=138 -->
         <path d="M 22.4 72.4 A 138 138 0 1 1 22.4 267.6"
@@ -520,15 +520,15 @@
         <!-- Eyebrow -->
         <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-paper/50 text-center mb-10 reveal" x-text="t('hero_eyebrow')"></p>
 
-        <!-- Claim "It's on Us" -->
+        <!-- Claim "It's on Us" — z-depth parallax layers -->
         <div class="grid grid-cols-3 gap-4 md:gap-8 items-end mb-10">
-          <div class="text-center reveal reveal-1">
+          <div class="text-center reveal reveal-1" data-hero-word="its">
             <h1 class="font-sans font-normal leading-none hover:text-tef-blue transition-colors duration-300 cursor-default" style="font-size: clamp(4rem, 10vw, 10rem);">It's</h1>
           </div>
-          <div class="text-center reveal reveal-2">
+          <div class="text-center reveal reveal-2" data-hero-word="on">
             <h1 class="font-sans font-normal leading-none hover:text-tef-blue transition-colors duration-300 cursor-default" style="font-size: clamp(4rem, 10vw, 10rem);">on</h1>
           </div>
-          <div class="text-center reveal reveal-3">
+          <div class="text-center reveal reveal-3" data-hero-word="us">
             <h1 class="font-sans font-normal leading-none hover:text-tef-blue transition-colors duration-300 cursor-default" style="font-size: clamp(4rem, 10vw, 10rem);">Us</h1>
           </div>
         </div>
@@ -540,8 +540,8 @@
           <p class="text-center text-sm md:text-lg lg:text-xl font-normal leading-snug px-2 reveal reveal-4" x-text="t('sub_us')"></p>
         </div>
 
-        <!-- 6 Valores -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 reveal reveal-4">
+        <!-- 6 Valores — blur-lift stagger on scroll -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 reveal reveal-4" data-hero-values>
           <div class="space-y-5">
             <div class="flex items-center gap-3">
               <svg class="w-9 h-9 md:w-10 md:h-10 flex-shrink-0 text-paper/90" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
@@ -604,21 +604,21 @@
     </section>
 
     <!-- 4 BLOQUES WHY / HOW / WHAT / EXPECT -->
-    <section class="bg-paper py-20 md:py-28">
+    <section class="bg-paper py-20 md:py-28" data-accelerate-section>
       <div class="max-w-7xl mx-auto px-6 md:px-10">
 
-        <!-- Encabezado de sección -->
-        <div class="text-center mb-16 md:mb-20" data-reveal-stagger>
-          <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('program_eyebrow')"></p>
-          <h2 data-stagger-item class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6">Accelerate Impact</h2>
-          <div data-stagger-item class="mx-auto w-16 h-px bg-ink/15 mb-6"></div>
-          <p data-stagger-item class="max-w-2xl mx-auto text-base md:text-lg font-normal text-ink-soft leading-relaxed" x-text="t('program_lead')"></p>
+        <!-- Encabezado de sección — zoom cinematográfico scrubbed -->
+        <div class="text-center mb-16 md:mb-20" data-accelerate-header>
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
+          <h2 class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6 accelerate-title">Accelerate Impact</h2>
+          <div class="mx-auto w-16 h-px bg-ink/15 mb-6"></div>
+          <p class="max-w-2xl mx-auto text-base md:text-lg font-normal text-ink-soft leading-relaxed accelerate-lead" x-text="t('program_lead')"></p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-16 md:gap-y-20" data-reveal-stagger data-stagger-delay="0.15">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-16 md:gap-y-20" data-cards-3d style="perspective: 1200px;">
 
           <!-- WHY -->
-          <article data-stagger-item class="relative">
+          <article class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">01 / Why</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -629,7 +629,7 @@
           </article>
 
           <!-- HOW -->
-          <article data-stagger-item class="relative">
+          <article class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">02 / How</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -648,7 +648,7 @@
           </article>
 
           <!-- WHAT -->
-          <article data-stagger-item class="relative">
+          <article class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">03 / What</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -659,7 +659,7 @@
           </article>
 
           <!-- EXPECT -->
-          <article data-stagger-item class="relative">
+          <article class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">04 / Expect</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -674,7 +674,7 @@
     </section>
 
     <!-- TRACK VISUAL CLICKABLE -->
-    <section class="relative w-full overflow-hidden bg-tef-gradient-white py-20 md:py-28">
+    <section class="relative w-full overflow-hidden bg-tef-gradient-white py-20 md:py-28" data-track-section>
       <!-- Orbital loops ambiente -->
       <svg class="absolute -top-24 -left-20 w-[420px] h-[420px] opacity-[0.08] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
         <ellipse cx="200" cy="200" rx="180" ry="90" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-20 200 200)"/>
@@ -706,19 +706,18 @@
                 <stop offset="100%" stop-color="#0066FF" stop-opacity="0.85"/>
               </linearGradient>
             </defs>
-            <path data-draw data-draw-duration="2.6" d="M 144 409 C 448 338, 752 352, 1056 305"
-                  stroke="url(#pathA)" stroke-width="2" fill="none"
-                  stroke-dasharray="8 6" class="path-breathe"/>
+            <path id="trackPath" d="M 144 409 C 448 338, 752 352, 1056 305"
+                  stroke="url(#pathA)" stroke-width="2" fill="none"/>
             <circle cx="144"  cy="409" r="5" fill="#0066FF"/>
             <circle cx="448"  cy="361" r="5" fill="#0066FF"/>
             <circle cx="752"  cy="337" r="5" fill="#0066FF"/>
             <circle cx="1056" cy="305" r="5" fill="#0066FF"/>
           </svg>
 
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:480px" data-reveal-stagger data-stagger-delay="0.18">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:480px" data-track-grid>
 
             <!-- NODO 1 — Nadia (informational) -->
-            <div data-stagger-item class="md:pt-36">
+            <div data-track-node="1" class="md:pt-36">
               <div class="relative group">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">01</span>
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
@@ -731,7 +730,7 @@
             </div>
 
             <!-- NODO 2 — Welcome Session (informational) -->
-            <div data-stagger-item class="md:pt-24">
+            <div data-track-node="2" class="md:pt-24">
               <div class="relative group">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-dark/10 select-none">02</span>
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
@@ -744,7 +743,7 @@
             </div>
 
             <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
-            <div data-stagger-item class="md:pt-8">
+            <div data-track-node="3" class="md:pt-8">
               <a href="autodiagnostico.html"
                  class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">03</span>
@@ -761,7 +760,7 @@
             </div>
 
             <!-- NODO 4 — Action Learning Week (CLICKABLE DARK) -->
-            <div data-stagger-item class="md:pt-0">
+            <div data-track-node="4" class="md:pt-0">
               <a href="agenda.html"
                  class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
@@ -784,6 +783,7 @@
 
     <!-- GLOBE — Distribución mundial del top 200 -->
     <section class="globe-section text-paper py-20 md:py-28"
+             data-globe-section
              x-data="globeSection()">
       <div class="relative max-w-7xl mx-auto px-6 md:px-10">
 
@@ -791,8 +791,8 @@
         <div class="text-center mb-12 md:mb-16 relative z-10" data-reveal-stagger data-stagger-delay="0.12">
           <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5" x-text="t('globe_eyebrow')"></p>
           <h2 data-stagger-item class="globe-title font-sans font-normal text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6">
-            <span x-text="t('globe_title_1')"></span>
-            <span class="text-tef-blue" x-text="t('globe_title_2')"></span>
+            <span data-globe-title-1 class="inline-block" x-text="t('globe_title_1')"></span>
+            <span data-globe-title-2 class="inline-block text-tef-blue" x-text="t('globe_title_2')"></span>
           </h2>
           <div data-stagger-item class="mx-auto w-16 h-px bg-paper/20 mb-6"></div>
           <p data-stagger-item class="max-w-2xl mx-auto text-base md:text-lg text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
@@ -871,10 +871,10 @@
 
     <!-- NADIA + COHORT -->
     <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal-stagger data-stagger-delay="0.18">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
 
         <!-- Izquierda: Conecta con tus compañeros -->
-        <div data-stagger-item class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
+        <div class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
           <div>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('cohort_eyebrow')"></p>
             <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-3" x-text="t('cohort_title')"></h3>
@@ -913,7 +913,7 @@
         </div>
 
         <!-- Derecha: Tu AI Coach -->
-        <div data-stagger-item class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-10 pt-12 pb-20 overflow-hidden">
+        <div class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-10 pt-12 pb-20 overflow-hidden">
           <div>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-3" x-text="t('nadia_eyebrow')"></p>
             <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight mb-3">
@@ -1132,7 +1132,12 @@
           });
 
           // Initial camera angle — tilted towards Atlantic (Spain + Latam visible)
-          world.pointOfView({ lat: 20, lng: -30, altitude: 2.2 }, 0);
+          // Start zoomed out for cinematic entry
+          world.pointOfView({ lat: 20, lng: -30, altitude: 3.6 }, 0);
+
+          // Expose globally so ScrollTrigger can scrub camera altitude
+          window.__globeInstance = world;
+          window.dispatchEvent(new CustomEvent('globe:ready'));
 
           // Responsive resize
           const ro = new ResizeObserver(() => {
@@ -1199,6 +1204,276 @@
           .to('.intro-sub',     { y: -60, opacity: 0 }, 0)
           .to('.intro-eyebrow', { y: -30, opacity: 0 }, 0)
           .to('.intro-scroll',  { opacity: 0 }, 0);
+        }
+
+        // ── M1 · Hero z-depth parallax (It's / on / Us) ──
+        if (!reduced && typeof ScrollTrigger !== 'undefined') {
+          const heroSection = document.querySelector('main > section:nth-of-type(2)'); // Hero
+          if (heroSection) {
+            gsap.to('[data-hero-word="its"]', {
+              yPercent: -28, ease: 'none',
+              scrollTrigger: { trigger: heroSection, start: 'top top', end: 'bottom top', scrub: 0.5 }
+            });
+            gsap.to('[data-hero-word="on"]', {
+              yPercent: -50, ease: 'none',
+              scrollTrigger: { trigger: heroSection, start: 'top top', end: 'bottom top', scrub: 0.5 }
+            });
+            gsap.to('[data-hero-word="us"]', {
+              yPercent: -80, ease: 'none',
+              scrollTrigger: { trigger: heroSection, start: 'top top', end: 'bottom top', scrub: 0.5 }
+            });
+            // Values blur-lift stagger on scroll reveal
+            const valueItems = document.querySelectorAll('[data-hero-values] .flex.items-center');
+            if (valueItems.length) {
+              gsap.from(valueItems, {
+                opacity: 0, y: 40, filter: 'blur(18px)',
+                duration: 1.2, ease: 'power3.out', stagger: 0.08,
+                scrollTrigger: { trigger: '[data-hero-values]', start: 'top 85%' }
+              });
+            }
+          }
+        }
+
+        // ── M2 · Transición "Accelerate Impact" zoom scrubbed ──
+        if (!reduced && typeof ScrollTrigger !== 'undefined') {
+          const head = document.querySelector('[data-accelerate-header]');
+          if (head) {
+            gsap.set(head, { transformOrigin: '50% 50%' });
+            gsap.fromTo(head,
+              { scale: 0.55, opacity: 0, filter: 'blur(10px)' },
+              {
+                scale: 1, opacity: 1, filter: 'blur(0px)',
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: head,
+                  start: 'top 95%',
+                  end: 'top 40%',
+                  scrub: 0.7
+                }
+              }
+            );
+            // Eyebrow clip-path wipe when it enters viewport naturally
+            gsap.from('.accelerate-eyebrow', {
+              clipPath: 'inset(0 100% 0 0)',
+              duration: 1.4, ease: 'power3.inOut',
+              scrollTrigger: { trigger: head, start: 'top 75%' }
+            });
+          }
+        }
+
+        // ── M3 · 3D card entry para 4 bloques ──────────
+        if (!reduced && typeof ScrollTrigger !== 'undefined') {
+          const cards = document.querySelectorAll('[data-cards-3d] article');
+          if (cards.length) {
+            cards.forEach((card, i) => {
+              gsap.from(card, {
+                rotateX: 22,
+                y: 120,
+                scale: 0.88,
+                opacity: 0,
+                filter: 'blur(12px)',
+                duration: 1.3,
+                ease: 'power3.out',
+                delay: (i % 2) * 0.15,
+                scrollTrigger: {
+                  trigger: card,
+                  start: 'top 88%'
+                }
+              });
+              // Hairline draws left→right after card lands
+              const hairline = card.querySelector('.h-px.bg-ink\\/10, .h-px.bg-ink\\/15');
+              if (hairline) {
+                gsap.from(hairline, {
+                  scaleX: 0, transformOrigin: 'left center',
+                  duration: 1, ease: 'power3.out', delay: 0.5 + (i % 2) * 0.15,
+                  scrollTrigger: { trigger: card, start: 'top 88%' }
+                });
+              }
+              // Eyebrow 01/02/03/04 parallax-drift (slower than content)
+              const eyebrow = card.querySelector('.font-mono.text-tef-blue');
+              if (eyebrow) {
+                gsap.to(eyebrow, {
+                  yPercent: -35, ease: 'none',
+                  scrollTrigger: {
+                    trigger: card,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 0.6
+                  }
+                });
+              }
+            });
+            // HOW tags cascade
+            const howTags = document.querySelectorAll('[data-cards-3d] article:nth-child(2) .flex-wrap span');
+            if (howTags.length) {
+              gsap.from(howTags, {
+                scale: 0.7, opacity: 0, y: 12, filter: 'blur(8px)',
+                duration: 0.7, ease: 'back.out(1.6)', stagger: 0.06,
+                scrollTrigger: { trigger: howTags[0], start: 'top 85%' }
+              });
+            }
+          }
+        }
+
+        // ── M4 · Track scrubbed path + nodos sincronizados ──
+        if (!reduced && typeof ScrollTrigger !== 'undefined') {
+          const trackSection = document.querySelector('[data-track-section]');
+          const trackPath = document.getElementById('trackPath');
+          const trackNodes = document.querySelectorAll('[data-track-node]');
+          const trackDots = document.querySelectorAll('[data-track-section] svg circle');
+
+          if (trackSection && trackPath && trackNodes.length) {
+            // Path scrubbed: dashoffset tied to scroll progress of whole section
+            const len = trackPath.getTotalLength();
+            gsap.set(trackPath, { strokeDasharray: len, strokeDashoffset: len });
+            gsap.to(trackPath, {
+              strokeDashoffset: 0,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: trackSection,
+                start: 'top 70%',
+                end: 'bottom 70%',
+                scrub: 0.5
+              }
+            });
+            // Dots appear sequentially as path reaches them
+            trackDots.forEach((dot, i) => {
+              gsap.from(dot, {
+                scale: 0, opacity: 0, transformOrigin: 'center',
+                duration: 0.5,
+                scrollTrigger: {
+                  trigger: trackSection,
+                  start: () => `top+=${100 + i * 120} 70%`,
+                  toggleActions: 'play none none reverse'
+                }
+              });
+            });
+            // Cards rise into position with slight rotate
+            trackNodes.forEach((node, i) => {
+              gsap.from(node, {
+                y: 160, opacity: 0, rotate: -2 + i, filter: 'blur(8px)',
+                duration: 1.2, ease: 'power3.out',
+                scrollTrigger: {
+                  trigger: node,
+                  start: 'top 85%'
+                }
+              });
+              // Ghost numbers 01/02/03/04 parallax slower
+              const ghost = node.querySelector('span.absolute');
+              if (ghost) {
+                gsap.to(ghost, {
+                  yPercent: -60, ease: 'none',
+                  scrollTrigger: {
+                    trigger: trackSection,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 0.7
+                  }
+                });
+              }
+            });
+          }
+        }
+
+        // ── M5 · Globe cinematic (scrubbed zoom + title wipes + chip stagger) ──
+        if (!reduced && typeof ScrollTrigger !== 'undefined') {
+          const globeSec = document.querySelector('[data-globe-section]');
+          if (globeSec) {
+            // Titles wipe from opposite sides
+            gsap.from('[data-globe-title-1]', {
+              clipPath: 'inset(0 100% 0 0)',
+              duration: 1.4, ease: 'power3.inOut',
+              scrollTrigger: { trigger: globeSec, start: 'top 80%' }
+            });
+            gsap.from('[data-globe-title-2]', {
+              clipPath: 'inset(0 0 0 100%)',
+              duration: 1.4, ease: 'power3.inOut', delay: 0.2,
+              scrollTrigger: { trigger: globeSec, start: 'top 80%' }
+            });
+
+            // Globe camera altitude scrubbed with scroll progress
+            const applyCameraScrub = () => {
+              if (!window.__globeInstance) return;
+              const w = window.__globeInstance;
+              ScrollTrigger.create({
+                trigger: globeSec,
+                start: 'top 85%',
+                end: 'bottom 40%',
+                scrub: 0.8,
+                onUpdate: (self) => {
+                  // altitude: 3.6 at start → 2.0 at ~60% of scrub
+                  const p = self.progress;
+                  const altitude = Math.max(2.0, 3.6 - p * 1.6);
+                  w.pointOfView({ altitude }, 0);
+                }
+              });
+            };
+            if (window.__globeInstance) applyCameraScrub();
+            else window.addEventListener('globe:ready', applyCameraScrub, { once: true });
+
+            // Country chips stagger
+            const chipsParent = globeSec.querySelector('.country-chip')?.parentElement;
+            if (chipsParent) {
+              const chips = chipsParent.querySelectorAll('.country-chip');
+              gsap.from(chips, {
+                opacity: 0, y: 20, scale: 0.8, filter: 'blur(6px)',
+                duration: 0.6, ease: 'power3.out', stagger: 0.04,
+                scrollTrigger: { trigger: chipsParent, start: 'top 92%' }
+              });
+            }
+
+            // Stats row lift
+            const statsRow = globeSec.querySelector('.grid.grid-cols-3');
+            if (statsRow) {
+              gsap.from(statsRow.children, {
+                y: 60, opacity: 0, scale: 0.9, filter: 'blur(8px)',
+                duration: 1, ease: 'power3.out', stagger: 0.15,
+                scrollTrigger: { trigger: statsRow, start: 'top 92%' }
+              });
+            }
+          }
+        }
+
+        // ── M6 · Cohort + Nadia collision dramática ────
+        if (!reduced && typeof ScrollTrigger !== 'undefined') {
+          const cohortSection = document.querySelector('[data-cohort-nadia]');
+          if (cohortSection) {
+            const [leftCard, rightCard] = cohortSection.querySelectorAll(':scope > div');
+            if (leftCard) {
+              gsap.from(leftCard, {
+                x: -220, opacity: 0, rotate: -3, filter: 'blur(10px)',
+                duration: 1.3, ease: 'power3.out',
+                scrollTrigger: { trigger: cohortSection, start: 'top 82%' }
+              });
+            }
+            if (rightCard) {
+              gsap.from(rightCard, {
+                x: 220, opacity: 0, rotate: 3, filter: 'blur(10px)',
+                duration: 1.3, ease: 'power3.out',
+                scrollTrigger: { trigger: cohortSection, start: 'top 82%' }
+              });
+            }
+          }
+        }
+
+        // ── M7 · Header oscurece progresivamente + Lenis boost ──
+        if (typeof ScrollTrigger !== 'undefined') {
+          const navbar = document.getElementById('site-navbar');
+          if (navbar) {
+            ScrollTrigger.create({
+              start: 0,
+              end: 400,
+              onUpdate: (self) => {
+                const p = self.progress;
+                navbar.style.background = `rgba(247, 247, 255, ${0.85 + p * 0.13})`;
+                navbar.style.backdropFilter = `blur(${12 + p * 14}px)`;
+              }
+            });
+          }
+        }
+        // Boost Lenis duration for more premium feel
+        if (window.__lenis) {
+          window.__lenis.options.duration = 1.35;
         }
 
         // ── Global scroll progress bar ───────────────────
