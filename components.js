@@ -78,6 +78,7 @@
               <li><a href="journey.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
               <li><a href="nadia.html" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
               <li><a href="autodiagnostico.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Tu Autodiagnóstico' : 'Self-Diagnosis'"></a></li>
+              <li><a href="agenda.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Agenda' : 'Agenda'"></a></li>
               <li><a href="info.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_info')"></a></li>
             </ul>
           </div>
