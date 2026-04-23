@@ -138,23 +138,23 @@
       track_title_1: { es: 'Cuatro paradas,', en: 'Four stops,' },
       track_title_2: { es: 'un solo programa.', en: 'one program.' },
 
-      n1_meta: { es: 'Virtual · 4 semanas antes', en: 'Virtual · 4 weeks before' },
-      n1_title: { es: 'Sesión de bienvenida', en: 'Welcome Session' },
-      n1_body: { es: 'Conoce el programa y a tu cohorte antes de empezar.', en: 'Meet the program and your cohort before kick-off.' },
+      n1_meta: { es: 'Online · todo el recorrido', en: 'Online · the whole journey' },
+      n1_title: { es: 'Sesiones Online de Nadia', en: 'Nadia Online Sessions' },
+      n1_body: { es: 'Conocerás a Nadia, tu Leadership AI Coach, y cómo te acompañará durante todo el camino.', en: 'Meet Nadia, your Leadership AI Coach, and how she will accompany you throughout the journey.' },
 
-      n2_meta: { es: '1 semana antes de ALW', en: '1 week before ALW' },
-      n2_title: { es: 'Autodiagnóstico', en: 'Self-Diagnosis' },
-      n2_body: { es: 'Tres cuestionarios Korn Ferry, dos informes personales.', en: 'Three Korn Ferry assessments, two personal reports.' },
-      n2_cta: { es: 'Empezar', en: 'Start' },
+      n2_meta: { es: 'Virtual · antes de empezar', en: 'Virtual · before kick-off' },
+      n2_title: { es: 'Sesión Online de bienvenida', en: 'Online Welcome Session' },
+      n2_body: { es: 'Conoces el programa, su estructura y los compañeros con los que compartirás este camino.', en: 'Meet the program, its structure and the peers you will share this journey with.' },
 
-      n3_meta: { es: 'RESIDENCIAL · UNIVERSITAS', en: 'RESIDENTIAL · UNIVERSITAS' },
-      n3_title: { es: 'Action Learning Week', en: 'Action Learning Week' },
-      n3_body: { es: 'Tres días residenciales: el corazón del programa.', en: 'Three residential days: the heart of the program.' },
-      n3_cta: { es: 'Ver agenda', en: 'See agenda' },
+      n3_meta: { es: 'Online · antes del ALW', en: 'Online · before ALW' },
+      n3_title: { es: 'Autodiagnóstico', en: 'Self-Diagnosis' },
+      n3_body: { es: 'Realizarás un autodiagnóstico diseñado para ayudarte a conocer cómo lideras hoy y cómo puedes amplificar tu impacto.', en: 'Complete a self-diagnosis to understand how you lead today and how to amplify your impact.' },
+      n3_cta: { es: 'Empezar ahora', en: 'Start now' },
 
-      n4_meta: { es: 'ONLINE · 4 SESIONES', en: 'ONLINE · 4 SESSIONS' },
-      n4_title: { es: 'Sesiones con Nadia', en: 'Nadia Sessions' },
-      n4_body: { es: 'Tu AI Coach te acompaña durante toda la semana.', en: 'Your AI Coach supports you through the week.' },
+      n4_meta: { es: 'Presencial · Universitas', en: 'In-person · Universitas' },
+      n4_title: { es: 'Residential Action Learning Week at Universitas', en: 'Residential Action Learning Week at Universitas' },
+      n4_body: { es: 'Tres días presenciales en Universitas. El corazón del programa y el momento donde todo converge.', en: 'Three in-person days at Universitas. The heart of the program and the moment where everything converges.' },
+      n4_cta: { es: 'Ver agenda', en: 'See agenda' },
 
       /* NADIA */
       nadia_eyebrow: { es: 'Siempre contigo', en: 'Always with you' },
@@ -194,20 +194,16 @@
        x-transition.opacity
        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tef-dark/60 backdrop-blur-sm"
        style="display:none" x-cloak>
-    <div class="max-w-lg w-full bg-paper rounded-2xl shadow-2xl border border-ink/10 p-8 md:p-10">
-      <div class="flex items-center gap-3 mb-4">
-        <svg class="w-5 h-6" viewBox="0 0 20 24" fill="#0066FF" aria-hidden="true">
-          <circle cx="3" cy="3" r="2.5"/><circle cx="10" cy="3" r="2.5"/><circle cx="17" cy="3" r="2.5"/>
-          <circle cx="10" cy="12" r="2.5"/><circle cx="10" cy="21" r="2.5"/>
-        </svg>
-        <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">Accelerate Impact</p>
+    <div class="max-w-lg w-full bg-paper rounded-br-2xl shadow-2xl pb-20 pt-8 px-8 md:pt-10 md:px-10 relative overflow-hidden">
+      <div class="mb-6">
+        <img src="accelerate-impact-logo.svg" class="h-7 w-auto" alt="Accelerate Impact">
       </div>
       <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4" x-text="t('disc_title')"></h2>
-      <p class="text-sm text-ink-soft leading-relaxed mb-6" x-text="t('disc_body')"></p>
+      <p class="text-sm text-ink-soft leading-relaxed" x-text="t('disc_body')"></p>
       <button @click="acceptDisclaimer()"
-              class="inline-flex items-center gap-3 px-6 py-3 bg-tef-blue text-white rounded-full text-sm font-medium tracking-wide hover:bg-tef-dark transition-colors group">
-        <span x-text="t('disc_cta')"></span>
-        <span class="transition-transform group-hover:translate-x-1">→</span>
+              class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group rounded-br-2xl">
+        <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('disc_cta')"></span>
+        <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
     </div>
   </div>
@@ -369,7 +365,15 @@
             </div>
             <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
             <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_how_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_how_body')"></p>
+            <p class="text-[15px] text-ink-soft leading-relaxed mb-6" x-text="t('b_how_body')"></p>
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Customer First</span>
+              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Delivering Excellence</span>
+              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Clarity &amp; Courage</span>
+              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Digital Innovation</span>
+              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Driving Ownership</span>
+              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Growing People</span>
+            </div>
           </article>
 
           <!-- WHAT -->
@@ -422,8 +426,8 @@
         </div>
 
         <div class="relative">
-          <!-- SVG path desktop -->
-          <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true">
+          <!-- SVG path desktop — ascendente izq→der -->
+          <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 480" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <linearGradient id="pathA" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#0066FF" stop-opacity="0.7"/>
@@ -431,19 +435,19 @@
                 <stop offset="100%" stop-color="#0066FF" stop-opacity="0.85"/>
               </linearGradient>
             </defs>
-            <path d="M 10 195 C 160 195, 310 335, 450 335 C 590 335, 610 245, 750 245 C 880 245, 960 265, 1190 265"
+            <path d="M 144 409 C 448 338, 752 352, 1056 305"
                   stroke="url(#pathA)" stroke-width="2" fill="none"
                   stroke-dasharray="8 6" class="path-breathe"/>
-            <circle cx="10"   cy="195" r="5" fill="#0066FF"/>
-            <circle cx="450"  cy="335" r="5" fill="#0066FF"/>
-            <circle cx="750"  cy="245" r="5" fill="#0066FF"/>
-            <circle cx="1190" cy="265" r="5" fill="#0066FF"/>
+            <circle cx="144"  cy="409" r="5" fill="#0066FF"/>
+            <circle cx="448"  cy="361" r="5" fill="#0066FF"/>
+            <circle cx="752"  cy="337" r="5" fill="#0066FF"/>
+            <circle cx="1056" cy="305" r="5" fill="#0066FF"/>
           </svg>
 
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:420px">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:480px">
 
-            <!-- NODO 1 — Welcome Session -->
-            <div class="md:pt-2">
+            <!-- NODO 1 — Nadia (informational) -->
+            <div class="md:pt-36">
               <div class="relative group">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">01</span>
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
@@ -455,32 +459,28 @@
               </div>
             </div>
 
-            <!-- NODO 2 — Self-Diagnosis (CLICKABLE) -->
+            <!-- NODO 2 — Welcome Session (informational) -->
             <div class="md:pt-24">
-              <a href="autodiagnostico.html"
-                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">02</span>
-                <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
-                  <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n2_meta')"></p>
+              <div class="relative group">
+                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-dark/10 select-none">02</span>
+                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
+                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
+                  <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-dark/70 mb-3" x-text="t('n2_meta')"></p>
                   <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
-                  <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n2_body')"></p>
-                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
-                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n2_cta')"></span>
-                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                  </span>
+                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
                 </div>
-              </a>
+              </div>
             </div>
 
-            <!-- NODO 3 — Action Learning Week (CLICKABLE) -->
-            <div class="md:pt-0">
-              <a href="agenda.html"
+            <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
+            <div class="md:pt-8">
+              <a href="autodiagnostico.html"
                  class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">03</span>
-                <div class="relative bg-tef-dark rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.25)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_55px_rgba(0,102,255,0.38)] overflow-hidden">
-                  <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-[#7FB3FF] mb-3" x-text="t('n3_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-white mb-2" x-text="t('n3_title')"></h3>
-                  <p class="text-sm text-white/75 leading-relaxed" x-text="t('n3_body')"></p>
+                <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
+                  <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
+                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
+                  <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n3_body')"></p>
                   <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
                     <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n3_cta')"></span>
                     <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -489,17 +489,21 @@
               </a>
             </div>
 
-            <!-- NODO 4 — Nadia -->
-            <div class="md:pt-20">
-              <div class="relative group">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-dark/10 select-none">04</span>
-                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
-                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
-                  <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-dark/70 mb-3" x-text="t('n4_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n4_title')"></h3>
-                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n4_body')"></p>
+            <!-- NODO 4 — Action Learning Week (CLICKABLE DARK) -->
+            <div class="md:pt-0">
+              <a href="agenda.html"
+                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
+                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
+                <div class="relative bg-tef-dark rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.25)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_55px_rgba(0,102,255,0.38)] overflow-hidden">
+                  <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-[#7FB3FF] mb-3" x-text="t('n4_meta')"></p>
+                  <h3 class="font-sans text-xl font-normal text-white mb-2" x-text="t('n4_title')"></h3>
+                  <p class="text-sm text-white/75 leading-relaxed" x-text="t('n4_body')"></p>
+                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
+                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n4_cta')"></span>
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
                 </div>
-              </div>
+              </a>
             </div>
 
           </div>
