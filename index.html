@@ -1696,16 +1696,20 @@
           };
 
           window.addEventListener('scroll', updateNavbar, { passive: true });
-          if (window.__lenis) window.__lenis.on('scroll', updateNavbar);
+          // Lenis no dispara scroll nativo — registrar cuando esté listo (window.load)
+          window.addEventListener('load', () => {
+            if (window.__lenis) window.__lenis.on('scroll', updateNavbar);
+          }, { once: true });
           // Evaluar al arranque y tras ScrollTrigger.refresh
           updateNavbar();
-          setTimeout(() => { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); updateNavbar(); }, 120);
+          // Refresh completo después de que todo cargue (Lenis + fuentes + imágenes)
+          window.addEventListener('load', () => {
+            setTimeout(() => {
+              if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+              updateNavbar();
+            }, 200);
+          }, { once: true });
         }
-        // Boost Lenis duration for more premium feel
-        if (window.__lenis) {
-          window.__lenis.options.duration = 1.35;
-        }
-
         // ── Global scroll progress bar (hidden during intro) ──
         if (typeof ScrollTrigger !== 'undefined') {
           const bar = document.getElementById('scrollProgress');
