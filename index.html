@@ -141,7 +141,20 @@
       font-size: clamp(4.5rem, 15vw, 15rem);
       letter-spacing: -0.04em;
       will-change: transform, opacity, filter;
+      cursor: default;
+      display: inline-block;
+      transition: text-shadow 0.6s ease, letter-spacing 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
     }
+    /* Hover "sale del recuadro" — escala + tracking + glow azul */
+    .intro-hero:not(.is-scrolling) .intro-word:hover {
+      letter-spacing: -0.01em;
+      text-shadow:
+        0 0 80px rgba(0, 102, 255, 0.45),
+        0 0 160px rgba(0, 102, 255, 0.25),
+        0 0 240px rgba(0, 102, 255, 0.12);
+    }
+    /* El h1 no recorta overflow para permitir escape tipográfico */
+    .intro-hero h1 { overflow: visible !important; }
 
     /* Scroll line indicator */
     .scroll-line {
@@ -169,6 +182,47 @@
       transform: scaleX(0);
       z-index: 60;
       pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .scroll-progress.visible { opacity: 1; }
+
+    /* Navbar adaptativa sobre secciones oscuras */
+    #site-navbar {
+      transition: background-color 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    #site-navbar.nav-on-dark {
+      background: rgba(2, 9, 20, 0.55) !important;
+      border-bottom-color: rgba(247, 247, 255, 0.08) !important;
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+    }
+    #site-navbar.nav-on-dark img {
+      filter: brightness(0) invert(1) opacity(0.95);
+      transition: filter 0.35s ease;
+    }
+    #site-navbar.nav-on-dark nav a,
+    #site-navbar.nav-on-dark button { color: rgba(247, 247, 255, 0.72) !important; }
+    #site-navbar.nav-on-dark nav a:hover,
+    #site-navbar.nav-on-dark button:hover { color: #F7F7FF !important; }
+    /* Activo (página actual): texto blanco pleno */
+    #site-navbar.nav-on-dark a.text-tef-dark,
+    #site-navbar.nav-on-dark button.text-tef-dark { color: #F7F7FF !important; }
+    /* Separador "/" entre ES/EN */
+    #site-navbar.nav-on-dark span.text-tef-dark\/20 { color: rgba(247,247,255,0.3) !important; background: transparent !important; }
+    /* Hamburger lines — SOLO los span del botón mobile */
+    #site-navbar.nav-on-dark button[aria-label] span { background-color: rgba(247, 247, 255, 0.85) !important; }
+
+    /* Suave transición dark→paper (zonas de encuentro) */
+    .section-fade-top::before {
+      content:""; position:absolute; top:0; left:0; right:0; height:120px;
+      background: linear-gradient(180deg, rgba(2,9,20,0.15) 0%, transparent 100%);
+      pointer-events:none; z-index:1;
+    }
+    .section-fade-bottom::after {
+      content:""; position:absolute; bottom:0; left:0; right:0; height:120px;
+      background: linear-gradient(180deg, transparent 0%, rgba(2,9,20,0.18) 100%);
+      pointer-events:none; z-index:1;
     }
 
     /* GLOBE SECTION — starfield + aurora */
@@ -283,8 +337,8 @@
       intro_eyebrow_left:  { es: 'Telefónica · Top 200 Líderes', en: 'Telefónica · Top 200 Leaders' },
       intro_eyebrow_right: { es: '2026', en: '2026' },
       intro_title:   { es: 'Bienvenidos.', en: 'Welcome.' },
-      intro_sub:     { es: 'A la experiencia que define el próximo capítulo de tu liderazgo.',
-                       en: 'To the experience that defines the next chapter of your leadership.' },
+      intro_sub:     { es: 'Aquí empieza tu próximo capítulo.',
+                       en: 'This is where your next chapter begins.' },
       intro_scroll:  { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
       /* HERO It's on Us */
@@ -430,7 +484,7 @@
   <main class="flex-1">
 
     <!-- INTRO cinematográfico — Bienvenidos scene -->
-    <section class="intro-hero text-paper">
+    <section class="intro-hero text-paper" data-nav-dark>
       <!-- 3 capas de estrellas con parallax distinto -->
       <div class="stars-far" data-parallax="0.15" aria-hidden="true"></div>
       <div class="stars-mid" data-parallax="0.5" aria-hidden="true"></div>
@@ -483,7 +537,7 @@
     </section>
 
     <!-- HERO "It's on Us" -->
-    <section class="relative bg-tef-gradient-dark text-paper overflow-hidden">
+    <section class="relative bg-tef-gradient-dark text-paper overflow-hidden section-fade-bottom" data-nav-dark>
       <!-- Orbital arcs left — aligned with "It's on Us" title level -->
       <!-- Circle center at (150,170) in 270×340 viewBox. Radii 138/112. Gap opens RIGHT (±45°) -->
       <svg data-parallax="1.6" class="absolute left-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift"
@@ -706,8 +760,13 @@
                 <stop offset="100%" stop-color="#0066FF" stop-opacity="0.85"/>
               </linearGradient>
             </defs>
+            <!-- Guía fantasma dashed (siempre visible) -->
+            <path d="M 144 409 C 448 338, 752 352, 1056 305"
+                  stroke="#0066FF" stroke-width="1" fill="none"
+                  stroke-dasharray="4 9" opacity="0.25"/>
+            <!-- Path principal que se dibuja con scroll (solid, más grueso) -->
             <path id="trackPath" d="M 144 409 C 448 338, 752 352, 1056 305"
-                  stroke="url(#pathA)" stroke-width="2" fill="none"/>
+                  stroke="url(#pathA)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
             <circle cx="144"  cy="409" r="5" fill="#0066FF"/>
             <circle cx="448"  cy="361" r="5" fill="#0066FF"/>
             <circle cx="752"  cy="337" r="5" fill="#0066FF"/>
@@ -782,8 +841,8 @@
     </section>
 
     <!-- GLOBE — Distribución mundial del top 200 -->
-    <section class="globe-section text-paper py-20 md:py-28"
-             data-globe-section
+    <section class="globe-section text-paper py-20 md:py-28 section-fade-bottom"
+             data-globe-section data-nav-dark
              x-data="globeSection()">
       <div class="relative max-w-7xl mx-auto px-6 md:px-10">
 
@@ -1188,6 +1247,64 @@
           gsap.set('.intro-eyebrow, .intro-word, .intro-sub, .intro-scroll', { opacity: 1 });
         }
 
+        // ── INTRO · hover magnetic breakout (Bienvenidos sale del recuadro) ──
+        if (!reduced) {
+          const word = document.querySelector('.intro-word');
+          const container = document.querySelector('.intro-hero h1');
+          if (word && container) {
+            let hoverTween = null;
+            let isHovering = false;
+            // Solo activar cuando estamos en la zona visible de la intro (no durante scroll exit)
+            const isIntroActive = () => {
+              const introSec = document.querySelector('.intro-hero');
+              if (!introSec) return false;
+              const r = introSec.getBoundingClientRect();
+              return r.top <= 0 && r.bottom > window.innerHeight * 0.5;
+            };
+
+            container.addEventListener('mouseenter', () => {
+              if (!isIntroActive()) return;
+              isHovering = true;
+              if (hoverTween) hoverTween.kill();
+              hoverTween = gsap.to(word, {
+                scale: 1.12,
+                duration: 0.9,
+                ease: 'power3.out'
+              });
+            });
+
+            container.addEventListener('mousemove', (e) => {
+              if (!isHovering || !isIntroActive()) return;
+              const r = word.getBoundingClientRect();
+              const cx = r.left + r.width / 2;
+              const cy = r.top + r.height / 2;
+              const dx = (e.clientX - cx) / r.width;
+              const dy = (e.clientY - cy) / r.height;
+              gsap.to(word, {
+                x: dx * 40,
+                y: dy * 24,
+                rotate: dx * 2,
+                duration: 0.6,
+                ease: 'power2.out',
+                overwrite: 'auto'
+              });
+            });
+
+            container.addEventListener('mouseleave', () => {
+              isHovering = false;
+              if (hoverTween) hoverTween.kill();
+              hoverTween = gsap.to(word, {
+                scale: 1,
+                x: 0,
+                y: 0,
+                rotate: 0,
+                duration: 1.1,
+                ease: 'power3.out'
+              });
+            });
+          }
+        }
+
         // ── INTRO · scroll exit (pin 80vh con escalado) ──
         if (!reduced && typeof ScrollTrigger !== 'undefined') {
           gsap.timeline({
@@ -1222,12 +1339,12 @@
               yPercent: -80, ease: 'none',
               scrollTrigger: { trigger: heroSection, start: 'top top', end: 'bottom top', scrub: 0.5 }
             });
-            // Values blur-lift stagger on scroll reveal
+            // Values blur-lift stagger on scroll reveal (suavizado)
             const valueItems = document.querySelectorAll('[data-hero-values] .flex.items-center');
             if (valueItems.length) {
               gsap.from(valueItems, {
-                opacity: 0, y: 40, filter: 'blur(18px)',
-                duration: 1.2, ease: 'power3.out', stagger: 0.08,
+                opacity: 0, y: 30, filter: 'blur(10px)',
+                duration: 1, ease: 'power3.out', stagger: 0.07,
                 scrollTrigger: { trigger: '[data-hero-values]', start: 'top 85%' }
               });
             }
@@ -1358,11 +1475,11 @@
                   start: 'top 85%'
                 }
               });
-              // Ghost numbers 01/02/03/04 parallax slower
+              // Ghost numbers 01/02/03/04 parallax (capped)
               const ghost = node.querySelector('span.absolute');
               if (ghost) {
                 gsap.to(ghost, {
-                  yPercent: -60, ease: 'none',
+                  yPercent: -30, ease: 'none',
                   scrollTrigger: {
                     trigger: trackSection,
                     start: 'top bottom',
@@ -1441,50 +1558,74 @@
             const [leftCard, rightCard] = cohortSection.querySelectorAll(':scope > div');
             if (leftCard) {
               gsap.from(leftCard, {
-                x: -220, opacity: 0, rotate: -3, filter: 'blur(10px)',
-                duration: 1.3, ease: 'power3.out',
+                x: -140, opacity: 0, rotate: -2, filter: 'blur(6px)',
+                duration: 1.2, ease: 'power3.out',
                 scrollTrigger: { trigger: cohortSection, start: 'top 82%' }
               });
             }
             if (rightCard) {
               gsap.from(rightCard, {
-                x: 220, opacity: 0, rotate: 3, filter: 'blur(10px)',
-                duration: 1.3, ease: 'power3.out',
+                x: 140, opacity: 0, rotate: 2, filter: 'blur(6px)',
+                duration: 1.2, ease: 'power3.out',
                 scrollTrigger: { trigger: cohortSection, start: 'top 82%' }
               });
             }
           }
         }
 
-        // ── M7 · Header oscurece progresivamente + Lenis boost ──
-        if (typeof ScrollTrigger !== 'undefined') {
-          const navbar = document.getElementById('site-navbar');
-          if (navbar) {
-            ScrollTrigger.create({
-              start: 0,
-              end: 400,
-              onUpdate: (self) => {
-                const p = self.progress;
-                navbar.style.background = `rgba(247, 247, 255, ${0.85 + p * 0.13})`;
-                navbar.style.backdropFilter = `blur(${12 + p * 14}px)`;
+        // ── M7 · Navbar adaptativa — scroll listener unificado pin-aware ──
+        const navbar = document.getElementById('site-navbar');
+        if (navbar) {
+          const darkSections = Array.from(document.querySelectorAll('[data-nav-dark]'));
+          const navH = 65;
+
+          const updateNavbar = () => {
+            let isDark = false;
+            const y = window.scrollY;
+            for (const sec of darkSections) {
+              // ¿Está la sección pinned por ScrollTrigger? Si sí, usar su rango de pin
+              let pinned = null;
+              if (typeof ScrollTrigger !== 'undefined') {
+                pinned = ScrollTrigger.getAll().find(st => st.pin && st.trigger === sec);
               }
-            });
-          }
+              if (pinned && y >= pinned.start && y <= pinned.end) {
+                isDark = true;
+                break;
+              }
+              // Fallback: geometría natural — la sección ocupa el espacio bajo la navbar
+              // Usar ≤ para cubrir el caso scrollY=0 donde la intro arranca exactamente en y=navH
+              const r = sec.getBoundingClientRect();
+              if (r.top <= navH + 1 && r.bottom > navH) {
+                isDark = true;
+                break;
+              }
+            }
+            navbar.classList.toggle('nav-on-dark', isDark);
+          };
+
+          window.addEventListener('scroll', updateNavbar, { passive: true });
+          if (window.__lenis) window.__lenis.on('scroll', updateNavbar);
+          // Evaluar al arranque y tras ScrollTrigger.refresh
+          updateNavbar();
+          setTimeout(() => { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh(); updateNavbar(); }, 120);
         }
         // Boost Lenis duration for more premium feel
         if (window.__lenis) {
           window.__lenis.options.duration = 1.35;
         }
 
-        // ── Global scroll progress bar ───────────────────
+        // ── Global scroll progress bar (hidden during intro) ──
         if (typeof ScrollTrigger !== 'undefined') {
           const bar = document.getElementById('scrollProgress');
           if (bar) {
+            const introH = () => (document.querySelector('.intro-hero')?.offsetHeight || 800) * 0.7;
             ScrollTrigger.create({
               start: 0,
               end: () => document.documentElement.scrollHeight - window.innerHeight,
               onUpdate: (self) => {
                 bar.style.transform = `scaleX(${self.progress})`;
+                const scrolled = self.progress * (document.documentElement.scrollHeight - window.innerHeight);
+                bar.classList.toggle('visible', scrolled > introH());
               }
             });
           }
