@@ -6,12 +6,7 @@
 (function () {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function whenReady(cb) {
-    if (document.readyState !== 'loading') cb();
-    else document.addEventListener('DOMContentLoaded', cb);
-  }
-
-  whenReady(() => {
+  window.addEventListener('load', () => {
     // Libs check
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
       console.warn('[scroll.js] GSAP/ScrollTrigger not loaded — falling back to CSS reveals');
@@ -33,11 +28,10 @@
         touchMultiplier: 1.6,
         wheelMultiplier: 1
       });
-      function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
-      requestAnimationFrame(raf);
-      lenis.on('scroll', ScrollTrigger.update);
+      // Single RAF via gsap.ticker only — eliminates double-RAF drift
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
       gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
       window.__lenis = lenis;
     }
 
