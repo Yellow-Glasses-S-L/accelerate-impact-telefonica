@@ -176,6 +176,10 @@
   <!-- Globe 3D — Three.js + Globe.gl via CDN -->
   <script src="https://unpkg.com/three@0.149.0/build/three.min.js"></script>
   <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js"></script>
+  <!-- Scroll system — Lenis smooth scroll + GSAP ScrollTrigger -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script>
     const i18n = {
       /* NAV */
@@ -325,7 +329,7 @@
     <section class="relative bg-tef-gradient-dark text-paper overflow-hidden">
       <!-- Orbital arcs left — aligned with "It's on Us" title level -->
       <!-- Circle center at (150,170) in 270×340 viewBox. Radii 138/112. Gap opens RIGHT (±45°) -->
-      <svg class="absolute left-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift"
+      <svg data-parallax="0.6" class="absolute left-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift"
            width="270" height="340" viewBox="0 0 270 340" fill="none" aria-hidden="true">
         <!-- Outer white arc r=138 -->
         <path d="M 247.6 72.4 A 138 138 0 1 0 247.6 267.6"
@@ -341,7 +345,7 @@
 
       <!-- Orbital arcs right — mirror: gap opens LEFT (±45° from west) -->
       <!-- Circle center at (120,170) in 270×340 viewBox -->
-      <svg class="absolute right-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift-delayed"
+      <svg data-parallax="0.8" class="absolute right-[14%] top-9 md:top-12 pointer-events-none hidden md:block drift-delayed"
            width="270" height="340" viewBox="0 0 270 340" fill="none" aria-hidden="true">
         <!-- Outer white arc r=138 -->
         <path d="M 22.4 72.4 A 138 138 0 1 1 22.4 267.6"
@@ -447,17 +451,17 @@
       <div class="max-w-7xl mx-auto px-6 md:px-10">
 
         <!-- Encabezado de sección -->
-        <div class="text-center mb-16 md:mb-20">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('program_eyebrow')"></p>
-          <h2 class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6">Accelerate Impact</h2>
-          <div class="mx-auto w-16 h-px bg-ink/15 mb-6"></div>
-          <p class="max-w-2xl mx-auto text-base md:text-lg font-normal text-ink-soft leading-relaxed" x-text="t('program_lead')"></p>
+        <div class="text-center mb-16 md:mb-20" data-reveal-stagger>
+          <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('program_eyebrow')"></p>
+          <h2 data-stagger-item class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6">Accelerate Impact</h2>
+          <div data-stagger-item class="mx-auto w-16 h-px bg-ink/15 mb-6"></div>
+          <p data-stagger-item class="max-w-2xl mx-auto text-base md:text-lg font-normal text-ink-soft leading-relaxed" x-text="t('program_lead')"></p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-16 md:gap-y-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-16 md:gap-y-20" data-reveal-stagger data-stagger-delay="0.15">
 
           <!-- WHY -->
-          <article class="relative">
+          <article data-stagger-item class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">01 / Why</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -468,7 +472,7 @@
           </article>
 
           <!-- HOW -->
-          <article class="relative">
+          <article data-stagger-item class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">02 / How</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -487,7 +491,7 @@
           </article>
 
           <!-- WHAT -->
-          <article class="relative">
+          <article data-stagger-item class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">03 / What</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -498,7 +502,7 @@
           </article>
 
           <!-- EXPECT -->
-          <article class="relative">
+          <article data-stagger-item class="relative">
             <div class="flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">04 / Expect</span>
               <span class="flex-1 h-px bg-ink/10"></span>
@@ -527,9 +531,9 @@
       </svg>
 
       <div class="relative max-w-7xl mx-auto px-6">
-        <div class="text-center mb-28 md:mb-32">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
-          <h2 class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-tef-dark leading-tight tracking-tight">
+        <div class="text-center mb-28 md:mb-32" data-reveal-stagger>
+          <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
+          <h2 data-stagger-item class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-tef-dark leading-tight tracking-tight">
             <span x-text="t('track_title_1')"></span>
             <span class="text-tef-blue" x-text="' ' + t('track_title_2')"></span>
           </h2>
@@ -545,7 +549,7 @@
                 <stop offset="100%" stop-color="#0066FF" stop-opacity="0.85"/>
               </linearGradient>
             </defs>
-            <path d="M 144 409 C 448 338, 752 352, 1056 305"
+            <path data-draw data-draw-duration="2.6" d="M 144 409 C 448 338, 752 352, 1056 305"
                   stroke="url(#pathA)" stroke-width="2" fill="none"
                   stroke-dasharray="8 6" class="path-breathe"/>
             <circle cx="144"  cy="409" r="5" fill="#0066FF"/>
@@ -554,10 +558,10 @@
             <circle cx="1056" cy="305" r="5" fill="#0066FF"/>
           </svg>
 
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:480px">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:480px" data-reveal-stagger data-stagger-delay="0.18">
 
             <!-- NODO 1 — Nadia (informational) -->
-            <div class="md:pt-36">
+            <div data-stagger-item class="md:pt-36">
               <div class="relative group">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">01</span>
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
@@ -570,7 +574,7 @@
             </div>
 
             <!-- NODO 2 — Welcome Session (informational) -->
-            <div class="md:pt-24">
+            <div data-stagger-item class="md:pt-24">
               <div class="relative group">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-dark/10 select-none">02</span>
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
@@ -583,7 +587,7 @@
             </div>
 
             <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
-            <div class="md:pt-8">
+            <div data-stagger-item class="md:pt-8">
               <a href="autodiagnostico.html"
                  class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">03</span>
@@ -600,7 +604,7 @@
             </div>
 
             <!-- NODO 4 — Action Learning Week (CLICKABLE DARK) -->
-            <div class="md:pt-0">
+            <div data-stagger-item class="md:pt-0">
               <a href="agenda.html"
                  class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
@@ -627,14 +631,14 @@
       <div class="relative max-w-7xl mx-auto px-6 md:px-10">
 
         <!-- Header -->
-        <div class="text-center mb-12 md:mb-16 relative z-10">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5" x-text="t('globe_eyebrow')"></p>
-          <h2 class="globe-title font-sans font-normal text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6">
+        <div class="text-center mb-12 md:mb-16 relative z-10" data-reveal-stagger data-stagger-delay="0.12">
+          <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5" x-text="t('globe_eyebrow')"></p>
+          <h2 data-stagger-item class="globe-title font-sans font-normal text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6">
             <span x-text="t('globe_title_1')"></span>
             <span class="text-tef-blue" x-text="t('globe_title_2')"></span>
           </h2>
-          <div class="mx-auto w-16 h-px bg-paper/20 mb-6"></div>
-          <p class="max-w-2xl mx-auto text-base md:text-lg text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
+          <div data-stagger-item class="mx-auto w-16 h-px bg-paper/20 mb-6"></div>
+          <p data-stagger-item class="max-w-2xl mx-auto text-base md:text-lg text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
         </div>
 
         <!-- Globe canvas -->
@@ -710,10 +714,10 @@
 
     <!-- NADIA + COHORT -->
     <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal-stagger data-stagger-delay="0.18">
 
         <!-- Izquierda: Conecta con tus compañeros -->
-        <div class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
+        <div data-stagger-item class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
           <div>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('cohort_eyebrow')"></p>
             <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-3" x-text="t('cohort_title')"></h3>
@@ -752,7 +756,7 @@
         </div>
 
         <!-- Derecha: Tu AI Coach -->
-        <div class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-10 pt-12 pb-20 overflow-hidden">
+        <div data-stagger-item class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-10 pt-12 pb-20 overflow-hidden">
           <div>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-3" x-text="t('nadia_eyebrow')"></p>
             <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight mb-3">
@@ -993,5 +997,6 @@
   </script>
 
   <script src="components.js"></script>
+  <script src="scroll.js"></script>
 </body>
 </html>
