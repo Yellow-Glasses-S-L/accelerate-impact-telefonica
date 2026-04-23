@@ -18,11 +18,11 @@
   /* ── NAVBAR ── */
   const navEl = document.getElementById('site-navbar');
   if (navEl) {
-    navEl.className = '';
-    navEl.setAttribute('style', 'position:fixed;top:0;left:0;right:0;z-index:50;padding:12px 16px 0;pointer-events:none;background:transparent;border:none;backdrop-filter:none;');
+    navEl.className = 'sticky top-0 z-50';
+    navEl.setAttribute('style', 'height:0;overflow:visible;pointer-events:none;background:transparent;border:none;');
     navEl.setAttribute('x-data', '{ menuOpen: false }');
     navEl.innerHTML = `
-      <div class="max-w-3xl mx-auto relative">
+      <div class="px-4 pt-3 max-w-3xl mx-auto relative">
 
         <!-- Pill -->
         <div class="navbar-pill pointer-events-auto flex items-center h-14 px-5 gap-3 rounded-full border border-black/[0.08] shadow-md"
@@ -81,7 +81,7 @@
       </div>`;
   }
 
-  /* Compensate fixed navbar on secondary pages (68px pill+padding) */
+  /* Secondary pages: header is height:0 so content starts at top — compensate */
   if (current !== 'home') {
     const mainEl = document.querySelector('main');
     if (mainEl) mainEl.style.paddingTop = '5rem';
