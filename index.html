@@ -77,8 +77,105 @@
     @media (prefers-reduced-motion: reduce) {
       .path-breathe, .orbital-spin, .orbital-spin-rev, .drift, .drift-delayed, .reveal { animation: none; }
     }
+
+    /* GLOBE SECTION — starfield + aurora */
+    .globe-section {
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(0,102,255,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 80%, rgba(0,102,255,0.12) 0%, transparent 50%),
+        #020914;
+      position: relative;
+      overflow: hidden;
+    }
+    .globe-section::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 24% 62%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 38% 28%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 47% 78%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 58% 12%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 66% 48%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 72% 82%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 83% 34%, rgba(255,255,255,0.85), transparent),
+        radial-gradient(1px 1px at 92% 68%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 8% 88%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 15% 42%, rgba(255,255,255,0.45), transparent),
+        radial-gradient(1.5px 1.5px at 31% 8%, rgba(255,255,255,0.9), transparent);
+      background-repeat: no-repeat;
+      pointer-events: none;
+      opacity: 0.65;
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { from { opacity: 0.4; } to { opacity: 0.8; } }
+
+    #globeViz { width: 100%; height: 640px; cursor: grab; }
+    #globeViz:active { cursor: grabbing; }
+    #globeViz canvas { background: transparent !important; }
+
+    /* Tooltip personalizado */
+    .globe-tooltip {
+      background: rgba(2,9,20,0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0,102,255,0.4);
+      color: #F7F7FF;
+      padding: 10px 14px;
+      font-family: "Telefonica Sans", sans-serif;
+      font-size: 13px;
+      border-radius: 2px;
+      box-shadow: 0 8px 32px rgba(0,102,255,0.25);
+    }
+    .globe-tooltip .tt-name {
+      font-size: 15px; font-weight: 500; margin-bottom: 2px;
+    }
+    .globe-tooltip .tt-count {
+      color: #7FB3FF; font-variant-numeric: tabular-nums;
+    }
+    .globe-tooltip .tt-hint {
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,247,255,0.45); margin-top: 6px;
+    }
+
+    /* Stats counter */
+    @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .count-reveal { animation: countUp 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+    /* Legend country chips */
+    .country-chip {
+      transition: all 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+      cursor: pointer;
+    }
+    .country-chip:hover {
+      background: rgba(0,102,255,0.12);
+      border-color: #0066FF;
+      transform: translateY(-1px);
+    }
+    .country-chip.active {
+      background: #0066FF;
+      color: #F7F7FF;
+      border-color: #0066FF;
+    }
+
+    /* Flag pulse ring on the globe dots */
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.8; }
+      80%,100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* Globe headline split */
+    .globe-title span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+    .globe-title span:nth-child(2) { animation-delay: 0.12s; }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Globe 3D — Three.js + Globe.gl via CDN -->
+  <script src="https://unpkg.com/three@0.149.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/globe.gl@2.27.2/dist/globe.gl.min.js"></script>
   <script>
     const i18n = {
       /* NAV */
@@ -162,6 +259,19 @@
       nadia_title_2: { es: 'AI Coach.', en: 'AI Coach.' },
       nadia_body: { es: 'Nadia es tu AI Leadership Coach personal. Conversa cuando quieras, desde donde estés.', en: 'Nadia is your personal AI Leadership Coach. Talk to her anytime, from anywhere.' },
       nadia_cta: { es: 'Conectar con Nadia', en: 'Connect with Nadia' },
+
+      /* GLOBE — Distribución mundial del top 200 */
+      globe_eyebrow: { es: 'Comunidad global', en: 'Global community' },
+      globe_title_1: { es: 'Top líderes mundial.', en: 'Top leaders worldwide.' },
+      globe_title_2: { es: 'Un solo equipo.', en: 'One single team.' },
+      globe_body: {
+        es: 'Compañeros repartidos por el mundo. Haz clic en cualquier país para conocer a los líderes de esa operación.',
+        en: 'Peers spread across the world. Click any country to meet the leadership team of that operation.'
+      },
+      globe_legend: { es: 'Participantes por país', en: 'Participants per country' },
+      globe_hint: { es: 'Arrastra para rotar · clic para abrir', en: 'Drag to rotate · click to open' },
+      globe_total: { es: 'participantes', en: 'participants' },
+      globe_countries: { es: 'países', en: 'countries' },
 
       /* COHORTES */
       cohort_eyebrow: { es: 'Comunidad', en: 'Community' },
@@ -511,6 +621,93 @@
       </div>
     </section>
 
+    <!-- GLOBE — Distribución mundial del top 200 -->
+    <section class="globe-section text-paper py-20 md:py-28"
+             x-data="globeSection()">
+      <div class="relative max-w-7xl mx-auto px-6 md:px-10">
+
+        <!-- Header -->
+        <div class="text-center mb-12 md:mb-16 relative z-10">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5" x-text="t('globe_eyebrow')"></p>
+          <h2 class="globe-title font-sans font-normal text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6">
+            <span x-text="t('globe_title_1')"></span>
+            <span class="text-tef-blue" x-text="t('globe_title_2')"></span>
+          </h2>
+          <div class="mx-auto w-16 h-px bg-paper/20 mb-6"></div>
+          <p class="max-w-2xl mx-auto text-base md:text-lg text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
+        </div>
+
+        <!-- Globe canvas -->
+        <div class="relative">
+          <div id="globeViz" aria-label="Global cohort distribution"></div>
+
+          <!-- Floating hint -->
+          <div class="absolute top-4 right-4 md:top-6 md:right-6 pointer-events-none">
+            <div class="flex items-center gap-2 px-3 py-2 bg-black/30 backdrop-blur-sm border border-paper/10">
+              <svg class="w-3.5 h-3.5 text-paper/60" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="8" cy="8" r="6"/>
+                <path d="M3 8h10M8 3c2 1.5 2 8.5 0 10M8 3c-2 1.5-2 8.5 0 10"/>
+              </svg>
+              <span class="font-mono text-[10px] tracking-[0.18em] uppercase text-paper/60" x-text="t('globe_hint')"></span>
+            </div>
+          </div>
+
+          <!-- Active country panel (bottom-left overlay) -->
+          <div x-show="active"
+               x-transition.opacity
+               class="absolute bottom-4 left-4 md:bottom-6 md:left-6 max-w-xs"
+               style="display:none" x-cloak>
+            <div class="bg-black/40 backdrop-blur-md border border-tef-blue/40 p-5 shadow-[0_12px_40px_rgba(0,102,255,0.25)]">
+              <p class="font-mono text-[9px] tracking-[0.25em] uppercase text-[#7FB3FF] mb-2">
+                <span x-text="active?.region || ''"></span>
+              </p>
+              <h4 class="font-sans text-2xl text-paper leading-tight mb-1" x-text="active?.name || ''"></h4>
+              <p class="text-sm text-paper/70 mb-4">
+                <span class="text-2xl text-tef-blue font-normal" x-text="active?.count || 0"></span>
+                <span class="text-xs tracking-wider uppercase ml-1" x-text="t('globe_total')"></span>
+              </p>
+              <a :href="active?.url || '#'" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 text-xs font-mono tracking-[0.18em] uppercase text-tef-blue hover:text-paper transition-colors">
+                <span x-text="lang==='es' ? 'Ver equipo' : 'View team'"></span>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-3 gap-6 md:gap-10 mt-12 md:mt-14 max-w-3xl mx-auto text-center">
+          <div class="count-reveal">
+            <p class="font-sans text-4xl md:text-6xl text-tef-blue font-normal leading-none mb-2 tabular-nums" x-text="stats.total"></p>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_total')"></p>
+          </div>
+          <div class="count-reveal" style="animation-delay:0.15s">
+            <p class="font-sans text-4xl md:text-6xl text-paper font-normal leading-none mb-2 tabular-nums" x-text="stats.countries"></p>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_countries')"></p>
+          </div>
+          <div class="count-reveal" style="animation-delay:0.3s">
+            <p class="font-sans text-4xl md:text-6xl text-paper font-normal leading-none mb-2 tabular-nums">6</p>
+            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="lang==='es' ? 'cohortes' : 'cohorts'"></p>
+          </div>
+        </div>
+
+        <!-- Country chips legend -->
+        <div class="mt-12 md:mt-14">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-paper/40 text-center mb-5" x-text="t('globe_legend')"></p>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <template x-for="c in countries" :key="c.code">
+              <button @click="flyTo(c)"
+                      class="country-chip border border-paper/15 px-4 py-2 text-xs font-medium text-paper/90"
+                      :class="active?.code === c.code && 'active'">
+                <span x-text="(lang==='es' ? c.name_es : c.name) + ' · ' + c.count"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- NADIA + COHORT -->
     <section class="bg-paper py-14 md:py-16">
       <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -577,6 +774,223 @@
 
   <!-- FOOTER -->
   <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
+
+  <!-- GLOBE logic (Alpine component) -->
+  <script>
+    function globeSection() {
+      // Datos dummy top 200 directivos — reemplazables cuando Telefónica pase la lista cerrada
+      const countries = [
+        { code: 'ES', name: 'Spain',         name_es: 'España',    region: 'Europe',        lat: 40.42, lng: -3.70,  count: 78, url: '#' },
+        { code: 'BR', name: 'Brazil',        name_es: 'Brasil',    region: 'Latin America', lat: -15.79, lng: -47.88, count: 32, url: '#' },
+        { code: 'DE', name: 'Germany',       name_es: 'Alemania',  region: 'Europe',        lat: 52.52, lng: 13.40,  count: 18, url: '#' },
+        { code: 'GB', name: 'United Kingdom',name_es: 'Reino Unido', region: 'Europe',      lat: 51.51, lng: -0.13,  count: 12, url: '#' },
+        { code: 'AR', name: 'Argentina',     name_es: 'Argentina', region: 'Latin America', lat: -34.60, lng: -58.38, count: 11, url: '#' },
+        { code: 'PE', name: 'Peru',          name_es: 'Perú',      region: 'Latin America', lat: -12.05, lng: -77.04, count: 9,  url: '#' },
+        { code: 'CL', name: 'Chile',         name_es: 'Chile',     region: 'Latin America', lat: -33.45, lng: -70.67, count: 8,  url: '#' },
+        { code: 'CO', name: 'Colombia',      name_es: 'Colombia',  region: 'Latin America', lat: 4.71,   lng: -74.07, count: 8,  url: '#' },
+        { code: 'MX', name: 'Mexico',        name_es: 'México',    region: 'Latin America', lat: 19.43,  lng: -99.13, count: 7,  url: '#' },
+        { code: 'EC', name: 'Ecuador',       name_es: 'Ecuador',   region: 'Latin America', lat: -0.18,  lng: -78.47, count: 5,  url: '#' },
+        { code: 'UY', name: 'Uruguay',       name_es: 'Uruguay',   region: 'Latin America', lat: -34.90, lng: -56.16, count: 4,  url: '#' },
+        { code: 'VE', name: 'Venezuela',     name_es: 'Venezuela', region: 'Latin America', lat: 10.48,  lng: -66.90, count: 4,  url: '#' },
+        { code: 'US', name: 'United States', name_es: 'EE. UU.',   region: 'North America', lat: 38.90,  lng: -77.04, count: 4,  url: '#' }
+      ];
+
+      return {
+        countries,
+        active: null,
+        stats: { total: 0, countries: 0 },
+        _globe: null,
+        _animationId: null,
+        _targetTotal: 0,
+        _targetCountries: 0,
+
+        init() {
+          // Compute totals
+          this._targetTotal = countries.reduce((s,c) => s + c.count, 0);
+          this._targetCountries = countries.length;
+
+          this.$nextTick(() => {
+            this.animateStats();
+            // Lazy init globe when section enters viewport
+            const io = new IntersectionObserver((entries) => {
+              entries.forEach(e => {
+                if (e.isIntersecting && !this._globe) {
+                  this.initGlobe();
+                  io.disconnect();
+                }
+              });
+            }, { threshold: 0.1 });
+            io.observe(this.$el);
+          });
+        },
+
+        animateStats() {
+          const duration = 1800;
+          const start = performance.now();
+          const tick = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            const ease = 1 - Math.pow(1 - t, 3);
+            this.stats.total = Math.round(this._targetTotal * ease);
+            this.stats.countries = Math.round(this._targetCountries * ease);
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        },
+
+        initGlobe() {
+          if (typeof Globe === 'undefined') {
+            // Libs not yet loaded — retry
+            setTimeout(() => this.initGlobe(), 200);
+            return;
+          }
+
+          const el = document.getElementById('globeViz');
+          if (!el) return;
+
+          const participantCountries = new Set(this.countries.map(c => c.code));
+
+          // Custom HTML markers (pulse dots) for each country
+          const markers = this.countries.map(c => ({
+            ...c,
+            size: 0.6 + Math.log(c.count + 1) * 0.35
+          }));
+
+          const world = Globe()(el)
+            .backgroundColor('rgba(0,0,0,0)')
+            .showGlobe(true)
+            .showAtmosphere(true)
+            .atmosphereColor('#0066FF')
+            .atmosphereAltitude(0.22)
+            .globeImageUrl(null)
+            .width(el.clientWidth)
+            .height(640);
+
+          // Ocean — deep navy, darker than the section background (#020914)
+          const globeMat = world.globeMaterial();
+          globeMat.color = new THREE.Color(0x000610);
+          globeMat.emissive = new THREE.Color(0x00030a);
+          globeMat.emissiveIntensity = 0.12;
+          globeMat.shininess = 0.6;
+
+          // Soften directional light so countries read evenly
+          const scene = world.scene();
+          scene.children.forEach(obj => {
+            if (obj.isDirectionalLight) obj.intensity = 0.6;
+            if (obj.isAmbientLight) obj.intensity = 0.95;
+          });
+
+          // Fetch countries GeoJSON (simplified 110m)
+          fetch('https://unpkg.com/globe.gl@2.27.2/example/datasets/ne_110m_admin_0_countries.geojson')
+            .then(r => r.json())
+            .then(geo => {
+              world
+                .polygonsData(geo.features.filter(f => f.properties.ISO_A2 !== 'AQ'))
+                .polygonAltitude(feat => {
+                  const iso = feat.properties.ISO_A2;
+                  return participantCountries.has(iso) ? 0.012 : 0.006;
+                })
+                .polygonCapColor(feat => {
+                  const iso = feat.properties.ISO_A2;
+                  if (participantCountries.has(iso)) {
+                    const c = this.countries.find(x => x.code === iso);
+                    const intensity = Math.min(1, c.count / 80);
+                    return `rgba(0, 102, 255, ${0.55 + intensity * 0.35})`;
+                  }
+                  return 'rgba(247, 247, 255, 0.82)';
+                })
+                .polygonSideColor(() => 'rgba(0, 20, 60, 0.35)')
+                .polygonStrokeColor(() => 'rgba(3, 26, 52, 0.4)')
+                .polygonLabel(feat => {
+                  const iso = feat.properties.ISO_A2;
+                  const c = this.countries.find(x => x.code === iso);
+                  if (!c) return '';
+                  const nm = this.lang === 'es' ? c.name_es : c.name;
+                  const tot = this.lang === 'es' ? 'participantes' : 'participants';
+                  const hint = this.lang === 'es' ? 'Clic para abrir' : 'Click to open';
+                  return `<div class="globe-tooltip">
+                    <div class="tt-name">${nm}</div>
+                    <div class="tt-count">${c.count} ${tot}</div>
+                    <div class="tt-hint">${hint}</div>
+                  </div>`;
+                })
+                .onPolygonClick(feat => {
+                  const iso = feat.properties.ISO_A2;
+                  const c = this.countries.find(x => x.code === iso);
+                  if (c) this.flyTo(c);
+                })
+                .onPolygonHover(hoverD => {
+                  el.style.cursor = hoverD && participantCountries.has(hoverD.properties.ISO_A2) ? 'pointer' : 'grab';
+                });
+            })
+            .catch(err => console.warn('Globe GeoJSON load failed:', err));
+
+          // Glowing ring markers per participant country
+          world
+            .ringsData(markers)
+            .ringLat('lat').ringLng('lng')
+            .ringColor(() => (t) => `rgba(0,102,255,${1 - t})`)
+            .ringMaxRadius(d => d.size * 3)
+            .ringPropagationSpeed(1.2)
+            .ringRepeatPeriod(1800)
+            .ringAltitude(0.016);
+
+          // Point labels with count
+          world
+            .pointsData(markers)
+            .pointLat('lat').pointLng('lng')
+            .pointColor(() => '#0066FF')
+            .pointAltitude(d => 0.018 + d.size * 0.008)
+            .pointRadius(d => 0.22 + d.size * 0.08)
+            .pointLabel(d => {
+              const nm = this.lang === 'es' ? d.name_es : d.name;
+              return `<div class="globe-tooltip">
+                <div class="tt-name">${nm}</div>
+                <div class="tt-count">${d.count} ${this.lang === 'es' ? 'participantes' : 'participants'}</div>
+              </div>`;
+            })
+            .onPointClick(d => this.flyTo(d));
+
+          // Auto-rotate
+          const controls = world.controls();
+          controls.autoRotate = true;
+          controls.autoRotateSpeed = 0.35;
+          controls.enableZoom = true;
+          controls.minDistance = 200;
+          controls.maxDistance = 500;
+
+          // Pause rotation when user interacts
+          let userActive = false;
+          controls.addEventListener('start', () => {
+            userActive = true;
+            controls.autoRotate = false;
+          });
+          controls.addEventListener('end', () => {
+            setTimeout(() => {
+              if (!this.active) controls.autoRotate = true;
+            }, 2500);
+          });
+
+          // Initial camera angle — tilted towards Atlantic (Spain + Latam visible)
+          world.pointOfView({ lat: 20, lng: -30, altitude: 2.2 }, 0);
+
+          // Responsive resize
+          const ro = new ResizeObserver(() => {
+            world.width(el.clientWidth);
+          });
+          ro.observe(el);
+
+          this._globe = world;
+        },
+
+        flyTo(c) {
+          if (!this._globe) return;
+          this.active = c;
+          this._globe.controls().autoRotate = false;
+          this._globe.pointOfView({ lat: c.lat, lng: c.lng, altitude: 1.6 }, 1200);
+        }
+      };
+    }
+  </script>
 
   <script src="components.js"></script>
 </body>
