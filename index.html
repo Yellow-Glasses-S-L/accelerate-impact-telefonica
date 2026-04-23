@@ -393,9 +393,9 @@
       /* INTRO cinematográfico */
       intro_eyebrow_left:  { es: 'Telefónica · Comunidad de Líderes', en: 'Telefónica · Leadership Community' },
       intro_eyebrow_right: { es: '2026', en: '2026' },
-      intro_title:   { es: 'Bienvenidos.', en: 'Welcome.' },
-      intro_sub:     { es: 'Aquí empieza tu próximo capítulo.',
-                       en: 'This is where your next chapter begins.' },
+      intro_title:   { es: 'Bienvenidos a Accelerate Impact.', en: 'Welcome to Accelerate Impact.' },
+      intro_sub:     { es: 'El programa de liderazgo que convierte la cultura en acción.',
+                       en: 'The leadership program that turns culture into action.' },
       intro_scroll:  { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
       /* HERO It's on Us */
@@ -652,7 +652,7 @@
             <p class="act-label mb-3">02</p>
             <h1 class="act-word">on</h1>
             <p class="act-subtitle mt-4" x-text="t('sub_on')"></p>
-            <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-xl mx-auto">
+            <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-2xl mx-auto">
               <div class="act-value">
                 <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
                   <circle cx="20" cy="20" r="16"/><circle cx="18" cy="18" r="3"/><path d="M20.5 20.5L25 25" stroke-linecap="round"/>
@@ -1379,42 +1379,34 @@
           const heroSequential = document.querySelector('.hero-sequential');
           if (heroSequential && window.innerWidth >= 768) {
             // Estado inicial
-            gsap.set('[data-hero-act="1"]', { opacity: 1, scale: 1, filter: 'blur(0px)' });
-            gsap.set('[data-hero-act="2"], [data-hero-act="3"]', { opacity: 0, scale: 0.92, filter: 'blur(14px)' });
+            gsap.set('[data-hero-act="1"]', { opacity: 1, filter: 'blur(0px)' });
+            gsap.set('[data-hero-act="2"], [data-hero-act="3"]', { opacity: 0, filter: 'blur(8px)' });
 
             const tl = gsap.timeline({
               scrollTrigger: {
                 trigger: heroSequential,
                 start: 'top top',
-                end: '+=280%',
+                end: '+=220%',
                 pin: '.hero-stage',
                 pinSpacing: true,
-                scrub: 0.7,
+                scrub: true,
                 invalidateOnRefresh: true
               }
             });
 
-            // Fase 0 → 0.33 : Act 1 se mantiene. Fase 0.33 → 0.48: crossfade a Act 2.
             tl
-              // Acto 1 sostenido
               .to({}, { duration: 0.5 })
-              // Acto 1 sale
-              .to('[data-hero-act="1"]', { opacity: 0, scale: 1.18, filter: 'blur(16px)', duration: 0.3, ease: 'power2.in' })
-              // Acto 2 entra (solape)
-              .to('[data-hero-act="2"]', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.35, ease: 'power3.out' }, '<0.08')
-              // Indicadores: dot 1 → dot 2
-              .to('[data-hero-dot="1"]', { backgroundColor: 'rgba(247,247,255,0.2)', width: '28px', duration: 0.25 }, '<')
-              .to('[data-hero-dot="2"]', { backgroundColor: '#0066FF', width: '44px', duration: 0.25 }, '<')
-              // Acto 2 sostenido
+              // Acto 1 → 2
+              .to('[data-hero-act="1"]', { opacity: 0, filter: 'blur(8px)', duration: 0.25 })
+              .to('[data-hero-act="2"]', { opacity: 1, filter: 'blur(0px)', duration: 0.25 }, '<0.05')
+              .to('[data-hero-dot="1"]', { backgroundColor: 'rgba(247,247,255,0.2)', width: '28px', duration: 0.2 }, '<')
+              .to('[data-hero-dot="2"]', { backgroundColor: '#0066FF', width: '44px', duration: 0.2 }, '<')
               .to({}, { duration: 0.5 })
-              // Acto 2 sale
-              .to('[data-hero-act="2"]', { opacity: 0, scale: 1.18, filter: 'blur(16px)', duration: 0.3, ease: 'power2.in' })
-              // Acto 3 entra
-              .to('[data-hero-act="3"]', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.35, ease: 'power3.out' }, '<0.08')
-              // Indicadores: dot 2 → dot 3
-              .to('[data-hero-dot="2"]', { backgroundColor: 'rgba(247,247,255,0.2)', width: '28px', duration: 0.25 }, '<')
-              .to('[data-hero-dot="3"]', { backgroundColor: '#0066FF', width: '44px', duration: 0.25 }, '<')
-              // Acto 3 sostenido
+              // Acto 2 → 3
+              .to('[data-hero-act="2"]', { opacity: 0, filter: 'blur(8px)', duration: 0.25 })
+              .to('[data-hero-act="3"]', { opacity: 1, filter: 'blur(0px)', duration: 0.25 }, '<0.05')
+              .to('[data-hero-dot="2"]', { backgroundColor: 'rgba(247,247,255,0.2)', width: '28px', duration: 0.2 }, '<')
+              .to('[data-hero-dot="3"]', { backgroundColor: '#0066FF', width: '44px', duration: 0.2 }, '<')
               .to({}, { duration: 0.4 });
           } else if (heroSequential) {
             // Mobile: dejar los 3 actos visibles en columna (no pin)

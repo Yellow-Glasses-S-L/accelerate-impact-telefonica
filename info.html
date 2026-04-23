@@ -102,16 +102,16 @@
   <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
 
   <!-- MAIN — the letter / postcard -->
-  <main class="flex-1 flex items-start justify-center py-14 md:py-20 px-6">
+  <main class="flex-1 flex items-start justify-center py-14 md:py-20 px-6" data-info-page>
     <div class="w-full max-w-2xl">
 
       <!-- Envelope meta row -->
-      <div class="flex items-center justify-between mb-6 reveal reveal-1">
+      <div class="flex items-center justify-between mb-6" data-info-meta>
         <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('postmark')"></p>
       </div>
 
       <!-- Letter -->
-      <article class="bg-paper border border-ink/10 px-8 md:px-16 py-14 md:py-20 relative reveal reveal-2">
+      <article class="bg-paper border border-ink/10 px-8 md:px-16 py-14 md:py-20 relative" data-info-letter>
         <span class="absolute top-4 left-4 w-5 h-5 border-t border-l border-ink/30"></span>
         <span class="absolute top-4 right-4 w-5 h-5 border-t border-r border-ink/30"></span>
         <span class="absolute bottom-4 left-4 w-5 h-5 border-b border-l border-ink/30"></span>
@@ -120,7 +120,7 @@
         <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-12 md:mb-16" x-text="t('addressee')"></p>
 
         <h1 class="font-normal leading-[0.95] tracking-[-0.03em] text-6xl md:text-8xl mb-10">
-          <em class="italic font-normal text-tef-blue" x-text="t('greeting')"></em>
+          <em class="italic font-normal text-tef-blue" data-info-greeting x-text="t('greeting')"></em>
         </h1>
 
         <div class="space-y-5 text-[16px] md:text-[17px] leading-relaxed text-ink-soft max-w-md mb-14">
@@ -135,7 +135,7 @@
       </article>
 
       <!-- Contact "stamp" card — overlapping slightly rotated -->
-      <aside class="md:-mt-10 mt-10 md:ml-auto md:mr-8 md:w-80 relative reveal reveal-3">
+      <aside class="md:-mt-10 mt-10 md:ml-auto md:mr-8 md:w-80 relative" data-info-stamp>
         <div class="bg-paper-deep text-paper p-6 relative md:rotate-[1.5deg] shadow-xl">
           <p class="font-mono text-[9px] tracking-[0.25em] uppercase text-paper/60 mb-5" x-text="t('card_label')"></p>
           <p class="font-normal text-xl leading-tight tracking-tight mb-1" x-text="t('card_name')"></p>
@@ -156,7 +156,7 @@
 
 
       <!-- Back link -->
-      <div class="mt-16 md:mt-20 pt-8 border-t border-ink/10 reveal reveal-4">
+      <div class="mt-16 md:mt-20 pt-8 border-t border-ink/10" data-reveal="up">
         <a href="index.html" class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
           <span class="text-xl group-hover:-translate-x-1 transition-transform">←</span>
           <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('back')"></span>

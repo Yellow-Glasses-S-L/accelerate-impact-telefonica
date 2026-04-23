@@ -119,20 +119,20 @@
   <main class="flex-1">
 
     <!-- HERO — centered avatar + big name -->
-    <section class="bg-paper-deep text-paper grain relative overflow-hidden">
+    <section class="bg-paper-deep text-paper grain relative overflow-hidden" data-nadia-hero>
       <div class="relative max-w-5xl mx-auto px-6 pt-24 md:pt-32 pb-20 md:pb-24 text-center">
         <!-- Avatar with breathing glow -->
-        <div class="relative inline-flex items-center justify-center mb-10 reveal reveal-1">
+        <div class="relative inline-flex items-center justify-center mb-10" data-nadia-avatar>
           <div class="absolute inset-0 rounded-full bg-tef-blue/40 blur-3xl breathe"></div>
           <div class="relative w-24 h-24 md:w-28 md:h-28 rounded-full border border-paper/20 bg-paper-deep flex items-center justify-center">
             <span class="text-5xl md:text-6xl font-normal italic text-paper">N</span>
           </div>
         </div>
-        <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-paper/60 mb-5 reveal reveal-2" x-text="t('hero_eyebrow')"></p>
-        <h1 class="font-normal leading-[0.9] tracking-[-0.03em] text-6xl md:text-8xl lg:text-[9rem] mb-8 reveal reveal-2">
+        <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-paper/60 mb-5" data-nadia-eyebrow x-text="t('hero_eyebrow')"></p>
+        <h1 class="font-normal leading-[0.9] tracking-[-0.03em] text-6xl md:text-8xl lg:text-[9rem] mb-8">
           <em class="italic font-normal">Nadia</em>.
         </h1>
-        <p class="font-normal text-lg md:text-xl text-paper/70 max-w-xl mx-auto reveal reveal-3" x-text="t('hero_intro')"></p>
+        <p class="font-normal text-lg md:text-xl text-paper/70 max-w-xl mx-auto" data-nadia-sub x-text="t('hero_intro')"></p>
       </div>
       <div class="relative border-t border-paper/10">
         <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-center gap-6 font-mono text-[10px] tracking-[0.18em] uppercase text-paper/50">
@@ -147,8 +147,8 @@
 
     <!-- PURPOSE — centered essay -->
     <section class="max-w-3xl mx-auto px-6 py-20 md:py-24 text-center">
-      <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue mb-6" x-text="t('purpose_label')"></p>
-      <p class="font-normal text-2xl md:text-[2rem] leading-[1.35] tracking-tight text-ink" x-text="t('purpose_text')"></p>
+      <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue mb-6" data-reveal="up" x-text="t('purpose_label')"></p>
+      <p class="font-normal text-2xl md:text-[2rem] leading-[1.35] tracking-tight text-ink" data-nadia-purpose x-text="t('purpose_text')"></p>
     </section>
 
     <!-- USES — 4 post-it cards, overlapping, slightly rotated -->
@@ -161,7 +161,7 @@
         <div class="flex flex-col items-center">
 
           <!-- Card 01 — número izquierda -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 -rotate-[1.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-10">
+          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 -rotate-[1.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-10" data-nadia-card>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
@@ -176,7 +176,7 @@
           </article>
 
           <!-- Card 02 — número derecha -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 rotate-[1.2deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-20">
+          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 rotate-[1.2deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-20" data-nadia-card>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
@@ -191,7 +191,7 @@
           </article>
 
           <!-- Card 03 — número izquierda -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 -rotate-[0.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-30">
+          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 -rotate-[0.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-30" data-nadia-card>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
@@ -206,7 +206,7 @@
           </article>
 
           <!-- Card 04 — número derecha -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 rotate-[1.5deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-40">
+          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 rotate-[1.5deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-40" data-nadia-card>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
@@ -232,15 +232,15 @@
           <p class="text-sm text-ink-mute" x-text="t('tips_intro')"></p>
         </div>
         <ol class="space-y-10 md:space-y-12">
-          <li class="text-center">
+          <li class="text-center" data-nadia-tip>
             <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 01 —</p>
             <p class="font-normal text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip1')"></p>
           </li>
-          <li class="text-center">
+          <li class="text-center" data-nadia-tip>
             <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 02 —</p>
             <p class="font-normal text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip2')"></p>
           </li>
-          <li class="text-center">
+          <li class="text-center" data-nadia-tip>
             <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 03 —</p>
             <p class="font-normal text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip3')"></p>
           </li>
@@ -257,7 +257,7 @@
             <span class="text-2xl font-normal italic text-paper">N</span>
           </div>
         </div>
-        <h2 class="font-normal leading-[1] tracking-[-0.02em] text-5xl md:text-7xl mb-6">
+        <h2 class="font-normal leading-[1] tracking-[-0.02em] text-5xl md:text-7xl mb-6" data-reveal="up">
           <span x-text="t('cta_title_1')"></span>
           <em class="italic font-normal text-tef-blue block" x-text="t('cta_title_2')"></em>
         </h2>
