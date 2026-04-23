@@ -19,10 +19,10 @@
   const navEl = document.getElementById('site-navbar');
   if (navEl) {
     navEl.className = 'sticky top-0 z-50';
-    navEl.setAttribute('style', 'height:0;overflow:visible;pointer-events:none;background:transparent;border:none;');
+    navEl.setAttribute('style', 'background:transparent;border:none;backdrop-filter:none;padding:12px 16px 0;pointer-events:none;');
     navEl.setAttribute('x-data', '{ menuOpen: false }');
     navEl.innerHTML = `
-      <div class="px-4 pt-3 max-w-3xl mx-auto relative">
+      <div class="max-w-3xl mx-auto relative">
 
         <!-- Pill -->
         <div class="navbar-pill pointer-events-auto flex items-center h-14 px-5 gap-3 rounded-full border border-black/[0.08] shadow-md"
@@ -79,12 +79,6 @@
         </div>
 
       </div>`;
-  }
-
-  /* Secondary pages: header is height:0 so content starts at top — compensate */
-  if (current !== 'home') {
-    const mainEl = document.querySelector('main');
-    if (mainEl) mainEl.style.paddingTop = '5rem';
   }
 
   /* ── FOOTER ── */
