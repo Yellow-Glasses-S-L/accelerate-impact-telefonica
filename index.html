@@ -153,15 +153,6 @@
       will-change: transform, opacity, filter;
       cursor: default;
       display: inline-block;
-      transition: text-shadow 0.6s ease, letter-spacing 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
-    }
-    /* Hover "sale del recuadro" — escala + tracking + glow azul */
-    .intro-hero:not(.is-scrolling) .intro-word:hover {
-      letter-spacing: -0.01em;
-      text-shadow:
-        0 0 80px rgba(0, 102, 255, 0.45),
-        0 0 160px rgba(0, 102, 255, 0.25),
-        0 0 240px rgba(0, 102, 255, 0.12);
     }
     /* El h1 no recorta overflow para permitir escape tipográfico */
     .intro-hero h1 { overflow: visible !important; }
@@ -1296,64 +1287,6 @@
             .from('.intro-scroll', { y: -8, duration: 0.9 }, 1.8);
         } else {
           gsap.set('.intro-eyebrow, .intro-word, .intro-sub, .intro-scroll', { opacity: 1 });
-        }
-
-        // ── INTRO · hover magnetic breakout (Bienvenidos sale del recuadro) ──
-        if (!reduced) {
-          const word = document.querySelector('.intro-word');
-          const container = document.querySelector('.intro-hero h1');
-          if (word && container) {
-            let hoverTween = null;
-            let isHovering = false;
-            // Solo activar cuando estamos en la zona visible de la intro (no durante scroll exit)
-            const isIntroActive = () => {
-              const introSec = document.querySelector('.intro-hero');
-              if (!introSec) return false;
-              const r = introSec.getBoundingClientRect();
-              return r.top <= 0 && r.bottom > window.innerHeight * 0.5;
-            };
-
-            container.addEventListener('mouseenter', () => {
-              if (!isIntroActive()) return;
-              isHovering = true;
-              if (hoverTween) hoverTween.kill();
-              hoverTween = gsap.to(word, {
-                scale: 1.12,
-                duration: 0.9,
-                ease: 'power3.out'
-              });
-            });
-
-            container.addEventListener('mousemove', (e) => {
-              if (!isHovering || !isIntroActive()) return;
-              const r = word.getBoundingClientRect();
-              const cx = r.left + r.width / 2;
-              const cy = r.top + r.height / 2;
-              const dx = (e.clientX - cx) / r.width;
-              const dy = (e.clientY - cy) / r.height;
-              gsap.to(word, {
-                x: dx * 40,
-                y: dy * 24,
-                rotate: dx * 2,
-                duration: 0.6,
-                ease: 'power2.out',
-                overwrite: 'auto'
-              });
-            });
-
-            container.addEventListener('mouseleave', () => {
-              isHovering = false;
-              if (hoverTween) hoverTween.kill();
-              hoverTween = gsap.to(word, {
-                scale: 1,
-                x: 0,
-                y: 0,
-                rotate: 0,
-                duration: 1.1,
-                ease: 'power3.out'
-              });
-            });
-          }
         }
 
         // ── INTRO · scroll exit (pin 80vh con escalado) ──
