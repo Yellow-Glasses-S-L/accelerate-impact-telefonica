@@ -18,8 +18,8 @@
   /* ── NAVBAR ── */
   const navEl = document.getElementById('site-navbar');
   if (navEl) {
-    navEl.className = 'sticky top-0 z-50';
-    navEl.setAttribute('style', 'background:transparent;border:none;backdrop-filter:none;padding:12px 16px 0;pointer-events:none;');
+    navEl.className = '';
+    navEl.setAttribute('style', 'position:fixed;top:0;left:0;right:0;z-index:50;padding:12px 16px 0;pointer-events:none;background:transparent;border:none;backdrop-filter:none;');
     navEl.setAttribute('x-data', '{ menuOpen: false }');
     navEl.innerHTML = `
       <div class="max-w-3xl mx-auto relative">
@@ -79,6 +79,12 @@
         </div>
 
       </div>`;
+  }
+
+  /* Compensate fixed navbar on secondary pages (68px pill+padding) */
+  if (current !== 'home') {
+    const mainEl = document.querySelector('main');
+    if (mainEl) mainEl.style.paddingTop = '5rem';
   }
 
   /* ── FOOTER ── */
