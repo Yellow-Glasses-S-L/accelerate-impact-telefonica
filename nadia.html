@@ -68,8 +68,8 @@
 
       hero_eyebrow: { es: 'AI Leadership Coach', en: 'AI Leadership Coach' },
       hero_intro: {
-        es: 'Tu coach personal, disponible en cualquier momento del journey.',
-        en: 'Your personal coach, available at any point in the journey.'
+        es: 'Tu coach personal, disponible en cualquier momento.',
+        en: 'Your personal coach, available anytime.'
       },
 
       purpose_label: { es: 'Propósito', en: 'Purpose' },
@@ -78,7 +78,9 @@
         en: 'Nadia is designed to accompany you in the decisions that matter: those that require clarity, courage and context. It is not an answer-tool — it is a space to think better before acting.'
       },
 
-      uses_label: { es: 'Cuatro usos', en: 'Four uses' },
+      /* Claims rojos Laura */
+      uses_claim: { es: 'Sácale todo el jugo.', en: 'Get every last drop.' },
+      uses_label: { es: 'Cómo aprovecharla', en: 'How to use her' },
 
       use1_num: '01',
       use1_t: { es: 'Preparar tu Action Plan', en: 'Prepare your Action Plan' },
@@ -96,8 +98,9 @@
       use4_t: { es: 'Sostener el momentum', en: 'Sustain the momentum' },
       use4_d: { es: 'Acompañamiento post-programa para consolidar hábitos y que las decisiones de liderazgo sobrevivan al día 1, al mes 3 y al trimestre siguiente.', en: 'Post-program support to consolidate habits — so leadership decisions survive day 1, month 3, and the next quarter.' },
 
-      tips_label: { es: 'Tres recordatorios', en: 'Three reminders' },
-      tips_intro: { es: 'Para sacar el máximo provecho de las conversaciones.', en: 'To get the most out of your conversations.' },
+      tips_claim: { es: 'Habla claro. Responde claro.', en: 'Speak clear. Get clear.' },
+      tips_label: { es: 'Para sacar el máximo provecho', en: 'To get the most out of her' },
+      tips_intro: { es: 'Tres recordatorios sencillos que cambian lo que obtienes.', en: 'Three simple reminders that change what you get.' },
 
       tip1: { es: 'Sé específico. Cuanto más contexto aportas, más útil es la respuesta. La vaguedad produce vaguedad.', en: 'Be specific. The more context you share, the more useful the response. Vagueness produces vagueness.' },
       tip2: { es: 'Comparte tus resultados del assessment. Nadia personaliza las respuestas a tu perfil real de liderazgo, no a uno genérico.', en: 'Share your assessment results. Nadia tailors responses to your real leadership profile, not a generic one.' },
@@ -155,7 +158,8 @@
     <section class="border-t border-ink/10 bg-paper-warm py-16 md:py-24 overflow-hidden">
       <div class="max-w-2xl mx-auto px-6">
         <div class="text-center mb-16">
-          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue" x-text="t('uses_label')"></p>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue mb-4" x-text="t('uses_label')"></p>
+          <h2 class="font-normal leading-[1] tracking-[-0.02em] text-4xl md:text-6xl" data-reveal="up" x-text="t('uses_claim')"></h2>
         </div>
 
         <div class="flex flex-col items-center">
@@ -228,7 +232,8 @@
     <section class="border-t border-ink/10">
       <div class="max-w-4xl mx-auto px-6 py-20 md:py-24">
         <div class="text-center mb-14">
-          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue mb-3" x-text="t('tips_label')"></p>
+          <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue mb-4" x-text="t('tips_label')"></p>
+          <h2 class="font-normal leading-[1] tracking-[-0.02em] text-4xl md:text-6xl mb-4" data-reveal="up" x-text="t('tips_claim')"></h2>
           <p class="text-sm text-ink-mute" x-text="t('tips_intro')"></p>
         </div>
         <ol class="space-y-10 md:space-y-12">
