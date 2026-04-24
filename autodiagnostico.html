@@ -19,7 +19,8 @@
       theme: {
         extend: {
           colors: {
-                        tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            gold: { DEFAULT: '#E8B547', soft: '#F5CD73', deep: '#B8842A' },
             ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
             paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
           },
@@ -52,6 +53,30 @@
     .reveal-1 { animation-delay: 0.05s; }
     .reveal-2 { animation-delay: 0.15s; }
     .reveal-3 { animation-delay: 0.25s; }
+
+    /* MIRROR SECTION — iceberg como descenso cinematográfico */
+    .mirror-section {
+      position: relative;
+      contain: layout style;
+    }
+    .mirror-bg {
+      /* Fondo por defecto paper. ScrollTrigger interpola color del inline style. */
+      background: #F7F7FF;
+      transition: background-color 0.2s ease-out;
+    }
+    .mirror-stage {
+      position: relative;
+      z-index: 1;
+    }
+    .mirror-act {
+      will-change: opacity, transform, filter;
+    }
+    /* Ripple slow pulse */
+    @keyframes waterRipple {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-8px); }
+    }
+    [data-mirror-waterline] svg path { animation: waterRipple 6s ease-in-out infinite; }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -137,24 +162,37 @@
 
       disc_banner: { es: 'Este diagnóstico es puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. No es una evaluación de desempeño.', en: 'This diagnosis is purely developmental. Your individual results are only accessible to you and the designated People team. This is not a performance evaluation.' },
 
-      ice_eyebrow: { es: 'El modelo en profundidad', en: 'The model in depth' },
-      ice_title: { es: 'Lo que ves. Y lo que no se ve.', en: 'What you see. And what lies beneath.' },
-      ice_intro: { es: 'El modelo de liderazgo tiene cuatro capas. Las dos visibles son comportamiento observable. Las dos invisibles son lo que impulsa ese comportamiento.', en: 'The leadership model has four layers. The two visible ones are observable behaviour. The two invisible ones are what drives that behaviour.' },
+      /* Iceberg como experiencia de descenso — "Mírate al espejo" */
+      ice_eyebrow:  { es: 'Lo que se ve · Lo que no', en: 'What shows · What doesn\'t' },
+      ice_title_1:  { es: 'Mírate', en: 'Look at' },
+      ice_title_2:  { es: 'al espejo.', en: 'yourself.' },
+      ice_intro:    { es: 'Ves el 10% de tu liderazgo. El otro 90% es lo que realmente te define.',
+                      en: 'You see 10% of your leadership. The other 90% is what truly defines you.' },
 
-      ice_above: { es: 'Sobre la superficie · lo observable', en: 'Above the surface · observable' },
-      ice_below: { es: 'Bajo la superficie · lo que impulsa', en: 'Below the surface · what drives' },
+      /* Acto 1 — sobre la superficie */
+      ice_above:    { es: 'Sobre la superficie · lo observable', en: 'Above the surface · observable' },
+      ice_waterline:{ es: 'LÍNEA DE AGUA', en: 'WATERLINE' },
+      ice_c1_t:     { es: 'Competencias', en: 'Competencies' },
+      ice_c1_d:     { es: 'Lo que eres capaz de hacer como líder. Lo que todos pueden medir.',
+                      en: 'What you are able to do as a leader. What anyone can measure.' },
+      ice_c2_t:     { es: 'Leadership Skills', en: 'Leadership Skills' },
+      ice_c2_d:     { es: 'Las habilidades específicas que aplicas en el día a día.',
+                      en: 'The specific skills you apply day to day.' },
 
-      ice_c1_t: { es: 'Competencias', en: 'Competencies' },
-      ice_c1_d: { es: 'Lo que eres capaz de hacer como líder.', en: 'What you are able to do as a leader.' },
+      /* Acto 2 — bajo la superficie */
+      ice_below:    { es: 'Bajo la superficie · lo que te impulsa', en: 'Below the surface · what drives you' },
+      ice_c3_t:     { es: 'Traits', en: 'Traits' },
+      ice_c3_d:     { es: 'Los rasgos que te definen cuando nadie mira.',
+                      en: 'The traits that define you when nobody is watching.' },
+      ice_c4_t:     { es: 'Drivers', en: 'Drivers' },
+      ice_c4_d:     { es: 'Las fuerzas internas que deciden por ti antes de que pienses.',
+                      en: 'The inner forces that decide for you before you think.' },
 
-      ice_c2_t: { es: 'Leadership Skills', en: 'Leadership Skills' },
-      ice_c2_d: { es: 'Habilidades específicas de liderazgo aplicadas.', en: 'Specific leadership skills in action.' },
-
-      ice_c3_t: { es: 'Traits', en: 'Traits' },
-      ice_c3_d: { es: 'Rasgos de personalidad que te definen.', en: 'Personality traits that define you.' },
-
-      ice_c4_t: { es: 'Drivers', en: 'Drivers' },
-      ice_c4_d: { es: 'Lo que te motiva y te mueve internamente.', en: 'What motivates and moves you internally.' }
+      /* Acto 3 — el núcleo (revelación final) */
+      ice_core_1:   { es: 'El 90% no se ve', en: 'The other 90% stays hidden' },
+      ice_core_2:   { es: 'hasta que te atreves a bucear.', en: 'until you dare to dive in.' },
+      ice_cta:      { es: 'Empezar mi autodiagnóstico', en: 'Start my self-diagnosis' },
+      ice_cta_sub:  { es: '45–60 min · Confidencial · No evaluativo', en: '45–60 min · Confidential · Non-evaluative' }
     };
   </script>
 </head>
@@ -205,75 +243,91 @@
       </div>
     </section>
 
-    <!-- § 00 — ICEBERG MODEL -->
-    <section class="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
-      <div class="text-center mb-4">
-        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3" x-text="t('ice_eyebrow')"></p>
-        <h2 class="font-sans font-normal text-4xl md:text-5xl text-ink tracking-tight leading-tight mb-5" x-text="t('ice_title')"></h2>
-        <p class="max-w-2xl mx-auto text-[15px] text-ink-soft leading-relaxed" x-text="t('ice_intro')"></p>
-      </div>
+    <!-- § 00 — MIRROR DEPTH · iceberg como descenso cinematográfico -->
+    <section class="mirror-section relative" data-mirror-section>
+      <!-- Fondo scrubbed por scroll (paper → navy → deepest) -->
+      <div class="mirror-bg absolute inset-0" aria-hidden="true"></div>
 
-      <!-- Iceberg SVG background + 2×2 cards -->
-      <div class="relative overflow-hidden min-h-[740px] md:min-h-[860px] flex items-center">
+      <!-- Stage pinned -->
+      <div class="mirror-stage relative h-screen overflow-hidden">
 
-        <!-- Background SVG iceberg — detrás de las cards -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-          <!-- Iceberg recreado con paths. ViewBox 300×560, waterline en y=280 (50%) -->
-          <!-- Iceberg recreado con paths. ViewBox 300×560, waterline en y=280 (50%) -->
-          <svg viewBox="0 0 300 560" class="w-[140%] h-auto max-h-[90%] opacity-90" fill="none" stroke="#0066FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" overflow="visible">
-            <defs>
-              <linearGradient id="iceGrad" x1="0" y1="280" x2="0" y2="490" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#0066FF" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#0066FF" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <!-- Degradado bajo el agua — ancho completo de la línea de agua -->
-            <path d="M-200,280 L500,280 L500,490 L-200,490 Z" fill="url(#iceGrad)" stroke="none"/>
-            <!-- Montaña sólida solo sobre el agua: empieza y acaba en el cruce con la waterline -->
-            <path d="M14,280 L68,82 L100,148 L145,10 L172,112 L205,52 L240,150 L283,280"/>
-            <!-- Todo bajo el agua en dashes: extensión perfectamente recta de cada borde exterior -->
-            <!-- Izq: línea (0,330)→(68,82) extendida a y=490 → (-44,490), pasa por (0,330) y (14,280) -->
-            <path d="M-44,490 L14,280" class="ice-dash"/>
-            <!-- Der: línea (240,150)→(300,330) extendida a y=490 → (353,490), pasa por (300,330) y (283,280) -->
-            <path d="M283,280 L353,490" class="ice-dash"/>
-            <!-- Línea de agua extendida -->
-            <line x1="-200" y1="280" x2="500" y2="280"/>
-            <text x="150" y="275" text-anchor="middle" fill="#0066FF" stroke="none" font-size="6.5" letter-spacing="1.4" font-family="monospace" opacity="0.7">LÍNEA DE AGUA · WATERLINE</text>
-          </svg>
+        <!-- Waterline fija horizontal (aparece al final del acto 1) -->
+        <div data-mirror-waterline class="absolute left-0 right-0 top-1/2 -translate-y-1/2 z-20 opacity-0 pointer-events-none">
+          <div class="relative max-w-5xl mx-auto px-6">
+            <div class="relative flex items-center gap-4">
+              <span class="flex-1 h-px bg-tef-blue/30"></span>
+              <span class="font-mono text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-tef-blue whitespace-nowrap">
+                <span x-text="t('ice_waterline')"></span>
+              </span>
+              <span class="flex-1 h-px bg-tef-blue/30"></span>
+            </div>
+            <!-- Ripple decorativo debajo de la waterline -->
+            <svg class="absolute left-0 right-0 top-full mt-1 w-full h-4 pointer-events-none" viewBox="0 0 1000 20" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0,10 Q250,2 500,10 T1000,10" stroke="currentColor" stroke-width="0.8" fill="none" class="text-tef-blue/30" stroke-dasharray="3 8"/>
+            </svg>
+          </div>
         </div>
 
-        <!-- Foreground: labels + cards -->
-        <div class="relative z-10 w-full max-w-2xl mx-auto py-10 flex flex-col gap-32">
-
-          <!-- Fila 1: Competencias + Leadership Skills -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
-              <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-tef-blue mb-3" x-text="t('ice_above')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-ink mb-1" x-text="t('ice_c1_t')"></h3>
-              <p class="text-[13px] text-ink-soft leading-relaxed" x-text="t('ice_c1_d')"></p>
-            </div>
-            <div class="bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
-              <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-tef-blue mb-3" x-text="t('ice_above')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-ink mb-1" x-text="t('ice_c2_t')"></h3>
-              <p class="text-[13px] text-ink-soft leading-relaxed" x-text="t('ice_c2_d')"></p>
-            </div>
-          </div>
-
-          <!-- Fila 2: Traits + Drivers -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-tef-dark text-paper rounded-br-2xl p-5 border border-tef-blue/20">
-              <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-[#7FB3FF] mb-3" x-text="t('ice_below')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-white mb-1" x-text="t('ice_c3_t')"></h3>
-              <p class="text-[13px] text-paper/70 leading-relaxed" x-text="t('ice_c3_d')"></p>
-            </div>
-            <div class="bg-tef-dark text-paper rounded-br-2xl p-5 border border-tef-blue/20">
-              <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-[#7FB3FF] mb-3" x-text="t('ice_below')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-white mb-1" x-text="t('ice_c4_t')"></h3>
-              <p class="text-[13px] text-paper/70 leading-relaxed" x-text="t('ice_c4_d')"></p>
+        <!-- ACTO 1 · Superficie -->
+        <div data-mirror-act="1" class="mirror-act absolute inset-0 flex items-center justify-center px-6">
+          <div class="text-center max-w-4xl mx-auto w-full">
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4 mirror-eyebrow" x-text="t('ice_above')"></p>
+            <h2 class="font-sans font-normal leading-[0.95] tracking-tight mb-10 mirror-title" style="font-size: clamp(3rem, 8vw, 7rem);">
+              <span class="block text-ink" x-text="t('ice_title_1')"></span>
+              <em class="block italic font-normal text-tef-blue" x-text="t('ice_title_2')"></em>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+              <div class="mirror-card bg-white border border-ink/10 rounded-br-2xl p-6 text-left shadow-[0_10px_30px_rgba(3,26,52,0.08)]">
+                <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-tef-blue mb-3">Capa · 01</p>
+                <h3 class="font-normal text-xl md:text-2xl tracking-tight text-ink mb-2" x-text="t('ice_c1_t')"></h3>
+                <p class="text-[14px] text-ink-soft leading-relaxed" x-text="t('ice_c1_d')"></p>
+              </div>
+              <div class="mirror-card bg-white border border-ink/10 rounded-br-2xl p-6 text-left shadow-[0_10px_30px_rgba(3,26,52,0.08)]">
+                <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-tef-blue mb-3">Capa · 02</p>
+                <h3 class="font-normal text-xl md:text-2xl tracking-tight text-ink mb-2" x-text="t('ice_c2_t')"></h3>
+                <p class="text-[14px] text-ink-soft leading-relaxed" x-text="t('ice_c2_d')"></p>
+              </div>
             </div>
           </div>
-
         </div>
+
+        <!-- ACTO 2 · Profundidad -->
+        <div data-mirror-act="2" class="mirror-act absolute inset-0 flex items-center justify-center px-6 opacity-0">
+          <div class="text-center max-w-4xl mx-auto w-full">
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-4" x-text="t('ice_below')"></p>
+            <h2 class="font-sans font-light italic leading-[1.1] tracking-tight mb-10 text-paper" style="font-size: clamp(1.75rem, 3.2vw, 3rem); letter-spacing:0.02em;">
+              <span x-text="t('ice_intro')"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+              <div class="mirror-card-deep bg-[rgba(0,15,40,0.5)] backdrop-blur-sm border border-tef-blue/20 rounded-br-2xl p-6 text-left">
+                <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-[#7FB3FF] mb-3">Capa · 03</p>
+                <h3 class="font-light italic text-xl md:text-2xl tracking-tight text-paper mb-2" x-text="t('ice_c3_t')"></h3>
+                <p class="text-[14px] text-paper/70 leading-relaxed" x-text="t('ice_c3_d')"></p>
+              </div>
+              <div class="mirror-card-deep bg-[rgba(0,15,40,0.5)] backdrop-blur-sm border border-tef-blue/20 rounded-br-2xl p-6 text-left">
+                <p class="font-mono text-[9px] tracking-[0.2em] uppercase text-[#7FB3FF] mb-3">Capa · 04</p>
+                <h3 class="font-light italic text-xl md:text-2xl tracking-tight text-paper mb-2" x-text="t('ice_c4_t')"></h3>
+                <p class="text-[14px] text-paper/70 leading-relaxed" x-text="t('ice_c4_d')"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTO 3 · Núcleo (revelación + CTA) -->
+        <div data-mirror-act="3" class="mirror-act absolute inset-0 flex items-center justify-center px-6 opacity-0">
+          <div class="text-center max-w-3xl mx-auto w-full">
+            <p class="font-sans font-light leading-[1.05] tracking-tight mb-10" style="font-size: clamp(2rem, 5vw, 4.5rem)">
+              <span class="block text-paper/90" x-text="t('ice_core_1')"></span>
+              <em class="block italic font-normal text-gold" x-text="t('ice_core_2')"></em>
+            </p>
+            <a href="#modules" class="group inline-flex items-center gap-4 border border-gold/60 hover:border-gold px-8 py-4 transition-colors">
+              <span class="font-mono text-[11px] md:text-xs tracking-[0.22em] uppercase text-gold group-hover:text-gold-soft transition-colors" x-text="t('ice_cta')"></span>
+              <span class="text-gold group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+            <p class="mt-6 font-mono text-[10px] tracking-[0.25em] uppercase text-paper/50" x-text="t('ice_cta_sub')"></p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -444,5 +498,95 @@
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
+
+  <!-- MIRROR section — 3-act pinned cinematic descent -->
+  <script>
+    (function(){
+      const boot = () => {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        const section = document.querySelector('[data-mirror-section]');
+        if (!section) return;
+
+        // Mobile fallback: dejar los 3 actos en vertical sin pin
+        if (window.innerWidth < 768 || reduced) {
+          const acts = section.querySelectorAll('.mirror-act');
+          acts.forEach(a => { a.style.position='relative'; a.style.opacity=1; a.style.inset='auto'; });
+          const stage = section.querySelector('.mirror-stage');
+          if (stage) stage.style.height='auto';
+          const waterline = section.querySelector('[data-mirror-waterline]');
+          if (waterline) waterline.style.display='none';
+          // Fondo manual por acto en mobile
+          const bg = section.querySelector('.mirror-bg');
+          if (bg) bg.style.display='none';
+          section.querySelector('[data-mirror-act="2"]').style.background = 'linear-gradient(180deg, #020914 0%, #050e22 100%)';
+          section.querySelector('[data-mirror-act="3"]').style.background = '#020914';
+          return;
+        }
+
+        // Estado inicial
+        gsap.set('[data-mirror-act="1"]', { opacity: 1, scale: 1, filter: 'blur(0px)' });
+        gsap.set('[data-mirror-act="2"], [data-mirror-act="3"]', { opacity: 0, scale: 0.94, filter: 'blur(10px)' });
+        gsap.set('[data-mirror-waterline]', { opacity: 0, scale: 0.85 });
+        gsap.set('.mirror-bg', { backgroundColor: '#F7F7FF' });
+
+        // Timeline pinned 3 actos
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: '+=300%',
+            pin: '.mirror-stage',
+            pinSpacing: true,
+            scrub: 0.8,
+            invalidateOnRefresh: true
+          }
+        });
+
+        tl
+          // Acto 1 sostenido (0 → 0.25)
+          .to({}, { duration: 0.25 })
+          // Waterline aparece justo al final del acto 1 (cross fade indicator)
+          .to('[data-mirror-waterline]', { opacity: 1, scale: 1, duration: 0.15 }, 0.2)
+          // Transición fondo paper → navy (waterline crossing)
+          .to('.mirror-bg', {
+            backgroundColor: '#020914',
+            duration: 0.3, ease: 'power2.inOut'
+          }, 0.25)
+          // Acto 1 sale (blur up)
+          .to('[data-mirror-act="1"]', {
+            opacity: 0, scale: 1.08, filter: 'blur(14px)', y: -40, duration: 0.25, ease: 'power2.in'
+          }, 0.3)
+          // Waterline fade out una vez cruzada
+          .to('[data-mirror-waterline]', { opacity: 0, duration: 0.15 }, 0.45)
+          // Acto 2 entra (blur down, aparece con typography íntima)
+          .to('[data-mirror-act="2"]', {
+            opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.3, ease: 'power3.out'
+          }, 0.4)
+          // Acto 2 sostenido
+          .to({}, { duration: 0.15 })
+          // Transición navy → near-black (descenso al núcleo)
+          .to('.mirror-bg', {
+            backgroundColor: '#010408',
+            duration: 0.3, ease: 'power2.inOut'
+          }, 0.7)
+          // Acto 2 sale (se hunde hacia abajo)
+          .to('[data-mirror-act="2"]', {
+            opacity: 0, scale: 0.92, filter: 'blur(12px)', y: 30, duration: 0.25, ease: 'power2.in'
+          }, 0.73)
+          // Acto 3 entra (revelación + CTA)
+          .to('[data-mirror-act="3"]', {
+            opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.3, ease: 'power3.out'
+          }, 0.8)
+          // Acto 3 sostenido final
+          .to({}, { duration: 0.2 });
+      };
+
+      if (document.readyState === 'complete') boot();
+      else window.addEventListener('load', boot, { once: true });
+    })();
+  </script>
 </body>
 </html>
