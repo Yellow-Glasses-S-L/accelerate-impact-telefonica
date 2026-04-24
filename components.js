@@ -19,8 +19,7 @@
   const navEl = document.getElementById('site-navbar');
   if (navEl) {
     navEl.className = 'sticky top-0 z-50';
-    const heroBg = current === 'home' ? '#031A34' : 'transparent';
-    navEl.setAttribute('style', `background:${heroBg};border:none;backdrop-filter:none;padding:12px 16px 0;pointer-events:none;`);
+    navEl.setAttribute('style', 'background:transparent !important;border:none !important;backdrop-filter:none !important;padding:12px 16px 0;pointer-events:none;');
     navEl.setAttribute('x-data', '{ menuOpen: false }');
     navEl.innerHTML = `
       <div class="max-w-3xl mx-auto relative">
