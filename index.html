@@ -84,7 +84,8 @@
       background: #020914;
       position: relative;
     }
-    .intro-hero { min-height: 100vh; overflow: hidden; margin-top: -68px; }
+    .intro-hero { min-height: 100vh; overflow: hidden; }
+    .nav-hero-filler { height: 68px; background: #020914; margin-top: -68px; pointer-events: none; position: relative; z-index: 0; }
 
     /* Glow atmosférico fixed al viewport — visible solo detrás de secciones oscuras */
     .dark-atmosphere {
@@ -505,6 +506,7 @@
 
   <!-- HEADER — 4 items -->
   <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
+  <div class="nav-hero-filler" aria-hidden="true"></div>
 
   <!-- DISCLAIMER POP-UP -->
   <div x-show="!disclaimerSeen"
