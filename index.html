@@ -26,6 +26,7 @@
         extend: {
           colors: {
             tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            gold: { DEFAULT: '#E8B547', soft: '#F5CD73', deep: '#B8842A' },
             ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
             paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
           },
@@ -665,8 +666,8 @@
         <!-- ACT 3 · Us — Nos superamos juntos -->
         <div data-hero-act="3" class="hero-act absolute inset-0 flex items-center justify-center px-6 pt-16 pb-20" style="opacity:0">
           <div class="text-center max-w-4xl mx-auto">
-            <p class="act-label mb-3">03</p>
-            <h1 class="act-word text-tef-blue">Us</h1>
+            <p class="act-label mb-3 text-gold">03</p>
+            <h1 class="act-word text-gold">Us</h1>
             <p class="act-subtitle mt-4" x-text="t('sub_us')"></p>
             <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-xl mx-auto">
               <div class="act-value">
@@ -702,33 +703,40 @@
         <!-- Encabezado de sección — zoom cinematográfico scrubbed -->
         <div class="text-center mb-16 md:mb-20" data-accelerate-header>
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
-          <h2 class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6 accelerate-title">Accelerate Impact</h2>
-          <div class="mx-auto w-16 h-px bg-ink/15 mb-6"></div>
+          <h2 class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6 accelerate-title leading-[0.95]">
+            <span>Accelerate</span>
+            <em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">Impact</em>
+          </h2>
+          <div class="mx-auto w-16 h-px mb-6" style="background: linear-gradient(90deg, transparent, #E8B547 50%, transparent);"></div>
           <p class="max-w-2xl mx-auto text-base md:text-lg font-normal text-ink-soft leading-relaxed accelerate-lead" x-text="t('program_lead')"></p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-16 md:gap-y-20" data-cards-3d style="perspective: 1200px;">
 
           <!-- WHY -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">01 / Why</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">01</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">Why</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_why_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_why_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
           </article>
 
           <!-- HOW -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">02 / How</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">02</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">How</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_how_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed mb-6" x-text="t('b_how_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_how_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed mb-6" x-text="t('b_how_body')"></p>
             <div class="flex flex-wrap gap-2">
               <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Customer First</span>
               <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Delivering Excellence</span>
@@ -740,25 +748,29 @@
           </article>
 
           <!-- WHAT -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">03 / What</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">03</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">What</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_what_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_what_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
           </article>
 
-          <!-- EXPECT -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">04 / Expect</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <!-- EXPECT (culmina en dorado) -->
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(232,181,71,0.35); letter-spacing:-0.05em;">04</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep">Expect</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_exp_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_exp_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
           </article>
 
         </div>
@@ -795,7 +807,7 @@
               <linearGradient id="pathA" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#0066FF" stop-opacity="0.7"/>
                 <stop offset="50%" stop-color="#0066FF" stop-opacity="1"/>
-                <stop offset="100%" stop-color="#0066FF" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#E8B547" stop-opacity="0.95"/>
               </linearGradient>
             </defs>
             <!-- Guía fantasma dashed (siempre visible) -->
@@ -808,7 +820,7 @@
             <circle cx="144"  cy="409" r="5" fill="#0066FF"/>
             <circle cx="448"  cy="361" r="5" fill="#0066FF"/>
             <circle cx="752"  cy="337" r="5" fill="#0066FF"/>
-            <circle cx="1056" cy="305" r="5" fill="#0066FF"/>
+            <circle cx="1056" cy="305" r="6" fill="#E8B547"/>
           </svg>
 
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:480px" data-track-grid>
