@@ -67,6 +67,9 @@
       ref: { es: 'Ref · 07 / 07', en: 'Ref · 07 / 07' },
       addressee: { es: 'Para ti · participante del programa', en: 'To you · program participant' },
 
+      /* Claim oficial Laura */
+      hero_claim: { es: 'Estamos contigo en cada paso.', en: 'We are with you every step of the way.' },
+
       greeting: { es: 'Hola,', en: 'Hello,' },
       body_1: {
         es: 'Si tienes dudas sobre el programa, su contenido o cualquier aspecto logístico, escríbenos.',
@@ -77,14 +80,14 @@
         en: 'We reply within 48 business hours.'
       },
       signoff: { es: 'Un saludo,', en: 'Warm regards,' },
-      signoff_team: { es: 'Equipo del programa', en: 'Program team' },
+      signoff_team: { es: 'Equipo Accelerate Impact', en: 'Accelerate Impact team' },
 
       card_label: { es: 'Persona de contacto', en: 'Contact person' },
-      card_name: { es: '[Nombre pendiente de confirmar]', en: '[Name pending confirmation]' },
-      card_role: { es: 'Equipo Telefónica Universitas', en: 'Telefónica Universitas team' },
-      card_email: { es: '[email@universitas.com]', en: '[email@universitas.com]' },
-      card_phone: { es: '[+34 000 000 000]', en: '[+34 000 000 000]' },
-      card_note: { es: 'Datos definitivos pendientes del cliente.', en: 'Final details pending client confirmation.' },
+      card_name: { es: 'Equipo Accelerate Impact', en: 'Accelerate Impact team' },
+      card_role: { es: 'Telefónica Universitas', en: 'Telefónica Universitas' },
+      card_email: { es: 'accelerate.universitas@telefonica.com', en: 'accelerate.universitas@telefonica.com' },
+      card_phone: { es: '—', en: '—' },
+      card_note: { es: 'Escríbenos a este email y te respondemos en 48 h laborables.', en: 'Write to this email — we reply within 48 business hours.' },
 
       note_label: { es: 'Coordinación', en: 'Coordination' },
       note_text: {
@@ -117,11 +120,15 @@
         <span class="absolute bottom-4 left-4 w-5 h-5 border-b border-l border-ink/30"></span>
         <span class="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-ink/30"></span>
 
-        <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-12 md:mb-16" x-text="t('addressee')"></p>
+        <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-6 md:mb-8" x-text="t('addressee')"></p>
 
-        <h1 class="font-normal leading-[0.95] tracking-[-0.03em] text-6xl md:text-8xl mb-10">
+        <!-- Hero claim oficial Laura -->
+        <h1 class="font-normal leading-[0.95] tracking-[-0.03em] text-4xl md:text-6xl lg:text-7xl mb-10 md:mb-14"
+            data-reveal="up" x-text="t('hero_claim')"></h1>
+
+        <p class="font-normal text-3xl md:text-5xl mb-8">
           <em class="italic font-normal text-tef-blue" data-info-greeting x-text="t('greeting')"></em>
-        </h1>
+        </p>
 
         <div class="space-y-5 text-[16px] md:text-[17px] leading-relaxed text-ink-soft max-w-md mb-14">
           <p x-text="t('body_1')"></p>

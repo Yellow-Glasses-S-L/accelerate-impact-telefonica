@@ -26,6 +26,7 @@
         extend: {
           colors: {
             tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            gold: { DEFAULT: '#E8B547', soft: '#F5CD73', deep: '#B8842A' },
             ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
             paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
           },
@@ -385,16 +386,23 @@
       /* INTRO cinematográfico */
       intro_eyebrow_left:  { es: 'Telefónica · Comunidad de Líderes', en: 'Telefónica · Leadership Community' },
       intro_eyebrow_right: { es: '2026', en: '2026' },
-      intro_title:   { es: 'Bienvenidos a Accelerate Impact.', en: 'Welcome to Accelerate Impact.' },
-      intro_sub:     { es: 'El programa de liderazgo que convierte la cultura en acción.',
-                       en: 'The leadership program that turns culture into action.' },
-      intro_scroll:  { es: 'Desliza para empezar', en: 'Scroll to begin' },
+      intro_title:    { es: 'Bienvenido.', en: 'Welcome.' },
+      intro_program_a: { es: 'a', en: 'to' },
+      /* Nota: "Accelerate Impact" literal, se mantiene en inglés */
+      intro_slogan_1: { es: 'El futuro de Telefónica',  en: 'The future of Telefónica' },
+      intro_slogan_2: { es: 'lo lideras tú.',            en: 'is led by you.' },
+      intro_subclaim: { es: 'Y empieza hoy. Ahora mismo.',
+                        en: 'And it begins today. Right now.' },
+      intro_scroll:   { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
-      /* HERO It's on Us */
+      /* HERO It's on Us — 3 actos con claims oficiales Laura */
       hero_eyebrow: { es: 'Programa de liderazgo · 2026', en: 'Leadership program · 2026' },
-      sub_its: { es: 'Damos lo mejor de nosotros mismos', en: 'Give your best.' },
-      sub_on:  { es: 'Cuestionamos nuestros propios límites', en: 'Challenge your limits.' },
-      sub_us:  { es: 'Nos superamos juntos', en: 'Rise together.' },
+      sub_its:      { es: 'Damos lo mejor de nosotros.',         en: 'We give our best.' },
+      sub_its_kicker: { es: 'Porque lo bueno no basta.',          en: 'Because good enough is not enough.' },
+      sub_on:       { es: 'Cuestionamos nuestros propios límites.', en: 'We challenge our own limits.' },
+      sub_on_kicker:  { es: 'Y los rompemos.',                    en: 'And we break them.' },
+      sub_us:       { es: 'Crecemos juntos.',                    en: 'We grow together.' },
+      sub_us_kicker:  { es: 'O no crecemos.',                     en: 'Or we don’t grow at all.' },
 
       val_time:    { es: 'El momento del cliente es ahora',     en: 'Customer time is now' },
       val_excel:   { es: 'La excelencia es nuestro estándar',   en: 'Excellence is our standard' },
@@ -403,39 +411,43 @@
       val_results: { es: 'El resultado depende de nosotros',    en: 'Results depend on us' },
       val_growth:  { es: 'El crecimiento construye futuro',     en: "People's growth builds our future" },
 
-      program_eyebrow: { es: 'El programa que lo hace real', en: 'The program that makes it real' },
+      program_eyebrow: { es: 'El presente nos reta', en: 'The present challenges us' },
       program_lead: {
-        es: 'Un programa de liderazgo estratégico para la comunidad de líderes de Telefónica. Diez meses. Un compromiso: superarnos juntos.',
-        en: "A strategic leadership program for Telefónica's leadership community. Ten months. One commitment: to rise together."
+        es: 'No esperamos al futuro: lo construimos. Con ambición, disciplina y responsabilidad compartida. Porque no hay nada más poderoso que un grupo de personas persiguiendo un objetivo común.',
+        en: 'We do not wait for the future: we build it. With ambition, discipline and shared responsibility. Because nothing is more powerful than a group of people pursuing a common goal.'
       },
 
-      /* 4 BLOQUES */
-      b_why_label:  { es: 'Por qué ahora', en: 'Why now' },
-      b_why_title:  { es: 'Un nuevo capítulo ha empezado', en: 'A new chapter has begun' },
+      /* 4 BLOQUES — claims rojos Laura (titulares) + verbatim negros (body) */
+      b_why_label:  { es: '¿Por qué ahora?', en: 'Why now?' },
+      b_why_title:  { es: 'Porque sin ti, no hay transformación.',
+                      en: 'Because without you, there is no transformation.' },
       b_why_body:   {
-        es: 'Con Transform & Grow, Telefónica ha marcado una dirección clara hacia el futuro. El presente nos reta, y este programa existe para que nuestro liderazgo esté a la altura de esa nueva ambición.',
-        en: 'With Transform & Grow, Telefónica has set a clear direction for the future. The present challenges us, and this program exists so our leadership rises to that ambition.'
+        es: 'Transformar y Crecer depende de nosotros. El futuro de Telefónica está en nuestras manos. Lo miramos con ilusión y optimismo. Con una misión clara, una visión compartida y una convicción firme: el negocio necesita a las personas. No se trata de qué empezarás a hacer mañana, sino de qué haces hoy. Ahora mismo.',
+        en: 'Transform & Grow depends on us. The future of Telefónica is in our hands. We face it with optimism, a clear mission and one firm conviction: the business needs its people. It is not about what you will start doing tomorrow — it is about what you do today. Right now.'
       },
 
-      b_how_label:  { es: 'Cómo lo conseguimos', en: 'How we get there' },
-      b_how_title:  { es: 'Un modelo de liderazgo, seis conductas', en: 'One leadership model, six behaviours' },
+      b_how_label:  { es: '¿Cómo?', en: 'How?' },
+      b_how_title:  { es: 'Te damos las herramientas. Tú decides hasta dónde llegas.',
+                      en: 'We give you the tools. You decide how far you go.' },
       b_how_body:   {
-        es: 'Tres actitudes, dos valores por actitud, seis conductas observables. Un lenguaje común que convierte la cultura de Telefónica en decisiones diarias.',
-        en: 'Three attitudes, two values each, six observable behaviours. A common language that turns Telefónica culture into daily decisions.'
+        es: 'Para conseguir nuestros objetivos de negocio, contamos con un nuevo modelo de liderazgo que nos da las herramientas para transformarnos. Porque lo que transforma a Telefónica es cómo decidimos, cómo colaboramos y cómo actuamos.',
+        en: 'To achieve our business goals, we have a new leadership model that equips us to transform. What transforms Telefónica is how we decide, how we collaborate, and how we act.'
       },
 
-      b_what_label: { es: 'Qué es Accelerate Impact', en: 'What is Accelerate Impact' },
-      b_what_title: { es: 'No es un curso. Es una pausa estratégica.', en: 'Not a course. A strategic pause.' },
+      b_what_label: { es: 'Accelerate Impact', en: 'Accelerate Impact' },
+      b_what_title: { es: 'El programa que te convierte en el líder que Telefónica necesita.',
+                      en: 'The program that turns you into the leader Telefónica needs.' },
       b_what_body:  {
-        es: 'Un espacio para reconectar con lo que importa, fortalecer el liderazgo que Telefónica necesita hoy, y responder con confianza a las tensiones del presente: performance y transformación, cross-boundary, confianza, decisiones mejores.',
-        en: 'A space to reconnect with what matters, strengthen the leadership Telefónica needs now, and respond with confidence to the tensions of today: performance and transformation, cross-boundary work, trust, better decisions.'
+        es: 'Una experiencia de formación y acompañamiento para acelerar la ejecución del plan estratégico. Diseñada para tomar mejores decisiones en contextos complejos, priorizar lo que genera impacto real, y actuar con claridad, foco y responsabilidad compartida.',
+        en: 'A training and coaching experience to accelerate the strategic plan. Designed to make better decisions in complex contexts, prioritise what creates real impact, and act with clarity, focus and shared responsibility.'
       },
 
-      b_exp_label:  { es: 'Qué puedes esperar', en: 'What you can expect' },
-      b_exp_title:  { es: 'Inmersivo, humano, exigente', en: 'Immersive, human, demanding' },
+      b_exp_label:  { es: 'Qué te llevas', en: 'What you take with you' },
+      b_exp_title:  { es: 'Lo que te llevas de aquí no se queda aquí.',
+                      en: 'What you take from here does not stay here.' },
       b_exp_body:   {
-        es: 'Experiencia inmersiva lejos del aula tradicional. Tiempo para pensar tu impacto. Herramientas prácticas. Peer challenge. Un viaje que exige, que energiza y que cambia la conducta — no sólo la información.',
-        en: 'An immersive experience far from the traditional classroom. Time to think about your impact. Practical tools. Peer challenge. A journey that is demanding and energizing, designed to change behaviour — not just transfer information.'
+        es: 'Comprender nuestro modelo de liderazgo y cómo desafiar tus propios límites. Aprender a simplificar tu modelo operativo: cada paso suma. Adquirir actitudes y herramientas prácticas para hacer realidad el plan estratégico. Multiplicar tus capacidades como líder.',
+        en: 'Understand our leadership model and how to challenge your own limits. Learn to simplify your operating model: every step counts. Acquire attitudes and practical tools to make the strategic plan real. Multiply your leadership capabilities.'
       },
 
       /* TRACK */
@@ -561,7 +573,7 @@
       </svg>
 
       <div class="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center">
-        <!-- Bloque principal compacto: eyebrow + título + subtítulo como una sola composición -->
+        <!-- Bloque principal compacto -->
         <div class="flex flex-col items-center">
           <!-- Eyebrow (muy cerca del título) -->
           <div class="intro-eyebrow mb-3 md:mb-4 opacity-0">
@@ -572,14 +584,28 @@
             </p>
           </div>
 
-          <!-- BIG Welcome — pegado al eyebrow -->
+          <!-- BIG Welcome -->
           <h1 class="font-sans font-normal leading-[0.88] tracking-tight">
             <span class="intro-word block opacity-0" x-text="t('intro_title')"></span>
           </h1>
 
-          <!-- Sub — pegado al título, misma composición -->
-          <p class="intro-sub mt-3 md:mt-5 max-w-2xl text-lg md:text-2xl text-paper/75 leading-snug opacity-0"
-             x-text="t('intro_sub')"></p>
+          <!-- Programa nombre — medium, debajo del welcome -->
+          <p class="intro-program mt-2 md:mt-4 font-sans font-light leading-none tracking-tight opacity-0"
+             style="font-size: clamp(1.75rem, 5vw, 4rem)">
+            <span x-text="t('intro_program_a')"></span>
+            <span class="font-normal ml-2">Accelerate </span><em class="italic text-tef-blue font-normal" style="letter-spacing:-0.02em">Impact</em>
+          </p>
+
+          <!-- Slogan épico (claim oficial de Laura) -->
+          <div class="intro-slogan mt-10 md:mt-14 max-w-3xl opacity-0">
+            <p class="font-sans font-normal leading-[0.95] tracking-tight text-paper"
+               style="font-size: clamp(1.5rem, 3.2vw, 2.75rem)">
+              <span class="block" x-text="t('intro_slogan_1')"></span>
+              <span class="block italic text-gold" x-text="t('intro_slogan_2')"></span>
+            </p>
+            <p class="intro-subclaim mt-5 md:mt-7 text-base md:text-lg text-paper/65 leading-snug italic"
+               x-text="t('intro_subclaim')"></p>
+          </div>
         </div>
 
         <!-- Scroll indicator (absolute, no afecta flow) -->
@@ -622,6 +648,7 @@
             <p class="act-label mb-3">01</p>
             <h1 class="act-word">It's</h1>
             <p class="act-subtitle mt-4" x-text="t('sub_its')"></p>
+            <p class="act-kicker mt-2 italic text-gold font-light" style="font-size: clamp(0.95rem, 1.1vw, 1.15rem)" x-text="t('sub_its_kicker')"></p>
             <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-xl mx-auto">
               <div class="act-value">
                 <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
@@ -645,6 +672,7 @@
             <p class="act-label mb-3">02</p>
             <h1 class="act-word">on</h1>
             <p class="act-subtitle mt-4" x-text="t('sub_on')"></p>
+            <p class="act-kicker mt-2 italic text-gold font-light" style="font-size: clamp(0.95rem, 1.1vw, 1.15rem)" x-text="t('sub_on_kicker')"></p>
             <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-2xl mx-auto">
               <div class="act-value">
                 <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
@@ -665,9 +693,10 @@
         <!-- ACT 3 · Us — Nos superamos juntos -->
         <div data-hero-act="3" class="hero-act absolute inset-0 flex items-center justify-center px-6 pt-16 pb-20" style="opacity:0">
           <div class="text-center max-w-4xl mx-auto">
-            <p class="act-label mb-3">03</p>
-            <h1 class="act-word text-tef-blue">Us</h1>
+            <p class="act-label mb-3 text-gold">03</p>
+            <h1 class="act-word text-gold">Us</h1>
             <p class="act-subtitle mt-4" x-text="t('sub_us')"></p>
+            <p class="act-kicker mt-2 italic text-gold-soft font-light" style="font-size: clamp(0.95rem, 1.1vw, 1.15rem)" x-text="t('sub_us_kicker')"></p>
             <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-xl mx-auto">
               <div class="act-value">
                 <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
@@ -702,33 +731,40 @@
         <!-- Encabezado de sección — zoom cinematográfico scrubbed -->
         <div class="text-center mb-16 md:mb-20" data-accelerate-header>
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
-          <h2 class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6 accelerate-title">Accelerate Impact</h2>
-          <div class="mx-auto w-16 h-px bg-ink/15 mb-6"></div>
+          <h2 class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6 accelerate-title leading-[0.95]">
+            <span>Accelerate</span>
+            <em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">Impact</em>
+          </h2>
+          <div class="mx-auto w-16 h-px mb-6" style="background: linear-gradient(90deg, transparent, #E8B547 50%, transparent);"></div>
           <p class="max-w-2xl mx-auto text-base md:text-lg font-normal text-ink-soft leading-relaxed accelerate-lead" x-text="t('program_lead')"></p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-16 md:gap-y-20" data-cards-3d style="perspective: 1200px;">
 
           <!-- WHY -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">01 / Why</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">01</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">Why</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_why_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_why_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
           </article>
 
           <!-- HOW -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">02 / How</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">02</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">How</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_how_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed mb-6" x-text="t('b_how_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_how_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed mb-6" x-text="t('b_how_body')"></p>
             <div class="flex flex-wrap gap-2">
               <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Customer First</span>
               <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Delivering Excellence</span>
@@ -740,25 +776,29 @@
           </article>
 
           <!-- WHAT -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">03 / What</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">03</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">What</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_what_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_what_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
           </article>
 
-          <!-- EXPECT -->
-          <article class="relative">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">04 / Expect</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
+          <!-- EXPECT (culmina en dorado) -->
+          <article class="relative pl-4 md:pl-6 overflow-visible">
+            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
+                  style="color: transparent; -webkit-text-stroke: 1px rgba(232,181,71,0.35); letter-spacing:-0.05em;">04</span>
+            <div class="relative flex items-center gap-3 mb-5">
+              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep">Expect</span>
+              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
             </div>
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_exp_title')"></h3>
-            <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
+            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
+            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_exp_title')"></h3>
+            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
           </article>
 
         </div>
@@ -795,7 +835,7 @@
               <linearGradient id="pathA" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#0066FF" stop-opacity="0.7"/>
                 <stop offset="50%" stop-color="#0066FF" stop-opacity="1"/>
-                <stop offset="100%" stop-color="#0066FF" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#E8B547" stop-opacity="0.95"/>
               </linearGradient>
             </defs>
             <!-- Guía fantasma dashed (siempre visible) -->
@@ -808,7 +848,7 @@
             <circle cx="144"  cy="409" r="5" fill="#0066FF"/>
             <circle cx="448"  cy="361" r="5" fill="#0066FF"/>
             <circle cx="752"  cy="337" r="5" fill="#0066FF"/>
-            <circle cx="1056" cy="305" r="5" fill="#0066FF"/>
+            <circle cx="1056" cy="305" r="6" fill="#E8B547"/>
           </svg>
 
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative" style="min-height:480px" data-track-grid>
@@ -1278,17 +1318,19 @@
           tl.to('.intro-eyebrow', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, 0)
             .from('.intro-eyebrow', { y: 20, duration: 1, ease: 'power2.out' }, 0)
             .to('.intro-word', {
-              opacity: 1, duration: 1.8, ease: 'power4.out'
+              opacity: 1, duration: 1.6, ease: 'power4.out'
             }, 0.25)
             .from('.intro-word', {
-              scale: 1.35, filter: 'blur(26px)', y: 80, duration: 1.8, ease: 'power4.out'
+              scale: 1.35, filter: 'blur(26px)', y: 80, duration: 1.6, ease: 'power4.out'
             }, 0.25)
-            .to('.intro-sub', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, 1.1)
-            .from('.intro-sub', { y: 26, duration: 1.2, ease: 'power3.out' }, 1.1)
-            .to('.intro-scroll', { opacity: 1, y: 0, duration: 0.9 }, 1.8)
-            .from('.intro-scroll', { y: -8, duration: 0.9 }, 1.8);
+            .to('.intro-program', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, 0.85)
+            .from('.intro-program', { y: 30, duration: 1.1, ease: 'power3.out' }, 0.85)
+            .to('.intro-slogan', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, 1.4)
+            .from('.intro-slogan', { y: 40, duration: 1.2, ease: 'power3.out' }, 1.4)
+            .to('.intro-scroll', { opacity: 1, y: 0, duration: 0.9 }, 2.1)
+            .from('.intro-scroll', { y: -8, duration: 0.9 }, 2.1);
         } else {
-          gsap.set('.intro-eyebrow, .intro-word, .intro-sub, .intro-scroll', { opacity: 1 });
+          gsap.set('.intro-eyebrow, .intro-word, .intro-program, .intro-slogan, .intro-scroll', { opacity: 1 });
         }
 
         // ── INTRO · scroll exit (pin 80vh con escalado) ──
@@ -1303,8 +1345,9 @@
               pinSpacing: true
             }
           })
-          .to('.intro-word',    { scale: 2.1, y: -120, opacity: 0, filter: 'blur(14px)' }, 0)
-          .to('.intro-sub',     { y: -60, opacity: 0 }, 0)
+          .to('.intro-word',    { scale: 2.1, y: -140, opacity: 0, filter: 'blur(14px)' }, 0)
+          .to('.intro-program', { y: -80, opacity: 0, filter: 'blur(8px)' }, 0)
+          .to('.intro-slogan',  { y: -60, opacity: 0, filter: 'blur(6px)' }, 0)
           .to('.intro-eyebrow', { y: -30, opacity: 0 }, 0)
           .to('.intro-scroll',  { opacity: 0 }, 0);
         }
