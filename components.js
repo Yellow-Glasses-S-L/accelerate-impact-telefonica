@@ -79,6 +79,8 @@
         </div>
 
       </div>`;
+
+    if (current === 'home') navEl.classList.add('nav-on-dark');
   }
 
   /* ── FOOTER ── */
