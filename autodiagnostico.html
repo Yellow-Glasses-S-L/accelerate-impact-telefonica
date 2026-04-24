@@ -245,11 +245,11 @@
 
     <!-- § 00 — MIRROR DEPTH · iceberg como descenso cinematográfico -->
     <section class="mirror-section relative" data-mirror-section>
-      <!-- Fondo scrubbed por scroll (paper → navy → deepest) -->
-      <div class="mirror-bg absolute inset-0" aria-hidden="true"></div>
-
-      <!-- Stage pinned -->
+      <!-- Stage pinned (contiene TODO lo cinematográfico — incluido el bg scrubbed) -->
       <div class="mirror-stage relative h-screen overflow-hidden">
+
+        <!-- Fondo scrubbed por scroll (paper → navy → deepest) — DENTRO del stage para que se quede pinnado -->
+        <div class="mirror-bg absolute inset-0 z-0" aria-hidden="true"></div>
 
         <!-- Waterline fija horizontal (aparece al final del acto 1) -->
         <div data-mirror-waterline class="absolute left-0 right-0 top-1/2 -translate-y-1/2 z-20 opacity-0 pointer-events-none">
@@ -269,7 +269,7 @@
         </div>
 
         <!-- ACTO 1 · Superficie -->
-        <div data-mirror-act="1" class="mirror-act absolute inset-0 flex items-center justify-center px-6">
+        <div data-mirror-act="1" class="mirror-act absolute inset-0 flex items-center justify-center px-6 z-10">
           <div class="text-center max-w-4xl mx-auto w-full">
             <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4 mirror-eyebrow" x-text="t('ice_above')"></p>
             <h2 class="font-sans font-normal leading-[0.95] tracking-tight mb-10 mirror-title" style="font-size: clamp(3rem, 8vw, 7rem);">
@@ -292,7 +292,7 @@
         </div>
 
         <!-- ACTO 2 · Profundidad -->
-        <div data-mirror-act="2" class="mirror-act absolute inset-0 flex items-center justify-center px-6 opacity-0">
+        <div data-mirror-act="2" class="mirror-act absolute inset-0 flex items-center justify-center px-6 z-10" style="opacity:0;">
           <div class="text-center max-w-4xl mx-auto w-full">
             <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-4" x-text="t('ice_below')"></p>
             <h2 class="font-sans font-light italic leading-[1.1] tracking-tight mb-10 text-paper" style="font-size: clamp(1.75rem, 3.2vw, 3rem); letter-spacing:0.02em;">
@@ -314,7 +314,7 @@
         </div>
 
         <!-- ACTO 3 · Núcleo (revelación + CTA) -->
-        <div data-mirror-act="3" class="mirror-act absolute inset-0 flex items-center justify-center px-6 opacity-0">
+        <div data-mirror-act="3" class="mirror-act absolute inset-0 flex items-center justify-center px-6 z-10" style="opacity:0;">
           <div class="text-center max-w-3xl mx-auto w-full">
             <p class="font-sans font-light leading-[1.05] tracking-tight mb-10" style="font-size: clamp(2rem, 5vw, 4.5rem)">
               <span class="block text-paper/90" x-text="t('ice_core_1')"></span>
