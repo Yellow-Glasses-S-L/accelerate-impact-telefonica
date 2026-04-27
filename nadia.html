@@ -254,14 +254,15 @@
 
         </div>
 
-        <!-- Editorial image strip -->
-        <div class="mt-16 md:mt-20 max-w-3xl">
-          <img src="nadia-cuando.png" alt="" aria-hidden="true"
-               class="w-full object-cover rounded-br-2xl"
-               style="max-height:420px; object-position:center;">
-        </div>
-
       </div>
+
+      <!-- Full-bleed editorial image — section transition moment -->
+      <div class="mt-20 md:mt-24 -mx-6 md:-mx-12 lg:-mx-16 overflow-hidden" data-reveal="up">
+        <img src="nadia-cuando.png" alt="" aria-hidden="true"
+             class="w-full object-cover"
+             style="max-height:480px; aspect-ratio:21/9; object-position:center 30%;">
+      </div>
+
     </section>
 
     <!-- § ¿CÓMO HABLAR CON NADIA? -->
@@ -277,36 +278,41 @@
           </h2>
         </div>
 
-        <div class="border-t border-paper/10">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-0 lg:gap-20 items-start">
 
-          <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
-            <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">01</span>
-            <p class="font-sans font-normal text-paper/80 leading-relaxed"
-               style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
-               x-text="t('tip1')"></p>
+          <!-- Tips column -->
+          <div class="border-t border-paper/10">
+
+            <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
+              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">01</span>
+              <p class="font-sans font-normal text-paper/80 leading-relaxed"
+                 style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+                 x-text="t('tip1')"></p>
+            </div>
+
+            <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
+              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">02</span>
+              <p class="font-sans font-normal text-paper/80 leading-relaxed"
+                 style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+                 x-text="t('tip2')"></p>
+            </div>
+
+            <div class="py-10 md:py-12 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
+              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">03</span>
+              <p class="font-sans font-normal text-paper/80 leading-relaxed"
+                 style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+                 x-text="t('tip3')"></p>
+            </div>
+
           </div>
 
-          <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
-            <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">02</span>
-            <p class="font-sans font-normal text-paper/80 leading-relaxed"
-               style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
-               x-text="t('tip2')"></p>
+          <!-- Visual accent — columna par en desktop -->
+          <div class="hidden lg:flex items-center shrink-0" data-reveal="up">
+            <img src="nadia-como.png" alt="" aria-hidden="true"
+                 class="object-cover rounded-2xl"
+                 style="width:320px; height:420px; object-position:center; mix-blend-mode:screen;">
           </div>
 
-          <div class="py-10 md:py-12 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
-            <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">03</span>
-            <p class="font-sans font-normal text-paper/80 leading-relaxed"
-               style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
-               x-text="t('tip3')"></p>
-          </div>
-
-        </div>
-
-        <!-- Visual accent -->
-        <div class="mt-16 md:mt-20 flex justify-end" data-reveal="up">
-          <img src="nadia-como.png" alt="" aria-hidden="true"
-               class="w-full md:w-1/2 object-cover rounded-br-2xl opacity-80"
-               style="max-height:340px; object-position:center; mix-blend-mode:luminosity;">
         </div>
 
       </div>
