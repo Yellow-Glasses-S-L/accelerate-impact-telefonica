@@ -147,9 +147,8 @@
       opacity: 1;
     }
 
-    /* Big intro title */
+    /* Big intro title — bottom anchored */
     .intro-word {
-      font-size: clamp(4.5rem, 15vw, 15rem);
       letter-spacing: -0.04em;
       will-change: transform, opacity, filter;
       cursor: default;
@@ -339,13 +338,8 @@
       /* INTRO cinematográfico */
       intro_eyebrow_left:  { es: 'Telefónica · Comunidad de Líderes', en: 'Telefónica · Leadership Community' },
       intro_eyebrow_right: { es: '2026', en: '2026' },
-      intro_title:    { es: 'Bienvenido.', en: 'Welcome.' },
-      intro_program_a: { es: 'a', en: 'to' },
-      /* Nota: "Accelerate Impact" literal, se mantiene en inglés */
-      intro_slogan_1: { es: 'El futuro de Telefónica',  en: 'The future of Telefónica' },
-      intro_slogan_2: { es: 'lo lideras tú.',            en: 'is led by you.' },
-      intro_subclaim: { es: 'Y empieza hoy. Ahora mismo.',
-                        en: 'And it begins today. Right now.' },
+      intro_claim:    { es: 'El presente nos reta.', en: 'The present challenges us.' },
+      intro_sub:      { es: 'El programa de liderazgo que convierte la cultura en acción.', en: 'The leadership program that turns culture into action.' },
       intro_scroll:   { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
       /* HERO It's on Us — 3 actos con claims oficiales Laura */
@@ -566,49 +560,41 @@
                  class="orbital-spin-rev" style="transform-origin:720px 450px"/>
       </svg>
 
-      <div class="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center">
-        <!-- Bloque principal compacto -->
-        <div class="flex flex-col items-center">
-          <!-- Eyebrow (muy cerca del título) -->
-          <div class="intro-eyebrow mb-3 md:mb-4 opacity-0">
-            <p class="font-mono text-[10px] md:text-xs tracking-[0.35em] uppercase flex items-center justify-center gap-3">
+      <div class="relative z-10 min-h-screen flex flex-col">
+
+        <!-- Centro: eyebrow + claim pequeño -->
+        <div class="flex-1 flex flex-col items-center justify-center px-6 text-center">
+          <div class="intro-eyebrow opacity-0 mb-6">
+            <p class="font-mono text-[10px] tracking-[0.35em] uppercase flex items-center justify-center gap-3">
               <span class="text-tef-blue/90" x-text="t('intro_eyebrow_left')"></span>
               <span class="text-paper/30">·</span>
               <span class="text-paper/70" x-text="t('intro_eyebrow_right')"></span>
             </p>
           </div>
+          <h2 class="intro-claim opacity-0 font-sans font-normal text-paper leading-[1.1] tracking-tight"
+              style="font-size: clamp(1.6rem, 3.5vw, 3rem)"
+              x-text="t('intro_claim')"></h2>
+          <p class="intro-sub opacity-0 mt-4 font-sans font-light text-paper/55 leading-snug"
+             style="font-size: clamp(0.9rem, 1.4vw, 1.1rem)"
+             x-text="t('intro_sub')"></p>
+        </div>
 
-          <!-- BIG Welcome -->
-          <h1 class="font-sans font-normal leading-[0.88] tracking-tight">
-            <span class="intro-word block opacity-0" x-text="t('intro_title')"></span>
-          </h1>
-
-          <!-- Programa nombre — medium, debajo del welcome -->
-          <p class="intro-program mt-2 md:mt-4 font-sans font-light leading-none tracking-tight opacity-0"
-             style="font-size: clamp(1.75rem, 5vw, 4rem)">
-            <span x-text="t('intro_program_a')"></span>
-            <span class="font-normal ml-2">Accelerate </span><em class="italic text-tef-blue font-normal" style="letter-spacing:-0.02em">Impact</em>
+        <!-- Bottom: "Accelerate Impact" enorme anclado -->
+        <div class="intro-word opacity-0 w-full overflow-hidden leading-none pb-0" aria-hidden="false">
+          <p class="font-sans font-normal tracking-tight whitespace-nowrap text-paper"
+             style="font-size: clamp(5rem, 16vw, 18rem); letter-spacing: -0.04em; line-height: 0.85; padding-left: 0.02em;">
+            Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
           </p>
+        </div>
 
-          <!-- Slogan épico (claim oficial de Laura) -->
-          <div class="intro-slogan mt-10 md:mt-14 max-w-3xl opacity-0">
-            <p class="font-sans font-normal leading-[0.95] tracking-tight text-paper"
-               style="font-size: clamp(1.5rem, 3.2vw, 2.75rem)">
-              <span class="block" x-text="t('intro_slogan_1')"></span>
-              <span class="block italic text-gold" x-text="t('intro_slogan_2')"></span>
-            </p>
-            <p class="intro-subclaim mt-5 md:mt-7 text-base md:text-lg text-paper/65 leading-snug italic"
-               x-text="t('intro_subclaim')"></p>
+        <!-- Scroll indicator -->
+        <div class="intro-scroll absolute bottom-6 md:bottom-10 right-8 md:right-14 opacity-0">
+          <div class="flex flex-col items-end gap-3">
+            <span class="font-mono text-[9px] tracking-[0.3em] uppercase text-paper/45" x-text="t('intro_scroll')"></span>
+            <div class="scroll-line" style="align-self:flex-end" aria-hidden="true"></div>
           </div>
         </div>
 
-        <!-- Scroll indicator (absolute, no afecta flow) -->
-        <div class="intro-scroll absolute bottom-10 md:bottom-14 left-1/2 -translate-x-1/2 opacity-0">
-          <div class="flex flex-col items-center gap-4">
-            <span class="font-mono text-[9px] tracking-[0.3em] uppercase text-paper/55" x-text="t('intro_scroll')"></span>
-            <div class="scroll-line" aria-hidden="true"></div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1302,22 +1288,18 @@
         // ── INTRO · load sequence ─────────────────────────
         if (!reduced) {
           const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-          tl.to('.intro-eyebrow', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, 0)
-            .from('.intro-eyebrow', { y: 20, duration: 1, ease: 'power2.out' }, 0)
-            .to('.intro-word', {
-              opacity: 1, duration: 1.6, ease: 'power4.out'
-            }, 0.25)
-            .from('.intro-word', {
-              scale: 1.35, filter: 'blur(26px)', y: 80, duration: 1.6, ease: 'power4.out'
-            }, 0.25)
-            .to('.intro-program', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, 0.85)
-            .from('.intro-program', { y: 30, duration: 1.1, ease: 'power3.out' }, 0.85)
-            .to('.intro-slogan', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, 1.4)
-            .from('.intro-slogan', { y: 40, duration: 1.2, ease: 'power3.out' }, 1.4)
-            .to('.intro-scroll', { opacity: 1, y: 0, duration: 0.9 }, 2.1)
-            .from('.intro-scroll', { y: -8, duration: 0.9 }, 2.1);
+          tl.to('.intro-eyebrow', { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 0)
+            .from('.intro-eyebrow', { y: 16, duration: 0.9 }, 0)
+            .to('.intro-claim', { opacity: 1, duration: 1.1, ease: 'power3.out' }, 0.3)
+            .from('.intro-claim', { y: 30, filter: 'blur(8px)', duration: 1.1 }, 0.3)
+            .to('.intro-sub', { opacity: 1, duration: 1.0, ease: 'power3.out' }, 0.7)
+            .from('.intro-sub', { y: 20, duration: 1.0 }, 0.7)
+            .to('.intro-word', { opacity: 1, duration: 1.4, ease: 'power4.out' }, 0.9)
+            .from('.intro-word', { y: 60, filter: 'blur(20px)', duration: 1.4, ease: 'power4.out' }, 0.9)
+            .to('.intro-scroll', { opacity: 1, duration: 0.9 }, 1.8)
+            .from('.intro-scroll', { y: -8, duration: 0.9 }, 1.8);
         } else {
-          gsap.set('.intro-eyebrow, .intro-word, .intro-program, .intro-slogan, .intro-scroll', { opacity: 1 });
+          gsap.set('.intro-eyebrow, .intro-claim, .intro-sub, .intro-word, .intro-scroll', { opacity: 1 });
         }
 
         // ── INTRO · scroll exit (pin 80vh con escalado) ──
