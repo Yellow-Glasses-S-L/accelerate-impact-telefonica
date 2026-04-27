@@ -187,29 +187,10 @@
           </h2>
         </div>
 
-        <!-- PASO 1 — Punto de partida (el correo) -->
-        <div class="mb-10 md:mb-14" data-reveal="up">
-          <div class="flex items-start gap-5 bg-white border border-tef-dark/10 rounded-br-2xl px-6 py-5 max-w-xl shadow-[0_4px_16px_rgba(3,26,52,0.05)]">
-            <div class="flex-shrink-0 mt-0.5">
-              <div class="w-8 h-8 rounded-full bg-tef-blue/10 border border-tef-blue/30 flex items-center justify-center">
-                <span class="font-mono text-[10px] font-normal text-tef-blue">01</span>
-              </div>
-            </div>
-            <div>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-dark/50 mb-1" x-text="t('n0_meta')"></p>
-              <h3 class="font-sans font-normal text-lg text-tef-dark mb-1" x-text="t('n0_title')"></h3>
-              <p class="text-[13px] text-tef-dark/70 leading-snug" x-text="t('n0_body')"></p>
-            </div>
-            <span class="flex-shrink-0 self-start font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-dark/20 text-tef-dark/50 px-2 py-1 hidden md:block" x-text="t('n0_tag')"></span>
-          </div>
-          <!-- Conector visual hacia el track -->
-          <div class="ml-9 w-px h-6 bg-tef-blue/30"></div>
-        </div>
-
-        <!-- Track ascendente -->
+        <!-- Track ascendente — 5 paradas -->
         <div class="relative track-ascend" style="height: 700px">
-          <!-- SVG path ascendente -->
-          <svg class="absolute inset-0 w-full h-full" style="z-index:0" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true">
+          <!-- SVG path ascendente — 5 círculos -->
+          <svg class="absolute inset-0 w-full h-full" style="z-index:0" viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <linearGradient id="pathB" x1="0%" y1="100%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#0066FF" stop-opacity="0.6"/>
@@ -221,20 +202,31 @@
               </linearGradient>
             </defs>
             <!-- glow bajo el path -->
-            <path d="M 60 610 Q 250 555, 380 460 T 700 320 T 1140 280 L 1140 620 L 60 620 Z" fill="url(#glowB)"/>
-            <!-- path principal — queda bajo los nodos con espacio visible -->
-            <path d="M 60 610 Q 250 555, 380 460 T 700 320 T 1140 280"
+            <path d="M 60 660 Q 200 630, 280 590 T 520 460 T 760 330 T 1140 280 L 1140 700 L 60 700 Z" fill="url(#glowB)"/>
+            <!-- path principal -->
+            <path d="M 60 660 Q 200 630, 280 590 T 520 460 T 760 330 T 1140 280"
                   stroke="url(#pathB)" stroke-width="2" fill="none"
                   stroke-dasharray="8 6" class="ascent-breathe"/>
-            <!-- marcadores -->
-            <circle cx="60"   cy="610" r="7" fill="#0066FF"/>
-            <circle cx="380"  cy="460" r="8" fill="#0066FF"/>
-            <circle cx="700"  cy="320" r="8" fill="#0066FF"/>
+            <!-- marcadores — 5 paradas -->
+            <circle cx="60"   cy="660" r="7" fill="#0066FF"/>
+            <circle cx="280"  cy="590" r="7" fill="#0066FF"/>
+            <circle cx="520"  cy="460" r="8" fill="#0066FF"/>
+            <circle cx="760"  cy="330" r="8" fill="#0066FF"/>
             <circle cx="1140" cy="280" r="7" fill="#0066FF"/>
           </svg>
 
+          <!-- NODO 0 — El correo (punto de partida, abajo izquierda) -->
+          <div class="absolute left-[1%] top-[86%] w-[260px] z-10" data-track-node>
+            <div class="relative bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
+              <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue/40 rotate-45"></div>
+              <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-dark/60 mb-2" x-text="t('n0_meta')"></p>
+              <h3 class="font-sans text-base font-normal text-tef-dark mb-1.5" x-text="t('n0_title')"></h3>
+              <p class="text-[12px] text-tef-dark/70 leading-snug" x-text="t('n0_body')"></p>
+            </div>
+          </div>
+
           <!-- NODO 1 — Nadia (izq, posición baja) -->
-          <div class="absolute left-[1%] top-[62%] w-[270px] z-10" data-track-node>
+          <div class="absolute left-[14%] top-[70%] w-[270px] z-10" data-track-node>
             <div class="relative bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
               <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue rotate-45"></div>
               <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-dark/60 mb-2" x-text="t('n1_meta')"></p>
@@ -244,7 +236,7 @@
           </div>
 
           <!-- NODO 2 — Bienvenida (informativo) -->
-          <div class="absolute left-[25%] top-[40%] w-[270px] z-10" data-track-node>
+          <div class="absolute left-[30%] top-[50%] w-[270px] z-10" data-track-node>
             <div class="relative bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
               <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
               <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-dark/60 mb-2" x-text="t('n2_meta')"></p>
@@ -255,7 +247,7 @@
 
           <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
           <a href="autodiagnostico.html"
-             class="absolute left-[49%] top-[8%] w-[290px] z-10 group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl" data-track-node
+             class="absolute left-[48%] top-[22%] w-[290px] z-10 group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl" data-track-node
              :aria-label="lang==='es' ? 'Autodiagnóstico, abrir' : 'Self-diagnosis, open'">
             <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
               <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
@@ -270,7 +262,7 @@
 
           <!-- NODO 4 — ALW (CLICKABLE, destacado, arriba-derecha) -->
           <a href="agenda.html"
-             class="absolute right-[1%] top-[1%] w-[300px] z-10 group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl" data-track-node
+             class="absolute right-[1%] top-[2%] w-[300px] z-10 group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl" data-track-node
              :aria-label="lang==='es' ? 'Action Learning Week, abrir agenda' : 'Action Learning Week, open agenda'">
             <div class="relative bg-tef-dark rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.25)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_55px_rgba(0,102,255,0.38)] overflow-hidden">
               <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-[#7FB3FF] mb-3" x-text="t('n4_meta')"></p>
