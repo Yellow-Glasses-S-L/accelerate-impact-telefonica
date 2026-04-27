@@ -98,8 +98,8 @@
       use4_d: { es: 'Disfruta del acompañamiento post-programa para consolidar hábitos y contribuir a que las decisiones de liderazgo sobrevivan al día 1, al mes 3 y al trimestre siguiente.', en: 'Enjoy post-program support to consolidate habits and ensure leadership decisions survive day 1, month 3, and the next quarter.' },
 
       how_eyebrow:  { es: '¿Cómo hablar con Nadia?', en: 'How to talk to Nadia?' },
-      tips_claim:   { es: 'Habla claro.\nResponde claro.', en: 'Speak clear.\nGet clear.' },
-      tips_label:   { es: 'Para sacar el máximo provecho', en: 'To get the most out of her' },
+      tips_claim_line1: { es: 'Habla claro.', en: 'Speak clear.' },
+      tips_claim_line2: { es: 'Responde claro.', en: 'Get clear.' },
 
       tip1: { es: 'Sé específico. Cuanto más contexto aportas, más útil es la respuesta. La vaguedad produce vaguedad.', en: 'Be specific. The more context you share, the more useful the response. Vagueness produces vagueness.' },
       tip2: { es: 'Comparte con Nadia los resultados que has obtenido en el autodiagnóstico para que pueda personalizar las respuestas a tu perfil real de liderazgo.', en: 'Share with Nadia the results you obtained in the self-diagnosis so she can personalise responses to your real leadership profile.' },
@@ -135,7 +135,7 @@
       </div>
 
       <!-- Content — anchored bottom -->
-      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pb-16 md:pb-24 pt-48 md:pt-56 w-full">
+      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pb-16 md:pb-24 pt-32 md:pt-48 lg:pt-56 w-full">
 
         <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-end">
 
@@ -169,14 +169,14 @@
 
       <!-- Meta strip -->
       <div class="relative border-t border-paper/10">
-        <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 font-mono text-[11px] tracking-[0.22em] uppercase text-paper/35">
+        <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 font-mono text-[11px] tracking-[0.22em] uppercase text-paper/50">
           <span x-text="t('meta_avail')"></span>
         </div>
       </div>
     </section>
 
     <!-- § ¿CUÁNDO HABLAR CON NADIA? -->
-    <section class="border-t border-ink/10 bg-paper-warm py-20 md:py-28">
+    <section class="border-t border-ink/10 bg-paper-warm py-20 md:py-28 overflow-x-hidden">
       <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
         <div class="mb-16 md:mb-20" data-reveal="up">
@@ -189,7 +189,7 @@
         <!-- 4 rotated cards — wider layout -->
         <div class="max-w-3xl flex flex-col gap-5" data-reveal-stagger data-stagger-delay="0.12">
 
-          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[1.5deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]" data-stagger-item>
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[1.5deg] hover:rotate-0" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);" data-stagger-item>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
@@ -203,7 +203,7 @@
             </div>
           </article>
 
-          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.2deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ml-auto w-full" data-stagger-item>
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.2deg] hover:rotate-0 ml-auto w-full" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);" data-stagger-item>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
@@ -217,7 +217,7 @@
             </div>
           </article>
 
-          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[0.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]" data-stagger-item>
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[0.8deg] hover:rotate-0" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);" data-stagger-item>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
@@ -231,7 +231,7 @@
             </div>
           </article>
 
-          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.4deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ml-auto w-full" data-stagger-item>
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.4deg] hover:rotate-0 ml-auto w-full" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);" data-stagger-item>
             <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
             <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
             <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
@@ -257,8 +257,8 @@
           <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper/50 mb-4" x-text="t('how_eyebrow')"></p>
           <h2 class="font-sans font-normal leading-[0.95] tracking-[-0.03em] text-white"
               style="font-size: clamp(2.5rem, 6vw, 6rem)">
-            <span x-text="lang === 'es' ? 'Habla claro.' : 'Speak clear.'"></span><br>
-            <em class="italic font-normal text-tef-blue" x-text="lang === 'es' ? 'Responde claro.' : 'Get clear.'"></em>
+            <span x-text="t('tips_claim_line1')"></span><br>
+            <em class="italic font-normal text-tef-blue" x-text="t('tips_claim_line2')"></em>
           </h2>
         </div>
 
@@ -303,8 +303,8 @@
 
   <!-- STICKY NADIA PANEL — aparece al salir del hero -->
   <aside id="nadia-sticky"
-         class="fixed bottom-8 right-6 z-40 w-60 bg-tef-gradient-dark grain border border-paper/10 rounded-br-2xl p-6 shadow-2xl opacity-0 translate-x-6 pointer-events-none"
-         style="transition: opacity 0.45s ease, transform 0.45s ease;"
+         class="hidden md:fixed bottom-8 right-6 z-40 w-60 bg-tef-gradient-dark grain border border-paper/10 rounded-br-2xl overflow-hidden p-6 shadow-2xl pointer-events-none"
+         style="opacity:0; transform:translateX(1.5rem); transition: opacity 0.45s ease, transform 0.45s ease;"
          aria-label="Hablar con Nadia">
     <!-- Avatar micro -->
     <div class="flex items-center gap-3 mb-5">
@@ -345,7 +345,7 @@
         panel.style.opacity = out ? '1' : '0';
         panel.style.transform = out ? 'translateX(0)' : 'translateX(1.5rem)';
         panel.style.pointerEvents = out ? 'auto' : 'none';
-      }, { threshold: 0.05 }).observe(hero);
+      }, { threshold: 0.5 }).observe(hero);
     })();
   </script>
 </body>
