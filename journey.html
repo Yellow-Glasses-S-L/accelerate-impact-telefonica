@@ -90,6 +90,11 @@
       },
 
       /* Track nodos — claims rojos Laura + verbatim validados */
+      n0_meta: { es: 'Paso 1 · Email', en: 'Step 1 · Email' },
+      n0_title: { es: 'El correo que lo cambia todo.', en: 'The email that changes everything.' },
+      n0_body: { es: 'Tu primer contacto con el programa. Te dará acceso a este reto y será el punto de partida del recorrido.', en: 'Your first contact with the program. It gives you access to this challenge and marks the start of the journey.' },
+      n0_tag: { es: 'Punto de partida', en: 'Starting point' },
+
       n1_meta: { es: 'Paso 2 · Online', en: 'Step 2 · Online' },
       n1_title: { es: 'Conoce a tu coach. Nunca duerme.', en: 'Meet your coach. She never sleeps.' },
       n1_body: { es: 'Nadia, tu AI Leadership Coach, te acompañará a lo largo de todo el proceso y aprenderás a sacar el máximo partido a su apoyo.', en: 'Nadia, your AI Leadership Coach, will accompany you throughout the whole process and you will learn how to get the most from her support.' },
@@ -174,12 +179,31 @@
 
       <div class="relative max-w-7xl mx-auto px-6">
         <!-- Header -->
-        <div class="max-w-2xl mb-16 md:mb-20" data-reveal="up">
+        <div class="max-w-2xl mb-10 md:mb-12" data-reveal="up">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4">Track · It's on Us</p>
           <h2 class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-tef-dark leading-tight tracking-tight">
-            <span x-text="lang==='es' ? 'Cuatro paradas.' : 'Four stops.'"></span>
+            <span x-text="lang==='es' ? 'Cinco paradas.' : 'Five stops.'"></span>
             <em class="text-tef-blue italic font-normal block" x-text="lang==='es' ? 'Una dirección.' : 'One direction.'"></em>
           </h2>
+        </div>
+
+        <!-- PASO 1 — Punto de partida (el correo) -->
+        <div class="mb-10 md:mb-14" data-reveal="up">
+          <div class="flex items-start gap-5 bg-white border border-tef-dark/10 rounded-br-2xl px-6 py-5 max-w-xl shadow-[0_4px_16px_rgba(3,26,52,0.05)]">
+            <div class="flex-shrink-0 mt-0.5">
+              <div class="w-8 h-8 rounded-full bg-tef-blue/10 border border-tef-blue/30 flex items-center justify-center">
+                <span class="font-mono text-[10px] font-normal text-tef-blue">01</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-dark/50 mb-1" x-text="t('n0_meta')"></p>
+              <h3 class="font-sans font-normal text-lg text-tef-dark mb-1" x-text="t('n0_title')"></h3>
+              <p class="text-[13px] text-tef-dark/70 leading-snug" x-text="t('n0_body')"></p>
+            </div>
+            <span class="flex-shrink-0 self-start font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-dark/20 text-tef-dark/50 px-2 py-1 hidden md:block" x-text="t('n0_tag')"></span>
+          </div>
+          <!-- Conector visual hacia el track -->
+          <div class="ml-9 w-px h-6 bg-tef-blue/30"></div>
         </div>
 
         <!-- Track ascendente -->
