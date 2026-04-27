@@ -78,7 +78,7 @@
       background: #020914;
       position: relative;
       min-height: 100vh; height: 100vh; overflow: hidden;
-      margin-top: -68px; /* extiende la sección para cubrir el área del navbar */
+      margin-top: -79px; /* navbar = 16px top-padding + h-14(3.5rem×18px=63px) = 79px */
     }
     .nav-hero-filler { height: 68px; background: transparent; margin-top: -68px; pointer-events: none; position: relative; z-index: 0; }
 
@@ -229,7 +229,6 @@
         radial-gradient(ellipse at 85% 80%, rgba(0,102,255,0.12) 0%, transparent 50%),
         #020914;
       position: relative;
-      overflow: hidden;
     }
     .globe-section::before {
       content: "";
@@ -254,7 +253,7 @@
     }
     @keyframes twinkle { from { opacity: 0.4; } to { opacity: 0.8; } }
 
-    #globeViz { width: 100%; height: 640px; cursor: grab; }
+    #globeViz { width: 100%; height: 1000px; cursor: grab; }
     #globeViz:active { cursor: grabbing; }
     #globeViz canvas { background: transparent !important; }
 
@@ -374,8 +373,8 @@
       },
 
       b_how_label:  { es: '¿Cómo?', en: 'How?' },
-      b_how_title:  { es: '¿Cómo? Te damos las herramientas. Tú decides hasta dónde llegas.',
-                      en: 'How? We give you the tools. You decide how far you go.' },
+      b_how_title:  { es: 'Te damos las herramientas. Tú decides hasta dónde llegas.',
+                      en: 'We give you the tools. You decide how far you go.' },
       b_how_body:   {
         es: 'Para conseguir nuestros objetivos de negocio, contamos con un nuevo modelo de liderazgo que nos da las herramientas que necesitamos para transformarnos. Porque lo que transforma a Telefónica es cómo decidimos, cómo colaboramos y cómo actuamos.',
         en: 'To achieve our business goals, we have a new leadership model that gives us the tools we need to transform. Because what transforms Telefónica is how we decide, how we collaborate, and how we act.'
@@ -454,9 +453,8 @@
       globe_countries: { es: 'países', en: 'countries' },
 
       /* COHORTES */
-      cohort_eyebrow: { es: 'Comunidad', en: 'Community' },
-      cohort_title: { es: 'No lo haces solo.', en: 'You don\'t do this alone.' },
-      cohort_body: { es: 'Nosotros somos los protagonistas de todo. Conecta con tus compañeros. Cada cohorte tiene su espacio privado en Microsoft Teams. Elige la tuya.', en: 'We are all the protagonists. Connect with your peers. Each cohort has its private space in Microsoft Teams. Pick yours.' },
+      cohort_title: { es: 'Conecta con tus compañeros', en: 'Connect with your peers' },
+      cohort_body: { es: 'Cada cohorte tiene su espacio privado en Microsoft Teams. Elige la tuya.', en: 'Each cohort has its private space in Microsoft Teams. Pick yours.' },
       cohort_cta: { es: 'Elegir cohorte', en: 'Pick cohort' },
       cohort_select: { es: 'Selecciona tu cohorte', en: 'Select your cohort' },
 
@@ -497,13 +495,18 @@
       p3_s2: { es: 'Growing People: el crecimiento construye futuro. Aprendemos de la experiencia, lideramos con el ejemplo e impulsamos a las personas.', en: 'Growing People: growth builds the future. We learn from experience, lead by example and develop our people.' },
       p3_close: { es: 'It\'s on us.', en: 'It\'s on us.' },
 
-      /* QUESTIONS section */
-      q_title: { es: '¿Te has preguntado alguna vez…?', en: 'Have you ever asked yourself…?' },
-      q_sub: { es: 'Las preguntas que nadie te hace. Y que tú deberías responderte ya.', en: 'The questions no one asks you. And that you should answer yourself now.' },
-      q1: { es: '¿Cómo podemos aplicar la estrategia más allá de simplemente "comprenderla"?', en: 'How can we apply the strategy beyond simply "understanding" it?' },
-      q2: { es: '¿Cómo lideramos en un contexto impulsado por la IA? ¿Experimentamos y aprendemos rápidamente, o solo adoptamos la tecnología?', en: 'How do we lead in an AI-driven context? Do we experiment and learn quickly, or do we just adopt technology?' },
-      q3: { es: '¿Estamos haciendo todo lo necesario?', en: 'Are we doing everything necessary?' },
-      q4: { es: '¿Escuchamos lo que nuestra mente y nuestro cuerpo nos dicen durante este cambio?', en: 'Are we listening to what our minds and bodies are telling us during this change?' }
+      /* MANIFIESTO */
+      ai_intro: { es: 'es la respuesta para aquellos que se preguntan...', en: 'is the answer for those who ask themselves...' },
+      ai_q1: { es: '¿Cómo aplicar la estrategia más allá de simplemente comprenderla?', en: 'How to apply strategy beyond simply understanding it?' },
+      ai_q2: { es: '¿Cómo liderar en un contexto impulsado por la IA?', en: 'How to lead in an AI-driven context?' },
+      ai_q3: { es: '¿Cómo experimentar y aprender rápidamente, sin limitarnos a adoptar tecnología?', en: 'How to experiment and learn fast, without just adopting technology?' },
+      ai_q4: { es: '¿Cómo abordar el cambio de manera sostenible?', en: 'How to approach change in a sustainable way?' },
+      ai_essence_label: { es: 'Es en esencia', en: 'Is essentially' },
+      ai_e1: { es: 'Un viaje de autoconocimiento', en: 'A journey of self-knowledge' },
+      ai_e2: { es: '3 días de aprendizaje inmersivo en Universitas', en: '3 days of immersive learning at Universitas' },
+      ai_e3: { es: 'Un coach para ti siempre disponible', en: 'A coach always available for you' },
+      ai_e4: { es: 'Y, lo más relevante...', en: 'And, most importantly...' },
+      ai_e5: { es: 'Una comunidad global de líderes conectados', en: 'A global community of connected leaders' }
     };
   </script>
 </head>
@@ -511,7 +514,6 @@
 
   <!-- HEADER — 4 items -->
   <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
-  <div class="nav-hero-filler" aria-hidden="true"></div>
 
   <!-- DISCLAIMER POP-UP -->
   <div x-show="!disclaimerSeen"
@@ -612,7 +614,7 @@
       <!-- Vídeo de fondo -->
       <video id="hero-video" muted loop playsinline
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.4;transform:scale(2.7);">
-        <source src="hero-bg.mp4" type="video/mp4">
+        <source src="telefonica-wow.mp4" type="video/mp4">
       </video>
       <script>
         var v = document.getElementById('hero-video');
@@ -663,7 +665,7 @@
               Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
             </p>
           </div>
-          <div class="intro-scroll opacity-0 w-full text-center py-6 md:py-8">
+          <div class="intro-scroll opacity-0 w-full text-center py-6 md:py-8" data-scroll-hide>
             <div class="inline-flex flex-col items-center gap-3">
               <span class="font-mono text-[10px] tracking-[0.3em] uppercase text-paper/45" x-text="t('intro_scroll')"></span>
               <div class="scroll-line" aria-hidden="true"></div>
@@ -683,10 +685,9 @@
 
           <!-- Izquierda: hashtags -->
           <div class="flex flex-col gap-4" data-stagger-item>
-            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-ink-mute mb-2">Telefónica · 2026</p>
-            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag1')"></p>
-            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag2')"></p>
-            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight">
+            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)" x-text="t('mf_tag1')"></p>
+            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)" x-text="t('mf_tag2')"></p>
+            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)">
               <span x-text="lang==='es' ? '#Responsabilidad' : '#Shared'"></span><br>
               <span class="inline-block" style="padding-left:1.1ch" x-text="lang==='es' ? 'compartida' : 'responsibility'"></span>
             </p>
@@ -694,24 +695,23 @@
 
           <!-- Derecha: manifiesto -->
           <div data-stagger-item class="space-y-8">
-            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)">
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)">
               <span x-text="t('mf_l1')"></span><br>
               <span x-text="t('mf_l2')"></span>
             </p>
-            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)">
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)">
               <span x-text="t('mf_l3')"></span><br>
               <span x-text="t('mf_l4')"></span>
             </p>
-            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)" x-text="t('mf_l5')"></p>
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)" x-text="t('mf_l5')"></p>
           </div>
 
         </div>
 
         <!-- Placeholder vídeo -->
         <div class="mt-16 md:mt-24" data-reveal="up">
-          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-ink-mute mb-6" x-text="t('mf_video_label')"></p>
           <div class="relative w-full bg-ink/5 border border-ink/10 flex items-center justify-center overflow-hidden"
-               style="aspect-ratio: 16/9; max-height: 520px;">
+               style="aspect-ratio: 16/9;">
             <!-- Icono play -->
             <div class="flex flex-col items-center gap-4 text-ink-mute">
               <div class="w-16 h-16 rounded-full border border-ink/20 flex items-center justify-center">
@@ -726,7 +726,7 @@
     </section>
 
     <!-- 4 BLOQUES WHY / HOW / WHAT / EXPECT — horizontal scroll pinned -->
-    <section id="hscroll-section" class="bg-paper overflow-hidden" data-accelerate-section>
+    <section id="hscroll-section" class="bg-paper-warm overflow-hidden" data-accelerate-section>
 
       <!-- Wrapper pinned — la altura controla cuánto scroll hay -->
       <div id="hscroll-pin">
@@ -735,7 +735,7 @@
         <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1920px] mx-auto relative" data-accelerate-header>
           <div class="flex items-end justify-between gap-8">
             <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
-                style="font-size: clamp(3.5rem, 7vw, 8rem)">
+                style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
               La Comunidad de Líderes<br><em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">de Telefónica</em>
             </h2>
             <!-- Número activo — alineado a la base del título, cambia con blur -->
@@ -760,7 +760,7 @@
             <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
               <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
               <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=90&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
                 <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">Why</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_why_label')"></span></p>
@@ -773,7 +773,7 @@
             <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
               <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
               <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=90&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
                 <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">How</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_how_label')"></span></p>
@@ -830,7 +830,7 @@
             <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
               <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
               <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=90&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
                 <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">What</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_what_label')"></span></p>
@@ -843,10 +843,10 @@
             <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
               <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
               <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
-                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-gold-deep">Expect</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_exp_label')"></span></p>
+                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">Expect</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_exp_label')"></span></p>
                 <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
                 <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
               </div>
@@ -859,339 +859,210 @@
       </div>
     </section>
 
-    <!-- 3 PILARES — Damos lo mejor / Cuestionamos / Crecemos -->
-    <section class="bg-paper py-20 md:py-28 border-t border-ink/6">
+    <!-- PREGUNTAS — sección clara -->
+    <section class="bg-paper text-ink pt-40 pb-20 md:pt-64 md:pb-28" data-questions-section>
       <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
-        <div class="text-center mb-16" data-reveal="up">
-          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="lang==='es' ? 'Nuestro compromiso · It\'s on Us' : 'Our commitment · It\'s on Us'"></p>
-          <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl tracking-tight text-ink leading-[0.95]" x-text="lang==='es' ? 'Tres actitudes. Un solo equipo.' : 'Three attitudes. One single team.'"></h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-          <!-- PILAR 1 — It's -->
-          <div class="relative bg-white rounded-br-2xl p-8 border border-ink/8 shadow-[0_4px_20px_rgba(3,26,52,0.04)]" data-reveal="up">
-            <div class="mb-6">
-              <span class="font-sans font-normal text-[88px] leading-none text-tef-blue/10 select-none block -mt-4 -ml-2">It's</span>
-            </div>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl text-ink mb-1 leading-tight" x-text="t('p1_title')"></h3>
-            <p class="font-light italic text-gold-deep text-sm mb-5" x-text="t('p1_kicker')"></p>
-            <p class="text-[18px] text-ink-soft leading-relaxed mb-6" x-text="t('p1_body')"></p>
-            <div class="space-y-3 border-t border-ink/6 pt-5">
-              <p class="text-[17px] text-ink-soft leading-snug"><span class="font-medium text-ink">Customer First</span> — <span x-text="lang==='es' ? 'el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.' : 'customer time is now. We listen and resolve with speed.'"></span></p>
-              <p class="text-[17px] text-ink-soft leading-snug"><span class="font-medium text-ink">Delivering Excellence</span> — <span x-text="lang==='es' ? 'la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.' : 'excellence is our standard. Less is more. Obsession with simplicity.'"></span></p>
-            </div>
+          <!-- Izquierda: título grande sticky -->
+          <div class="lg:sticky lg:top-28" data-reveal="up">
+            <h2 class="font-sans font-normal tracking-tight leading-[0.95]"
+                style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
+              <span class="text-tef-blue">Accelerate Impact</span><br>
+              <em class="font-normal italic text-ink" x-text="t('ai_intro')"></em>
+            </h2>
           </div>
 
-          <!-- PILAR 2 — on -->
-          <div class="relative bg-white rounded-br-2xl p-8 border border-ink/8 shadow-[0_4px_20px_rgba(3,26,52,0.04)]" data-reveal="up" style="animation-delay:0.1s">
-            <div class="mb-6">
-              <span class="font-sans font-normal text-[88px] leading-none text-tef-blue/10 select-none block -mt-4 -ml-2">on</span>
-            </div>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl text-ink mb-1 leading-tight" x-text="t('p2_title')"></h3>
-            <p class="font-light italic text-gold-deep text-sm mb-5" x-text="t('p2_kicker')"></p>
-            <p class="text-[18px] text-ink-soft leading-relaxed mb-6" x-text="t('p2_body')"></p>
-            <div class="space-y-3 border-t border-ink/6 pt-5">
-              <p class="text-[17px] text-ink-soft leading-snug"><span class="font-medium text-ink">Digital Innovation</span> — <span x-text="lang==='es' ? 'creamos entornos para sentirnos libres, compartir ideas e innovar con propósito.' : 'we create environments to share ideas and innovate with purpose.'"></span></p>
-              <p class="text-[17px] text-ink-soft leading-snug"><span class="font-medium text-ink">Clarity &amp; Courage</span> — <span x-text="lang==='es' ? 'la claridad guía decisiones valientes. Debate abierto y cuestionamiento riguroso.' : 'clarity leads to bold decisions. Open debate and rigorous challenge.'"></span></p>
-            </div>
-          </div>
+          <!-- Derecha: stacking cards con scroll -->
+          <div data-stack-cards>
 
-          <!-- PILAR 3 — Us -->
-          <div class="relative bg-tef-dark rounded-br-2xl p-8 border border-tef-blue/20 shadow-[0_4px_20px_rgba(0,102,255,0.08)]" data-reveal="up" style="animation-delay:0.2s">
-            <div class="mb-6">
-              <span class="font-sans font-normal text-[88px] leading-none text-gold/15 select-none block -mt-4 -ml-2">Us</span>
-            </div>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl text-paper mb-1 leading-tight" x-text="t('p3_title')"></h3>
-            <p class="font-light italic text-gold text-sm mb-5" x-text="t('p3_kicker')"></p>
-            <p class="text-[18px] text-paper/70 leading-relaxed mb-6" x-text="t('p3_body')"></p>
-            <div class="space-y-3 border-t border-paper/10 pt-5">
-              <p class="text-[17px] text-paper/60 leading-snug"><span class="font-medium text-paper">Driving Ownership</span> — <span x-text="lang==='es' ? 'el resultado depende de nosotros. Asumimos la responsabilidad por el todo.' : 'results depend on us. We take responsibility for the whole.'"></span></p>
-              <p class="text-[17px] text-paper/60 leading-snug"><span class="font-medium text-paper">Growing People</span> — <span x-text="lang==='es' ? 'el crecimiento construye futuro. Aprendemos, lideramos con el ejemplo e impulsamos a las personas.' : 'growth builds the future. We learn, lead by example and develop our people.'"></span></p>
-            </div>
-            <p class="mt-6 font-mono text-[12px] tracking-[0.3em] uppercase text-gold/70">It's on us.</p>
-          </div>
+            <!-- Card 01 — número izquierda -->
+            <article class="relative w-full bg-white border border-ink/10 px-10 py-10"
+                     style="position:sticky;top:5.5rem;z-index:1;box-shadow:0 2px 20px rgba(3,26,52,0.06);transform:rotate(-1.8deg);transform-origin:50% 0%"
+                     data-stack-card>
+              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
+              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
+              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
+              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
+              <div class="flex items-center gap-8">
+                <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">01</span>
+                <p class="font-sans font-normal italic text-ink leading-snug"
+                   style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)" x-text="t('ai_q1')"></p>
+              </div>
+            </article>
+            <div style="height:15vh" aria-hidden="true"></div>
 
+            <!-- Card 02 — número derecha -->
+            <article class="relative w-full bg-white border border-ink/10 px-10 py-10"
+                     style="position:sticky;top:5.5rem;z-index:2;box-shadow:0 2px 20px rgba(3,26,52,0.06);transform:rotate(1.3deg);transform-origin:50% 0%"
+                     data-stack-card>
+              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
+              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
+              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
+              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
+              <div class="flex items-center gap-8">
+                <p class="font-sans font-normal italic text-ink leading-snug flex-1"
+                   style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)" x-text="t('ai_q2')"></p>
+                <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">02</span>
+              </div>
+            </article>
+            <div style="height:15vh" aria-hidden="true"></div>
+
+            <!-- Card 03 — número izquierda -->
+            <article class="relative w-full bg-white border border-ink/10 px-10 py-10"
+                     style="position:sticky;top:5.5rem;z-index:3;box-shadow:0 2px 20px rgba(3,26,52,0.06);transform:rotate(-0.9deg);transform-origin:50% 0%"
+                     data-stack-card>
+              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
+              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
+              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
+              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
+              <div class="flex items-center gap-8">
+                <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">03</span>
+                <p class="font-sans font-normal italic text-ink leading-snug"
+                   style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)" x-text="t('ai_q3')"></p>
+              </div>
+            </article>
+            <div style="height:15vh" aria-hidden="true"></div>
+
+            <!-- Card 04 — número derecha -->
+            <article class="relative w-full bg-white border border-ink/10 px-10 py-10"
+                     style="position:sticky;top:5.5rem;z-index:4;box-shadow:0 4px 28px rgba(3,26,52,0.1);transform:rotate(1.6deg);transform-origin:50% 0%"
+                     data-stack-card>
+              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
+              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
+              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
+              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
+              <div class="flex items-center gap-8">
+                <p class="font-sans font-normal italic text-ink leading-snug flex-1"
+                   style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)" x-text="t('ai_q4')"></p>
+                <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">04</span>
+              </div>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- QUESTIONS — ¿Te has preguntado alguna vez…? -->
-    <section class="bg-tef-dark text-paper py-20 md:py-28" data-nav-dark>
+    <!-- COMUNIDAD — sección oscura: esencia + globo -->
+    <section class="globe-section text-paper py-20 md:py-28" data-nav-dark data-globe-section x-data="globeSection()">
       <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
-        <div class="max-w-3xl mb-12 md:mb-16" data-reveal="up">
-          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4">Accelerate Impact · La pregunta</p>
-          <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6" x-text="t('q_title')"></h2>
-          <p class="text-lg md:text-xl text-paper/65 italic leading-snug" x-text="t('q_sub')"></p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-          <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up">
-            <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">01</span>
-            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q1')"></p>
-          </div>
-          <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.08s">
-            <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">02</span>
-            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q2')"></p>
-          </div>
-          <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.16s">
-            <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">03</span>
-            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q3')"></p>
-          </div>
-          <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.24s">
-            <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">04</span>
-            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q4')"></p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- TRACK VISUAL CLICKABLE -->
-    <section class="relative w-full overflow-hidden bg-tef-gradient-white py-20 md:py-28" data-track-section>
-      <!-- Orbital loops ambiente -->
-      <svg class="absolute -top-24 -left-20 w-[420px] h-[420px] opacity-[0.08] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-        <ellipse cx="200" cy="200" rx="180" ry="90" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-20 200 200)"/>
-        <ellipse cx="200" cy="200" rx="150" ry="70" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(15 200 200)"/>
-        <circle cx="380" cy="245" r="4" fill="#0066FF"/>
-        <circle cx="28" cy="155" r="4" fill="#0066FF"/>
-      </svg>
-      <svg class="absolute -bottom-32 -right-24 w-[500px] h-[500px] opacity-[0.06] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-        <ellipse cx="200" cy="200" rx="190" ry="95" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(35 200 200)"/>
-        <ellipse cx="200" cy="200" rx="160" ry="75" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-10 200 200)"/>
-      </svg>
-
-      <div class="relative max-w-[1920px] mx-auto px-6">
-        <div class="text-center mb-28 md:mb-32" data-reveal-stagger>
-          <p data-stagger-item class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
-          <h2 data-stagger-item class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl text-tef-dark leading-tight tracking-tight">
-            <span x-text="t('track_title_1')"></span>
-            <span class="text-tef-blue" x-text="' ' + t('track_title_2')"></span>
+        <!-- TÍTULO full-width -->
+        <div class="mb-14 md:mb-18" data-reveal="up">
+          <h2 class="font-sans font-normal tracking-tight leading-[0.95]"
+              style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
+            <em class="font-normal italic text-paper" x-text="t('ai_essence_label')"></em>
           </h2>
         </div>
 
-        <div class="relative">
-          <!-- SVG path desktop — ascendente izq→der — 5 paradas -->
-          <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 480" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="pathA" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#0066FF" stop-opacity="0.7"/>
-                <stop offset="50%" stop-color="#0066FF" stop-opacity="1"/>
-                <stop offset="100%" stop-color="#E8B547" stop-opacity="0.95"/>
-              </linearGradient>
-            </defs>
-            <!-- Guía fantasma dashed (siempre visible) -->
-            <path d="M 120 435 C 350 415, 550 375, 600 360 S 900 315, 1080 295"
-                  stroke="#0066FF" stroke-width="1" fill="none"
-                  stroke-dasharray="4 9" opacity="0.25"/>
-            <!-- Path principal que se dibuja con scroll (solid, más grueso) -->
-            <path id="trackPath" d="M 120 435 C 350 415, 550 375, 600 360 S 900 315, 1080 295"
-                  stroke="url(#pathA)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <circle cx="120"  cy="435" r="5" fill="#0066FF"/>
-            <circle cx="360"  cy="400" r="5" fill="#0066FF"/>
-            <circle cx="600"  cy="360" r="5" fill="#0066FF"/>
-            <circle cx="840"  cy="325" r="5" fill="#0066FF"/>
-            <circle cx="1080" cy="295" r="6" fill="#E8B547"/>
-          </svg>
+        <!-- ESENCIA LIST — full width -->
+        <ol class="mb-20 md:mb-28">
+          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+            <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">01</span>
+            <span class="text-xl md:text-2xl text-paper/75 leading-snug" x-text="t('ai_e1')"></span>
+          </li>
+          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+            <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">02</span>
+            <span class="text-xl md:text-2xl text-paper/75 leading-snug" x-text="t('ai_e2')"></span>
+          </li>
+          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+            <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">03</span>
+            <span class="text-xl md:text-2xl text-paper/75 leading-snug" x-text="t('ai_e3')"></span>
+          </li>
+          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+            <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">04</span>
+            <span class="text-xl md:text-2xl text-paper/50 leading-snug italic" x-text="t('ai_e4')"></span>
+          </li>
+          <li class="flex items-start gap-5 py-6 border-t border-paper/10 border-b border-paper/10" data-stagger-item>
+            <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">05</span>
+            <span class="font-sans font-normal text-tef-blue leading-snug" style="font-size: clamp(1.4rem, 2.4vw, 2.6rem)"
+                  x-text="t('ai_e5')"></span>
+          </li>
+        </ol>
 
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative" style="min-height:480px" data-track-grid>
+        <!-- GLOBO — centrado con labels flotantes -->
+        <div class="relative mb-10" data-reveal="up">
 
-            <!-- NODO 0 — El correo (punto de partida) -->
-            <div data-track-node="0" class="md:pt-52">
-              <div class="relative group">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">01</span>
-                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
-                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue/40 rotate-45"></div>
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n0_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n0_title')"></h3>
-                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n0_body')"></p>
-                </div>
+          <!-- Etiquetas flotantes — un único contenedor absoluto sobre el globo -->
+          <div class="hidden lg:block pointer-events-none select-none">
+
+            <!-- Arriba centrado: todos nuestros directivos -->
+            <p class="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-sans font-normal leading-[0.9] z-10"
+               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)">
+              <span class="text-paper/20" x-text="lang==='es' ? 'Todos nuestros directivos' : 'All our executives'"></span>
+            </p>
+
+            <!-- Izquierda centro: todas nuestras OBs -->
+            <p class="absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap font-sans font-normal text-paper/25 leading-[0.9] z-10"
+               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
+               x-text="lang==='es' ? 'Todas nuestras OBs' : 'All our OBs'"></p>
+
+            <!-- Derecha centro: varias ediciones -->
+            <p class="absolute right-0 top-1/2 -translate-y-1/2 text-right font-sans font-normal text-paper/25 leading-[0.9] max-w-[18%] z-10"
+               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
+               x-text="lang==='es' ? 'Varias ediciones' : 'Multiple editions'"></p>
+
+          </div>
+
+          <!-- Globo -->
+          <div class="w-full relative">
+            <div id="globeViz" aria-label="Global cohort distribution"></div>
+            <!-- Label país activo -->
+            <div x-show="active" x-transition.opacity
+                 class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center whitespace-nowrap" style="display:none" x-cloak>
+              <div class="bg-black/50 backdrop-blur-md border border-tef-blue/40 px-6 py-3 shadow-[0_12px_40px_rgba(0,102,255,0.25)]">
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#7FB3FF] mb-1" x-text="active?.region || ''"></p>
+                <h4 class="font-sans text-lg text-paper leading-tight mb-1"
+                    x-text="(lang==='es' ? active?.name_es : active?.name) || ''"></h4>
+                <p style="font-size:13px;color:#7FB3FF;font-variant-numeric:tabular-nums"
+                   x-text="(active?.count || '') + ' ' + t('globe_total')"></p>
               </div>
             </div>
-
-            <!-- NODO 1 — Nadia (informational) -->
-            <div data-track-node="1" class="md:pt-36">
-              <div class="relative group">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">02</span>
-                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
-                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue rotate-45"></div>
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n1_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
-                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n1_body')"></p>
-                </div>
-              </div>
-            </div>
-
-            <!-- NODO 2 — Welcome Session (informational) -->
-            <div data-track-node="2" class="md:pt-24">
-              <div class="relative group">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-dark/10 select-none">03</span>
-                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
-                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-dark/70 mb-3" x-text="t('n2_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
-                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
-                </div>
-              </div>
-            </div>
-
-            <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
-            <div data-track-node="3" class="md:pt-8">
-              <a href="autodiagnostico.html"
-                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
-                <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
-                  <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n3_body')"></p>
-                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
-                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n3_cta')"></span>
-                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-
-            <!-- NODO 4 — Action Learning Week (CLICKABLE DARK) -->
-            <div data-track-node="4" class="md:pt-0">
-              <a href="agenda.html"
-                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">05</span>
-                <div class="relative bg-tef-dark rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.25)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_55px_rgba(0,102,255,0.38)] overflow-hidden">
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-[#7FB3FF] mb-3" x-text="t('n4_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-white mb-2" x-text="t('n4_title')"></h3>
-                  <p class="text-sm text-white/75 leading-relaxed" x-text="t('n4_body')"></p>
-                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
-                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n4_cta')"></span>
-                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- GLOBE — Distribución mundial de la comunidad de líderes -->
-    <section class="globe-section text-paper py-20 md:py-28 section-fade-bottom"
-             data-globe-section data-nav-dark
-             x-data="globeSection()">
-      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
-
-        <!-- Header -->
-        <div class="text-center mb-12 md:mb-16 relative z-10" data-reveal-stagger data-stagger-delay="0.12">
-          <p data-stagger-item class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5" x-text="t('globe_eyebrow')"></p>
-          <h2 data-stagger-item class="globe-title font-sans font-normal text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-6">
-            <span data-globe-title-1 class="inline-block" x-text="t('globe_title_1')"></span>
-            <span data-globe-title-2 class="inline-block text-tef-blue" x-text="t('globe_title_2')"></span>
-          </h2>
-          <div data-stagger-item class="mx-auto w-16 h-px bg-paper/20 mb-6"></div>
-          <p data-stagger-item class="max-w-2xl mx-auto text-lg md:text-xl text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
         </div>
 
-        <!-- Globe canvas -->
-        <div class="relative">
-          <div id="globeViz" aria-label="Global cohort distribution"></div>
-
-          <!-- Floating hint -->
-          <div class="absolute top-4 right-4 md:top-6 md:right-6 pointer-events-none">
-            <div class="flex items-center gap-2 px-3 py-2 bg-black/30 backdrop-blur-sm border border-paper/10">
-              <svg class="w-3.5 h-3.5 text-paper/60" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <circle cx="8" cy="8" r="6"/>
-                <path d="M3 8h10M8 3c2 1.5 2 8.5 0 10M8 3c-2 1.5-2 8.5 0 10"/>
-              </svg>
-              <span class="font-mono text-[11px] tracking-[0.18em] uppercase text-paper/60" x-text="t('globe_hint')"></span>
-            </div>
-          </div>
-
-          <!-- Active country panel (bottom-left overlay) -->
-          <div x-show="active"
-               x-transition.opacity
-               class="absolute bottom-4 left-4 md:bottom-6 md:left-6 max-w-xs"
-               style="display:none" x-cloak>
-            <div class="bg-black/40 backdrop-blur-md border border-tef-blue/40 p-5 shadow-[0_12px_40px_rgba(0,102,255,0.25)]">
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#7FB3FF] mb-2">
-                <span x-text="active?.region || ''"></span>
-              </p>
-              <h4 class="font-sans text-2xl text-paper leading-tight mb-1" x-text="active?.name || ''"></h4>
-              <p class="text-sm text-paper/70 mb-4">
-                <span class="text-2xl text-tef-blue font-normal" x-text="active?.count || 0"></span>
-                <span class="text-xs tracking-wider uppercase ml-1" x-text="t('globe_total')"></span>
-              </p>
-              <a :href="active?.url || '#'" target="_blank" rel="noopener"
-                 class="inline-flex items-center gap-2 text-xs font-mono tracking-[0.18em] uppercase text-tef-blue hover:text-paper transition-colors">
-                <span x-text="lang==='es' ? 'Ver equipo' : 'View team'"></span>
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
-              </a>
-            </div>
-          </div>
+        <!-- TABS DE PAÍSES -->
+        <div class="flex justify-center gap-2 mb-20 md:mb-24" data-reveal="up">
+          <template x-for="c in countries" :key="c.code">
+            <button @click="flyTo(c)"
+                    class="font-mono text-[12px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200"
+                    :class="active?.code === c.code
+                      ? 'border-tef-blue bg-tef-blue text-white'
+                      : 'border-paper/20 text-paper/50 hover:text-paper hover:border-paper/40'"
+                    x-text="lang==='es' ? c.name_es : c.name">
+            </button>
+          </template>
         </div>
 
-        <!-- Stats row -->
-        <div class="grid grid-cols-3 gap-6 md:gap-10 mt-12 md:mt-14 max-w-3xl mx-auto text-center">
-          <div class="count-reveal">
-            <p class="font-sans text-5xl md:text-7xl text-tef-blue font-normal leading-none mb-2 tabular-nums" x-text="stats.total"></p>
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_total')"></p>
-          </div>
-          <div class="count-reveal" style="animation-delay:0.15s">
-            <p class="font-sans text-5xl md:text-7xl text-paper font-normal leading-none mb-2 tabular-nums" x-text="stats.countries"></p>
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_countries')"></p>
-          </div>
-          <div class="count-reveal" style="animation-delay:0.3s">
-            <p class="font-sans text-5xl md:text-7xl text-paper font-normal leading-none mb-2 tabular-nums">6</p>
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50" x-text="lang==='es' ? 'cohortes' : 'cohorts'"></p>
-          </div>
-        </div>
+        <!-- COMUNIDAD / COHORTES -->
+        <div class="max-w-2xl mx-auto text-center border-t border-paper/10 pt-16" data-reveal="up">
+          <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight mb-3" x-text="t('cohort_title')"></h3>
+          <p class="text-[17px] text-paper/70 mb-8" x-text="t('cohort_body')"></p>
 
-        <!-- Country chips legend -->
-        <div class="mt-12 md:mt-14">
-          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper/40 text-center mb-5" x-text="t('globe_legend')"></p>
-          <div class="flex flex-wrap gap-2 justify-center">
-            <template x-for="c in countries" :key="c.code">
-              <button @click="flyTo(c)"
-                      class="country-chip border border-paper/15 px-4 py-2 text-xs font-medium text-paper/90"
-                      :class="active?.code === c.code && 'active'">
-                <span x-text="(lang==='es' ? c.name_es : c.name) + ' · ' + c.count"></span>
-              </button>
-            </template>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- NADIA + COHORT -->
-    <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
-
-        <!-- Izquierda: Conecta con tus compañeros -->
-        <div class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
-          <div>
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('cohort_eyebrow')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-3" x-text="t('cohort_title')"></h3>
-            <p class="text-[17px] text-ink-soft max-w-md" x-text="t('cohort_body')"></p>
-          </div>
-          <div class="relative" @click.outside="cohortOpen=false">
+          <div class="relative text-left z-50" @click.outside="cohortOpen=false">
             <button @click="cohortOpen = !cohortOpen"
-                    class="w-full group flex items-center justify-between gap-4 bg-white border border-ink/15 hover:border-tef-blue transition-colors px-5 py-4">
+                    class="w-full group flex items-center justify-between gap-4 border border-paper/20 hover:border-tef-blue transition-colors px-5 py-4">
               <div class="flex items-center gap-3">
                 <svg class="w-5 h-5 text-tef-blue" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <rect x="3" y="3" width="14" height="14" rx="2"/>
                   <path d="M7 10h6M7 7h6M7 13h3"/>
                 </svg>
-                <span class="font-medium text-ink text-sm" x-text="t('cohort_cta')"></span>
+                <span class="font-medium text-paper text-sm" x-text="t('cohort_cta')"></span>
               </div>
-              <svg class="w-4 h-4 text-ink-mute transition-transform" :class="cohortOpen && 'rotate-180'" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <svg class="w-4 h-4 text-paper/50 transition-transform" :class="cohortOpen && 'rotate-180'" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
                 <path d="M4 6l4 4 4-4"/>
               </svg>
             </button>
             <div x-show="cohortOpen" x-transition.opacity
-                 class="absolute top-full left-0 right-0 mt-2 bg-white border border-ink/15 shadow-xl overflow-hidden z-10"
+                 class="absolute bottom-full left-0 right-0 mb-2 bg-[#031A34] border border-paper/20 shadow-xl z-50"
                  style="display:none" x-cloak>
-              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute px-5 pt-4 pb-2" x-text="t('cohort_select')"></p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/40 px-5 pt-4 pb-2" x-text="t('cohort_select')"></p>
               <template x-for="n in [1,2,3,4,5,6]" :key="n">
                 <a :href="'https://teams.microsoft.com/l/team/cohorte-' + n"
                    target="_blank" rel="noopener"
-                   class="flex items-center justify-between gap-3 px-5 py-3 text-sm text-ink hover:bg-paper-warm transition-colors border-t border-ink/5">
+                   class="flex items-center justify-between gap-3 px-5 py-3 text-sm text-paper/80 hover:bg-paper/5 transition-colors border-t border-paper/10">
                   <span>
                     <span x-text="lang==='es' ? 'Cohorte ' : 'Cohort '"></span><span x-text="n"></span>
                   </span>
@@ -1200,21 +1071,12 @@
               </template>
             </div>
           </div>
-        </div>
 
-        <!-- Derecha: Tu AI Coach -->
-        <div class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-10 pt-12 pb-20 overflow-hidden">
-          <div>
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-3" x-text="t('nadia_eyebrow')"></p>
-            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight mb-3">
-              <span x-text="t('nadia_title_1')"></span>
-              <em class="italic font-normal text-tef-blue" x-text="' ' + t('nadia_title_2')"></em>
-            </h3>
-            <p class="text-[17px] text-paper/70 max-w-md leading-relaxed" x-text="t('nadia_body')"></p>
-          </div>
-          <a href="nadia.html" class="group absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 rounded-br-2xl hover:bg-blue-700 transition-colors">
-            <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('nadia_cta')"></span>
-            <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <a href="journey.html"
+             class="mt-6 inline-flex items-center gap-2 text-paper/40 hover:text-tef-blue transition-colors group">
+            <span class="font-mono text-[11px] tracking-[0.2em] uppercase"
+                  x-text="lang==='es' ? 'Conoce tu journey en detalle' : 'Explore your journey in detail'"></span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
 
@@ -1224,26 +1086,17 @@
   </main>
 
   <!-- FOOTER -->
-  <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
+  <footer id="site-footer" class="bg-tef-dark text-paper mt-auto relative z-[1]"></footer>
 
   <!-- GLOBE logic (Alpine component) -->
   <script>
     function globeSection() {
       // Datos dummy de la comunidad de líderes — reemplazables cuando Telefónica pase la lista cerrada
       const countries = [
-        { code: 'ES', name: 'Spain',         name_es: 'España',    region: 'Europe',        lat: 40.42, lng: -3.70,  count: 78, url: '#' },
-        { code: 'BR', name: 'Brazil',        name_es: 'Brasil',    region: 'Latin America', lat: -15.79, lng: -47.88, count: 32, url: '#' },
-        { code: 'DE', name: 'Germany',       name_es: 'Alemania',  region: 'Europe',        lat: 52.52, lng: 13.40,  count: 18, url: '#' },
-        { code: 'GB', name: 'United Kingdom',name_es: 'Reino Unido', region: 'Europe',      lat: 51.51, lng: -0.13,  count: 12, url: '#' },
-        { code: 'AR', name: 'Argentina',     name_es: 'Argentina', region: 'Latin America', lat: -34.60, lng: -58.38, count: 11, url: '#' },
-        { code: 'PE', name: 'Peru',          name_es: 'Perú',      region: 'Latin America', lat: -12.05, lng: -77.04, count: 9,  url: '#' },
-        { code: 'CL', name: 'Chile',         name_es: 'Chile',     region: 'Latin America', lat: -33.45, lng: -70.67, count: 8,  url: '#' },
-        { code: 'CO', name: 'Colombia',      name_es: 'Colombia',  region: 'Latin America', lat: 4.71,   lng: -74.07, count: 8,  url: '#' },
-        { code: 'MX', name: 'Mexico',        name_es: 'México',    region: 'Latin America', lat: 19.43,  lng: -99.13, count: 7,  url: '#' },
-        { code: 'EC', name: 'Ecuador',       name_es: 'Ecuador',   region: 'Latin America', lat: -0.18,  lng: -78.47, count: 5,  url: '#' },
-        { code: 'UY', name: 'Uruguay',       name_es: 'Uruguay',   region: 'Latin America', lat: -34.90, lng: -56.16, count: 4,  url: '#' },
-        { code: 'VE', name: 'Venezuela',     name_es: 'Venezuela', region: 'Latin America', lat: 10.48,  lng: -66.90, count: 4,  url: '#' },
-        { code: 'US', name: 'United States', name_es: 'EE. UU.',   region: 'North America', lat: 38.90,  lng: -77.04, count: 4,  url: '#' }
+        { code: 'ES', name: 'Spain',         name_es: 'España',   region: 'Europe',        lat: 40.42,  lng: -3.70,  count: 78, url: '#' },
+        { code: 'BR', name: 'Brazil',        name_es: 'Brasil',   region: 'Latin America', lat: -15.79, lng: -47.88, count: 32, url: '#' },
+        { code: 'DE', name: 'Germany',       name_es: 'Alemania', region: 'Europe',        lat: 52.52,  lng: 13.40,  count: 18, url: '#' },
+        { code: 'GB', name: 'United Kingdom',name_es: 'Reino Unido', region: 'Europe',     lat: 51.51,  lng: -0.13,  count: 12, url: '#' }
       ];
 
       return {
@@ -1314,7 +1167,7 @@
             .atmosphereAltitude(0.22)
             .globeImageUrl(null)
             .width(el.clientWidth)
-            .height(640);
+            .height(1000);
 
           // Ocean — deep navy, darker than the section background (#020914)
           const globeMat = world.globeMaterial();
@@ -1357,11 +1210,9 @@
                   if (!c) return '';
                   const nm = this.lang === 'es' ? c.name_es : c.name;
                   const tot = this.lang === 'es' ? 'participantes' : 'participants';
-                  const hint = this.lang === 'es' ? 'Clic para abrir' : 'Click to open';
                   return `<div class="globe-tooltip">
                     <div class="tt-name">${nm}</div>
                     <div class="tt-count">${c.count} ${tot}</div>
-                    <div class="tt-hint">${hint}</div>
                   </div>`;
                 })
                 .onPolygonClick(feat => {
@@ -1448,7 +1299,7 @@
           if (!this._globe) return;
           this.active = c;
           this._globe.controls().autoRotate = false;
-          this._globe.pointOfView({ lat: c.lat, lng: c.lng, altitude: 1.6 }, 1200);
+          this._globe.pointOfView({ lat: c.lat, lng: c.lng, altitude: 2.2 }, 1200);
         }
       };
     }
@@ -1523,6 +1374,12 @@
               track.querySelectorAll('.hscroll-card').forEach(card => {
                 card.style.width = cardWidth + 'px';
               });
+
+              // Padding derecho mínimo para que la card 04 (índice 3) pueda alinearse con el título:
+              // necesitamos track.scrollWidth - window.innerWidth >= 3 * cardWidth
+              // → paddingRight >= window.innerWidth - numRight
+              const minPadRight = Math.max(64, window.innerWidth - numRight);
+              track.style.paddingRight = minPadRight + 'px';
             }
             alignTrack();
             window.addEventListener('resize', alignTrack);
@@ -1591,92 +1448,6 @@
                 } else {
                   window.scrollTo({ top: dest, behavior: 'smooth' });
                 }
-              });
-            });
-          }
-        }
-
-        // ── M4 · Track pinned + reveal secuencial (4 paradas aparecen al scrollear) ──
-        if (!reduced && typeof ScrollTrigger !== 'undefined') {
-          const trackSection = document.querySelector('[data-track-section]');
-          const trackPath = document.getElementById('trackPath');
-          const trackNodes = document.querySelectorAll('[data-track-node]');
-          const trackDots = document.querySelectorAll('[data-track-section] svg circle');
-
-          if (trackSection && trackPath && trackNodes.length && window.innerWidth >= 768) {
-            // Estado inicial: nodos invisibles, path sin trazar, dots escondidos
-            const len = trackPath.getTotalLength();
-            gsap.set(trackPath, { strokeDasharray: len, strokeDashoffset: len });
-            gsap.set(trackNodes, { y: 80, opacity: 0, scale: 0.9, filter: 'blur(10px)' });
-            gsap.set(trackDots, { scale: 0, opacity: 0, transformOrigin: 'center' });
-
-            // Timeline pin: cada 25% del scroll revela una parada en orden 1→4
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: trackSection,
-                start: 'top top',
-                end: '+=280%',
-                pin: true,
-                pinSpacing: true,
-                scrub: 0.7,
-                invalidateOnRefresh: true
-              }
-            });
-
-            // Introducción (0 → 0.08): sección entra
-            tl.to({}, { duration: 0.08 });
-
-            // Para cada nodo: path se traza hasta ese punto, nodo aparece, dot pulsa
-            trackNodes.forEach((node, i) => {
-              const segmentEnd = len * ((i + 1) / trackNodes.length);
-              // Path scrubbed segment
-              tl.to(trackPath, {
-                strokeDashoffset: len - segmentEnd,
-                ease: 'none', duration: 0.5
-              }, `+=0`);
-              // Dot aparece al llegar path
-              if (trackDots[i]) {
-                tl.to(trackDots[i], {
-                  scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)'
-                }, '<0.35');
-              }
-              // Nodo (card) aparece
-              tl.to(node, {
-                y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
-                duration: 0.55, ease: 'power3.out'
-              }, '<0.1');
-              // Pequeño hold entre paradas
-              tl.to({}, { duration: 0.35 });
-            });
-
-            // Ghost numbers 01/02/03/04 con parallax suave durante el pin
-            trackNodes.forEach((node) => {
-              const ghost = node.querySelector('span.absolute');
-              if (ghost) {
-                gsap.to(ghost, {
-                  yPercent: -18, ease: 'none',
-                  scrollTrigger: {
-                    trigger: trackSection,
-                    start: 'top top',
-                    end: '+=280%',
-                    scrub: 0.8
-                  }
-                });
-              }
-            });
-          } else if (trackSection && trackPath && trackNodes.length) {
-            // Mobile: reveal simple sin pin
-            const len = trackPath.getTotalLength();
-            gsap.set(trackPath, { strokeDasharray: len, strokeDashoffset: len });
-            gsap.to(trackPath, {
-              strokeDashoffset: 0, ease: 'none',
-              scrollTrigger: { trigger: trackSection, start: 'top 70%', end: 'bottom 70%', scrub: 0.5 }
-            });
-            trackNodes.forEach((node) => {
-              gsap.from(node, {
-                y: 80, opacity: 0, filter: 'blur(8px)',
-                duration: 0.9, ease: 'power3.out',
-                scrollTrigger: { trigger: node, start: 'top 85%' }
               });
             });
           }

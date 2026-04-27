@@ -136,15 +136,15 @@
       <div class="relative max-w-[1920px] mx-auto px-6 py-14 md:py-16">
 
         <!-- Top: logo + CTA -->
-        <div class="grid grid-cols-12 gap-6 pb-10 border-b border-paper/10">
-          <div class="col-span-12 md:col-span-6 flex items-start">
+        <div class="grid grid-cols-12 gap-6 pb-10 border-b border-paper/10 items-center">
+          <div class="col-span-12 md:col-span-6 flex items-center">
             <img src="accelerate-impact-logo.svg" class="h-10 md:h-12 w-auto brightness-0 invert" alt="Accelerate Impact">
           </div>
-          <div class="col-span-12 md:col-span-6 flex md:justify-end items-start">
+          <div class="col-span-12 md:col-span-6 flex md:justify-end items-center">
             <a href="mailto:accelerateimpact@universitas.com"
-               class="group inline-flex items-center gap-3 border-b border-paper/30 hover:border-tef-blue pb-1 transition-colors">
-              <span class="font-mono text-[12px] tracking-[0.2em] uppercase group-hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Escríbenos' : 'Get in touch'"></span>
-              <span class="text-lg group-hover:translate-x-1 group-hover:text-tef-blue transition-all">→</span>
+               class="group inline-flex items-center gap-3 text-paper/50 hover:text-tef-blue transition-colors">
+              <span class="font-mono text-[12px] tracking-[0.2em] uppercase transition-colors" x-text="lang==='es' ? 'Escríbenos' : 'Get in touch'"></span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
             </a>
           </div>
         </div>
@@ -155,11 +155,10 @@
             <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-4"
                x-text="lang==='es' ? 'Partners del programa' : 'Program partners'"></p>
             <ul class="space-y-2 text-sm">
-              <li><a href="https://www.kornferry.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Korn Ferry</a></li>
               <li><a href="https://www.egonzehnder.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Egon Zehnder</a></li>
-              <li><a href="https://universitas.telefonica.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Telefónica Universitas</a></li>
-              <li><a href="https://walkconsulting.net" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">WALK</a></li>
+              <li><a href="https://www.kornferry.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Korn Ferry</a></li>
               <li><a href="https://peopleexcellence.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">People Excellence</a></li>
+              <li><a href="https://walkconsulting.net" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">WALK</a></li>
             </ul>
           </div>
           <div class="col-span-6 md:col-span-4">

@@ -7,7 +7,8 @@
  *
  * Regla: scroll.js NO toca elementos del home que ya maneja
  * el script inline (.intro-hero, .hero-sequential, [data-cards-3d],
- * [data-track-section], [data-cohort-nadia], [data-accelerate-header]).
+ * [data-cohort-nadia], [data-accelerate-header]).
+ * Sí maneja: [data-stack-cards] (index), [data-track-section] (journey).
  * ───────────────────────────────────────────────────────────── */
 (function () {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -30,6 +31,15 @@
 
     gsap.registerPlugin(ScrollTrigger);
     document.documentElement.classList.add('has-scroll-fx');
+
+    /* ── Scroll hint — fade out on first scroll ── */
+    const scrollHint = document.querySelector('[data-scroll-hide]');
+    if (scrollHint) {
+      gsap.to(scrollHint, {
+        opacity: 0, y: -10, duration: 0.4, ease: 'power2.in',
+        scrollTrigger: { trigger: document.body, start: 'top -60px', once: true }
+      });
+    }
 
     /* ─────────────────────────────────────────────
      * LENIS — smooth scroll
@@ -230,14 +240,88 @@
       gsap.from('[data-journey-sub]', { y: 16, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 1.0 });
     }
 
-    /* Solo nodos dentro de .track-ascend (journey) — no afecta al home */
-    gsap.utils.toArray('.track-ascend [data-track-node]').forEach((node, i) => {
-      gsap.from(node, {
-        y: 60, opacity: 0, duration: 0.9, ease: 'power3.out',
-        delay: i * 0.12,
-        scrollTrigger: { trigger: node.closest('.track-ascend'), start: 'top 78%' }
+    /* ─────────────────────────────────────────────
+     * STACK CARDS — data-stack-cards (index.html)
+     * Cards stack on scroll: each new card slides in
+     * and previous cards scale down slightly.
+     * ───────────────────────────────────────────── */
+    const stackCards = document.querySelectorAll('[data-stack-card]');
+    if (stackCards.length && !reduced) {
+      stackCards.forEach((card, i) => {
+        if (i === 0) return; // first card has nothing to scale before it
+        // As card i slides in, scale down all previous cards
+        gsap.to(Array.from(stackCards).slice(0, i), {
+          scale: 1 - (0.03 * i),
+          transformOrigin: '50% 0%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top top+=88',
+            end: 'top top+=88',
+            scrub: 0.5
+          }
+        });
       });
-    });
+    }
+
+    /* ─────────────────────────────────────────────
+     * TRACK — data-track-section (journey.html)
+     * ───────────────────────────────────────────── */
+    const trackSection = document.querySelector('[data-track-section]');
+    const trackPath    = document.getElementById('trackPath');
+    const trackNodes   = document.querySelectorAll('[data-track-node]');
+    const trackDots    = document.querySelectorAll('[data-track-section] svg circle');
+
+    if (trackSection && trackPath && trackNodes.length && window.innerWidth >= 768) {
+      const len = trackPath.getTotalLength();
+      gsap.set(trackPath, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.set(trackNodes, { y: 80, opacity: 0, scale: 0.9, filter: 'blur(10px)' });
+      gsap.set(trackDots,  { scale: 0, opacity: 0, transformOrigin: 'center' });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: trackSection,
+          start: 'top top',
+          end: '+=280%',
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.7,
+          invalidateOnRefresh: true
+        }
+      });
+
+      tl.to({}, { duration: 0.08 });
+      trackNodes.forEach((node, i) => {
+        const segmentEnd = len * ((i + 1) / trackNodes.length);
+        tl.to(trackPath, { strokeDashoffset: len - segmentEnd, ease: 'none', duration: 0.5 }, '+=0');
+        if (trackDots[i]) tl.to(trackDots[i], { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' }, '<0.35');
+        tl.to(node, { y: 0, opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.55, ease: 'power3.out' }, '<0.1');
+        tl.to({}, { duration: 0.35 });
+      });
+
+      trackNodes.forEach((node) => {
+        const ghost = node.querySelector('span.absolute');
+        if (ghost) {
+          gsap.to(ghost, {
+            yPercent: -18, ease: 'none',
+            scrollTrigger: { trigger: trackSection, start: 'top top', end: '+=280%', scrub: 0.8 }
+          });
+        }
+      });
+    } else if (trackSection && trackPath && trackNodes.length) {
+      const len = trackPath.getTotalLength();
+      gsap.set(trackPath, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.to(trackPath, {
+        strokeDashoffset: 0, ease: 'none',
+        scrollTrigger: { trigger: trackSection, start: 'top 70%', end: 'bottom 70%', scrub: 0.5 }
+      });
+      trackNodes.forEach((node) => {
+        gsap.from(node, {
+          y: 80, opacity: 0, filter: 'blur(8px)', duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: node, start: 'top 85%' }
+        });
+      });
+    }
 
     /* ─────────────────────────────────────────────
      * NADIA — Avatar, título, propósito, cards, tips

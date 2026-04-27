@@ -115,6 +115,10 @@
 
 
       /* CTA final */
+      track_eyebrow: { es: 'Tu viaje', en: 'Your journey' },
+      track_title_1: { es: 'Cinco paradas,', en: 'Five stops,' },
+      track_title_2: { es: 'un solo programa.', en: 'one program.' },
+
       next_title_pre: { es: 'Empieza con ', en: 'Start with your ' },
       next_title_em: { es: 'tu Autodiagnóstico.', en: 'Self-Diagnosis.' },
       next_body: { es: 'El primer paso real del Journey. Confidencial, no evaluativo, tuyo.', en: 'The first real step of the Journey. Confidential, non-evaluative, yours.' },
@@ -141,118 +145,127 @@
       </div>
     </section>
 
-    <!-- TRACK VISUAL ASCENDENTE -->
-    <section class="relative w-full overflow-hidden bg-tef-gradient-light py-20 md:py-28">
-      <!-- Líneas topográficas -->
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute top-[40%] left-0 right-0 h-px bg-tef-dark/5"></div>
-        <div class="absolute top-[60%] left-0 right-0 h-px bg-tef-dark/5"></div>
-        <div class="absolute top-[80%] left-0 right-0 h-px bg-tef-dark/5"></div>
-      </div>
-      <!-- Orbital ambiente -->
-      <svg class="absolute top-12 right-10 w-[420px] h-[420px] opacity-[0.08] pointer-events-none orbit" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-        <ellipse cx="200" cy="200" rx="180" ry="85" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-30 200 200)"/>
-        <ellipse cx="200" cy="200" rx="155" ry="65" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(20 200 200)"/>
-        <circle cx="380" cy="165" r="4" fill="#0066FF"/>
+    <!-- TRACK VISUAL — 5 PARADAS -->
+    <section class="relative w-full overflow-hidden bg-tef-gradient-light py-20 md:py-28" data-track-section>
+      <!-- Orbital loops ambiente -->
+      <svg class="absolute -top-24 -left-20 w-[420px] h-[420px] opacity-[0.08] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <ellipse cx="200" cy="200" rx="180" ry="90" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-20 200 200)"/>
+        <ellipse cx="200" cy="200" rx="150" ry="70" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(15 200 200)"/>
+        <circle cx="380" cy="245" r="4" fill="#0066FF"/>
+        <circle cx="28" cy="155" r="4" fill="#0066FF"/>
+      </svg>
+      <svg class="absolute -bottom-32 -right-24 w-[500px] h-[500px] opacity-[0.06] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <ellipse cx="200" cy="200" rx="190" ry="95" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(35 200 200)"/>
+        <ellipse cx="200" cy="200" rx="160" ry="75" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-10 200 200)"/>
       </svg>
 
-      <div class="relative max-w-7xl mx-auto px-6">
-        <!-- Header -->
-        <div class="max-w-2xl mb-10 md:mb-12" data-reveal="up">
-          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4">Track · It's on Us</p>
-          <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl text-tef-dark leading-tight tracking-tight">
-            <span x-text="lang==='es' ? 'Cinco paradas.' : 'Five stops.'"></span>
-            <em class="text-tef-blue italic font-normal block" x-text="lang==='es' ? 'Una dirección.' : 'One direction.'"></em>
+      <div class="relative max-w-[1920px] mx-auto px-6">
+        <div class="text-center mb-28 md:mb-32" data-reveal-stagger>
+          <p data-stagger-item class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
+          <h2 data-stagger-item class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl text-tef-dark leading-tight tracking-tight">
+            <span x-text="t('track_title_1')"></span>
+            <span class="text-tef-blue" x-text="' ' + t('track_title_2')"></span>
           </h2>
         </div>
 
-        <!-- Track ascendente — 5 paradas -->
-        <div class="relative track-ascend" style="height: 700px">
-          <!-- SVG path ascendente — 5 círculos -->
-          <svg class="absolute inset-0 w-full h-full" style="z-index:0" viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true">
+        <div class="relative">
+          <!-- SVG path desktop — ascendente izq→der — 5 paradas -->
+          <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 480" preserveAspectRatio="none" aria-hidden="true">
             <defs>
-              <linearGradient id="pathB" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#0066FF" stop-opacity="0.6"/>
-                <stop offset="100%" stop-color="#0066FF" stop-opacity="1"/>
-              </linearGradient>
-              <linearGradient id="glowB" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#0066FF" stop-opacity="0"/>
-                <stop offset="100%" stop-color="#0066FF" stop-opacity="0.12"/>
+              <linearGradient id="pathA" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#0066FF" stop-opacity="0.7"/>
+                <stop offset="50%" stop-color="#0066FF" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#E8B547" stop-opacity="0.95"/>
               </linearGradient>
             </defs>
-            <!-- glow bajo el path -->
-            <path d="M 60 660 Q 200 630, 280 590 T 520 460 T 760 330 T 1140 280 L 1140 700 L 60 700 Z" fill="url(#glowB)"/>
-            <!-- path principal -->
-            <path d="M 60 660 Q 200 630, 280 590 T 520 460 T 760 330 T 1140 280"
-                  stroke="url(#pathB)" stroke-width="2" fill="none"
-                  stroke-dasharray="8 6" class="ascent-breathe"/>
-            <!-- marcadores — 5 paradas -->
-            <circle cx="60"   cy="660" r="7" fill="#0066FF"/>
-            <circle cx="280"  cy="590" r="7" fill="#0066FF"/>
-            <circle cx="520"  cy="460" r="8" fill="#0066FF"/>
-            <circle cx="760"  cy="330" r="8" fill="#0066FF"/>
-            <circle cx="1140" cy="280" r="7" fill="#0066FF"/>
+            <path d="M 120 435 C 350 415, 550 375, 600 360 S 900 315, 1080 295"
+                  stroke="#0066FF" stroke-width="1" fill="none"
+                  stroke-dasharray="4 9" opacity="0.25"/>
+            <path id="trackPath" d="M 120 435 C 350 415, 550 375, 600 360 S 900 315, 1080 295"
+                  stroke="url(#pathA)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="120"  cy="435" r="5" fill="#0066FF"/>
+            <circle cx="360"  cy="400" r="5" fill="#0066FF"/>
+            <circle cx="600"  cy="360" r="5" fill="#0066FF"/>
+            <circle cx="840"  cy="325" r="5" fill="#0066FF"/>
+            <circle cx="1080" cy="295" r="6" fill="#E8B547"/>
           </svg>
 
-          <!-- NODO 0 — El correo (punto de partida, abajo izquierda) -->
-          <div class="absolute left-[1%] top-[86%] w-[260px] z-10" data-track-node>
-            <div class="relative bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
-              <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue/40 rotate-45"></div>
-              <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-dark/60 mb-2" x-text="t('n0_meta')"></p>
-              <h3 class="font-sans text-base font-normal text-tef-dark mb-1.5" x-text="t('n0_title')"></h3>
-              <p class="text-[14px] text-tef-dark/70 leading-snug" x-text="t('n0_body')"></p>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative" style="min-height:480px" data-track-grid>
+
+            <!-- NODO 0 -->
+            <div data-track-node="0" class="md:pt-52">
+              <div class="relative group">
+                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">01</span>
+                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
+                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue/40 rotate-45"></div>
+                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n0_meta')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n0_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n0_body')"></p>
+                </div>
+              </div>
             </div>
+
+            <!-- NODO 1 -->
+            <div data-track-node="1" class="md:pt-36">
+              <div class="relative group">
+                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">02</span>
+                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
+                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue rotate-45"></div>
+                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n1_meta')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n1_body')"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- NODO 2 -->
+            <div data-track-node="2" class="md:pt-24">
+              <div class="relative group">
+                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-dark/10 select-none">03</span>
+                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
+                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
+                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-dark/70 mb-3" x-text="t('n2_meta')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
+            <div data-track-node="3" class="md:pt-8">
+              <a href="autodiagnostico.html"
+                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
+                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
+                <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
+                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
+                  <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n3_body')"></p>
+                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
+                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n3_cta')"></span>
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+
+            <!-- NODO 4 — Action Learning Week (CLICKABLE DARK) -->
+            <div data-track-node="4" class="md:pt-0">
+              <a href="agenda.html"
+                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
+                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">05</span>
+                <div class="relative bg-tef-dark rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.25)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_55px_rgba(0,102,255,0.38)] overflow-hidden">
+                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-[#7FB3FF] mb-3" x-text="t('n4_meta')"></p>
+                  <h3 class="font-sans text-xl font-normal text-white mb-2" x-text="t('n4_title')"></h3>
+                  <p class="text-sm text-white/75 leading-relaxed" x-text="t('n4_body')"></p>
+                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
+                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n4_cta')"></span>
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+
           </div>
-
-          <!-- NODO 1 — Nadia (izq, posición baja) -->
-          <div class="absolute left-[14%] top-[70%] w-[270px] z-10" data-track-node>
-            <div class="relative bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
-              <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue rotate-45"></div>
-              <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-dark/60 mb-2" x-text="t('n1_meta')"></p>
-              <h3 class="font-sans text-lg font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
-              <p class="text-[15px] text-tef-dark/70 leading-snug" x-text="t('n1_body')"></p>
-            </div>
-          </div>
-
-          <!-- NODO 2 — Bienvenida (informativo) -->
-          <div class="absolute left-[30%] top-[50%] w-[270px] z-10" data-track-node>
-            <div class="relative bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
-              <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
-              <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-dark/60 mb-2" x-text="t('n2_meta')"></p>
-              <h3 class="font-sans text-lg font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
-              <p class="text-[15px] text-tef-dark/70 leading-snug" x-text="t('n2_body')"></p>
-            </div>
-          </div>
-
-          <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
-          <a href="autodiagnostico.html"
-             class="absolute left-[48%] top-[22%] w-[290px] z-10 group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl" data-track-node
-             :aria-label="lang==='es' ? 'Autodiagnóstico, abrir' : 'Self-diagnosis, open'">
-            <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
-              <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
-              <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
-              <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n3_body')"></p>
-              <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
-                <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n3_cta')"></span>
-                <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </div>
-          </a>
-
-          <!-- NODO 4 — ALW (CLICKABLE, destacado, arriba-derecha) -->
-          <a href="agenda.html"
-             class="absolute right-[1%] top-[2%] w-[300px] z-10 group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl" data-track-node
-             :aria-label="lang==='es' ? 'Action Learning Week, abrir agenda' : 'Action Learning Week, open agenda'">
-            <div class="relative bg-tef-dark rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.25)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_55px_rgba(0,102,255,0.38)] overflow-hidden">
-              <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-[#7FB3FF] mb-3" x-text="t('n4_meta')"></p>
-              <h3 class="font-sans text-xl font-normal text-white mb-2" x-text="t('n4_title')"></h3>
-              <p class="text-sm text-white/75 leading-relaxed" x-text="t('n4_body')"></p>
-              <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
-                <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n4_cta')"></span>
-                <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </div>
-          </a>
         </div>
       </div>
     </section>
