@@ -63,26 +63,26 @@
     navEl.setAttribute('style', 'background:transparent !important;border:none !important;backdrop-filter:none !important;padding:16px 24px 0;pointer-events:none;');
     navEl.setAttribute('x-data', '{ menuOpen: false }');
     navEl.innerHTML = `
-      <div class="max-w-4xl mx-auto relative">
+      <div class="max-w-2xl mx-auto relative">
 
         <!-- Pill -->
         <div class="navbar-pill pointer-events-auto flex items-center h-14 px-5 gap-3 rounded-full border border-black/[0.08] shadow-md"
              style="background:rgba(247,247,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
 
           <!-- Logo -->
-          <a href="index.html" class="flex-shrink-0 mr-auto">
-            <img src="accelerate-impact-logo.svg" class="h-5 w-auto" alt="Accelerate Impact">
+          <a href="index.html" class="flex-shrink-0">
+            <img src="accelerate-impact-logo.svg" class="h-7 w-auto" alt="Accelerate Impact">
           </a>
 
-          <!-- Nav desktop -->
-          <nav class="hidden md:flex items-center gap-6">
+          <!-- Nav desktop — centrado -->
+          <nav class="hidden md:flex flex-1 items-center justify-center gap-8">
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
             ${navLink('nadia.html', 'Nadia', 'nadia')}
             ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
           </nav>
 
           <!-- Right: lang + hamburger -->
-          <div class="flex items-center gap-1 flex-shrink-0 ml-4">
+          <div class="flex items-center gap-1 flex-shrink-0">
             <div class="flex items-center gap-0 font-mono text-xs tracking-[0.18em]">
               <button @click="lang='es'" :class="lang==='es' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">ES</button>
               <span class="text-tef-dark/20">/</span>
@@ -128,7 +128,7 @@
   const footEl = document.getElementById('site-footer');
   if (footEl) {
     footEl.innerHTML = `
-      <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-16">
+      <div class="relative max-w-[1920px] mx-auto px-6 py-14 md:py-16">
 
         <!-- Top: logo + CTA -->
         <div class="grid grid-cols-12 gap-6 pb-10 border-b border-paper/10">

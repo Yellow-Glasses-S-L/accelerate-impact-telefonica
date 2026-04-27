@@ -327,7 +327,7 @@
       intro_eyebrow_left:  { es: 'Telefónica · Comunidad de Líderes', en: 'Telefónica · Leadership Community' },
       intro_eyebrow_right: { es: '2026', en: '2026' },
       intro_claim:    { es: 'El presente nos reta.', en: 'The present challenges us.' },
-      intro_sub:      { es: 'El programa de liderazgo que convierte la cultura en acción.', en: 'The leadership program that turns culture into action.' },
+      intro_sub:      { es: 'El liderazgo convierte la estrategia en acción.', en: 'Leadership turns strategy into action.' },
       intro_scroll:   { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
       /* Sección manifiesto */
@@ -571,34 +571,27 @@
 
         <!-- Centro: eyebrow + claim pequeño -->
         <div class="flex-1 flex flex-col items-center justify-center px-6 text-center">
-          <div class="intro-eyebrow opacity-0 mb-6">
-            <p class="font-mono text-[10px] tracking-[0.35em] uppercase flex items-center justify-center gap-3">
-              <span class="text-tef-blue/90" x-text="t('intro_eyebrow_left')"></span>
-              <span class="text-paper/30">·</span>
-              <span class="text-paper/70" x-text="t('intro_eyebrow_right')"></span>
-            </p>
-          </div>
           <h2 class="intro-claim opacity-0 font-sans font-normal text-paper leading-[1.1] tracking-tight"
-              style="font-size: clamp(2rem, 4.5vw, 4rem)"
+              style="font-size: clamp(3.5rem, 7.5vw, 7rem)"
               x-text="t('intro_claim')"></h2>
           <p class="intro-sub opacity-0 mt-4 font-sans font-light text-paper/55 leading-snug"
              style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)"
              x-text="t('intro_sub')"></p>
         </div>
 
-        <!-- Bottom: "Accelerate Impact" + scroll indicator centrados -->
-        <div class="intro-word opacity-0 w-full text-center pb-4" aria-hidden="false">
-          <p class="font-sans font-normal text-paper whitespace-nowrap"
-             style="font-size: 9vw; letter-spacing: -0.04em; line-height: 1;">
-            Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
-          </p>
-        </div>
-
-        <!-- Scroll indicator centrado -->
-        <div class="intro-scroll opacity-0 w-full text-center pb-8 md:pb-10">
-          <div class="inline-flex flex-col items-center gap-3">
-            <span class="font-mono text-[9px] tracking-[0.3em] uppercase text-paper/45" x-text="t('intro_scroll')"></span>
-            <div class="scroll-line" aria-hidden="true"></div>
+        <!-- Bottom: "Accelerate Impact" + scroll indicator -->
+        <div class="w-full overflow-hidden">
+          <div class="intro-word opacity-0 w-full text-center" aria-hidden="false">
+            <p id="intro-word-text" class="font-sans font-normal text-paper whitespace-nowrap"
+               style="font-size: 9vw; letter-spacing: -0.04em; line-height: 1; display:block; width:100%;">
+              Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
+            </p>
+          </div>
+          <div class="intro-scroll opacity-0 w-full text-center py-6 md:py-8">
+            <div class="inline-flex flex-col items-center gap-3">
+              <span class="font-mono text-[9px] tracking-[0.3em] uppercase text-paper/45" x-text="t('intro_scroll')"></span>
+              <div class="scroll-line" aria-hidden="true"></div>
+            </div>
           </div>
         </div>
 
@@ -607,7 +600,7 @@
 
     <!-- MANIFIESTO — hashtags + texto + vídeo -->
     <section class="bg-paper py-20 md:py-28">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
         <!-- Dos columnas -->
         <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start" data-reveal-stagger data-stagger-delay="0.12">
@@ -658,7 +651,7 @@
       <div id="hscroll-pin">
 
         <!-- Header fijo dentro del pin -->
-        <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1400px] mx-auto" data-accelerate-header>
+        <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1920px] mx-auto" data-accelerate-header>
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
           <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
               style="font-size: clamp(3.5rem, 7vw, 8rem)">
@@ -733,7 +726,7 @@
 
     <!-- 3 PILARES — Damos lo mejor / Cuestionamos / Crecemos -->
     <section class="bg-paper py-20 md:py-28 border-t border-ink/6">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
         <div class="text-center mb-16" data-reveal="up">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="lang==='es' ? 'Nuestro compromiso · It\'s on Us' : 'Our commitment · It\'s on Us'"></p>
           <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl tracking-tight text-ink leading-[0.95]" x-text="lang==='es' ? 'Tres actitudes. Un solo equipo.' : 'Three attitudes. One single team.'"></h2>
@@ -789,7 +782,7 @@
 
     <!-- QUESTIONS — ¿Te has preguntado alguna vez…? -->
     <section class="bg-tef-dark text-paper py-20 md:py-28" data-nav-dark>
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
         <div class="max-w-3xl mb-12 md:mb-16" data-reveal="up">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4">Accelerate Impact · La pregunta</p>
           <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6" x-text="t('q_title')"></h2>
@@ -830,7 +823,7 @@
         <ellipse cx="200" cy="200" rx="160" ry="75" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-10 200 200)"/>
       </svg>
 
-      <div class="relative max-w-[1400px] mx-auto px-6">
+      <div class="relative max-w-[1920px] mx-auto px-6">
         <div class="text-center mb-28 md:mb-32" data-reveal-stagger>
           <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
           <h2 data-stagger-item class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl text-tef-dark leading-tight tracking-tight">
@@ -947,7 +940,7 @@
     <section class="globe-section text-paper py-20 md:py-28 section-fade-bottom"
              data-globe-section data-nav-dark
              x-data="globeSection()">
-      <div class="relative max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
+      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
         <!-- Header -->
         <div class="text-center mb-12 md:mb-16 relative z-10" data-reveal-stagger data-stagger-delay="0.12">
@@ -1033,7 +1026,7 @@
 
     <!-- NADIA + COHORT -->
     <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
 
         <!-- Izquierda: Conecta con tus compañeros -->
         <div class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
@@ -1340,37 +1333,29 @@
         // ── INTRO · load sequence ─────────────────────────
         if (!reduced) {
           const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-          tl.to('.intro-eyebrow', { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 0)
-            .from('.intro-eyebrow', { y: 16, duration: 0.9 }, 0)
-            .to('.intro-claim', { opacity: 1, duration: 1.1, ease: 'power3.out' }, 0.3)
+          tl.to('.intro-claim', { opacity: 1, duration: 1.1, ease: 'power3.out' }, 0.3)
             .from('.intro-claim', { y: 30, filter: 'blur(8px)', duration: 1.1 }, 0.3)
             .to('.intro-sub', { opacity: 1, duration: 1.0, ease: 'power3.out' }, 0.7)
             .from('.intro-sub', { y: 20, duration: 1.0 }, 0.7)
-            .to('.intro-word', { opacity: 1, duration: 1.4, ease: 'power4.out' }, 0.9)
-            .from('.intro-word', { y: 60, filter: 'blur(20px)', duration: 1.4, ease: 'power4.out' }, 0.9)
+            .to('.intro-word', { opacity: 1, duration: 1.2, ease: 'power3.out' }, 1.0)
+            .from('.intro-word', { filter: 'blur(18px)', duration: 1.2, ease: 'power3.out' }, 1.0)
             .to('.intro-scroll', { opacity: 1, duration: 0.9 }, 1.8)
             .from('.intro-scroll', { y: -8, duration: 0.9 }, 1.8);
         } else {
-          gsap.set('.intro-eyebrow, .intro-claim, .intro-sub, .intro-word, .intro-scroll', { opacity: 1 });
+          gsap.set('.intro-claim, .intro-sub, .intro-scroll', { opacity: 1 });
         }
 
-        // ── INTRO · scroll exit (pin 80vh con escalado) ──
+        // ── INTRO · scroll exit — solo fade del indicador ──
         if (!reduced && typeof ScrollTrigger !== 'undefined') {
-          gsap.timeline({
+          gsap.to('.intro-scroll', {
+            opacity: 0,
             scrollTrigger: {
               trigger: '.intro-hero',
               start: 'top top',
-              end: '+=80%',
-              scrub: 0.6,
-              pin: window.innerWidth >= 768,
-              pinSpacing: true
+              end: '+=15%',
+              scrub: 0.4
             }
-          })
-          .to('.intro-word',    { scale: 2.1, y: -140, opacity: 0, filter: 'blur(14px)' }, 0)
-          .to('.intro-program', { y: -80, opacity: 0, filter: 'blur(8px)' }, 0)
-          .to('.intro-slogan',  { y: -60, opacity: 0, filter: 'blur(6px)' }, 0)
-          .to('.intro-eyebrow', { y: -30, opacity: 0 }, 0)
-          .to('.intro-scroll',  { opacity: 0 }, 0);
+          });
         }
 
         // ── M2 · Transición "Accelerate Impact" zoom scrubbed ──
@@ -1661,6 +1646,27 @@
         run();
       }
     });
+  </script>
+
+  <!-- Fit "Accelerate Impact." al 100% del viewport -->
+  <script>
+    (function fitIntroWord() {
+      const el = document.getElementById('intro-word-text');
+      if (!el) return;
+      function fit() {
+        el.style.fontSize = '300px';           /* tamaño grande de referencia */
+        const naturalWidth = el.scrollWidth;   /* cuánto mide el texto a 300px */
+        const newSize = (window.innerWidth / naturalWidth) * 300 * 0.99;
+        el.style.fontSize = newSize + 'px';
+      }
+      /* Esperar a que la fuente cargue para medir bien */
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(fit);
+      } else {
+        window.addEventListener('load', fit);
+      }
+      window.addEventListener('resize', fit);
+    })();
   </script>
 </body>
 </html>
