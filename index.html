@@ -72,14 +72,14 @@
       .orbital-spin, .orbital-spin-rev, .reveal { animation: none; }
     }
 
-    /* Fondo oscuro continuo — compartido por intro + hero (sin seams) */
-    .intro-hero,
-    .hero-sequential {
+    /* Fondo oscuro continuo */
+    .intro-hero {
       background: #020914;
       position: relative;
+      min-height: 100vh; height: 100vh; overflow: hidden;
+      margin-top: -68px; /* extiende la sección para cubrir el área del navbar */
     }
-    .intro-hero { min-height: 100vh; overflow: hidden; }
-    .nav-hero-filler { height: 68px; background: #020914; margin-top: -68px; pointer-events: none; position: relative; z-index: 0; }
+    .nav-hero-filler { height: 68px; background: transparent; margin-top: -68px; pointer-events: none; position: relative; z-index: 0; }
 
     /* Glow atmosférico fixed al viewport — visible solo detrás de secciones oscuras */
     .dark-atmosphere {
@@ -141,9 +141,8 @@
       opacity: 1;
     }
 
-    /* Big intro title */
+    /* Big intro title — bottom anchored */
     .intro-word {
-      font-size: clamp(4.5rem, 15vw, 15rem);
       letter-spacing: -0.04em;
       will-change: transform, opacity, filter;
       cursor: default;
@@ -188,7 +187,7 @@
       transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
     #site-navbar.nav-on-dark .navbar-pill {
-      background: rgba(2, 9, 20, 0.68) !important;
+      background: rgba(2, 9, 20, 0.15) !important;
       border-color: rgba(247, 247, 255, 0.12) !important;
       backdrop-filter: blur(24px) saturate(150%) !important;
       -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
@@ -221,48 +220,6 @@
       pointer-events:none; z-index:1;
     }
 
-    /* HERO sequential — hereda fondo del .intro-hero/.hero-sequential shared rule */
-    .hero-stage { will-change: transform; }
-    .hero-act { will-change: opacity, transform, filter; pointer-events: none; }
-    .act-label {
-      font-family: 'Telefonica Sans', monospace;
-      font-size: 10px; letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(0, 102, 255, 0.75);
-    }
-    .act-word {
-      font-family: 'Telefonica Sans', sans-serif;
-      font-size: clamp(5.5rem, 17vw, 17rem);
-      font-weight: 400;
-      line-height: 0.88;
-      letter-spacing: -0.04em;
-      color: #F7F7FF;
-      margin: 0;
-    }
-    .act-subtitle {
-      font-size: clamp(1.1rem, 1.7vw, 1.75rem);
-      font-weight: 300;
-      color: rgba(247, 247, 255, 0.9);
-      line-height: 1.25;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    .act-value {
-      display: flex; align-items: center; gap: 14px;
-      text-align: left;
-      color: rgba(247, 247, 255, 0.85);
-      font-size: 0.95rem;
-      line-height: 1.35;
-    }
-    .act-value svg { width: 32px; height: 32px; flex-shrink: 0; color: rgba(247, 247, 255, 0.7); }
-    .hero-dot {
-      display: inline-block;
-      width: 28px; height: 2px;
-      background: rgba(247, 247, 255, 0.2);
-      border-radius: 1px;
-      transition: background 0.5s ease, width 0.5s ease;
-    }
-    .hero-dot.is-active { background: #0066FF; width: 44px; }
 
     /* GLOBE SECTION — starfield + aurora */
     .globe-section {
@@ -369,16 +326,23 @@
       /* INTRO cinematográfico */
       intro_eyebrow_left:  { es: 'Telefónica · Comunidad de Líderes', en: 'Telefónica · Leadership Community' },
       intro_eyebrow_right: { es: '2026', en: '2026' },
-      intro_title:    { es: 'Bienvenido.', en: 'Welcome.' },
-      intro_program_a: { es: 'a', en: 'to' },
-      /* Nota: "Accelerate Impact" literal, se mantiene en inglés */
-      intro_slogan_1: { es: 'El futuro de Telefónica',  en: 'The future of Telefónica' },
-      intro_slogan_2: { es: 'lo lideras tú.',            en: 'is led by you.' },
-      intro_subclaim: { es: 'Y empieza hoy. Ahora mismo.',
-                        en: 'And it begins today. Right now.' },
+      intro_claim:    { es: 'El presente nos reta.', en: 'The present challenges us.' },
+      intro_sub:      { es: 'El programa de liderazgo que convierte la cultura en acción.', en: 'The leadership program that turns culture into action.' },
       intro_scroll:   { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
-      /* HERO It's on Us — 3 actos */
+      /* Sección manifiesto */
+      mf_tag1:  { es: '#Ambición', en: '#Ambition' },
+      mf_tag2:  { es: '#Disciplina', en: '#Discipline' },
+      mf_tag3:  { es: '#Responsabilidad compartida', en: '#Shared responsibility' },
+      mf_l1:    { es: 'El presente nos reta.', en: 'The present challenges us.' },
+      mf_l2:    { es: 'Y estamos preparados.', en: 'And we are ready.' },
+      mf_l3:    { es: 'No esperamos al futuro: lo construimos.', en: 'We don\'t wait for the future: we build it.' },
+      mf_l4:    { es: 'Con ambición, disciplina y responsabilidad compartida.', en: 'With ambition, discipline, and shared responsibility.' },
+      mf_l5:    { es: 'Porque no hay nada más poderoso que un grupo de personas persiguiendo un objetivo común, teniendo claro cómo lograrlo y comprometiéndose a dar lo mejor de sí para conseguirlo.', en: 'Because there is nothing more powerful than a group of people pursuing a common goal, knowing clearly how to achieve it and committing to give their best to make it happen.' },
+      mf_video_label: { es: 'Por qué tienes que venir', en: 'Why you should come' },
+
+      /* HERO It's on Us — 3 actos con claims oficiales Laura */
+      hero_eyebrow: { es: 'Programa de liderazgo · 2026', en: 'Leadership program · 2026' },
       sub_its:      { es: 'Damos lo mejor de nosotros.',         en: 'We give our best.' },
       sub_its_kicker: { es: 'Porque lo bueno no basta.',          en: 'Because good enough is not enough.' },
       sub_on:       { es: 'Cuestionamos nuestros propios límites.', en: 'We challenge our own limits.' },
@@ -569,10 +533,22 @@
 
     <!-- INTRO cinematográfico — Bienvenidos scene -->
     <section class="intro-hero text-paper" data-nav-dark>
+      <!-- Vídeo de fondo -->
+      <video id="hero-video" muted loop playsinline
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.4;transform:scale(2.7);">
+        <source src="hero-bg.mp4" type="video/mp4">
+      </video>
+      <script>
+        var v = document.getElementById('hero-video');
+        if(v){ v.muted = true; v.play().catch(function(){}); }
+      </script>
+      <!-- Overlay oscuro sobre el vídeo -->
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,9,20,0.5) 0%,rgba(2,9,20,0.3) 50%,rgba(2,9,20,0.5) 100%);"></div>
+
       <!-- 3 capas de estrellas con parallax distinto -->
-      <div class="stars-far" data-parallax="0.15" aria-hidden="true"></div>
-      <div class="stars-mid" data-parallax="0.5" aria-hidden="true"></div>
-      <div class="stars-near" data-parallax="1.1" aria-hidden="true"></div>
+      <div class="stars-far" style="z-index:2;position:absolute;inset:0;" data-parallax="0.15" aria-hidden="true"></div>
+      <div class="stars-mid" style="z-index:2;position:absolute;inset:0;" data-parallax="0.5" aria-hidden="true"></div>
+      <div class="stars-near" style="z-index:2;position:absolute;inset:0;" data-parallax="1.1" aria-hidden="true"></div>
 
       <!-- Orbital rings pasan lentos detrás -->
       <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 900"
@@ -591,245 +567,176 @@
                  class="orbital-spin-rev" style="transform-origin:720px 450px"/>
       </svg>
 
-      <div class="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center">
-        <!-- Bloque principal compacto -->
-        <div class="flex flex-col items-center">
-          <!-- Eyebrow (muy cerca del título) -->
-          <div class="intro-eyebrow mb-3 md:mb-4 opacity-0">
-            <p class="font-mono text-[10px] md:text-xs tracking-[0.35em] uppercase flex items-center justify-center gap-3">
+      <div style="position:relative;z-index:3;" class="min-h-screen flex flex-col">
+
+        <!-- Centro: eyebrow + claim pequeño -->
+        <div class="flex-1 flex flex-col items-center justify-center px-6 text-center">
+          <div class="intro-eyebrow opacity-0 mb-6">
+            <p class="font-mono text-[10px] tracking-[0.35em] uppercase flex items-center justify-center gap-3">
               <span class="text-tef-blue/90" x-text="t('intro_eyebrow_left')"></span>
               <span class="text-paper/30">·</span>
               <span class="text-paper/70" x-text="t('intro_eyebrow_right')"></span>
             </p>
           </div>
-
-          <!-- BIG Welcome -->
-          <h1 class="font-sans font-normal leading-[0.88] tracking-tight">
-            <span class="intro-word block opacity-0" x-text="t('intro_title')"></span>
-          </h1>
-
-          <!-- Programa nombre — medium, debajo del welcome -->
-          <p class="intro-program mt-2 md:mt-4 font-sans font-light leading-none tracking-tight opacity-0"
-             style="font-size: clamp(1.75rem, 5vw, 4rem)">
-            <span x-text="t('intro_program_a')"></span>
-            <span class="font-normal ml-2">Accelerate </span><em class="italic text-tef-blue font-normal" style="letter-spacing:-0.02em">Impact</em>
-          </p>
-
-          <!-- Slogan épico (claim oficial de Laura) -->
-          <div class="intro-slogan mt-10 md:mt-14 max-w-3xl opacity-0">
-            <p class="font-sans font-normal leading-[0.95] tracking-tight text-paper"
-               style="font-size: clamp(1.5rem, 3.2vw, 2.75rem)">
-              <span class="block" x-text="t('intro_slogan_1')"></span>
-              <span class="block italic text-gold" x-text="t('intro_slogan_2')"></span>
-            </p>
-            <p class="intro-subclaim mt-5 md:mt-7 text-base md:text-lg text-paper/65 leading-snug italic"
-               x-text="t('intro_subclaim')"></p>
-          </div>
+          <h2 class="intro-claim opacity-0 font-sans font-normal text-paper leading-[1.1] tracking-tight"
+              style="font-size: clamp(2rem, 4.5vw, 4rem)"
+              x-text="t('intro_claim')"></h2>
+          <p class="intro-sub opacity-0 mt-4 font-sans font-light text-paper/55 leading-snug"
+             style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)"
+             x-text="t('intro_sub')"></p>
         </div>
 
-        <!-- Scroll indicator (absolute, no afecta flow) -->
-        <div class="intro-scroll absolute bottom-10 md:bottom-14 left-1/2 -translate-x-1/2 opacity-0">
-          <div class="flex flex-col items-center gap-4">
-            <span class="font-mono text-[9px] tracking-[0.3em] uppercase text-paper/55" x-text="t('intro_scroll')"></span>
+        <!-- Bottom: "Accelerate Impact" + scroll indicator centrados -->
+        <div class="intro-word opacity-0 w-full text-center pb-4" aria-hidden="false">
+          <p class="font-sans font-normal text-paper whitespace-nowrap"
+             style="font-size: 9vw; letter-spacing: -0.04em; line-height: 1;">
+            Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
+          </p>
+        </div>
+
+        <!-- Scroll indicator centrado -->
+        <div class="intro-scroll opacity-0 w-full text-center pb-8 md:pb-10">
+          <div class="inline-flex flex-col items-center gap-3">
+            <span class="font-mono text-[9px] tracking-[0.3em] uppercase text-paper/45" x-text="t('intro_scroll')"></span>
             <div class="scroll-line" aria-hidden="true"></div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- HERO 3-act sequential — It's / on / Us -->
-    <section class="hero-sequential relative overflow-hidden text-paper" data-nav-dark>
-      <!-- Stage pinned con fondo continuo del intro -->
-      <div class="hero-stage relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Starfield multicapa (continúa del intro) -->
-        <div class="stars-far absolute inset-0" aria-hidden="true"></div>
-        <div class="stars-mid absolute inset-0" aria-hidden="true"></div>
-        <div class="stars-near absolute inset-0" aria-hidden="true"></div>
+    <!-- MANIFIESTO — hashtags + texto + vídeo -->
+    <section class="bg-paper py-20 md:py-28">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
 
-        <!-- Orbital ambient arcs (suaves, presentes durante los 3 actos) -->
-        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-50" viewBox="0 0 1440 900"
-             preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <ellipse cx="720" cy="450" rx="640" ry="210" stroke="rgba(0,102,255,0.28)" stroke-width="1"
-                   stroke-dasharray="4 10" fill="none" class="orbital-spin" style="transform-origin:720px 450px"/>
-          <ellipse cx="720" cy="450" rx="500" ry="160" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"
-                   stroke-dasharray="3 9" fill="none" transform="rotate(-14 720 450)"
-                   class="orbital-spin-rev" style="transform-origin:720px 450px"/>
-        </svg>
+        <!-- Dos columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start" data-reveal-stagger data-stagger-delay="0.12">
 
-        <!-- Eyebrow constante "Our commitment" -->
-        <p class="absolute top-20 md:top-28 left-0 right-0 z-10 text-center font-mono text-[10px] tracking-[0.3em] uppercase text-paper/45">
-          <span x-text="lang==='es' ? 'Nuestro compromiso · It’s on Us' : 'Our commitment · It’s on Us'"></span>
-        </p>
+          <!-- Izquierda: hashtags -->
+          <div class="flex flex-col gap-4" data-stagger-item>
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-2">Telefónica · 2026</p>
+            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag1')"></p>
+            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag2')"></p>
+            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag3')"></p>
+          </div>
 
-        <!-- ACT 1 · It's — Damos lo mejor de nosotros mismos -->
-        <div data-hero-act="1" class="hero-act absolute inset-0 flex items-center justify-center px-6 pt-16 pb-20">
-          <div class="text-center max-w-4xl mx-auto">
-            <p class="act-label mb-3">01</p>
-            <h1 class="act-word">It's</h1>
-            <p class="act-subtitle mt-4" x-text="t('sub_its')"></p>
-            <p class="act-kicker mt-2 italic text-gold font-light" style="font-size: clamp(0.95rem, 1.1vw, 1.15rem)" x-text="t('sub_its_kicker')"></p>
-            <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-xl mx-auto">
-              <div class="act-value">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                  <circle cx="20" cy="20" r="16"/><path d="M20 12v8l5 3" stroke-linecap="round"/>
-                </svg>
-                <span x-text="t('val_time')"></span>
+          <!-- Derecha: manifiesto -->
+          <div data-stagger-item>
+            <p class="font-sans font-normal italic text-ink leading-[1.2]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)">
+              <span x-text="t('mf_l1')"></span>
+              <span x-text="' ' + t('mf_l2')"></span>
+              <span x-text="' ' + t('mf_l3')"></span>
+              <span x-text="' ' + t('mf_l4')"></span>
+              <span x-text="' ' + t('mf_l5')"></span>
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Placeholder vídeo -->
+        <div class="mt-16 md:mt-24" data-reveal="up">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-6" x-text="t('mf_video_label')"></p>
+          <div class="relative w-full bg-ink/5 border border-ink/10 flex items-center justify-center overflow-hidden"
+               style="aspect-ratio: 16/9; max-height: 520px;">
+            <!-- Icono play -->
+            <div class="flex flex-col items-center gap-4 text-ink-mute">
+              <div class="w-16 h-16 rounded-full border border-ink/20 flex items-center justify-center">
+                <svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               </div>
-              <div class="act-value">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                  <circle cx="20" cy="20" r="16"/><path d="M20 12l2.4 5 5.5.8-4 3.9.9 5.5-4.8-2.5-4.8 2.5.9-5.5-4-3.9 5.5-.8z" stroke-linejoin="round"/>
-                </svg>
-                <span x-text="t('val_excel')"></span>
-              </div>
+              <p class="font-mono text-[10px] tracking-[0.2em] uppercase">Vídeo · Próximamente</p>
             </div>
           </div>
         </div>
 
-        <!-- ACT 2 · on — Cuestionamos nuestros propios límites -->
-        <div data-hero-act="2" class="hero-act absolute inset-0 flex items-center justify-center px-6 pt-16 pb-20" style="opacity:0">
-          <div class="text-center max-w-4xl mx-auto">
-            <p class="act-label mb-3">02</p>
-            <h1 class="act-word">on</h1>
-            <p class="act-subtitle mt-4" x-text="t('sub_on')"></p>
-            <p class="act-kicker mt-2 italic text-gold font-light" style="font-size: clamp(0.95rem, 1.1vw, 1.15rem)" x-text="t('sub_on_kicker')"></p>
-            <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-2xl mx-auto">
-              <div class="act-value">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                  <circle cx="20" cy="20" r="16"/><circle cx="18" cy="18" r="3"/><path d="M20.5 20.5L25 25" stroke-linecap="round"/>
-                </svg>
-                <span x-text="t('val_curio')"></span>
-              </div>
-              <div class="act-value">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                  <circle cx="20" cy="20" r="16"/><circle cx="20" cy="20" r="6"/><circle cx="20" cy="20" r="1.5" fill="currentColor"/>
-                </svg>
-                <span x-text="t('val_clarity')"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACT 3 · Us — Nos superamos juntos -->
-        <div data-hero-act="3" class="hero-act absolute inset-0 flex items-center justify-center px-6 pt-16 pb-20" style="opacity:0">
-          <div class="text-center max-w-4xl mx-auto">
-            <p class="act-label mb-3 text-gold">03</p>
-            <h1 class="act-word text-gold">Us</h1>
-            <p class="act-subtitle mt-4" x-text="t('sub_us')"></p>
-            <p class="act-kicker mt-2 italic text-gold-soft font-light" style="font-size: clamp(0.95rem, 1.1vw, 1.15rem)" x-text="t('sub_us_kicker')"></p>
-            <div class="act-values grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 max-w-xl mx-auto">
-              <div class="act-value">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                  <circle cx="20" cy="20" r="16"/><path d="M14 20l4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span x-text="t('val_results')"></span>
-              </div>
-              <div class="act-value">
-                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
-                  <circle cx="20" cy="20" r="16"/>
-                  <path d="M20 27c-4-3-7-5.5-7-9 0-2.2 1.8-4 4-4 1.3 0 2.4.6 3 1.6.6-1 1.7-1.6 3-1.6 2.2 0 4 1.8 4 4 0 3.5-3 6-7 9z"/>
-                </svg>
-                <span x-text="t('val_growth')"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Progress dots -->
-        <div class="hero-indicator absolute bottom-10 md:bottom-14 left-0 right-0 z-10 flex justify-center items-center gap-3" aria-hidden="true">
-          <span data-hero-dot="1" class="hero-dot is-active"></span>
-          <span data-hero-dot="2" class="hero-dot"></span>
-          <span data-hero-dot="3" class="hero-dot"></span>
-        </div>
       </div>
     </section>
 
-    <!-- 4 BLOQUES WHY / HOW / WHAT / EXPECT -->
-    <section class="bg-paper py-20 md:py-28" data-accelerate-section>
-      <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <!-- 4 BLOQUES WHY / HOW / WHAT / EXPECT — horizontal scroll pinned -->
+    <section id="hscroll-section" class="bg-paper overflow-hidden" data-accelerate-section>
 
-        <!-- Encabezado de sección — zoom cinematográfico scrubbed -->
-        <div class="text-center mb-16 md:mb-20" data-accelerate-header>
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
-          <h2 class="font-sans font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-ink mb-6 accelerate-title leading-[0.95]">
-            <span>Accelerate</span>
-            <em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">Impact</em>
+      <!-- Wrapper pinned — la altura controla cuánto scroll hay -->
+      <div id="hscroll-pin">
+
+        <!-- Header fijo dentro del pin -->
+        <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1400px] mx-auto" data-accelerate-header>
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
+          <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
+              style="font-size: clamp(3.5rem, 7vw, 8rem)">
+            Accelerate <em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">Impact</em>
           </h2>
-          <div class="mx-auto w-16 h-px mb-6" style="background: linear-gradient(90deg, transparent, #E8B547 50%, transparent);"></div>
-          <p class="max-w-2xl mx-auto text-base md:text-lg font-normal text-ink-soft leading-relaxed accelerate-lead" x-text="t('program_lead')"></p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-16 gap-y-16 md:gap-y-20" data-cards-3d style="perspective: 1200px;">
+        <!-- Track horizontal -->
+        <div class="relative overflow-hidden">
+          <div id="hscroll-track" class="flex gap-6 md:gap-8 px-6 md:px-12 lg:px-16 pb-16 md:pb-20" style="width: max-content;">
 
-          <!-- WHY -->
-          <article class="relative pl-4 md:pl-6 overflow-visible">
-            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
-                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">01</span>
-            <div class="relative flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">Why</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
-            </div>
-            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
-            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_why_title')"></h3>
-            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
-          </article>
+            <!-- WHY -->
+            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">Why</p>
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
+              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
+                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">01</span>
+            </article>
 
-          <!-- HOW -->
-          <article class="relative pl-4 md:pl-6 overflow-visible">
-            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
-                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">02</span>
-            <div class="relative flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">How</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
-            </div>
-            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
-            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_how_title')"></h3>
-            <p class="relative text-[15px] text-ink-soft leading-relaxed mb-6" x-text="t('b_how_body')"></p>
-            <div class="flex flex-wrap gap-2">
-              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Customer First</span>
-              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Delivering Excellence</span>
-              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Clarity &amp; Courage</span>
-              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Digital Innovation</span>
-              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Driving Ownership</span>
-              <span class="font-mono text-[10px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-3 py-1.5">Growing People</span>
-            </div>
-          </article>
+            <!-- HOW -->
+            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">How</p>
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-5" x-text="t('b_how_body')"></p>
+              <div class="flex flex-wrap gap-2">
+                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Customer First</span>
+                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Delivering Excellence</span>
+                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Clarity &amp; Courage</span>
+                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Digital Innovation</span>
+                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Driving Ownership</span>
+                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Growing People</span>
+              </div>
+              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
+                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">02</span>
+            </article>
 
-          <!-- WHAT -->
-          <article class="relative pl-4 md:pl-6 overflow-visible">
-            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
-                  style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">03</span>
-            <div class="relative flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">What</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
-            </div>
-            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
-            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_what_title')"></h3>
-            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
-          </article>
+            <!-- WHAT -->
+            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">What</p>
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
+              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
+                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">03</span>
+            </article>
 
-          <!-- EXPECT (culmina en dorado) -->
-          <article class="relative pl-4 md:pl-6 overflow-visible">
-            <span aria-hidden="true" class="absolute -top-6 -left-2 md:-top-10 md:-left-4 font-sans font-light leading-none text-[120px] md:text-[180px] pointer-events-none select-none"
-                  style="color: transparent; -webkit-text-stroke: 1px rgba(232,181,71,0.35); letter-spacing:-0.05em;">04</span>
-            <div class="relative flex items-center gap-3 mb-5">
-              <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep">Expect</span>
-              <span class="flex-1 h-px bg-ink/10"></span>
-            </div>
-            <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
-            <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_exp_title')"></h3>
-            <p class="relative text-[15px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
-          </article>
+            <!-- EXPECT -->
+            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-gold/30">
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep mb-6">Expect</p>
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
+              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
+                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(232,181,71,0.25); letter-spacing:-0.05em;">04</span>
+            </article>
 
+          </div>
+
+          <!-- Progress bar -->
+          <div class="px-6 md:px-12 lg:px-16 pb-8">
+            <div class="h-px bg-ink/8 w-full relative">
+              <div id="hscroll-progress" class="absolute left-0 top-0 h-px bg-tef-blue transition-none" style="width:0%"></div>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 
     <!-- 3 PILARES — Damos lo mejor / Cuestionamos / Crecemos -->
     <section class="bg-paper py-20 md:py-28 border-t border-ink/6">
-      <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
         <div class="text-center mb-16" data-reveal="up">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="lang==='es' ? 'Nuestro compromiso · It\'s on Us' : 'Our commitment · It\'s on Us'"></p>
-          <h2 class="font-sans font-normal text-4xl md:text-5xl tracking-tight text-ink leading-[0.95]" x-text="lang==='es' ? 'Tres actitudes. Un solo equipo.' : 'Three attitudes. One single team.'"></h2>
+          <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl tracking-tight text-ink leading-[0.95]" x-text="lang==='es' ? 'Tres actitudes. Un solo equipo.' : 'Three attitudes. One single team.'"></h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
 
@@ -838,12 +745,12 @@
             <div class="mb-6">
               <span class="font-sans font-normal text-[88px] leading-none text-tef-blue/10 select-none block -mt-4 -ml-2">It's</span>
             </div>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl text-ink mb-1 leading-tight" x-text="t('p1_title')"></h3>
+            <h3 class="font-sans font-normal text-3xl md:text-4xl text-ink mb-1 leading-tight" x-text="t('p1_title')"></h3>
             <p class="font-light italic text-gold-deep text-sm mb-5" x-text="t('p1_kicker')"></p>
-            <p class="text-[14px] text-ink-soft leading-relaxed mb-6" x-text="t('p1_body')"></p>
+            <p class="text-[16px] text-ink-soft leading-relaxed mb-6" x-text="t('p1_body')"></p>
             <div class="space-y-3 border-t border-ink/6 pt-5">
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Customer First</span> — <span x-text="lang==='es' ? 'el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.' : 'customer time is now. We listen and resolve with speed.'"></span></p>
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Delivering Excellence</span> — <span x-text="lang==='es' ? 'la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.' : 'excellence is our standard. Less is more. Obsession with simplicity.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Customer First</span> — <span x-text="lang==='es' ? 'el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.' : 'customer time is now. We listen and resolve with speed.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Delivering Excellence</span> — <span x-text="lang==='es' ? 'la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.' : 'excellence is our standard. Less is more. Obsession with simplicity.'"></span></p>
             </div>
           </div>
 
@@ -852,12 +759,12 @@
             <div class="mb-6">
               <span class="font-sans font-normal text-[88px] leading-none text-tef-blue/10 select-none block -mt-4 -ml-2">on</span>
             </div>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl text-ink mb-1 leading-tight" x-text="t('p2_title')"></h3>
+            <h3 class="font-sans font-normal text-3xl md:text-4xl text-ink mb-1 leading-tight" x-text="t('p2_title')"></h3>
             <p class="font-light italic text-gold-deep text-sm mb-5" x-text="t('p2_kicker')"></p>
-            <p class="text-[14px] text-ink-soft leading-relaxed mb-6" x-text="t('p2_body')"></p>
+            <p class="text-[16px] text-ink-soft leading-relaxed mb-6" x-text="t('p2_body')"></p>
             <div class="space-y-3 border-t border-ink/6 pt-5">
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Digital Innovation</span> — <span x-text="lang==='es' ? 'creamos entornos para sentirnos libres, compartir ideas e innovar con propósito.' : 'we create environments to share ideas and innovate with purpose.'"></span></p>
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Clarity &amp; Courage</span> — <span x-text="lang==='es' ? 'la claridad guía decisiones valientes. Debate abierto y cuestionamiento riguroso.' : 'clarity leads to bold decisions. Open debate and rigorous challenge.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Digital Innovation</span> — <span x-text="lang==='es' ? 'creamos entornos para sentirnos libres, compartir ideas e innovar con propósito.' : 'we create environments to share ideas and innovate with purpose.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Clarity &amp; Courage</span> — <span x-text="lang==='es' ? 'la claridad guía decisiones valientes. Debate abierto y cuestionamiento riguroso.' : 'clarity leads to bold decisions. Open debate and rigorous challenge.'"></span></p>
             </div>
           </div>
 
@@ -866,12 +773,12 @@
             <div class="mb-6">
               <span class="font-sans font-normal text-[88px] leading-none text-gold/15 select-none block -mt-4 -ml-2">Us</span>
             </div>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl text-paper mb-1 leading-tight" x-text="t('p3_title')"></h3>
+            <h3 class="font-sans font-normal text-3xl md:text-4xl text-paper mb-1 leading-tight" x-text="t('p3_title')"></h3>
             <p class="font-light italic text-gold text-sm mb-5" x-text="t('p3_kicker')"></p>
-            <p class="text-[14px] text-paper/70 leading-relaxed mb-6" x-text="t('p3_body')"></p>
+            <p class="text-[16px] text-paper/70 leading-relaxed mb-6" x-text="t('p3_body')"></p>
             <div class="space-y-3 border-t border-paper/10 pt-5">
-              <p class="text-[13px] text-paper/60 leading-snug"><span class="font-medium text-paper">Driving Ownership</span> — <span x-text="lang==='es' ? 'el resultado depende de nosotros. Asumimos la responsabilidad por el todo.' : 'results depend on us. We take responsibility for the whole.'"></span></p>
-              <p class="text-[13px] text-paper/60 leading-snug"><span class="font-medium text-paper">Growing People</span> — <span x-text="lang==='es' ? 'el crecimiento construye futuro. Aprendemos, lideramos con el ejemplo e impulsamos a las personas.' : 'growth builds the future. We learn, lead by example and develop our people.'"></span></p>
+              <p class="text-[15px] text-paper/60 leading-snug"><span class="font-medium text-paper">Driving Ownership</span> — <span x-text="lang==='es' ? 'el resultado depende de nosotros. Asumimos la responsabilidad por el todo.' : 'results depend on us. We take responsibility for the whole.'"></span></p>
+              <p class="text-[15px] text-paper/60 leading-snug"><span class="font-medium text-paper">Growing People</span> — <span x-text="lang==='es' ? 'el crecimiento construye futuro. Aprendemos, lideramos con el ejemplo e impulsamos a las personas.' : 'growth builds the future. We learn, lead by example and develop our people.'"></span></p>
             </div>
             <p class="mt-6 font-mono text-[11px] tracking-[0.3em] uppercase text-gold/70">It's on us.</p>
           </div>
@@ -882,28 +789,28 @@
 
     <!-- QUESTIONS — ¿Te has preguntado alguna vez…? -->
     <section class="bg-tef-dark text-paper py-20 md:py-28" data-nav-dark>
-      <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
         <div class="max-w-3xl mb-12 md:mb-16" data-reveal="up">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4">Accelerate Impact · La pregunta</p>
-          <h2 class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-tight mb-6" x-text="t('q_title')"></h2>
-          <p class="text-base md:text-lg text-paper/65 italic leading-snug" x-text="t('q_sub')"></p>
+          <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6" x-text="t('q_title')"></h2>
+          <p class="text-lg md:text-xl text-paper/65 italic leading-snug" x-text="t('q_sub')"></p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">01</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q1')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q1')"></p>
           </div>
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.08s">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">02</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q2')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q2')"></p>
           </div>
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.16s">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">03</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q3')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q3')"></p>
           </div>
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.24s">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">04</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q4')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q4')"></p>
           </div>
         </div>
       </div>
@@ -923,10 +830,10 @@
         <ellipse cx="200" cy="200" rx="160" ry="75" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-10 200 200)"/>
       </svg>
 
-      <div class="relative max-w-7xl mx-auto px-6">
+      <div class="relative max-w-[1400px] mx-auto px-6">
         <div class="text-center mb-28 md:mb-32" data-reveal-stagger>
           <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
-          <h2 data-stagger-item class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-tef-dark leading-tight tracking-tight">
+          <h2 data-stagger-item class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl text-tef-dark leading-tight tracking-tight">
             <span x-text="t('track_title_1')"></span>
             <span class="text-tef-blue" x-text="' ' + t('track_title_2')"></span>
           </h2>
@@ -965,8 +872,8 @@
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
                   <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue/40 rotate-45"></div>
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n0_meta')"></p>
-                  <h3 class="font-sans text-lg font-normal text-tef-dark mb-2" x-text="t('n0_title')"></h3>
-                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n0_body')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n0_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n0_body')"></p>
                 </div>
               </div>
             </div>
@@ -978,8 +885,8 @@
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
                   <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue rotate-45"></div>
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n1_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
-                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n1_body')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n1_body')"></p>
                 </div>
               </div>
             </div>
@@ -991,8 +898,8 @@
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
                   <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-dark/70 mb-3" x-text="t('n2_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
-                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
                 </div>
               </div>
             </div>
@@ -1004,7 +911,7 @@
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
                 <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
                   <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n3_body')"></p>
                   <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
                     <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n3_cta')"></span>
@@ -1040,17 +947,17 @@
     <section class="globe-section text-paper py-20 md:py-28 section-fade-bottom"
              data-globe-section data-nav-dark
              x-data="globeSection()">
-      <div class="relative max-w-7xl mx-auto px-6 md:px-10">
+      <div class="relative max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
 
         <!-- Header -->
         <div class="text-center mb-12 md:mb-16 relative z-10" data-reveal-stagger data-stagger-delay="0.12">
           <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5" x-text="t('globe_eyebrow')"></p>
-          <h2 data-stagger-item class="globe-title font-sans font-normal text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6">
+          <h2 data-stagger-item class="globe-title font-sans font-normal text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-6">
             <span data-globe-title-1 class="inline-block" x-text="t('globe_title_1')"></span>
             <span data-globe-title-2 class="inline-block text-tef-blue" x-text="t('globe_title_2')"></span>
           </h2>
           <div data-stagger-item class="mx-auto w-16 h-px bg-paper/20 mb-6"></div>
-          <p data-stagger-item class="max-w-2xl mx-auto text-base md:text-lg text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
+          <p data-stagger-item class="max-w-2xl mx-auto text-lg md:text-xl text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
         </div>
 
         <!-- Globe canvas -->
@@ -1094,15 +1001,15 @@
         <!-- Stats row -->
         <div class="grid grid-cols-3 gap-6 md:gap-10 mt-12 md:mt-14 max-w-3xl mx-auto text-center">
           <div class="count-reveal">
-            <p class="font-sans text-4xl md:text-6xl text-tef-blue font-normal leading-none mb-2 tabular-nums" x-text="stats.total"></p>
+            <p class="font-sans text-5xl md:text-7xl text-tef-blue font-normal leading-none mb-2 tabular-nums" x-text="stats.total"></p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_total')"></p>
           </div>
           <div class="count-reveal" style="animation-delay:0.15s">
-            <p class="font-sans text-4xl md:text-6xl text-paper font-normal leading-none mb-2 tabular-nums" x-text="stats.countries"></p>
+            <p class="font-sans text-5xl md:text-7xl text-paper font-normal leading-none mb-2 tabular-nums" x-text="stats.countries"></p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_countries')"></p>
           </div>
           <div class="count-reveal" style="animation-delay:0.3s">
-            <p class="font-sans text-4xl md:text-6xl text-paper font-normal leading-none mb-2 tabular-nums">6</p>
+            <p class="font-sans text-5xl md:text-7xl text-paper font-normal leading-none mb-2 tabular-nums">6</p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="lang==='es' ? 'cohortes' : 'cohorts'"></p>
           </div>
         </div>
@@ -1126,7 +1033,7 @@
 
     <!-- NADIA + COHORT -->
     <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
 
         <!-- Izquierda: Conecta con tus compañeros -->
         <div class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
@@ -1433,22 +1340,18 @@
         // ── INTRO · load sequence ─────────────────────────
         if (!reduced) {
           const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-          tl.to('.intro-eyebrow', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, 0)
-            .from('.intro-eyebrow', { y: 20, duration: 1, ease: 'power2.out' }, 0)
-            .to('.intro-word', {
-              opacity: 1, duration: 1.6, ease: 'power4.out'
-            }, 0.25)
-            .from('.intro-word', {
-              scale: 1.35, filter: 'blur(26px)', y: 80, duration: 1.6, ease: 'power4.out'
-            }, 0.25)
-            .to('.intro-program', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, 0.85)
-            .from('.intro-program', { y: 30, duration: 1.1, ease: 'power3.out' }, 0.85)
-            .to('.intro-slogan', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, 1.4)
-            .from('.intro-slogan', { y: 40, duration: 1.2, ease: 'power3.out' }, 1.4)
-            .to('.intro-scroll', { opacity: 1, y: 0, duration: 0.9 }, 2.1)
-            .from('.intro-scroll', { y: -8, duration: 0.9 }, 2.1);
+          tl.to('.intro-eyebrow', { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 0)
+            .from('.intro-eyebrow', { y: 16, duration: 0.9 }, 0)
+            .to('.intro-claim', { opacity: 1, duration: 1.1, ease: 'power3.out' }, 0.3)
+            .from('.intro-claim', { y: 30, filter: 'blur(8px)', duration: 1.1 }, 0.3)
+            .to('.intro-sub', { opacity: 1, duration: 1.0, ease: 'power3.out' }, 0.7)
+            .from('.intro-sub', { y: 20, duration: 1.0 }, 0.7)
+            .to('.intro-word', { opacity: 1, duration: 1.4, ease: 'power4.out' }, 0.9)
+            .from('.intro-word', { y: 60, filter: 'blur(20px)', duration: 1.4, ease: 'power4.out' }, 0.9)
+            .to('.intro-scroll', { opacity: 1, duration: 0.9 }, 1.8)
+            .from('.intro-scroll', { y: -8, duration: 0.9 }, 1.8);
         } else {
-          gsap.set('.intro-eyebrow, .intro-word, .intro-program, .intro-slogan, .intro-scroll', { opacity: 1 });
+          gsap.set('.intro-eyebrow, .intro-claim, .intro-sub, .intro-word, .intro-scroll', { opacity: 1 });
         }
 
         // ── INTRO · scroll exit (pin 80vh con escalado) ──
@@ -1468,47 +1371,6 @@
           .to('.intro-slogan',  { y: -60, opacity: 0, filter: 'blur(6px)' }, 0)
           .to('.intro-eyebrow', { y: -30, opacity: 0 }, 0)
           .to('.intro-scroll',  { opacity: 0 }, 0);
-        }
-
-        // ── M1 · Hero sequential 3 actos (pinned + scrubbed crossfade) ──
-        if (!reduced && typeof ScrollTrigger !== 'undefined') {
-          const heroSequential = document.querySelector('.hero-sequential');
-          if (heroSequential && window.innerWidth >= 768) {
-            // Estado inicial
-            gsap.set('[data-hero-act="1"]', { opacity: 1, filter: 'blur(0px)' });
-            gsap.set('[data-hero-act="2"], [data-hero-act="3"]', { opacity: 0, filter: 'blur(8px)' });
-
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: heroSequential,
-                start: 'top top',
-                end: '+=220%',
-                pin: '.hero-stage',
-                pinSpacing: true,
-                scrub: true,
-                invalidateOnRefresh: true
-              }
-            });
-
-            tl
-              .to({}, { duration: 0.5 })
-              // Acto 1 → 2
-              .to('[data-hero-act="1"]', { opacity: 0, filter: 'blur(8px)', duration: 0.25 })
-              .to('[data-hero-act="2"]', { opacity: 1, filter: 'blur(0px)', duration: 0.25 }, '<0.05')
-              .to('[data-hero-dot="1"]', { backgroundColor: 'rgba(247,247,255,0.2)', width: '28px', duration: 0.2 }, '<')
-              .to('[data-hero-dot="2"]', { backgroundColor: '#0066FF', width: '44px', duration: 0.2 }, '<')
-              .to({}, { duration: 0.5 })
-              // Acto 2 → 3
-              .to('[data-hero-act="2"]', { opacity: 0, filter: 'blur(8px)', duration: 0.25 })
-              .to('[data-hero-act="3"]', { opacity: 1, filter: 'blur(0px)', duration: 0.25 }, '<0.05')
-              .to('[data-hero-dot="2"]', { backgroundColor: 'rgba(247,247,255,0.2)', width: '28px', duration: 0.2 }, '<')
-              .to('[data-hero-dot="3"]', { backgroundColor: '#0066FF', width: '44px', duration: 0.2 }, '<')
-              .to({}, { duration: 0.4 });
-          } else if (heroSequential) {
-            // Mobile: dejar los 3 actos visibles en columna (no pin)
-            gsap.set('[data-hero-act="1"], [data-hero-act="2"], [data-hero-act="3"]', { position: 'relative', opacity: 1, scale: 1, filter: 'none', inset: 'auto' });
-            heroSequential.querySelector('.hero-stage').style.height = 'auto';
-          }
         }
 
         // ── M2 · Transición "Accelerate Impact" zoom scrubbed ──
@@ -1538,57 +1400,26 @@
           }
         }
 
-        // ── M3 · 3D card entry para 4 bloques ──────────
-        if (!reduced && typeof ScrollTrigger !== 'undefined') {
-          const cards = document.querySelectorAll('[data-cards-3d] article');
-          if (cards.length) {
-            cards.forEach((card, i) => {
-              gsap.from(card, {
-                rotateX: 22,
-                y: 120,
-                scale: 0.88,
-                opacity: 0,
-                filter: 'blur(12px)',
-                duration: 1.3,
-                ease: 'power3.out',
-                delay: (i % 2) * 0.15,
-                scrollTrigger: {
-                  trigger: card,
-                  start: 'top 88%'
-                }
-              });
-              // Hairline draws left→right after card lands
-              const hairline = card.querySelector('.h-px.bg-ink\\/10, .h-px.bg-ink\\/15');
-              if (hairline) {
-                gsap.from(hairline, {
-                  scaleX: 0, transformOrigin: 'left center',
-                  duration: 1, ease: 'power3.out', delay: 0.5 + (i % 2) * 0.15,
-                  scrollTrigger: { trigger: card, start: 'top 88%' }
-                });
-              }
-              // Eyebrow 01/02/03/04 parallax-drift (slower than content)
-              const eyebrow = card.querySelector('.font-mono.text-tef-blue');
-              if (eyebrow) {
-                gsap.to(eyebrow, {
-                  yPercent: -35, ease: 'none',
-                  scrollTrigger: {
-                    trigger: card,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: 0.6
-                  }
-                });
+        // ── M3 · Horizontal scroll — 4 bloques Why/How/What/Expect ──
+        if (typeof ScrollTrigger !== 'undefined') {
+          const pin    = document.getElementById('hscroll-pin');
+          const track  = document.getElementById('hscroll-track');
+          const bar    = document.getElementById('hscroll-progress');
+          if (pin && track) {
+            const getScrollWidth = () => track.scrollWidth - window.innerWidth;
+            ScrollTrigger.create({
+              trigger: pin,
+              start: 'top top',
+              end: () => '+=' + getScrollWidth(),
+              pin: true,
+              pinSpacing: true,
+              scrub: 1,
+              invalidateOnRefresh: true,
+              onUpdate: (self) => {
+                gsap.set(track, { x: -self.progress * getScrollWidth() });
+                if (bar) bar.style.width = (self.progress * 100) + '%';
               }
             });
-            // HOW tags cascade
-            const howTags = document.querySelectorAll('[data-cards-3d] article:nth-child(2) .flex-wrap span');
-            if (howTags.length) {
-              gsap.from(howTags, {
-                scale: 0.7, opacity: 0, y: 12, filter: 'blur(8px)',
-                duration: 0.7, ease: 'back.out(1.6)', stagger: 0.06,
-                scrollTrigger: { trigger: howTags[0], start: 'top 85%' }
-              });
-            }
           }
         }
 
