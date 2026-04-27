@@ -342,6 +342,17 @@
       intro_sub:      { es: 'El programa de liderazgo que convierte la cultura en acción.', en: 'The leadership program that turns culture into action.' },
       intro_scroll:   { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
+      /* Sección manifiesto */
+      mf_tag1:  { es: '#Ambición', en: '#Ambition' },
+      mf_tag2:  { es: '#Disciplina', en: '#Discipline' },
+      mf_tag3:  { es: '#Responsabilidad compartida', en: '#Shared responsibility' },
+      mf_l1:    { es: 'El presente nos reta.', en: 'The present challenges us.' },
+      mf_l2:    { es: 'Y estamos preparados.', en: 'And we are ready.' },
+      mf_l3:    { es: 'No esperamos al futuro: lo construimos.', en: 'We don\'t wait for the future: we build it.' },
+      mf_l4:    { es: 'Con ambición, disciplina y responsabilidad compartida.', en: 'With ambition, discipline, and shared responsibility.' },
+      mf_l5:    { es: 'Porque no hay nada más poderoso que un grupo de personas persiguiendo un objetivo común, teniendo claro cómo lograrlo y comprometiéndose a dar lo mejor de sí para conseguirlo.', en: 'Because there is nothing more powerful than a group of people pursuing a common goal, knowing clearly how to achieve it and committing to give their best to make it happen.' },
+      mf_video_label: { es: 'Por qué tienes que venir', en: 'Why you should come' },
+
       /* HERO It's on Us — 3 actos con claims oficiales Laura */
       hero_eyebrow: { es: 'Programa de liderazgo · 2026', en: 'Leadership program · 2026' },
       sub_its:      { es: 'Damos lo mejor de nosotros.',         en: 'We give our best.' },
@@ -592,6 +603,50 @@
           <div class="inline-flex flex-col items-center gap-3">
             <span class="font-mono text-[9px] tracking-[0.3em] uppercase text-paper/45" x-text="t('intro_scroll')"></span>
             <div class="scroll-line" aria-hidden="true"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MANIFIESTO — hashtags + texto + vídeo -->
+    <section class="bg-paper py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-6 md:px-10">
+
+        <!-- Dos columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start" data-reveal-stagger data-stagger-delay="0.12">
+
+          <!-- Izquierda: hashtags -->
+          <div class="flex flex-col gap-4" data-stagger-item>
+            <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-2">Telefónica · 2026</p>
+            <p class="font-sans font-normal text-2xl md:text-3xl text-tef-blue" x-text="t('mf_tag1')"></p>
+            <p class="font-sans font-normal text-2xl md:text-3xl text-tef-blue" x-text="t('mf_tag2')"></p>
+            <p class="font-sans font-normal text-2xl md:text-3xl text-tef-blue" x-text="t('mf_tag3')"></p>
+          </div>
+
+          <!-- Derecha: manifiesto -->
+          <div class="space-y-5" data-stagger-item>
+            <p class="font-sans font-normal italic text-ink leading-snug" style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)" x-text="t('mf_l1')"></p>
+            <p class="font-sans font-normal italic text-ink leading-snug" style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)" x-text="t('mf_l2')"></p>
+            <p class="font-sans font-normal italic text-ink leading-snug" style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)" x-text="t('mf_l3')"></p>
+            <p class="font-sans font-normal italic text-ink leading-snug" style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)" x-text="t('mf_l4')"></p>
+            <p class="font-sans font-light italic text-ink-soft leading-relaxed" style="font-size: clamp(0.95rem, 1.4vw, 1.1rem)" x-text="t('mf_l5')"></p>
+          </div>
+
+        </div>
+
+        <!-- Placeholder vídeo -->
+        <div class="mt-16 md:mt-24" data-reveal="up">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-6" x-text="t('mf_video_label')"></p>
+          <div class="relative w-full bg-ink/5 border border-ink/10 flex items-center justify-center overflow-hidden"
+               style="aspect-ratio: 16/9; max-height: 520px;">
+            <!-- Icono play -->
+            <div class="flex flex-col items-center gap-4 text-ink-mute">
+              <div class="w-16 h-16 rounded-full border border-ink/20 flex items-center justify-center">
+                <svg class="w-6 h-6 translate-x-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <p class="font-mono text-[10px] tracking-[0.2em] uppercase">Vídeo · Próximamente</p>
+            </div>
           </div>
         </div>
 
