@@ -67,7 +67,7 @@
 
         <!-- Pill -->
         <div class="navbar-pill pointer-events-auto flex items-center h-14 px-5 gap-3 rounded-full border border-black/[0.08] shadow-md"
-             style="background:rgba(247,247,255,0.84);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);">
+             style="background:rgba(247,247,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
 
           <!-- Logo -->
           <a href="index.html" class="flex-shrink-0">
