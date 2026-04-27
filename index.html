@@ -622,21 +622,24 @@
           if (!v) return;
           v.muted = true;
           v.play().catch(function(){});
-          var dir = 1;
-          var rafId;
-          v.addEventListener('ended', function() {
-            dir = -1;
-            step();
-          });
-          function step() {
-            v.currentTime = Math.max(0, v.currentTime - 1/25);
-            if (v.currentTime <= 0.04) {
-              dir = 1;
+          var lastTs = null;
+          function reverse(ts) {
+            if (lastTs === null) lastTs = ts;
+            var dt = (ts - lastTs) / 1000;
+            lastTs = ts;
+            v.currentTime = Math.max(0, v.currentTime - dt);
+            if (v.currentTime <= 0.05) {
+              lastTs = null;
+              v.currentTime = 0;
               v.play().catch(function(){});
-              return;
+            } else {
+              requestAnimationFrame(reverse);
             }
-            rafId = requestAnimationFrame(step);
           }
+          v.addEventListener('ended', function() {
+            lastTs = null;
+            requestAnimationFrame(reverse);
+          });
         })();
       </script>
       <!-- Overlay oscuro sobre el vídeo -->

@@ -186,14 +186,14 @@
     };
   </script>
 </head>
-<body class="flex flex-col min-h-screen bg-[#020914] text-ink font-sans antialiased">
+<body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased">
 
   <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
 
   <main class="flex-1">
 
     <!-- HERO — dark gradient -->
-    <section class="text-paper grain relative overflow-hidden" data-nav-dark>
+    <section class="text-paper grain relative overflow-hidden" data-nav-dark style="margin-top:-79px; padding-top:79px;">
       <img src="ezgif-595c62c70ea0e119.webp" alt="" class="absolute inset-0 w-full h-full object-cover object-center" aria-hidden="true" style="transform:scale(1.03);">
       <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 0%, #0d3a7a 0%, #031A34 55%, #020d1f 100%); opacity: 0.82;"></div>
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60vw 40vh at 70% 20%, rgba(0,102,255,0.18) 0%, transparent 60%);"></div>
@@ -207,13 +207,7 @@
           <p class="text-paper/70 leading-relaxed reveal reveal-3 max-w-2xl"
              style="font-size: clamp(1rem, 1.5vw, 1.25rem)"
              x-text="t('hero_subtitle')"></p>
-          <div class="mt-10 reveal reveal-3">
-            <a href="javascript:void(0)" class="group inline-flex items-center gap-3 bg-tef-blue text-white px-8 py-4 rounded-br-2xl hover:bg-blue-700 transition-colors">
-              <span class="font-mono text-[11px] tracking-[0.2em] uppercase" x-text="t('assessment_cta')"></span>
-              <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-          <!-- Disclaimer — below CTA, subtle on dark bg -->
+          <!-- Disclaimer — subtle on dark bg -->
           <div class="mt-8 flex items-start gap-2.5 max-w-2xl reveal reveal-3">
             <svg class="w-4 h-4 text-paper/35 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <circle cx="10" cy="10" r="8"/>
@@ -655,10 +649,6 @@
         <a href="index.html" class="group inline-flex items-center gap-4 text-ink hover:text-tef-blue transition-colors">
           <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           <span class="font-mono text-[11px] tracking-[0.22em] uppercase" x-text="t('back_cta')"></span>
-        </a>
-        <a href="javascript:void(0)" class="group inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-3.5 rounded-br-2xl hover:bg-blue-700 transition-colors">
-          <span class="font-mono text-[11px] tracking-[0.2em] uppercase" x-text="t('assessment_cta')"></span>
-          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
     </section>
