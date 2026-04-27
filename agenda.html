@@ -126,7 +126,7 @@
         </div>
       </div>
       <div class="relative border-t border-paper/10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[10px] tracking-[0.18em] uppercase text-paper/50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50">
           <span x-text="t('venue')"></span>
           <span class="hidden md:inline">3 días · 10 sesiones</span>
           <a href="#" class="hover:text-paper transition-colors" x-text="lang==='es' ? 'Descargar PDF →' : 'Download PDF →'"></a>
@@ -139,21 +139,21 @@
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-3">
           <button @click="activeDay=1" class="relative py-8 md:py-10 pl-6 text-left transition-all" :class="activeDay===1 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===1 ? 'text-tef-blue' : ''">Día · 01</p>
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===1 ? 'text-tef-blue' : ''">Día · 01</p>
             <p class="font-normal text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d1_title')"></p>
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===1 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d1_hours')"></p>
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase mt-2" :class="activeDay===1 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d1_hours')"></p>
             <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===1 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
           <button @click="activeDay=2" class="relative py-8 md:py-10 text-left transition-all border-l border-ink/10 pl-6" :class="activeDay===2 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===2 ? 'text-tef-blue' : ''">Día · 02</p>
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===2 ? 'text-tef-blue' : ''">Día · 02</p>
             <p class="font-normal text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d2_title')"></p>
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===2 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d2_hours')"></p>
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase mt-2" :class="activeDay===2 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d2_hours')"></p>
             <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===2 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
           <button @click="activeDay=3" class="relative py-8 md:py-10 text-left transition-all border-l border-ink/10 pl-6" :class="activeDay===3 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mb-1" :class="activeDay===3 ? 'text-tef-blue' : ''">Día · 03</p>
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===3 ? 'text-tef-blue' : ''">Día · 03</p>
             <p class="font-normal text-lg md:text-2xl tracking-tight leading-tight hidden md:block" x-text="t('d3_title')"></p>
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase mt-2" :class="activeDay===3 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d3_hours')"></p>
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase mt-2" :class="activeDay===3 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d3_hours')"></p>
             <span class="absolute left-0 right-0 -bottom-px transition-all" :class="activeDay===3 ? 'h-1 bg-tef-blue' : 'h-0.5 bg-transparent'"></span>
           </button>
         </div>
@@ -169,15 +169,15 @@
         <div class="relative bg-white rounded-br-2xl border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)] px-8 md:px-12 py-10 mb-12 overflow-hidden">
           <span class="absolute right-6 top-2 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[7rem] md:text-[9rem] select-none pointer-events-none">01</span>
           <div class="relative">
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-3">Día · 01</p>
+            <p class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue mb-3">Día · 01</p>
             <h2 class="font-normal text-4xl md:text-5xl leading-tight tracking-tight mb-5" x-text="t('d1_title')"></h2>
             <div class="flex flex-col gap-6">
               <div>
-                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
-                <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('d1_intro')"></p>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
+                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('d1_intro')"></p>
               </div>
               <div>
-                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
                 <ul class="space-y-2 text-sm text-ink">
                   <li class="flex gap-2"><span class="text-tef-blue flex-shrink-0">·</span><span x-text="t('d1_hl1')"></span></li>
                   <li class="flex gap-2"><span class="text-tef-blue flex-shrink-0">·</span><span x-text="t('d1_hl2')"></span></li>
@@ -194,22 +194,22 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">9:00 — 9:30</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Apertura' : 'Opening'"></p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Apertura' : 'Opening'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Bienvenida al programa' : 'Program Welcome'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Check-in y expectativas del grupo.' : 'Check-in and group expectations.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Check-in y expectativas del grupo.' : 'Check-in and group expectations.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Bienvenida e introducción al programa' : 'Welcome and program introduction'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Check-in de expectativas del grupo' : 'Group expectations check-in'"></span></li>
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">TU</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">TU</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Equipo Universitas</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Equipo Universitas</span>
                 </div>
               </a>
             </div>
@@ -218,12 +218,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">9:30 — 13:25</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Driving Ownership</p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1">Driving Ownership</p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Embedding the New Telefónica' : 'Embedding the New Telefónica'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión interactiva para entender, internalizar y traducir la estrategia Transform & Grow y el modelo de liderazgo en comportamientos del día a día.' : 'Interactive session to understand, internalize and translate the Transform & Grow strategy and leadership model into day-to-day behaviours.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión interactiva para entender, internalizar y traducir la estrategia Transform & Grow y el modelo de liderazgo en comportamientos del día a día.' : 'Interactive session to understand, internalize and translate the Transform & Grow strategy and leadership model into day-to-day behaviours.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Comprensión clara del Transform & Grow y su propósito' : 'Clear understanding of Transform & Grow and its purpose'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Visión compartida del \'One Telefónica\' en la práctica' : 'A shared view of what \'One Telefónica\' means in practice'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Claridad sobre los comportamientos esperados como role model' : 'Clarity on behaviours expected to role-model'"></span></li>
@@ -231,10 +231,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">LM</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">LM</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Laura Martín</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Laura Martín</span>
                 </div>
               </a>
             </div>
@@ -243,12 +243,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">14:25 — 18:45</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Clarity & Courage</p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1">Clarity & Courage</p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Clarity & Courage' : 'Clarity & Courage'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Simulación de negocio en grupos pequeños para practicar cómo liderar con claridad y valentía en situaciones reales de Telefónica.' : 'A hands-on business simulation to practice leading with clarity & courage in complex, high-stakes situations.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Simulación de negocio en grupos pequeños para practicar cómo liderar con claridad y valentía en situaciones reales de Telefónica.' : 'A hands-on business simulation to practice leading with clarity & courage in complex, high-stakes situations.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Construir confianza psicológica en el equipo' : 'Build psychological trust in the team'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Gestionar el conflicto de forma productiva' : 'Handle conflict effectively'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Tomar decisiones colectivas con datos, no por consenso pasivo' : 'Make data-driven collective decisions, not by passive consensus'"></span></li>
@@ -256,10 +256,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">CR</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">CR</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Carlos Ruiz</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Carlos Ruiz</span>
                 </div>
               </a>
             </div>
@@ -268,12 +268,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">20:00 — 22:00</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Digital Innovation</p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1">Digital Innovation</p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Innovation Mindset — DStagE' : 'Innovation Mindset — DStagE'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión inmersiva en un entorno de innovación para explorar cómo la experimentación constante y la colaboración multidisciplinar habilitan la innovación radical.' : 'Immersive session in an innovation-driven environment exploring how constant experimentation and multidisciplinary collaboration enable radical innovation.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión inmersiva en un entorno de innovación para explorar cómo la experimentación constante y la colaboración multidisciplinar habilitan la innovación radical.' : 'Immersive session in an innovation-driven environment exploring how constant experimentation and multidisciplinary collaboration enable radical innovation.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Visita guiada al DSpot Lab (DStagE Innovation Lab)' : 'Guided visit to DSpot Lab (DStagE Innovation Lab)'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Conversación con Diego Guerrero sobre sostener la innovación' : 'Conversation with Diego Guerrero on sustaining innovation'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Cocktail de networking con el equipo' : 'Networking cocktail with the team'"></span></li>
@@ -281,10 +281,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">DG</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">DG</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Diego Guerrero</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Diego Guerrero</span>
                 </div>
               </a>
             </div>
@@ -298,15 +298,15 @@
         <div class="relative bg-white rounded-br-2xl border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)] px-8 md:px-12 py-10 mb-12 overflow-hidden">
           <span class="absolute right-6 top-2 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[7rem] md:text-[9rem] select-none pointer-events-none">02</span>
           <div class="relative">
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-3">Día · 02</p>
+            <p class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue mb-3">Día · 02</p>
             <h2 class="font-normal text-4xl md:text-5xl leading-tight tracking-tight mb-5" x-text="t('d2_title')"></h2>
             <div class="flex flex-col gap-6">
               <div>
-                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
-                <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('d2_intro')"></p>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
+                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('d2_intro')"></p>
               </div>
               <div>
-                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
                 <ul class="space-y-2 text-sm text-ink">
                   <li class="flex gap-2"><span class="text-tef-blue flex-shrink-0">·</span><span x-text="t('d2_hl1')"></span></li>
                   <li class="flex gap-2"><span class="text-tef-blue flex-shrink-0">·</span><span x-text="t('d2_hl2')"></span></li>
@@ -321,12 +321,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">9:00 — 13:00</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Digital Innovation</p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1">Digital Innovation</p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Digital Innovation Leadership in the Age of AI' : 'Digital Innovation Leadership in the Age of AI'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión interactiva sobre liderazgo en la era de la IA, combinando el framework 4Cs con uso práctico y ligero de IA.' : 'Interactive session on leading in the era of AI, combining the 4Cs framework with light, hands-on AI use.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión interactiva sobre liderazgo en la era de la IA, combinando el framework 4Cs con uso práctico y ligero de IA.' : 'Interactive session on leading in the era of AI, combining the 4Cs framework with light, hands-on AI use.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Cómo liderar a través de la incertidumbre que la IA provoca' : 'How to lead through uncertainty triggered by AI and automation'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Experimentos aplicables a tu trabajo diario' : 'Experiments applicable to your daily job'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Hacer de la innovación un hábito diario' : 'Make innovation a daily habit'"></span></li>
@@ -334,10 +334,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">AT</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">AT</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Ana Torres</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Ana Torres</span>
                 </div>
               </a>
             </div>
@@ -346,12 +346,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">14:00 — 17:00</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Innovación' : 'Innovation'"></p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Innovación' : 'Innovation'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Experimentación y aprendizaje ágil' : 'Experimentation and agile learning'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Marco práctico para diseñar experimentos: definir objetivo, identificar stakeholders, mitigar riesgos y medir impacto.' : 'Practical framework to design experiments: define objective, identify stakeholders, mitigate risks and measure impact.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Marco práctico para diseñar experimentos: definir objetivo, identificar stakeholders, mitigar riesgos y medir impacto.' : 'Practical framework to design experiments: define objective, identify stakeholders, mitigate risks and measure impact.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Definir experimentos con KPIs claros' : 'Define experiments with clear KPIs'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Identificar stakeholders y riesgos' : 'Identify stakeholders and risks'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Set up y ejecución individual del experimento' : 'Individual experiment set-up and execution'"></span></li>
@@ -359,10 +359,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">MV</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">MV</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Marcos Vidal</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Marcos Vidal</span>
                 </div>
               </a>
             </div>
@@ -371,12 +371,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">20:00 — 22:00</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Inner Leadership</p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1">Inner Leadership</p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Inner Leadership Response' : 'Inner Leadership Response'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión reflexiva e interactiva para profundizar en el autoconocimiento, definir propósito personal y aplicarlo al contexto de Telefónica.' : 'Reflective and interactive session to deepen self-knowledge, define your personal purpose and vision, and apply them at Telefónica.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Sesión reflexiva e interactiva para profundizar en el autoconocimiento, definir propósito personal y aplicarlo al contexto de Telefónica.' : 'Reflective and interactive session to deepen self-knowledge, define your personal purpose and vision, and apply them at Telefónica.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Definir tu propósito, valores y visión personal' : 'Define your personal purpose, values and vision'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Entender tus patrones personales: los que ayudan y los que hay que gestionar' : 'Understand your personal patterns that help or need managing'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Experimentar el poder de la conexión y la conversación profunda' : 'Experience the power of connection and deep conversations'"></span></li>
@@ -384,10 +384,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">EN</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">EN</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Elena Navarro</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Elena Navarro</span>
                 </div>
               </a>
             </div>
@@ -401,15 +401,15 @@
         <div class="relative bg-white rounded-br-2xl border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)] px-8 md:px-12 py-10 mb-12 overflow-hidden">
           <span class="absolute right-6 top-2 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[7rem] md:text-[9rem] select-none pointer-events-none">03</span>
           <div class="relative">
-            <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-3">Día · 03</p>
+            <p class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue mb-3">Día · 03</p>
             <h2 class="font-normal text-4xl md:text-5xl leading-tight tracking-tight mb-5" x-text="t('d3_title')"></h2>
             <div class="flex flex-col gap-6">
               <div>
-                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
-                <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('d3_intro')"></p>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
+                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('d3_intro')"></p>
               </div>
               <div>
-                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
                 <ul class="space-y-2 text-sm text-ink">
                   <li class="flex gap-2"><span class="text-tef-blue flex-shrink-0">·</span><span x-text="t('d3_hl1')"></span></li>
                   <li class="flex gap-2"><span class="text-tef-blue flex-shrink-0">·</span><span x-text="t('d3_hl2')"></span></li>
@@ -424,12 +424,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">9:00 — 12:30</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1">Driving Ownership</p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1">Driving Ownership</p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Driving Ownership' : 'Driving Ownership'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Explora la evolución del liderazgo: del rendimiento individual a sostener resultados a través del equipo y expandir el impacto en la organización.' : 'Explore the evolution of leadership: from individual performance to driving outcomes through teams and expanding impact across the organization.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Explora la evolución del liderazgo: del rendimiento individual a sostener resultados a través del equipo y expandir el impacto en la organización.' : 'Explore the evolution of leadership: from individual performance to driving outcomes through teams and expanding impact across the organization.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Conciencia de los shifts de liderazgo para operar a mayor impacto' : 'Awareness of leadership shifts to operate at higher impact'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Confianza, autonomía y rendición de cuentas compartida en equipos' : 'Trust, autonomy and shared accountability in teams'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Perspectiva ampliada: del éxito personal al legado organizativo' : 'Expanded view: from personal success to organizational legacy'"></span></li>
@@ -437,10 +437,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">RV</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">RV</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Rafael Vázquez</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Rafael Vázquez</span>
                 </div>
               </a>
             </div>
@@ -449,12 +449,12 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">13:30 — 16:30</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Plan de Acción' : 'Action Plan'"></p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Plan de Acción' : 'Action Plan'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Action Plan & Cierre' : 'Action Plan & Closure'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Consolidación del journey y traducción de los aprendizajes en compromisos concretos: Kill / Quick Win / Raise the Bar, con apoyo de Nadia.' : 'Consolidation of the journey and translating learnings into concrete commitments: Kill / Quick Win / Raise the Bar, supported by Nadia.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Consolidación del journey y traducción de los aprendizajes en compromisos concretos: Kill / Quick Win / Raise the Bar, con apoyo de Nadia.' : 'Consolidation of the journey and translating learnings into concrete commitments: Kill / Quick Win / Raise the Bar, supported by Nadia.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Plan de acción personal para eliminar trabajo de bajo valor' : 'Personal action plan to eliminate low-value work'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Compromisos de alto impacto alineados con tu propósito' : 'High-impact commitments aligned with your purpose'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Accountability con tu comunidad (follow-ups a 2 semanas / 1 mes / 3 meses)' : 'Community accountability (follow-ups at 2 weeks / 1 month / 3 months)'"></span></li>
@@ -462,10 +462,10 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">AC</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">AC</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Amanda Carmo</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Amanda Carmo</span>
                 </div>
               </a>
             </div>
@@ -474,22 +474,22 @@
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">17:00 — 18:00</p>
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Celebración' : 'Celebration'"></p>
+              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mt-1" x-text="lang==='es' ? 'Celebración' : 'Celebration'"></p>
             </div>
             <div class="col-span-12 md:col-span-7">
               <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="lang==='es' ? 'Celebración y clausura' : 'Celebration and closing ceremony'"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Reconocimiento de logros, despedida y próximos pasos del journey.' : 'Recognizing achievements, farewell and next steps in the journey.'"></p>
-              <ul class="space-y-1.5 text-[13px] text-ink-mute">
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-4 max-w-xl" x-text="lang==='es' ? 'Reconocimiento de logros, despedida y próximos pasos del journey.' : 'Recognizing achievements, farewell and next steps in the journey.'"></p>
+              <ul class="space-y-1.5 text-[15px] text-ink-mute">
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Reconocimiento de logros colectivos e individuales' : 'Recognition of collective and individual achievements'"></span></li>
                 <li class="flex gap-2"><span class="text-ink/30 flex-shrink-0">·</span><span x-text="lang==='es' ? 'Despedida y activación de la red de pares' : 'Farewell and activation of the peer network'"></span></li>
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[10px] font-mono tracking-wider text-ink flex-shrink-0">JA</div>
+                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">JA</div>
                 <div class="flex flex-col">
-                  <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[13px] font-medium text-ink group-hover:text-tef-blue transition-colors">Javier Alvares</span>
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
+                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Javier Alvares</span>
                 </div>
               </a>
             </div>
@@ -506,7 +506,7 @@
           <h3 class="font-sans font-normal text-3xl md:text-5xl leading-[1.05] tracking-tight mb-3">
             <span x-text="lang==='es' ? 'Conecta con ' : 'Connect with '"></span><em class="italic text-tef-blue">Nadia.</em>
           </h3>
-          <p class="text-[15px] text-paper/70 max-w-xl leading-relaxed" x-text="lang==='es' ? 'Prepara tu action plan con tu AI Coach antes de llegar a Madrid.' : 'Prepare your action plan with your AI Coach before arriving in Madrid.'"></p>
+          <p class="text-[17px] text-paper/70 max-w-xl leading-relaxed" x-text="lang==='es' ? 'Prepara tu action plan con tu AI Coach antes de llegar a Madrid.' : 'Prepare your action plan with your AI Coach before arriving in Madrid.'"></p>
           <a href="nadia.html" class="group absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 rounded-br-2xl hover:bg-blue-700 transition-colors">
             <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="lang==='es' ? 'Ir a Nadia' : 'Go to Nadia'"></span>
             <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>

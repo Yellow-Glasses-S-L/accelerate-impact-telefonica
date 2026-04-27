@@ -1,5 +1,10 @@
 (function () {
 
+  /* ── BASE FONT SIZE — 18px global ── */
+  const baseStyle = document.createElement('style');
+  baseStyle.textContent = 'html { font-size: 18px; }';
+  document.head.appendChild(baseStyle);
+
   /* ── CUSTOM CURSOR — punto azul Telefónica ── */
   const isTouchDevice = window.matchMedia('(hover: none)').matches;
   if (!isTouchDevice) {
@@ -138,7 +143,7 @@
           <div class="col-span-12 md:col-span-6 flex md:justify-end items-start">
             <a href="mailto:accelerateimpact@universitas.com"
                class="group inline-flex items-center gap-3 border-b border-paper/30 hover:border-tef-blue pb-1 transition-colors">
-              <span class="font-mono text-[11px] tracking-[0.2em] uppercase group-hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Escríbenos' : 'Get in touch'"></span>
+              <span class="font-mono text-[12px] tracking-[0.2em] uppercase group-hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Escríbenos' : 'Get in touch'"></span>
               <span class="text-lg group-hover:translate-x-1 group-hover:text-tef-blue transition-all">→</span>
             </a>
           </div>
@@ -147,7 +152,7 @@
         <!-- Middle: columns -->
         <div class="grid grid-cols-12 gap-6 py-10 border-b border-paper/10">
           <div class="col-span-12 md:col-span-4">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4"
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-4"
                x-text="lang==='es' ? 'Partners del programa' : 'Program partners'"></p>
             <ul class="space-y-2 text-sm">
               <li><a href="https://www.kornferry.com" target="_blank" rel="noopener" class="text-paper/80 hover:text-tef-blue transition-colors">Korn Ferry</a></li>
@@ -158,7 +163,7 @@
             </ul>
           </div>
           <div class="col-span-6 md:col-span-4">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4"
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-4"
                x-text="lang==='es' ? 'Explorar' : 'Explore'"></p>
             <ul class="space-y-2 text-sm">
               <li><a href="journey.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
@@ -169,7 +174,7 @@
             </ul>
           </div>
           <div class="col-span-6 md:col-span-4">
-            <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50 mb-4"
+            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-4"
                x-text="lang==='es' ? 'El programa' : 'The program'"></p>
             <ul class="space-y-2 text-sm text-paper/80">
               <li x-text="lang==='es' ? '10 meses · 3 fases' : '10 months · 3 phases'"></li>
@@ -179,12 +184,12 @@
         </div>
 
         <!-- Disclaimer — always shown -->
-        <p class="py-5 text-[11px] text-paper/50 leading-relaxed max-w-3xl"
+        <p class="py-5 text-[12px] text-paper/50 leading-relaxed max-w-3xl"
            x-text="lang==='en' ? '* The self-diagnosis is confidential and non-evaluative. Only you and the designated People team have access.' : '* El autodiagnóstico es confidencial y no evaluativo. Sólo accederás tú y el equipo People designado.'"></p>
 
         <!-- Bottom: legal + YG -->
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-paper/10">
-          <p class="font-mono text-[10px] tracking-[0.18em] uppercase text-paper/40">© 2026 Telefónica S.A.</p>
+          <p class="font-mono text-[11px] tracking-[0.18em] uppercase text-paper/40">© 2026 Telefónica S.A.</p>
           <div class="flex items-center gap-5">
             <a href="https://yellowglasses.es" target="_blank" rel="noopener"
                class="text-paper/50 hover:text-paper transition-colors" aria-label="Powered by Yellow Glasses">
