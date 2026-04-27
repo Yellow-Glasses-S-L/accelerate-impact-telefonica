@@ -1,4 +1,45 @@
 (function () {
+
+  /* ── CUSTOM CURSOR — punto azul Telefónica ── */
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+  if (!isTouchDevice) {
+    const style = document.createElement('style');
+    style.textContent = `
+      *, *::before, *::after { cursor: none !important; }
+      #custom-cursor {
+        position: fixed; top: 0; left: 0; z-index: 99999;
+        width: 10px; height: 10px; border-radius: 50%;
+        background: #0066FF;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: transform 0.12s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+        will-change: top, left;
+      }
+      #custom-cursor.is-hovering {
+        width: 22px; height: 22px;
+        background: rgba(0, 102, 255, 0.25);
+        border: 1.5px solid #0066FF;
+      }
+    `;
+    document.head.appendChild(style);
+
+    const dot = document.createElement('div');
+    dot.id = 'custom-cursor';
+    document.body.appendChild(dot);
+
+    let mx = -100, my = -100;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top  = my + 'px';
+    }, { passive: true });
+
+    document.addEventListener('mouseover', e => {
+      const el = e.target.closest('a, button, [role="button"], input, textarea, select, label');
+      dot.classList.toggle('is-hovering', !!el);
+    });
+  }
+
   const path = window.location.pathname;
   const current =
     path.includes('nadia') ? 'nadia' :
