@@ -407,4 +407,27 @@
     }
 
   });
+
+  // ── Navbar adaptativa (subpáginas) — home tiene su propio M7 ──
+  if (!document.querySelector('.intro-hero')) {
+    const navbar = document.getElementById('site-navbar');
+    if (navbar) {
+      const navH = 80;
+      const updateNavbar = () => {
+        let isDark = false;
+        for (const sec of document.querySelectorAll('[data-nav-dark]')) {
+          const r = sec.getBoundingClientRect();
+          if (r.top <= navH + 1 && r.bottom > navH) { isDark = true; break; }
+        }
+        navbar.classList.toggle('nav-on-dark', isDark);
+      };
+      window.addEventListener('scroll', updateNavbar, { passive: true });
+      window.addEventListener('load', () => {
+        if (window.__lenis) window.__lenis.on('scroll', updateNavbar);
+        updateNavbar();
+      }, { once: true });
+      updateNavbar();
+    }
+  }
+
 })();
