@@ -64,19 +64,12 @@
     .reveal-3 { animation-delay: 0.4s; }
     .reveal-4 { animation-delay: 0.55s; }
 
-    @keyframes dashflow { to { stroke-dashoffset: -140; } }
-    .path-breathe { animation: dashflow 18s linear infinite; }
-
     @keyframes orbital-spin { to { transform: rotate(360deg); } }
     .orbital-spin { animation: orbital-spin 22s linear infinite; transform-origin: center; }
     .orbital-spin-rev { animation: orbital-spin 26s linear infinite reverse; transform-origin: center; }
 
-    @keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    .drift { animation: drift 6s ease-in-out infinite; }
-    .drift-delayed { animation: drift 6s ease-in-out infinite; animation-delay: -3s; }
-
     @media (prefers-reduced-motion: reduce) {
-      .path-breathe, .orbital-spin, .orbital-spin-rev, .drift, .drift-delayed, .reveal { animation: none; }
+      .orbital-spin, .orbital-spin-rev, .reveal { animation: none; }
     }
 
     /* Fondo oscuro continuo — compartido por intro + hero (sin seams) */
@@ -246,10 +239,6 @@
       color: #F7F7FF;
       margin: 0;
     }
-    .act-rule {
-      width: 64px; height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(0,102,255,0.9) 50%, transparent 100%);
-    }
     .act-subtitle {
       font-size: clamp(1.1rem, 1.7vw, 1.75rem);
       font-weight: 300;
@@ -354,12 +343,6 @@
       border-color: #0066FF;
     }
 
-    /* Flag pulse ring on the globe dots */
-    @keyframes pulse-ring {
-      0% { transform: scale(1); opacity: 0.8; }
-      80%,100% { transform: scale(2.2); opacity: 0; }
-    }
-
     /* Globe headline split */
     .globe-title span {
       display: inline-block;
@@ -395,8 +378,7 @@
                         en: 'And it begins today. Right now.' },
       intro_scroll:   { es: 'Desliza para empezar', en: 'Scroll to begin' },
 
-      /* HERO It's on Us — 3 actos con claims oficiales Laura */
-      hero_eyebrow: { es: 'Programa de liderazgo · 2026', en: 'Leadership program · 2026' },
+      /* HERO It's on Us — 3 actos */
       sub_its:      { es: 'Damos lo mejor de nosotros.',         en: 'We give our best.' },
       sub_its_kicker: { es: 'Porque lo bueno no basta.',          en: 'Because good enough is not enough.' },
       sub_on:       { es: 'Cuestionamos nuestros propios límites.', en: 'We challenge our own limits.' },
@@ -511,10 +493,6 @@
         en: "This journey includes a purely developmental leadership self-diagnosis. Your individual results are only accessible to you and the designated People team. Aggregated data preserves individual confidentiality. This is not a performance evaluation."
       },
       disc_cta: { es: 'Lo entiendo', en: 'I understand' },
-      disc_footer: {
-        es: '* El autodiagnóstico es confidencial y no evaluativo. Sólo accederás tú y el equipo People designado.',
-        en: '* The self-diagnosis is confidential and non-evaluative. Only you and the designated People team have access.'
-      },
 
       /* 3 PILLARS verbatim — claims rojos + verbatim negro */
       p1_title: { es: 'Damos lo mejor de nosotros.', en: 'We give our best.' },
@@ -788,7 +766,7 @@
                   style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">01</span>
             <div class="relative flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">Why</span>
-              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
+              <span class="flex-1 h-px bg-ink/10"></span>
             </div>
             <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
             <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_why_title')"></h3>
@@ -801,7 +779,7 @@
                   style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">02</span>
             <div class="relative flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">How</span>
-              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
+              <span class="flex-1 h-px bg-ink/10"></span>
             </div>
             <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
             <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_how_title')"></h3>
@@ -822,7 +800,7 @@
                   style="color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.18); letter-spacing:-0.05em;">03</span>
             <div class="relative flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue">What</span>
-              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
+              <span class="flex-1 h-px bg-ink/10"></span>
             </div>
             <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
             <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_what_title')"></h3>
@@ -835,7 +813,7 @@
                   style="color: transparent; -webkit-text-stroke: 1px rgba(232,181,71,0.35); letter-spacing:-0.05em;">04</span>
             <div class="relative flex items-center gap-3 mb-5">
               <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep">Expect</span>
-              <span data-hairline class="flex-1 h-px bg-ink/10"></span>
+              <span class="flex-1 h-px bg-ink/10"></span>
             </div>
             <p class="relative font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
             <h3 class="relative font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-5" x-text="t('b_exp_title')"></h3>
