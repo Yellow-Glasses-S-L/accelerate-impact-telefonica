@@ -46,17 +46,15 @@
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-    .reveal-1 { animation-delay: 0.1s; } .reveal-2 { animation-delay: 0.2s; } .reveal-3 { animation-delay: 0.3s; }
 
     @keyframes dashflow { to { stroke-dashoffset: -170; } }
     .ascent-breathe { animation: dashflow 20s linear infinite; }
 
     @keyframes orbit { to { transform: rotate(360deg); } }
     .orbit { animation: orbit 24s linear infinite; transform-origin: center; }
-    .orbit-rev { animation: orbit 30s linear infinite reverse; transform-origin: center; }
 
     @media (prefers-reduced-motion: reduce) {
-      .ascent-breathe, .orbit, .orbit-rev, .reveal { animation: none; }
+      .ascent-breathe, .orbit, .reveal { animation: none; }
     }
 
     /* Mobile override para track ascendente */
@@ -93,47 +91,28 @@
       n0_meta: { es: 'Paso 1 · Email', en: 'Step 1 · Email' },
       n0_title: { es: 'El correo que lo cambia todo.', en: 'The email that changes everything.' },
       n0_body: { es: 'Tu primer contacto con el programa. Te dará acceso a este reto y será el punto de partida del recorrido.', en: 'Your first contact with the program. It gives you access to this challenge and marks the start of the journey.' },
-      n0_tag: { es: 'Punto de partida', en: 'Starting point' },
 
       n1_meta: { es: 'Paso 2 · Online', en: 'Step 2 · Online' },
       n1_title: { es: 'Conoce a tu coach. Nunca duerme.', en: 'Meet your coach. She never sleeps.' },
       n1_body: { es: 'Nadia, tu AI Leadership Coach, te acompañará a lo largo de todo el proceso y aprenderás a sacar el máximo partido a su apoyo.', en: 'Nadia, your AI Leadership Coach, will accompany you throughout the whole process and you will learn how to get the most from her support.' },
-      n1_tag: { es: 'Siempre disponible', en: 'Always on' },
 
       n2_meta: { es: 'Paso 3 · Virtual', en: 'Step 3 · Virtual' },
       n2_title: { es: 'Bienvenido a tu cohorte.', en: 'Welcome to your cohort.' },
       n2_body: { es: 'Se presentará el programa y conocerás a tu cohorte, el grupo de personas con las que compartirás esta experiencia.', en: 'The program will be presented and you will meet your cohort — the group you will share this experience with.' },
-      n2_cta: { es: 'Empezar ahora', en: 'Start now' },
-      n2_tag: { es: 'Informativo', en: 'Informational' },
 
       n3_meta: { es: 'Paso 4 · Online', en: 'Step 4 · Online' },
       n3_title: { es: 'Mírate al espejo.', en: 'Look in the mirror.' },
       n3_body: { es: 'Un autodiagnóstico diseñado para ayudarte a comprender cómo lideras hoy e identificar cómo puedes amplificar tu impacto como líder.', en: 'A self-diagnosis designed to help you understand how you lead today and identify how to amplify your impact as a leader.' },
       n3_cta: { es: 'Empezar ahora', en: 'Start now' },
-      n3_tag: { es: 'Acción', en: 'Action' },
 
       n4_meta: { es: 'Paso 5 · Presencial · Universitas', en: 'Step 5 · In-person · Universitas' },
       n4_title: { es: 'Tres días que no olvidarás.', en: 'Three days you will not forget.' },
       n4_body: { es: 'Vivirás una experiencia presencial de tres días en Universitas. El corazón del programa y el momento donde todo converge: reflexión, aprendizaje y acción.', en: 'Three in-person days at Universitas. The heart of the program — where reflection, learning and action converge.' },
       n4_cta: { es: 'Ver agenda', en: 'See agenda' },
-      n4_tag: { es: 'Acción', en: 'Action' },
 
       /* Fases */
-      phase_eyebrow: { es: 'Tres fases. Un mismo compromiso.', en: 'Three phases. One commitment.' },
-      phase1_label: { es: 'Fase 01', en: 'Phase 01' },
-      phase1_title: { es: 'Assess', en: 'Assess' },
-      phase1_sub: { es: 'Conócete antes de actuar', en: 'Know yourself before acting' },
-      phase1_body: { es: 'Entiendes tu perfil de liderazgo y el punto desde el que partes. Sin diagnóstico no hay viaje.', en: 'You understand your leadership profile and the point from which you start. No diagnosis, no journey.' },
 
-      phase2_label: { es: 'Fase 02', en: 'Phase 02' },
-      phase2_title: { es: 'Activate', en: 'Activate' },
-      phase2_sub: { es: 'Inmersión presencial', en: 'In-person immersion' },
-      phase2_body: { es: 'Tres días de Action Learning Week en Universitas. Aprendizaje, pares y decisiones reales.', en: 'Three Action Learning Week days at Universitas. Learning, peers and real decisions.' },
 
-      phase3_label: { es: 'Fase 03', en: 'Phase 03' },
-      phase3_title: { es: 'Drive Action', en: 'Drive Action' },
-      phase3_sub: { es: 'Del insight al impacto', en: 'From insight to impact' },
-      phase3_body: { es: 'Aplicación sostenida con pares, comunidad y Nadia. Cambio de conducta, no sólo de información.', en: 'Sustained application with peers, community and Nadia. Behaviour change, not just information.' },
 
       /* CTA final */
       next_title_pre: { es: 'Empieza con ', en: 'Start with your ' },

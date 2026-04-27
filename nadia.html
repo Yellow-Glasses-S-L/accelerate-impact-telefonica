@@ -47,9 +47,6 @@
     .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>"); opacity: 0.06; mix-blend-mode: overlay; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-    .reveal-1 { animation-delay: 0.05s; }
-    .reveal-2 { animation-delay: 0.15s; }
-    .reveal-3 { animation-delay: 0.25s; }
     @keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.15); opacity: 0.6; } }
     .breathe { animation: breathe 6s ease-in-out infinite; }
   </style>
@@ -59,11 +56,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script>
     const i18n = {
-      nav_home: { es: 'Inicio', en: 'Home' },
-      nav_modelo: { es: 'Modelo', en: 'Model' },
       nav_journey: { es: 'Journey', en: 'Journey' },
-      nav_auto: { es: 'Assessment', en: 'Assessment' },
-      nav_agenda: { es: 'Agenda', en: 'Agenda' },
       nav_info: { es: 'Contacto', en: 'Contact' },
 
       hero_eyebrow: { es: 'AI Leadership Coach', en: 'AI Leadership Coach' },
@@ -82,19 +75,15 @@
       uses_claim: { es: 'Sácale todo el jugo.', en: 'Get every last drop.' },
       uses_label: { es: 'Cómo aprovecharla', en: 'How to use her' },
 
-      use1_num: '01',
       use1_t: { es: 'Preparar tu Action Plan', en: 'Prepare your Action Plan' },
       use1_d: { es: 'Define tus compromisos de liderazgo con claridad: qué dejas de hacer (Kill), qué harás rápido (Quick Win) y qué elevarás de nivel (Raise the Bar).', en: 'Define your leadership commitments clearly: what to stop (Kill), what to do fast (Quick Win), and what to raise (Raise the Bar).' },
 
-      use2_num: '02',
       use2_t: { es: 'Reflexionar sobre resultados', en: 'Reflect on your results' },
       use2_d: { es: 'Conecta tu assessment con acciones concretas. Traduce insights en pequeños pasos que puedas medir en tu día a día.', en: 'Connect your assessment with concrete actions. Turn insights into small, measurable steps for your day-to-day.' },
 
-      use3_num: '03',
       use3_t: { es: 'Practicar conversaciones difíciles', en: 'Rehearse difficult conversations' },
       use3_d: { es: 'Simula diálogos antes de que ocurran: feedback, decisiones duras, gestión de conflicto. Ensaya, anticipa reacciones, afina tu mensaje.', en: 'Rehearse dialogues before they happen: feedback, hard decisions, conflict. Practice, anticipate reactions, refine your message.' },
 
-      use4_num: '04',
       use4_t: { es: 'Sostener el momentum', en: 'Sustain the momentum' },
       use4_d: { es: 'Acompañamiento post-programa para consolidar hábitos y que las decisiones de liderazgo sobrevivan al día 1, al mes 3 y al trimestre siguiente.', en: 'Post-program support to consolidate habits — so leadership decisions survive day 1, month 3, and the next quarter.' },
 
