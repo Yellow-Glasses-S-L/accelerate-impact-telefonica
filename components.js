@@ -1,5 +1,99 @@
 (function () {
 
+  /* ── PAGE LOADER — solo primera visita de la sesión ── */
+  if (!sessionStorage.getItem('ai_loaded')) {
+    sessionStorage.setItem('ai_loaded', '1');
+
+    var loaderStyle = document.createElement('style');
+    loaderStyle.textContent = `
+      #page-loader {
+        position: fixed; inset: 0; z-index: 99998;
+        background: #F7F7FF;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+        transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1);
+      }
+      #page-loader.out { opacity: 0; pointer-events: none; }
+      @keyframes dotPop {
+        0%   { transform: scale(0); opacity: 0; }
+        65%  { transform: scale(1.15); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes dotPulse {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0.3; }
+      }
+      @keyframes loaderTextIn {
+        0%   { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .l-dot {
+        transform-origin: center;
+        transform-box: fill-box;
+        animation: dotPop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+      }
+      .l-dot.pulse { animation: dotPulse 1.5s ease-in-out infinite; }
+      .l-welcome {
+        text-align: center;
+        animation: loaderTextIn 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.6s both;
+      }
+    `;
+    document.head.appendChild(loaderStyle);
+
+    var loader = document.createElement('div');
+    loader.id = 'page-loader';
+    var lang = localStorage.getItem('lang') || 'es';
+    loader.innerHTML = `
+      <svg viewBox="0 0 464 464" width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="l-dot" cx="69.2"  cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0s"/>
+        <circle class="l-dot" cx="232"   cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.1s"/>
+        <circle class="l-dot" cx="394.8" cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.2s"/>
+        <circle class="l-dot" cx="232"   cy="232"   r="69.2" fill="#0066FF" style="animation-delay:0.3s"/>
+        <circle class="l-dot" cx="232"   cy="394.8" r="69.2" fill="#0066FF" style="animation-delay:0.4s"/>
+      </svg>
+      <div class="l-welcome">
+        <p style="font-family:'Telefonica Sans',Inter,sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#031A34;opacity:0.4;margin:0 0 8px;">${lang === 'en' ? 'Welcome to' : 'Bienvenido a'}</p>
+        <p style="font-family:'Telefonica Sans',Inter,sans-serif;font-size:22px;letter-spacing:-0.02em;color:#031A34;font-weight:400;margin:0;">Accelerate Impact</p>
+      </div>
+    `;
+    document.body.prepend(loader);
+
+    // Tras la animación de entrada, pasa a pulso suave
+    setTimeout(function () {
+      var dots = loader.querySelectorAll('.l-dot');
+      dots.forEach(function (d, i) {
+        d.classList.add('pulse');
+        d.style.animationDelay = (i * 0.12) + 's';
+      });
+    }, 650);
+
+    var startTime = Date.now();
+    var minDisplay = 1400;
+
+    function dismiss() {
+      var wait = Math.max(0, minDisplay - (Date.now() - startTime));
+      setTimeout(function () {
+        loader.classList.add('out');
+        setTimeout(function () { loader.remove(); }, 700);
+      }, wait);
+    }
+
+    var maxTimeout = setTimeout(dismiss, 4000);
+
+    var readyPromises = [document.fonts.ready];
+    var heroVideo = document.querySelector('video');
+    if (heroVideo) {
+      readyPromises.push(new Promise(function (resolve) {
+        if (heroVideo.readyState >= 3) { resolve(); return; }
+        heroVideo.addEventListener('canplaythrough', resolve, { once: true });
+      }));
+    }
+
+    Promise.all(readyPromises).then(function () {
+      clearTimeout(maxTimeout);
+      dismiss();
+    });
+  }
+
   /* ── BASE FONT SIZE — 18px global ── */
   const baseStyle = document.createElement('style');
   baseStyle.textContent = 'html { font-size: 18px; }';
