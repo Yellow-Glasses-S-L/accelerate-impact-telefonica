@@ -84,8 +84,9 @@
       background: #020914;
       position: relative;
       min-height: 100vh; height: 100vh; overflow: hidden;
+      margin-top: -68px; /* extiende la sección para cubrir el área del navbar */
     }
-    .nav-hero-filler { height: 68px; background: #020914; margin-top: -68px; pointer-events: none; position: relative; z-index: 0; }
+    .nav-hero-filler { height: 68px; background: transparent; margin-top: -68px; pointer-events: none; position: relative; z-index: 0; }
 
     /* Glow atmosférico fixed al viewport — visible solo detrás de secciones oscuras */
     .dark-atmosphere {
@@ -551,7 +552,7 @@
     <section class="intro-hero text-paper" data-nav-dark>
       <!-- Vídeo de fondo -->
       <video id="hero-video" muted loop playsinline
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.4;transform:scale(2.5);">
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.4;transform:scale(2.7);">
         <source src="hero-bg.mp4" type="video/mp4">
       </video>
       <script>
@@ -595,17 +596,17 @@
             </p>
           </div>
           <h2 class="intro-claim opacity-0 font-sans font-normal text-paper leading-[1.1] tracking-tight"
-              style="font-size: clamp(1.6rem, 3.5vw, 3rem)"
+              style="font-size: clamp(2rem, 4.5vw, 4rem)"
               x-text="t('intro_claim')"></h2>
           <p class="intro-sub opacity-0 mt-4 font-sans font-light text-paper/55 leading-snug"
-             style="font-size: clamp(0.9rem, 1.4vw, 1.1rem)"
+             style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)"
              x-text="t('intro_sub')"></p>
         </div>
 
         <!-- Bottom: "Accelerate Impact" + scroll indicator centrados -->
         <div class="intro-word opacity-0 w-full text-center pb-4" aria-hidden="false">
           <p class="font-sans font-normal text-paper whitespace-nowrap"
-             style="font-size: 8.5vw; letter-spacing: -0.04em; line-height: 1;">
+             style="font-size: 9vw; letter-spacing: -0.04em; line-height: 1;">
             Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
           </p>
         </div>
@@ -623,7 +624,7 @@
 
     <!-- MANIFIESTO — hashtags + texto + vídeo -->
     <section class="bg-paper py-20 md:py-28">
-      <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
 
         <!-- Dos columnas -->
         <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start" data-reveal-stagger data-stagger-delay="0.12">
@@ -631,14 +632,14 @@
           <!-- Izquierda: hashtags -->
           <div class="flex flex-col gap-4" data-stagger-item>
             <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-2">Telefónica · 2026</p>
-            <p class="font-sans font-normal text-2xl md:text-3xl text-tef-blue" x-text="t('mf_tag1')"></p>
-            <p class="font-sans font-normal text-2xl md:text-3xl text-tef-blue" x-text="t('mf_tag2')"></p>
-            <p class="font-sans font-normal text-2xl md:text-3xl text-tef-blue" x-text="t('mf_tag3')"></p>
+            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag1')"></p>
+            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag2')"></p>
+            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag3')"></p>
           </div>
 
           <!-- Derecha: manifiesto -->
           <div data-stagger-item>
-            <p class="font-sans font-normal italic text-ink leading-[1.2]" style="font-size: clamp(1.3rem, 2.2vw, 2rem)">
+            <p class="font-sans font-normal italic text-ink leading-[1.2]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)">
               <span x-text="t('mf_l1')"></span>
               <span x-text="' ' + t('mf_l2')"></span>
               <span x-text="' ' + t('mf_l3')"></span>
@@ -674,24 +675,24 @@
       <div id="hscroll-pin">
 
         <!-- Header fijo dentro del pin -->
-        <div class="px-6 md:px-10 pt-16 md:pt-20 pb-10 max-w-7xl mx-auto" data-accelerate-header>
+        <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1400px] mx-auto" data-accelerate-header>
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
           <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
-              style="font-size: clamp(2.5rem, 6vw, 5.5rem)">
+              style="font-size: clamp(3.5rem, 7vw, 8rem)">
             Accelerate <em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">Impact</em>
           </h2>
         </div>
 
         <!-- Track horizontal -->
         <div class="relative overflow-hidden">
-          <div id="hscroll-track" class="flex gap-6 md:gap-8 px-6 md:px-10 pb-16 md:pb-20" style="width: max-content;">
+          <div id="hscroll-track" class="flex gap-6 md:gap-8 px-6 md:px-12 lg:px-16 pb-16 md:pb-20" style="width: max-content;">
 
             <!-- WHY -->
             <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">Why</p>
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
-              <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
               <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
                     style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">01</span>
             </article>
@@ -700,8 +701,8 @@
             <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">How</p>
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
-              <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed mb-5" x-text="t('b_how_body')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed mb-5" x-text="t('b_how_body')"></p>
               <div class="flex flex-wrap gap-2">
                 <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Customer First</span>
                 <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Delivering Excellence</span>
@@ -718,8 +719,8 @@
             <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">What</p>
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
-              <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
               <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
                     style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">03</span>
             </article>
@@ -728,8 +729,8 @@
             <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-gold/30">
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep mb-6">Expect</p>
               <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
-              <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
-              <p class="text-[14px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
+              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
+              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
               <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
                     style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(232,181,71,0.25); letter-spacing:-0.05em;">04</span>
             </article>
@@ -737,7 +738,7 @@
           </div>
 
           <!-- Progress bar -->
-          <div class="px-6 md:px-10 pb-8">
+          <div class="px-6 md:px-12 lg:px-16 pb-8">
             <div class="h-px bg-ink/8 w-full relative">
               <div id="hscroll-progress" class="absolute left-0 top-0 h-px bg-tef-blue transition-none" style="width:0%"></div>
             </div>
@@ -749,10 +750,10 @@
 
     <!-- 3 PILARES — Damos lo mejor / Cuestionamos / Crecemos -->
     <section class="bg-paper py-20 md:py-28 border-t border-ink/6">
-      <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
         <div class="text-center mb-16" data-reveal="up">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="lang==='es' ? 'Nuestro compromiso · It\'s on Us' : 'Our commitment · It\'s on Us'"></p>
-          <h2 class="font-sans font-normal text-4xl md:text-5xl tracking-tight text-ink leading-[0.95]" x-text="lang==='es' ? 'Tres actitudes. Un solo equipo.' : 'Three attitudes. One single team.'"></h2>
+          <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl tracking-tight text-ink leading-[0.95]" x-text="lang==='es' ? 'Tres actitudes. Un solo equipo.' : 'Three attitudes. One single team.'"></h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
 
@@ -761,12 +762,12 @@
             <div class="mb-6">
               <span class="font-sans font-normal text-[88px] leading-none text-tef-blue/10 select-none block -mt-4 -ml-2">It's</span>
             </div>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl text-ink mb-1 leading-tight" x-text="t('p1_title')"></h3>
+            <h3 class="font-sans font-normal text-3xl md:text-4xl text-ink mb-1 leading-tight" x-text="t('p1_title')"></h3>
             <p class="font-light italic text-gold-deep text-sm mb-5" x-text="t('p1_kicker')"></p>
-            <p class="text-[14px] text-ink-soft leading-relaxed mb-6" x-text="t('p1_body')"></p>
+            <p class="text-[16px] text-ink-soft leading-relaxed mb-6" x-text="t('p1_body')"></p>
             <div class="space-y-3 border-t border-ink/6 pt-5">
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Customer First</span> — <span x-text="lang==='es' ? 'el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.' : 'customer time is now. We listen and resolve with speed.'"></span></p>
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Delivering Excellence</span> — <span x-text="lang==='es' ? 'la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.' : 'excellence is our standard. Less is more. Obsession with simplicity.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Customer First</span> — <span x-text="lang==='es' ? 'el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.' : 'customer time is now. We listen and resolve with speed.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Delivering Excellence</span> — <span x-text="lang==='es' ? 'la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.' : 'excellence is our standard. Less is more. Obsession with simplicity.'"></span></p>
             </div>
           </div>
 
@@ -775,12 +776,12 @@
             <div class="mb-6">
               <span class="font-sans font-normal text-[88px] leading-none text-tef-blue/10 select-none block -mt-4 -ml-2">on</span>
             </div>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl text-ink mb-1 leading-tight" x-text="t('p2_title')"></h3>
+            <h3 class="font-sans font-normal text-3xl md:text-4xl text-ink mb-1 leading-tight" x-text="t('p2_title')"></h3>
             <p class="font-light italic text-gold-deep text-sm mb-5" x-text="t('p2_kicker')"></p>
-            <p class="text-[14px] text-ink-soft leading-relaxed mb-6" x-text="t('p2_body')"></p>
+            <p class="text-[16px] text-ink-soft leading-relaxed mb-6" x-text="t('p2_body')"></p>
             <div class="space-y-3 border-t border-ink/6 pt-5">
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Digital Innovation</span> — <span x-text="lang==='es' ? 'creamos entornos para sentirnos libres, compartir ideas e innovar con propósito.' : 'we create environments to share ideas and innovate with purpose.'"></span></p>
-              <p class="text-[13px] text-ink-soft leading-snug"><span class="font-medium text-ink">Clarity &amp; Courage</span> — <span x-text="lang==='es' ? 'la claridad guía decisiones valientes. Debate abierto y cuestionamiento riguroso.' : 'clarity leads to bold decisions. Open debate and rigorous challenge.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Digital Innovation</span> — <span x-text="lang==='es' ? 'creamos entornos para sentirnos libres, compartir ideas e innovar con propósito.' : 'we create environments to share ideas and innovate with purpose.'"></span></p>
+              <p class="text-[15px] text-ink-soft leading-snug"><span class="font-medium text-ink">Clarity &amp; Courage</span> — <span x-text="lang==='es' ? 'la claridad guía decisiones valientes. Debate abierto y cuestionamiento riguroso.' : 'clarity leads to bold decisions. Open debate and rigorous challenge.'"></span></p>
             </div>
           </div>
 
@@ -789,12 +790,12 @@
             <div class="mb-6">
               <span class="font-sans font-normal text-[88px] leading-none text-gold/15 select-none block -mt-4 -ml-2">Us</span>
             </div>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl text-paper mb-1 leading-tight" x-text="t('p3_title')"></h3>
+            <h3 class="font-sans font-normal text-3xl md:text-4xl text-paper mb-1 leading-tight" x-text="t('p3_title')"></h3>
             <p class="font-light italic text-gold text-sm mb-5" x-text="t('p3_kicker')"></p>
-            <p class="text-[14px] text-paper/70 leading-relaxed mb-6" x-text="t('p3_body')"></p>
+            <p class="text-[16px] text-paper/70 leading-relaxed mb-6" x-text="t('p3_body')"></p>
             <div class="space-y-3 border-t border-paper/10 pt-5">
-              <p class="text-[13px] text-paper/60 leading-snug"><span class="font-medium text-paper">Driving Ownership</span> — <span x-text="lang==='es' ? 'el resultado depende de nosotros. Asumimos la responsabilidad por el todo.' : 'results depend on us. We take responsibility for the whole.'"></span></p>
-              <p class="text-[13px] text-paper/60 leading-snug"><span class="font-medium text-paper">Growing People</span> — <span x-text="lang==='es' ? 'el crecimiento construye futuro. Aprendemos, lideramos con el ejemplo e impulsamos a las personas.' : 'growth builds the future. We learn, lead by example and develop our people.'"></span></p>
+              <p class="text-[15px] text-paper/60 leading-snug"><span class="font-medium text-paper">Driving Ownership</span> — <span x-text="lang==='es' ? 'el resultado depende de nosotros. Asumimos la responsabilidad por el todo.' : 'results depend on us. We take responsibility for the whole.'"></span></p>
+              <p class="text-[15px] text-paper/60 leading-snug"><span class="font-medium text-paper">Growing People</span> — <span x-text="lang==='es' ? 'el crecimiento construye futuro. Aprendemos, lideramos con el ejemplo e impulsamos a las personas.' : 'growth builds the future. We learn, lead by example and develop our people.'"></span></p>
             </div>
             <p class="mt-6 font-mono text-[11px] tracking-[0.3em] uppercase text-gold/70">It's on us.</p>
           </div>
@@ -805,28 +806,28 @@
 
     <!-- QUESTIONS — ¿Te has preguntado alguna vez…? -->
     <section class="bg-tef-dark text-paper py-20 md:py-28" data-nav-dark>
-      <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
         <div class="max-w-3xl mb-12 md:mb-16" data-reveal="up">
           <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4">Accelerate Impact · La pregunta</p>
-          <h2 class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-tight mb-6" x-text="t('q_title')"></h2>
-          <p class="text-base md:text-lg text-paper/65 italic leading-snug" x-text="t('q_sub')"></p>
+          <h2 class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6" x-text="t('q_title')"></h2>
+          <p class="text-lg md:text-xl text-paper/65 italic leading-snug" x-text="t('q_sub')"></p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">01</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q1')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q1')"></p>
           </div>
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.08s">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">02</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q2')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q2')"></p>
           </div>
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.16s">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">03</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q3')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q3')"></p>
           </div>
           <div class="border border-paper/10 rounded-br-2xl px-7 py-6 hover:border-tef-blue/40 transition-colors" data-reveal="up" style="animation-delay:0.24s">
             <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue/60 mb-3 block">04</span>
-            <p class="text-lg md:text-xl font-normal leading-snug text-paper" x-text="t('q4')"></p>
+            <p class="text-xl md:text-2xl font-normal leading-snug text-paper" x-text="t('q4')"></p>
           </div>
         </div>
       </div>
@@ -846,10 +847,10 @@
         <ellipse cx="200" cy="200" rx="160" ry="75" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-10 200 200)"/>
       </svg>
 
-      <div class="relative max-w-7xl mx-auto px-6">
+      <div class="relative max-w-[1400px] mx-auto px-6">
         <div class="text-center mb-28 md:mb-32" data-reveal-stagger>
           <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
-          <h2 data-stagger-item class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-tef-dark leading-tight tracking-tight">
+          <h2 data-stagger-item class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl text-tef-dark leading-tight tracking-tight">
             <span x-text="t('track_title_1')"></span>
             <span class="text-tef-blue" x-text="' ' + t('track_title_2')"></span>
           </h2>
@@ -888,8 +889,8 @@
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
                   <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue/40 rotate-45"></div>
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n0_meta')"></p>
-                  <h3 class="font-sans text-lg font-normal text-tef-dark mb-2" x-text="t('n0_title')"></h3>
-                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n0_body')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n0_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n0_body')"></p>
                 </div>
               </div>
             </div>
@@ -901,8 +902,8 @@
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
                   <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue rotate-45"></div>
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n1_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
-                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n1_body')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n1_body')"></p>
                 </div>
               </div>
             </div>
@@ -914,8 +915,8 @@
                 <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
                   <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-dark/70 mb-3" x-text="t('n2_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
-                  <p class="text-sm text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
+                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
                 </div>
               </div>
             </div>
@@ -927,7 +928,7 @@
                 <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
                 <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
                   <p class="font-mono text-[10px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
+                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
                   <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n3_body')"></p>
                   <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
                     <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n3_cta')"></span>
@@ -963,17 +964,17 @@
     <section class="globe-section text-paper py-20 md:py-28 section-fade-bottom"
              data-globe-section data-nav-dark
              x-data="globeSection()">
-      <div class="relative max-w-7xl mx-auto px-6 md:px-10">
+      <div class="relative max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
 
         <!-- Header -->
         <div class="text-center mb-12 md:mb-16 relative z-10" data-reveal-stagger data-stagger-delay="0.12">
           <p data-stagger-item class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5" x-text="t('globe_eyebrow')"></p>
-          <h2 data-stagger-item class="globe-title font-sans font-normal text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-6">
+          <h2 data-stagger-item class="globe-title font-sans font-normal text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-6">
             <span data-globe-title-1 class="inline-block" x-text="t('globe_title_1')"></span>
             <span data-globe-title-2 class="inline-block text-tef-blue" x-text="t('globe_title_2')"></span>
           </h2>
           <div data-stagger-item class="mx-auto w-16 h-px bg-paper/20 mb-6"></div>
-          <p data-stagger-item class="max-w-2xl mx-auto text-base md:text-lg text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
+          <p data-stagger-item class="max-w-2xl mx-auto text-lg md:text-xl text-paper/70 leading-relaxed" x-text="t('globe_body')"></p>
         </div>
 
         <!-- Globe canvas -->
@@ -1017,15 +1018,15 @@
         <!-- Stats row -->
         <div class="grid grid-cols-3 gap-6 md:gap-10 mt-12 md:mt-14 max-w-3xl mx-auto text-center">
           <div class="count-reveal">
-            <p class="font-sans text-4xl md:text-6xl text-tef-blue font-normal leading-none mb-2 tabular-nums" x-text="stats.total"></p>
+            <p class="font-sans text-5xl md:text-7xl text-tef-blue font-normal leading-none mb-2 tabular-nums" x-text="stats.total"></p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_total')"></p>
           </div>
           <div class="count-reveal" style="animation-delay:0.15s">
-            <p class="font-sans text-4xl md:text-6xl text-paper font-normal leading-none mb-2 tabular-nums" x-text="stats.countries"></p>
+            <p class="font-sans text-5xl md:text-7xl text-paper font-normal leading-none mb-2 tabular-nums" x-text="stats.countries"></p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="t('globe_countries')"></p>
           </div>
           <div class="count-reveal" style="animation-delay:0.3s">
-            <p class="font-sans text-4xl md:text-6xl text-paper font-normal leading-none mb-2 tabular-nums">6</p>
+            <p class="font-sans text-5xl md:text-7xl text-paper font-normal leading-none mb-2 tabular-nums">6</p>
             <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/50" x-text="lang==='es' ? 'cohortes' : 'cohorts'"></p>
           </div>
         </div>
@@ -1049,7 +1050,7 @@
 
     <!-- NADIA + COHORT -->
     <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-6" data-cohort-nadia>
 
         <!-- Izquierda: Conecta con tus compañeros -->
         <div class="bg-white border border-ink/10 rounded-br-2xl px-8 md:px-10 py-12 flex flex-col justify-between gap-8">
