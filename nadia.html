@@ -19,11 +19,11 @@
       theme: {
         extend: {
           colors: {
-                        tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
             ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
             paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
           },
-                    fontFamily: {
+          fontFamily: {
             sans: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             display: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             mono: ['"Telefonica Sans"', 'sans-serif']
@@ -40,15 +40,25 @@
     @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_DemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
-    *, *::before, *::after { font-family: "Telefonica Sans", sans-serif !important; }
-    body, p, span, a, li, td, th, label, input, button, textarea, select { font-family: "Telefonica Sans", sans-serif !important; }
+    * { font-family: "Telefonica Sans", sans-serif !important; }
     body { font-feature-settings: "cv11", "ss01"; }
+
+    .bg-tef-gradient-dark { background: radial-gradient(ellipse at 70% 0%, #0d3a7a 0%, #031A34 55%, #020d1f 100%); }
+
     .grain { position: relative; }
     .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>"); opacity: 0.06; mix-blend-mode: overlay; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .reveal { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-    @keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.15); opacity: 0.6; } }
-    .breathe { animation: breathe 6s ease-in-out infinite; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { animation: fadeUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .reveal-1 { animation-delay: 0.1s; }
+    .reveal-2 { animation-delay: 0.25s; }
+    .reveal-3 { animation-delay: 0.4s; }
+    .reveal-4 { animation-delay: 0.55s; }
+
+    @keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.35; } 50% { transform: scale(1.2); opacity: 0.6; } }
+    .breathe { animation: breathe 7s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) { .reveal { animation: none; } .breathe { animation: none; } }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -60,158 +70,178 @@
       nav_info: { es: 'Contacto', en: 'Contact' },
 
       hero_eyebrow: { es: 'AI Leadership Coach', en: 'AI Leadership Coach' },
+      hero_title:   { es: 'Nadia.', en: 'Nadia.' },
+      hero_tagline: { es: 'Tu AI Leadership Coach.', en: 'Your AI Leadership Coach.' },
       hero_intro: {
         es: 'Tu coach personal, disponible en cualquier momento.',
         en: 'Your personal coach, available anytime.'
       },
-
       purpose_label: { es: 'Propósito', en: 'Purpose' },
       purpose_text: {
         es: 'Nadia está diseñada para acompañarte en las decisiones que importan: las que requieren claridad, valentía y contexto. No es una herramienta de respuestas — es un espacio para pensar mejor antes de actuar.',
         en: 'Nadia is designed to accompany you in the decisions that matter: those that require clarity, courage and context. It is not an answer-tool — it is a space to think better before acting.'
       },
 
-      /* Claims rojos Laura */
-      uses_claim: { es: 'Sácale todo el jugo.', en: 'Get every last drop.' },
-      uses_label: { es: 'Cómo aprovecharla', en: 'How to use her' },
+      when_eyebrow: { es: '¿Cuándo hablar con Nadia?', en: 'When to talk to Nadia?' },
+      uses_claim:   { es: 'Sácale todo el jugo.', en: 'Get every last drop.' },
 
-      use1_t: { es: 'Preparar tu Action Plan', en: 'Prepare your Action Plan' },
-      use1_d: { es: 'Define tus compromisos de liderazgo con claridad: qué dejas de hacer (Kill), qué harás rápido (Quick Win) y qué elevarás de nivel (Raise the Bar).', en: 'Define your leadership commitments clearly: what to stop (Kill), what to do fast (Quick Win), and what to raise (Raise the Bar).' },
+      use1_t: { es: 'Prepara tu Action Plan', en: 'Prepare your Action Plan' },
+      use1_d: { es: 'Define tus compromisos de liderazgo con claridad.', en: 'Define your leadership commitments with clarity.' },
 
-      use2_t: { es: 'Reflexionar sobre resultados', en: 'Reflect on your results' },
-      use2_d: { es: 'Conecta tu assessment con acciones concretas. Traduce insights en pequeños pasos que puedas medir en tu día a día.', en: 'Connect your assessment with concrete actions. Turn insights into small, measurable steps for your day-to-day.' },
+      use2_t: { es: 'Reflexiona sobre tus resultados', en: 'Reflect on your results' },
+      use2_d: { es: 'Consigue acciones concretas. Traduce insights en pequeños pasos que puedas medir en tu día a día.', en: 'Get concrete actions. Turn insights into small steps you can measure in your day-to-day.' },
 
-      use3_t: { es: 'Practicar conversaciones difíciles', en: 'Rehearse difficult conversations' },
-      use3_d: { es: 'Simula diálogos antes de que ocurran: feedback, decisiones duras, gestión de conflicto. Ensaya, anticipa reacciones, afina tu mensaje.', en: 'Rehearse dialogues before they happen: feedback, hard decisions, conflict. Practice, anticipate reactions, refine your message.' },
+      use3_t: { es: 'Practica conversaciones difíciles', en: 'Rehearse difficult conversations' },
+      use3_d: { es: 'Simula diálogos antes de que ocurran: feedback, decisiones duras, gestión de conflicto. Ensaya, anticipa reacciones, afina tu mensaje.', en: 'Rehearse dialogues before they happen: feedback, hard decisions, conflict management. Practice, anticipate reactions, refine your message.' },
 
-      use4_t: { es: 'Sostener el momentum', en: 'Sustain the momentum' },
-      use4_d: { es: 'Acompañamiento post-programa para consolidar hábitos y que las decisiones de liderazgo sobrevivan al día 1, al mes 3 y al trimestre siguiente.', en: 'Post-program support to consolidate habits — so leadership decisions survive day 1, month 3, and the next quarter.' },
+      use4_t: { es: 'Sostén el momentum', en: 'Sustain the momentum' },
+      use4_d: { es: 'Disfruta del acompañamiento post-programa para consolidar hábitos y contribuir a que las decisiones de liderazgo sobrevivan al día 1, al mes 3 y al trimestre siguiente.', en: 'Enjoy post-program support to consolidate habits and ensure leadership decisions survive day 1, month 3, and the next quarter.' },
 
-      tips_claim: { es: 'Habla claro. Responde claro.', en: 'Speak clear. Get clear.' },
-      tips_label: { es: 'Para sacar el máximo provecho', en: 'To get the most out of her' },
-      tips_intro: { es: 'Tres recordatorios sencillos que cambian lo que obtienes.', en: 'Three simple reminders that change what you get.' },
+      how_eyebrow:  { es: '¿Cómo hablar con Nadia?', en: 'How to talk to Nadia?' },
+      tips_claim:   { es: 'Habla claro.\nResponde claro.', en: 'Speak clear.\nGet clear.' },
+      tips_label:   { es: 'Para sacar el máximo provecho', en: 'To get the most out of her' },
 
       tip1: { es: 'Sé específico. Cuanto más contexto aportas, más útil es la respuesta. La vaguedad produce vaguedad.', en: 'Be specific. The more context you share, the more useful the response. Vagueness produces vagueness.' },
-      tip2: { es: 'Comparte con Nadia los resultados que has obtenido en el autodiagnóstico para que pueda personalizar las respuestas a tu perfil real de liderazgo.', en: 'Share with Nadia the results you obtained in the self-diagnosis so she can personalise her responses to your real leadership profile.' },
-      tip3: { es: 'Úsala antes de las conversaciones importantes. Preparar el mensaje por adelantado te ayuda cuando llega el momento.', en: 'Use it before important conversations. Preparing your message in advance helps you when the moment arrives.' },
+      tip2: { es: 'Comparte con Nadia los resultados que has obtenido en el autodiagnóstico para que pueda personalizar las respuestas a tu perfil real de liderazgo.', en: 'Share with Nadia the results you obtained in the self-diagnosis so she can personalise responses to your real leadership profile.' },
+      tip3: { es: 'Úsala antes de las conversaciones importantes. Preparar el mensaje por adelantado te ayuda cuando llega el momento.', en: 'Use it before important conversations. Preparing your message in advance helps when the moment arrives.' },
 
-      cta_title_1: { es: '¿Empezamos?', en: 'Shall we start?' },
-      cta_title_2: { es: 'Estoy aquí.', en: "I'm here." },
-      cta_sub: { es: 'Disponible 24/7 durante todo el programa.', en: 'Available 24/7 throughout the program.' },
-      cta_button: { es: 'Abrir conversación', en: 'Open conversation' }
+      sticky_intro: { es: 'Soy Nadia, estoy aquí.', en: "I'm Nadia, I'm here." },
+      sticky_q:     { es: '¿Empezamos?', en: 'Shall we start?' },
+      cta_button:   { es: 'Abrir conversación', en: 'Open conversation' },
+
+      back_cta:     { es: 'Volver al Hub', en: 'Back to Hub' },
+      meta_avail:   { es: '24/7 · Confidencial · Contextual', en: '24/7 · Confidential · Contextual' }
     };
   </script>
 </head>
 <body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased">
 
-  <!-- HEADER -->
   <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
 
-  <!-- MAIN -->
   <main class="flex-1">
 
-    <!-- HERO — centered avatar + big name -->
-    <section class="bg-paper-deep text-paper grain relative overflow-hidden" data-nadia-hero data-nav-dark style="margin-top:-79px;">
-      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-20 md:pt-40 md:pb-24 text-center">
-        <!-- Avatar with breathing glow -->
-        <div class="relative inline-flex items-center justify-center mb-10" data-nadia-avatar>
-          <div class="absolute inset-0 rounded-full bg-tef-blue/40 blur-3xl breathe"></div>
-          <div class="relative w-24 h-24 md:w-28 md:h-28 rounded-full border border-paper/20 bg-paper-deep flex items-center justify-center">
-            <span class="text-5xl md:text-6xl font-normal italic text-paper">N</span>
-          </div>
+    <!-- § HERO — full viewport, dark, editorial split -->
+    <section class="bg-tef-gradient-dark grain text-paper relative overflow-hidden flex flex-col justify-end" data-nadia-hero data-nav-dark style="margin-top:-79px; min-height:100vh;">
+
+      <!-- Atmospheric glow -->
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70vw 60vh at 30% 40%, rgba(0,102,255,0.14) 0%, transparent 55%);"></div>
+
+      <!-- "N" breathing glow — top right -->
+      <div class="absolute top-1/3 right-[8%] pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-0 rounded-full bg-tef-blue/25 blur-[80px] breathe" style="width:320px;height:320px;"></div>
+        <div class="relative w-32 h-32 md:w-48 md:h-48 rounded-full border border-paper/10 bg-paper/5 flex items-center justify-center" style="backdrop-filter:blur(8px);">
+          <span class="font-normal italic text-paper/60" style="font-size: clamp(3rem, 5vw, 5rem)">N</span>
         </div>
-        <p class="font-mono text-[11px] tracking-[0.25em] uppercase text-paper/60 mb-5" data-nadia-eyebrow x-text="t('hero_eyebrow')"></p>
-        <h1 class="font-normal leading-[0.9] tracking-[-0.03em] text-7xl md:text-9xl lg:text-[10rem] mb-8">
-          <em class="italic font-normal">Nadia</em>.
-        </h1>
-        <p class="font-normal text-lg md:text-xl text-paper/70 max-w-xl mx-auto" data-nadia-sub x-text="t('hero_intro')"></p>
       </div>
+
+      <!-- Content — anchored bottom -->
+      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pb-16 md:pb-24 pt-48 md:pt-56 w-full">
+
+        <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-end">
+
+          <!-- Left: title block -->
+          <div>
+            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper/50 mb-6 reveal reveal-1" x-text="t('hero_eyebrow')"></p>
+            <h1 class="font-sans font-normal leading-[0.92] tracking-[-0.03em] reveal reveal-2"
+                style="font-size: clamp(4.5rem, 12vw, 11rem)">
+              <em class="italic font-normal text-white" x-text="t('hero_title')"></em>
+            </h1>
+            <p class="font-sans font-normal text-paper/60 mt-4 reveal reveal-3"
+               style="font-size: clamp(1.1rem, 2vw, 1.75rem)"
+               x-text="t('hero_tagline')"></p>
+          </div>
+
+          <!-- Right: subtitle + propósito -->
+          <div class="space-y-6 reveal reveal-3">
+            <p class="font-sans font-normal italic text-paper leading-[1.25]"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+               x-text="t('hero_intro')"></p>
+            <div class="border-t border-paper/15 pt-6">
+              <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-paper/40 mb-3" x-text="t('purpose_label')"></p>
+              <p class="text-paper/65 leading-relaxed"
+                 style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)"
+                 x-text="t('purpose_text')"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Meta strip -->
       <div class="relative border-t border-paper/10">
-        <div class="max-w-[1920px] mx-auto px-6 py-4 flex items-center justify-center gap-6 font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50">
-          <span>24/7</span>
-          <span class="w-px h-3 bg-paper/20"></span>
-          <span x-text="lang==='es' ? 'Confidencial' : 'Confidential'"></span>
-          <span class="w-px h-3 bg-paper/20"></span>
-          <span x-text="lang==='es' ? 'Contextual' : 'Contextual'"></span>
+        <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 font-mono text-[11px] tracking-[0.22em] uppercase text-paper/35">
+          <span x-text="t('meta_avail')"></span>
         </div>
       </div>
     </section>
 
-    <!-- PURPOSE — centered essay -->
-    <section class="w-full py-20 md:py-24 text-center">
-      <div class="max-w-3xl mx-auto px-6">
-        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue mb-6" data-reveal="up" x-text="t('purpose_label')"></p>
-        <p class="font-normal text-2xl md:text-[2rem] leading-[1.35] tracking-tight text-ink" data-nadia-purpose x-text="t('purpose_text')"></p>
-      </div>
-    </section>
+    <!-- § ¿CUÁNDO HABLAR CON NADIA? -->
+    <section class="border-t border-ink/10 bg-paper-warm py-20 md:py-28">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
-    <!-- USES — 4 post-it cards, overlapping, slightly rotated -->
-    <section class="border-t border-ink/10 bg-paper-warm py-16 md:py-24 overflow-hidden">
-      <div class="max-w-2xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue mb-4" x-text="t('uses_label')"></p>
-          <h2 class="font-normal leading-[1] tracking-[-0.02em] text-6xl md:text-8xl" data-reveal="up" x-text="t('uses_claim')"></h2>
+        <div class="mb-16 md:mb-20" data-reveal="up">
+          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('when_eyebrow')"></p>
+          <h2 class="font-sans font-normal leading-[0.95] tracking-[-0.03em] text-ink"
+              style="font-size: clamp(2.5rem, 6vw, 6rem)"
+              x-text="t('uses_claim')"></h2>
         </div>
 
-        <div class="flex flex-col items-center">
+        <!-- 4 rotated cards — wider layout -->
+        <div class="max-w-3xl flex flex-col gap-5" data-reveal-stagger data-stagger-delay="0.12">
 
-          <!-- Card 01 — número izquierda -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 -rotate-[1.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-10" data-nadia-card>
-            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
-            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
-            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
-            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
-            <div class="flex items-center gap-8">
-              <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">01</span>
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[1.5deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-8 md:gap-12">
+              <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">01</span>
               <div>
-                <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="t('use1_t')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('use1_d')"></p>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use1_t')"></h3>
+                <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use1_d')"></p>
               </div>
             </div>
           </article>
 
-          <!-- Card 02 — número derecha -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 rotate-[1.2deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-20" data-nadia-card>
-            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
-            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
-            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
-            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
-            <div class="flex items-center gap-8">
-              <div class="flex-1">
-                <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="t('use2_t')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('use2_d')"></p>
-              </div>
-              <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">02</span>
-            </div>
-          </article>
-
-          <!-- Card 03 — número izquierda -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 -rotate-[0.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-30" data-nadia-card>
-            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
-            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
-            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
-            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
-            <div class="flex items-center gap-8">
-              <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">03</span>
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.2deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ml-auto w-full" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-8 md:gap-12 flex-row-reverse">
+              <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">02</span>
               <div>
-                <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="t('use3_t')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('use3_d')"></p>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use2_t')"></h3>
+                <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use2_d')"></p>
               </div>
             </div>
           </article>
 
-          <!-- Card 04 — número derecha -->
-          <article class="relative w-full bg-paper border border-ink/10 px-12 py-12 rotate-[1.5deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] mt-6 z-40" data-nadia-card>
-            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
-            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
-            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/30"></span>
-            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/30"></span>
-            <div class="flex items-center gap-8">
-              <div class="flex-1">
-                <h3 class="font-normal text-2xl md:text-3xl tracking-tight leading-tight mb-3" x-text="t('use4_t')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('use4_d')"></p>
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[0.8deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-8 md:gap-12">
+              <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">03</span>
+              <div>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use3_t')"></h3>
+                <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use3_d')"></p>
               </div>
-              <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">04</span>
+            </div>
+          </article>
+
+          <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.4deg] hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ml-auto w-full" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-8 md:gap-12 flex-row-reverse">
+              <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">04</span>
+              <div>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use4_t')"></h3>
+                <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use4_d')"></p>
+              </div>
             </div>
           </article>
 
@@ -219,59 +249,104 @@
       </div>
     </section>
 
-    <!-- TIPS — aphorisms -->
-    <section class="border-t border-ink/10">
-      <div class="max-w-4xl mx-auto px-6 py-20 md:py-24">
-        <div class="text-center mb-14">
-          <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue mb-4" x-text="t('tips_label')"></p>
-          <h2 class="font-normal leading-[1] tracking-[-0.02em] text-6xl md:text-8xl mb-4" data-reveal="up" x-text="t('tips_claim')"></h2>
-          <p class="text-sm text-ink-mute" x-text="t('tips_intro')"></p>
-        </div>
-        <ol class="space-y-10 md:space-y-12">
-          <li class="text-center" data-nadia-tip>
-            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 01 —</p>
-            <p class="font-normal text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip1')"></p>
-          </li>
-          <li class="text-center" data-nadia-tip>
-            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 02 —</p>
-            <p class="font-normal text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip2')"></p>
-          </li>
-          <li class="text-center" data-nadia-tip>
-            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-ink-mute mb-3">— 03 —</p>
-            <p class="font-normal text-xl md:text-2xl leading-[1.4] tracking-tight text-ink max-w-2xl mx-auto" x-text="t('tip3')"></p>
-          </li>
-        </ol>
-      </div>
-    </section>
+    <!-- § ¿CÓMO HABLAR CON NADIA? -->
+    <section class="bg-tef-gradient-dark grain text-paper border-t border-paper/10 py-20 md:py-28" data-nav-dark>
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
-    <!-- CTA — dark centered -->
-    <section class="bg-paper-deep text-paper grain relative overflow-hidden" data-nav-dark>
-      <div class="relative max-w-3xl mx-auto px-6 py-24 md:py-32 text-center">
-        <div class="relative inline-flex items-center justify-center mb-8">
-          <div class="absolute inset-0 rounded-full bg-tef-blue/30 blur-2xl breathe"></div>
-          <div class="relative w-16 h-16 rounded-full border border-paper/20 bg-paper-deep flex items-center justify-center">
-            <span class="text-2xl font-normal italic text-paper">N</span>
+        <div class="mb-16 md:mb-20" data-reveal="up">
+          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper/50 mb-4" x-text="t('how_eyebrow')"></p>
+          <h2 class="font-sans font-normal leading-[0.95] tracking-[-0.03em] text-white"
+              style="font-size: clamp(2.5rem, 6vw, 6rem)">
+            <span x-text="lang === 'es' ? 'Habla claro.' : 'Speak clear.'"></span><br>
+            <em class="italic font-normal text-tef-blue" x-text="lang === 'es' ? 'Responde claro.' : 'Get clear.'"></em>
+          </h2>
+        </div>
+
+        <div class="border-t border-paper/10">
+
+          <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
+            <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">01</span>
+            <p class="font-sans font-normal text-paper/80 leading-relaxed"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+               x-text="t('tip1')"></p>
           </div>
+
+          <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
+            <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">02</span>
+            <p class="font-sans font-normal text-paper/80 leading-relaxed"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+               x-text="t('tip2')"></p>
+          </div>
+
+          <div class="py-10 md:py-12 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
+            <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">03</span>
+            <p class="font-sans font-normal text-paper/80 leading-relaxed"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+               x-text="t('tip3')"></p>
+          </div>
+
         </div>
-        <h2 class="font-normal leading-[1] tracking-[-0.02em] text-6xl md:text-8xl mb-6" data-reveal="up">
-          <span x-text="t('cta_title_1')"></span>
-          <em class="italic font-normal text-tef-blue block" x-text="t('cta_title_2')"></em>
-        </h2>
-        <p class="text-sm md:text-base text-paper/60 mb-10" x-text="t('cta_sub')"></p>
-        <a href="#" class="group inline-flex items-center gap-3 bg-paper text-paper-deep font-mono text-xs tracking-[0.18em] uppercase px-8 py-4 hover:bg-tef-blue hover:text-paper transition-colors">
-          <span x-text="t('cta_button')"></span>
-          <span class="text-lg group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </section>
+
+    <!-- § BACK TO HUB -->
+    <section class="bg-paper-warm border-t border-ink/10 py-10">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
+        <a href="index.html" class="group inline-flex items-center gap-4 text-ink hover:text-tef-blue transition-colors">
+          <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span class="font-mono text-[11px] tracking-[0.22em] uppercase" x-text="t('back_cta')"></span>
         </a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
+  <!-- STICKY NADIA PANEL — aparece al salir del hero -->
+  <aside id="nadia-sticky"
+         class="fixed bottom-8 right-6 z-40 w-60 bg-tef-gradient-dark grain border border-paper/10 rounded-br-2xl p-6 shadow-2xl opacity-0 translate-x-6 pointer-events-none"
+         style="transition: opacity 0.45s ease, transform 0.45s ease;"
+         aria-label="Hablar con Nadia">
+    <!-- Avatar micro -->
+    <div class="flex items-center gap-3 mb-5">
+      <div class="relative shrink-0">
+        <div class="absolute inset-0 rounded-full bg-tef-blue/30 blur-lg breathe"></div>
+        <div class="relative w-9 h-9 rounded-full border border-paper/20 bg-paper/5 flex items-center justify-center">
+          <span class="font-normal italic text-paper text-sm">N</span>
+        </div>
+      </div>
+      <p class="font-mono text-[9px] tracking-[0.22em] uppercase text-paper/35">AI Coach · 24/7</p>
+    </div>
+    <!-- Text -->
+    <p class="font-sans font-normal text-paper leading-tight mb-1"
+       style="font-size: clamp(1rem, 1.5vw, 1.15rem)"
+       x-text="t('sticky_intro')"></p>
+    <p class="font-sans font-normal italic text-tef-blue mb-5"
+       style="font-size: clamp(1rem, 1.5vw, 1.15rem)"
+       x-text="t('sticky_q')"></p>
+    <!-- CTA -->
+    <a href="javascript:void(0)"
+       class="group w-full inline-flex items-center justify-between gap-2 bg-tef-blue text-white px-5 py-3 rounded-br-xl hover:bg-blue-500 transition-colors">
+      <span class="font-mono text-[10px] tracking-[0.16em] uppercase" x-text="t('cta_button')"></span>
+      <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </aside>
 
+  <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
+  <script>
+    (function () {
+      var hero = document.querySelector('[data-nadia-hero]');
+      var panel = document.getElementById('nadia-sticky');
+      if (!hero || !panel) return;
+      new IntersectionObserver(function (entries) {
+        var out = !entries[0].isIntersecting;
+        panel.style.opacity = out ? '1' : '0';
+        panel.style.transform = out ? 'translateX(0)' : 'translateX(1.5rem)';
+        panel.style.pointerEvents = out ? 'auto' : 'none';
+      }, { threshold: 0.05 }).observe(hero);
+    })();
+  </script>
 </body>
 </html>
