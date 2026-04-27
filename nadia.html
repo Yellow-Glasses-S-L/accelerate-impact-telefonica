@@ -123,10 +123,12 @@
     <!-- § HERO — full viewport, dark, editorial split -->
     <section class="bg-tef-gradient-dark grain text-paper relative overflow-hidden flex flex-col justify-end" data-nadia-hero data-nav-dark style="margin-top:-79px; min-height:100vh;">
 
-      <!-- Hero background image -->
-      <img src="ezgif-3195557a68e97965.webp" alt="" aria-hidden="true"
-           class="absolute inset-0 w-full h-full object-cover object-center"
-           style="opacity:0.35; z-index:0; mix-blend-mode:luminosity;">
+      <!-- Hero background video -->
+      <video id="nadia-hero-video" muted playsinline autoplay aria-hidden="true"
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             style="opacity:0.35; z-index:0; mix-blend-mode:luminosity;">
+        <source src="ezgif-3a0c36e364ef0aa5.mp4" type="video/mp4">
+      </video>
 
       <!-- Atmospheric glow -->
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70vw 60vh at 30% 40%, rgba(0,102,255,0.14) 0%, transparent 55%);"></div>
@@ -340,6 +342,32 @@
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
+  <script>
+    (function () {
+      var v = document.getElementById('nadia-hero-video');
+      if (!v) return;
+      v.muted = true;
+      v.play().catch(function () {});
+      var lastTs = null;
+      function reverse(ts) {
+        if (lastTs === null) lastTs = ts;
+        var dt = (ts - lastTs) / 1000;
+        lastTs = ts;
+        v.currentTime = Math.max(0, v.currentTime - dt);
+        if (v.currentTime <= 0.05) {
+          lastTs = null;
+          v.currentTime = 0;
+          v.play().catch(function () {});
+        } else {
+          requestAnimationFrame(reverse);
+        }
+      }
+      v.addEventListener('ended', function () {
+        lastTs = null;
+        requestAnimationFrame(reverse);
+      });
+    })();
+  </script>
   <script>
     (function () {
       var hero = document.querySelector('[data-nadia-hero]');

@@ -194,7 +194,9 @@
 
     <!-- HERO — dark gradient -->
     <section class="text-paper grain relative overflow-hidden flex flex-col justify-end" data-nav-dark style="margin-top:-79px; min-height:100vh;">
-      <img src="ezgif-595c62c70ea0e119.webp" alt="" class="absolute inset-0 w-full h-full object-cover object-center" aria-hidden="true" style="transform:scale(1.03);">
+      <video id="autodiag-hero-video" muted playsinline autoplay class="absolute inset-0 w-full h-full object-cover object-center" aria-hidden="true" style="transform:scale(1.03);">
+        <source src="ezgif-3ad9e1bfcaf70125.mp4" type="video/mp4">
+      </video>
       <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 0%, #0d3a7a 0%, #031A34 55%, #020d1f 100%); opacity: 0.82;"></div>
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60vw 40vh at 70% 20%, rgba(0,102,255,0.18) 0%, transparent 60%);"></div>
       <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pb-16 md:pb-24 pt-32 md:pt-40">
@@ -659,5 +661,31 @@
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
+  <script>
+    (function () {
+      var v = document.getElementById('autodiag-hero-video');
+      if (!v) return;
+      v.muted = true;
+      v.play().catch(function () {});
+      var lastTs = null;
+      function reverse(ts) {
+        if (lastTs === null) lastTs = ts;
+        var dt = (ts - lastTs) / 1000;
+        lastTs = ts;
+        v.currentTime = Math.max(0, v.currentTime - dt);
+        if (v.currentTime <= 0.05) {
+          lastTs = null;
+          v.currentTime = 0;
+          v.play().catch(function () {});
+        } else {
+          requestAnimationFrame(reverse);
+        }
+      }
+      v.addEventListener('ended', function () {
+        lastTs = null;
+        requestAnimationFrame(reverse);
+      });
+    })();
+  </script>
 </body>
 </html>
