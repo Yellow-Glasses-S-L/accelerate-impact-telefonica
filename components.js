@@ -5,6 +5,31 @@
   baseStyle.textContent = 'html { font-size: 18px; }';
   document.head.appendChild(baseStyle);
 
+  /* ── NAVBAR ADAPTATIVA — nav-on-dark CSS (global, todas las páginas) ── */
+  const navDarkStyle = document.createElement('style');
+  navDarkStyle.textContent = `
+    .navbar-pill { transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; }
+    #site-navbar.nav-on-dark .navbar-pill {
+      background: rgba(2,9,20,0.15) !important;
+      border-color: rgba(247,247,255,0.12) !important;
+      backdrop-filter: blur(24px) saturate(150%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+    }
+    #site-navbar.nav-on-dark .navbar-pill img {
+      filter: brightness(0) invert(1) opacity(0.95);
+      transition: filter 0.35s ease;
+    }
+    #site-navbar.nav-on-dark .navbar-pill nav a,
+    #site-navbar.nav-on-dark .navbar-pill button { color: rgba(247,247,255,0.72) !important; }
+    #site-navbar.nav-on-dark .navbar-pill nav a:hover,
+    #site-navbar.nav-on-dark .navbar-pill button:hover { color: #F7F7FF !important; }
+    #site-navbar.nav-on-dark .navbar-pill a.text-tef-dark,
+    #site-navbar.nav-on-dark .navbar-pill button.text-tef-dark { color: #F7F7FF !important; }
+    #site-navbar.nav-on-dark .navbar-pill span.text-tef-dark\\/20 { color: rgba(247,247,255,0.3) !important; }
+    #site-navbar.nav-on-dark .navbar-pill button[aria-label] span { background-color: rgba(247,247,255,0.85) !important; }
+  `;
+  document.head.appendChild(navDarkStyle);
+
   /* ── CUSTOM CURSOR — punto azul Telefónica ── */
   const isTouchDevice = window.matchMedia('(hover: none)').matches;
   if (!isTouchDevice) {
