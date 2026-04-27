@@ -106,6 +106,9 @@
       tip2: { es: 'Comparte con Nadia los resultados que has obtenido en el autodiagnóstico para que pueda personalizar las respuestas a tu perfil real de liderazgo.', en: 'Share with Nadia the results you obtained in the self-diagnosis so she can personalise responses to your real leadership profile.' },
       tip3: { es: 'Úsala antes de las conversaciones importantes. Preparar el mensaje por adelantado te ayuda cuando llega el momento.', en: 'Use it before important conversations. Preparing your message in advance helps when the moment arrives.' },
 
+      sticky_intro: { es: 'Soy Nadia, estoy aquí.', en: "I'm Nadia, I'm here." },
+      sticky_q:     { es: '¿Empezamos?', en: 'Shall we start?' },
+      cta_button:   { es: 'Abrir conversación', en: 'Open conversation' },
       back_cta:     { es: 'Volver al Journey', en: 'Back to Journey' },
       meta_avail:   { es: '24/7 · Confidencial · Contextual', en: '24/7 · Confidential · Contextual' }
     };
@@ -327,10 +330,57 @@
 
   </main>
 
+  <!-- STICKY NADIA PANEL -->
+  <aside id="nadia-sticky"
+         class="fixed bottom-6 right-6 z-40 w-72 overflow-hidden pointer-events-none"
+         style="opacity:0; transform:translateX(2rem); transition: opacity 0.5s cubic-bezier(0.2,0.8,0.2,1), transform 0.5s cubic-bezier(0.2,0.8,0.2,1); box-shadow: 0 8px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.07);"
+         aria-label="Hablar con Nadia">
+    <div class="bg-tef-gradient-dark grain rounded-2xl overflow-hidden">
+      <div class="h-[3px] bg-tef-blue w-full"></div>
+      <div class="p-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="relative shrink-0">
+            <div class="absolute inset-0 rounded-full bg-tef-blue/40 blur-xl breathe" style="width:44px;height:44px;"></div>
+            <div class="relative w-11 h-11 rounded-full border border-paper/20 bg-paper/5 flex items-center justify-center" style="backdrop-filter:blur(8px);">
+              <span class="font-normal italic text-paper" style="font-size:1.15rem;">N</span>
+            </div>
+          </div>
+          <div>
+            <p class="font-sans font-normal text-paper leading-none mb-0.5" style="font-size:0.95rem;">Nadia</p>
+            <p class="font-mono text-[9px] tracking-[0.22em] uppercase text-paper/40">AI Coach · 24/7</p>
+          </div>
+        </div>
+        <div class="bg-paper/6 border border-paper/10 rounded-xl rounded-tl-none px-4 py-3 mb-5">
+          <p class="font-sans font-normal text-paper leading-snug mb-1" style="font-size:0.95rem;" x-text="t('sticky_intro')"></p>
+          <p class="font-sans font-normal italic text-tef-blue" style="font-size:0.95rem;" x-text="t('sticky_q')"></p>
+        </div>
+        <a href="javascript:void(0)"
+           class="group w-full inline-flex items-center justify-between gap-2 bg-tef-blue text-white px-5 py-3 rounded-xl hover:bg-blue-500 transition-colors">
+          <span class="font-mono text-[10px] tracking-[0.16em] uppercase" x-text="t('cta_button')"></span>
+          <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
   <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
+  <script>
+    (function () {
+      var hero = document.querySelector('[data-nadia-hero]');
+      var panel = document.getElementById('nadia-sticky');
+      if (hero && panel) {
+        new IntersectionObserver(function (entries) {
+          var out = !entries[0].isIntersecting;
+          panel.style.opacity = out ? '1' : '0';
+          panel.style.transform = out ? 'translateX(0)' : 'translateX(2rem)';
+          panel.style.pointerEvents = out ? 'auto' : 'none';
+        }, { threshold: 0.5 }).observe(hero);
+      }
+    })();
+  </script>
   <script>
     (function () {
       var v = document.getElementById('nadia-hero-video');
