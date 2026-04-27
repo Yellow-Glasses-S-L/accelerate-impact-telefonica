@@ -57,18 +57,6 @@
       .ascent-breathe, .orbit, .reveal { animation: none; }
     }
 
-    /* Mobile override para track ascendente */
-    @media (max-width: 768px) {
-      .track-ascend { height: auto !important; }
-      .track-ascend > [data-track-node] {
-        display: block !important;
-        position: relative !important;
-        left: auto !important; right: auto !important;
-        top: auto !important; bottom: auto !important;
-        width: 100% !important;
-        margin-bottom: 1.5rem;
-      }
-    }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -79,7 +67,6 @@
       nav_journey: { es: 'Journey', en: 'Journey' },
       nav_info: { es: 'Contacto', en: 'Contact' },
 
-      hero_eyebrow: { es: 'Your Journey', en: 'Your Journey' },
       hero_title_1: { es: 'Un camino ascendente.', en: 'An ascending path.' },
       hero_title_2: { es: 'El tuyo.', en: 'Yours.' },
       hero_subtitle: {
@@ -88,26 +75,26 @@
       },
 
       /* Track nodos — claims rojos Laura + verbatim validados */
-      n0_meta: { es: 'Paso 1 · Email', en: 'Step 1 · Email' },
+      n0_meta: { es: 'Correo de invitación', en: 'Invitation email' },
       n0_title: { es: 'El correo que lo cambia todo.', en: 'The email that changes everything.' },
-      n0_body: { es: 'Tu primer contacto con el programa. Te dará acceso a este reto y será el punto de partida del recorrido.', en: 'Your first contact with the program. It gives you access to this challenge and marks the start of the journey.' },
+      n0_body: { es: 'Te dará acceso a este reto. Será tu primer contacto con el programa y el punto de partida del recorrido.', en: 'It will give you access to this challenge. Your first contact with the program and the starting point of the journey.' },
 
-      n1_meta: { es: 'Paso 2 · Online', en: 'Step 2 · Online' },
-      n1_title: { es: 'Conoce a tu coach. Nunca duerme.', en: 'Meet your coach. She never sleeps.' },
-      n1_body: { es: 'Nadia, tu AI Leadership Coach, te acompañará a lo largo de todo el proceso y aprenderás a sacar el máximo partido a su apoyo.', en: 'Nadia, your AI Leadership Coach, will accompany you throughout the whole process and you will learn how to get the most from her support.' },
+      n1_meta: { es: 'Sesiones online para conocer Nadia', en: 'Online sessions to meet Nadia' },
+      n1_title: { es: 'Conoce a tu coach.', en: 'Meet your coach.' },
+      n1_body: { es: 'Nadia, tu AI Leadership Coach, que te acompañará a lo largo de todo el proceso. Aprenderás a sacar el máximo partido a su apoyo.', en: 'Nadia, your AI Leadership Coach, who will accompany you throughout the whole process. You will learn how to get the most from her support.' },
 
       n2_meta: { es: 'Paso 3 · Virtual', en: 'Step 3 · Virtual' },
-      n2_title: { es: 'Bienvenido a tu cohorte.', en: 'Welcome to your cohort.' },
-      n2_body: { es: 'Se presentará el programa y conocerás a tu cohorte, el grupo de personas con las que compartirás esta experiencia.', en: 'The program will be presented and you will meet your cohort — the group you will share this experience with.' },
+      n2_title: { es: 'Sesión online de bienvenida.', en: 'Online welcome session.' },
+      n2_body: { es: 'Conocerás el programa, su estructura y los compañeros con los que compartirás este camino.', en: 'You will get to know the program, its structure and the colleagues you will share this journey with.' },
 
       n3_meta: { es: 'Paso 4 · Online', en: 'Step 4 · Online' },
-      n3_title: { es: 'Mírate al espejo.', en: 'Look in the mirror.' },
-      n3_body: { es: 'Un autodiagnóstico diseñado para ayudarte a comprender cómo lideras hoy e identificar cómo puedes amplificar tu impacto como líder.', en: 'A self-diagnosis designed to help you understand how you lead today and identify how to amplify your impact as a leader.' },
-      n3_cta: { es: 'Empezar ahora', en: 'Start now' },
+      n3_title: { es: 'Autodiagnóstico de liderazgo.', en: 'Leadership self-diagnosis.' },
+      n3_body: { es: 'Te ayudará a comprender cómo lideras hoy e identificar cómo puedes amplificar tu impacto como líder.', en: 'It will help you understand how you lead today and identify how you can amplify your impact as a leader.' },
+      n3_cta: { es: 'Más información', en: 'More information' },
 
       n4_meta: { es: 'Paso 5 · Presencial · Universitas', en: 'Step 5 · In-person · Universitas' },
-      n4_title: { es: 'Tres días que no olvidarás.', en: 'Three days you will not forget.' },
-      n4_body: { es: 'Vivirás una experiencia presencial de tres días en Universitas. El corazón del programa y el momento donde todo converge: reflexión, aprendizaje y acción.', en: 'Three in-person days at Universitas. The heart of the program — where reflection, learning and action converge.' },
+      n4_title: { es: 'Residential Action Learning Week en Universitas.', en: 'Residential Action Learning Week at Universitas.' },
+      n4_body: { es: 'Vivirás una experiencia presencial de tres días en Universitas. Es el corazón del programa y el momento en el que todo converge: reflexión, aprendizaje y acción.', en: 'Three in-person days at Universitas. The heart of the program — the moment where everything converges: reflection, learning and action.' },
       n4_cta: { es: 'Ver agenda', en: 'See agenda' },
 
       /* Fases */
@@ -115,14 +102,9 @@
 
 
       /* CTA final */
-      track_eyebrow: { es: 'Tu viaje', en: 'Your journey' },
       track_title_1: { es: 'Cinco paradas,', en: 'Five stops,' },
       track_title_2: { es: 'un solo programa.', en: 'one program.' },
 
-      next_title_pre: { es: 'Empieza con ', en: 'Start with your ' },
-      next_title_em: { es: 'tu Autodiagnóstico.', en: 'Self-Diagnosis.' },
-      next_body: { es: 'El primer paso real del Journey. Confidencial, no evaluativo, tuyo.', en: 'The first real step of the Journey. Confidential, non-evaluative, yours.' },
-      next_cta: { es: 'Ir al Autodiagnóstico', en: 'Go to Self-Diagnosis' }
     };
   </script>
 </head>
@@ -136,7 +118,6 @@
     <!-- HERO -->
     <section class="bg-tef-gradient-dark text-paper relative overflow-hidden" data-journey-hero data-nav-dark style="margin-top:-79px;">
       <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-20 md:pt-40 md:pb-28">
-        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper/60 mb-6" data-journey-eyebrow x-text="t('hero_eyebrow')"></p>
         <h1 class="font-sans font-normal leading-[0.95] tracking-tight text-6xl md:text-8xl lg:text-[7rem] mb-6">
           <span x-text="t('hero_title_1')"></span>
           <em class="italic font-normal text-tef-blue" x-text="' ' + t('hero_title_2')"></em>
@@ -145,145 +126,162 @@
       </div>
     </section>
 
-    <!-- TRACK VISUAL — 5 PARADAS -->
-    <section class="relative w-full overflow-hidden bg-tef-gradient-light py-20 md:py-28" data-track-section>
-      <!-- Orbital loops ambiente -->
-      <svg class="absolute -top-24 -left-20 w-[420px] h-[420px] opacity-[0.08] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-        <ellipse cx="200" cy="200" rx="180" ry="90" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-20 200 200)"/>
-        <ellipse cx="200" cy="200" rx="150" ry="70" stroke="#0066FF" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(15 200 200)"/>
-        <circle cx="380" cy="245" r="4" fill="#0066FF"/>
-        <circle cx="28" cy="155" r="4" fill="#0066FF"/>
-      </svg>
-      <svg class="absolute -bottom-32 -right-24 w-[500px] h-[500px] opacity-[0.06] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-        <ellipse cx="200" cy="200" rx="190" ry="95" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(35 200 200)"/>
-        <ellipse cx="200" cy="200" rx="160" ry="75" stroke="#031A34" stroke-width="1.25" stroke-dasharray="3 6" transform="rotate(-10 200 200)"/>
-      </svg>
+    <!-- TRACK — 5 paradas — misma estructura que home "La Comunidad de Líderes" -->
+    <section id="journey-hscroll-section" class="bg-tef-gradient-light">
 
-      <div class="relative max-w-[1920px] mx-auto px-6">
-        <div class="text-center mb-28 md:mb-32" data-reveal-stagger>
-          <p data-stagger-item class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('track_eyebrow')"></p>
-          <h2 data-stagger-item class="font-sans font-normal text-5xl md:text-6xl lg:text-7xl text-tef-dark leading-tight tracking-tight">
-            <span x-text="t('track_title_1')"></span>
-            <span class="text-tef-blue" x-text="' ' + t('track_title_2')"></span>
-          </h2>
+      <!-- Progress bar fija al fondo del viewport (igual que home) -->
+      <div id="journey-progress-wrap" aria-hidden="true"
+           style="position:fixed;bottom:0;left:0;right:0;height:4px;z-index:45;background:rgba(3,26,52,0.1);opacity:0;transition:opacity 0.3s ease;pointer-events:none;">
+        <div id="journey-progress" style="width:0%;height:100%;background:#0066FF;transition:none;"></div>
+      </div>
+
+      <!-- CSS sticky — sin GSAP pin para evitar conflicto con Lenis -->
+      <div id="journey-hscroll-pin" style="position:sticky; top:0; height:100vh; display:flex; flex-direction:column;">
+
+        <!-- Header fijo dentro del pin -->
+        <div class="px-6 md:px-12 lg:px-16 pt-12 md:pt-16 pb-6 max-w-[1920px] mx-auto w-full relative" data-journey-header>
+          <div class="flex items-end justify-between gap-8">
+            <div>
+              <h2 class="font-sans font-normal tracking-tight text-tef-dark leading-[0.95]"
+                  style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
+                <span x-text="t('track_title_1')"></span>
+                <em class="font-normal italic text-tef-blue" x-text="' ' + t('track_title_2')"></em>
+              </h2>
+            </div>
+            <!-- Número activo — igual que home -->
+            <span id="journey-active-num" class="font-sans font-normal text-tef-blue leading-none flex-shrink-0 select-none"
+                  style="font-size: clamp(80px, 11vw, 150px); letter-spacing:-0.05em; line-height:0.9;">01</span>
+          </div>
         </div>
 
-        <div class="relative">
-          <!-- SVG path desktop — ascendente izq→der — 5 paradas -->
-          <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 480" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="pathA" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#0066FF" stop-opacity="0.7"/>
-                <stop offset="50%" stop-color="#0066FF" stop-opacity="1"/>
-                <stop offset="100%" stop-color="#E8B547" stop-opacity="0.95"/>
-              </linearGradient>
-            </defs>
-            <path d="M 120 435 C 350 415, 550 375, 600 360 S 900 315, 1080 295"
-                  stroke="#0066FF" stroke-width="1" fill="none"
-                  stroke-dasharray="4 9" opacity="0.25"/>
-            <path id="trackPath" d="M 120 435 C 350 415, 550 375, 600 360 S 900 315, 1080 295"
-                  stroke="url(#pathA)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <circle cx="120"  cy="435" r="5" fill="#0066FF"/>
-            <circle cx="360"  cy="400" r="5" fill="#0066FF"/>
-            <circle cx="600"  cy="360" r="5" fill="#0066FF"/>
-            <circle cx="840"  cy="325" r="5" fill="#0066FF"/>
-            <circle cx="1080" cy="295" r="6" fill="#E8B547"/>
-          </svg>
+        <!-- Track horizontal -->
+        <div class="relative overflow-hidden flex-1 flex items-center">
+          <div id="journey-track" class="flex" style="width: max-content; padding-right: 4rem;">
 
-          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative" style="min-height:480px" data-track-grid>
-
-            <!-- NODO 0 -->
-            <div data-track-node="0" class="md:pt-52">
-              <div class="relative group">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">01</span>
-                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
-                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue/40 rotate-45"></div>
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n0_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n0_title')"></h3>
-                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n0_body')"></p>
-                </div>
+            <!-- PASO 01 -->
+            <article class="journey-card flex-shrink-0 relative" style="height:clamp(395px,47.5vw,700px);">
+              <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(-1.5deg);">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
               </div>
-            </div>
-
-            <!-- NODO 1 -->
-            <div data-track-node="1" class="md:pt-36">
-              <div class="relative group">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/10 select-none">02</span>
-                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-blue/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
-                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-blue rotate-45"></div>
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue/70 mb-3" x-text="t('n1_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n1_title')"></h3>
-                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n1_body')"></p>
-                </div>
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6" style="left:calc(clamp(395px,47.5vw,700px)*1.185 - 210px); width:clamp(288px,31vw,368px); box-shadow:0 16px 56px rgba(3,26,52,0.28),0 2px 8px rgba(3,26,52,0.12); transform:rotate(0.7deg);">
+                <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
+                <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
+                <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
+                <span class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-ink/30"></span>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">01</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n0_meta')"></span></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n0_title')"></h3>
+                <p class="text-[17px] text-ink/60 leading-relaxed" x-text="t('n0_body')"></p>
               </div>
-            </div>
+            </article>
 
-            <!-- NODO 2 -->
-            <div data-track-node="2" class="md:pt-24">
-              <div class="relative group">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-dark/10 select-none">03</span>
-                <div class="relative bg-white rounded-br-2xl p-6 border border-tef-dark/15 shadow-[0_8px_30px_rgba(3,26,52,0.06)]">
-                  <div class="absolute -top-3 right-6 w-6 h-6 bg-white border-2 border-tef-dark rotate-45"></div>
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-dark/70 mb-3" x-text="t('n2_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n2_title')"></h3>
-                  <p class="text-base text-tef-dark/70 leading-relaxed" x-text="t('n2_body')"></p>
-                </div>
+            <!-- PASO 02 -->
+            <article class="journey-card flex-shrink-0 relative" style="height:clamp(395px,47.5vw,700px);">
+              <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(1.8deg);">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
               </div>
-            </div>
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6" style="left:calc(clamp(395px,47.5vw,700px)*1.185 - 210px); width:clamp(288px,31vw,368px); box-shadow:0 16px 56px rgba(3,26,52,0.28),0 2px 8px rgba(3,26,52,0.12); transform:rotate(-0.5deg);">
+                <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
+                <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
+                <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
+                <span class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-ink/30"></span>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">02</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n1_meta')"></span></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n1_title')"></h3>
+                <p class="text-[17px] text-ink/60 leading-relaxed" x-text="t('n1_body')"></p>
+              </div>
+            </article>
 
-            <!-- NODO 3 — Autodiagnóstico (CLICKABLE) -->
-            <div data-track-node="3" class="md:pt-8">
-              <a href="autodiagnostico.html"
-                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">04</span>
-                <div class="relative bg-white rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.18)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_rgba(0,102,255,0.28)] overflow-hidden">
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-tef-blue mb-3" x-text="t('n3_meta')"></p>
-                  <h3 class="font-sans text-2xl font-normal text-tef-dark mb-2" x-text="t('n3_title')"></h3>
-                  <p class="text-sm text-tef-dark/75 leading-relaxed" x-text="t('n3_body')"></p>
-                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
-                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n3_cta')"></span>
-                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
+            <!-- PASO 03 -->
+            <article class="journey-card flex-shrink-0 relative" style="height:clamp(395px,47.5vw,700px);">
+              <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(-2.2deg);">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
+              </div>
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6" style="left:calc(clamp(395px,47.5vw,700px)*1.185 - 210px); width:clamp(288px,31vw,368px); box-shadow:0 16px 56px rgba(3,26,52,0.28),0 2px 8px rgba(3,26,52,0.12); transform:rotate(0.4deg);">
+                <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
+                <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
+                <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
+                <span class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-ink/30"></span>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">03</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n2_meta')"></span></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n2_title')"></h3>
+                <p class="text-[17px] text-ink/60 leading-relaxed" x-text="t('n2_body')"></p>
+              </div>
+            </article>
 
-            <!-- NODO 4 — Action Learning Week (CLICKABLE DARK) -->
-            <div data-track-node="4" class="md:pt-0">
-              <a href="agenda.html"
-                 class="relative block group focus:outline-none focus-visible:ring-4 focus-visible:ring-tef-blue/40 rounded-br-2xl">
-                <span class="absolute -top-20 left-0 font-sans text-[88px] leading-none font-normal text-tef-blue/15 select-none">05</span>
-                <div class="relative bg-tef-dark rounded-br-2xl pb-20 pt-6 px-6 border border-tef-blue shadow-[0_12px_40px_rgba(0,102,255,0.25)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_55px_rgba(0,102,255,0.38)] overflow-hidden">
-                  <p class="font-mono text-[11px] font-normal uppercase tracking-widest text-[#7FB3FF] mb-3" x-text="t('n4_meta')"></p>
-                  <h3 class="font-sans text-xl font-normal text-white mb-2" x-text="t('n4_title')"></h3>
-                  <p class="text-sm text-white/75 leading-relaxed" x-text="t('n4_body')"></p>
-                  <span class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 group-hover:bg-blue-700 transition-colors">
-                    <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('n4_cta')"></span>
-                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
+            <!-- PASO 04 — Autodiagnóstico -->
+            <article class="journey-card flex-shrink-0 relative" style="height:clamp(395px,47.5vw,700px);">
+              <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(1.4deg);">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
+              </div>
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6 flex flex-col" style="left:calc(clamp(395px,47.5vw,700px)*1.185 - 210px); width:clamp(288px,31vw,368px); box-shadow:0 16px 56px rgba(3,26,52,0.28),0 2px 8px rgba(3,26,52,0.12); transform:rotate(-0.8deg);">
+                <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
+                <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
+                <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
+                <span class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-ink/30"></span>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">04</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n3_meta')"></span></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n3_title')"></h3>
+                <p class="text-[17px] text-ink/60 leading-relaxed mb-4" x-text="t('n3_body')"></p>
+                <a href="autodiagnostico.html" class="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] uppercase text-tef-blue border border-tef-blue px-4 py-2.5 rounded-full hover:bg-tef-blue hover:text-white transition-all w-fit">
+                  <span x-text="t('n3_cta')"></span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- PASO 05 — Action Learning Week -->
+            <article class="journey-card flex-shrink-0 relative" style="height:clamp(395px,47.5vw,700px);">
+              <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(-1.1deg);">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
+              </div>
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6 flex flex-col" style="left:calc(clamp(395px,47.5vw,700px)*1.185 - 210px); width:clamp(288px,31vw,368px); box-shadow:0 16px 56px rgba(3,26,52,0.28),0 2px 8px rgba(3,26,52,0.12); transform:rotate(0.6deg);">
+                <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
+                <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
+                <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
+                <span class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-ink/30"></span>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">05</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n4_meta')"></span></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n4_title')"></h3>
+                <p class="text-[17px] text-ink/60 leading-relaxed mb-4" x-text="t('n4_body')"></p>
+                <a href="agenda.html" class="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] uppercase text-tef-blue border border-tef-blue px-4 py-2.5 rounded-full hover:bg-tef-blue hover:text-white transition-all w-fit">
+                  <span x-text="t('n4_cta')"></span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </article>
 
           </div>
         </div>
-      </div>
-    </section>
 
-
-    <!-- CTA NEXT -->
-    <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
-        <div class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-12 pt-12 pb-20 overflow-hidden" data-reveal="up">
-          <h3 class="font-sans font-normal text-4xl md:text-6xl leading-[1.05] tracking-tight mb-3" data-split-words>
-            <span x-text="t('next_title_pre')"></span><em class="italic text-tef-blue" x-text="t('next_title_em')"></em>
-          </h3>
-          <p class="text-[17px] text-paper/70 max-w-xl leading-relaxed" x-text="t('next_body')"></p>
-          <a href="autodiagnostico.html" class="group absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 rounded-br-2xl hover:bg-blue-700 transition-colors">
-            <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('next_cta')"></span>
-            <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+        <!-- Timeline de progreso — debajo del carrusel -->
+        <div class="px-6 md:px-12 lg:px-16 py-6 max-w-[1920px] mx-auto w-full" id="journey-tabs">
+          <!-- Contenedor relativo sin padding — para que top-[16px] centre la línea en los círculos (h-9=36px, centro=18px, línea 4px → top=16px) -->
+          <div class="relative">
+            <div class="absolute top-[16px] left-[10%] right-[10%] rounded-full bg-ink/10" style="height:4px;" aria-hidden="true"></div>
+            <div id="journey-timeline-fill"
+                 class="absolute top-[16px] left-[10%] right-[10%] rounded-full bg-tef-blue"
+                 style="height:4px; transform-origin:left center; transform:scaleX(0);" aria-hidden="true"></div>
+            <div class="grid grid-cols-5">
+              <button data-tab="0" class="journey-tab flex flex-col items-center gap-2 bg-transparent border-none p-0 outline-none cursor-pointer">
+                <div class="w-9 h-9 rounded-full border-2 border-tef-blue bg-tef-blue relative z-10 transition-all duration-300" data-tab-circle></div>
+                <span class="font-mono text-[10px] tracking-[0.15em] text-tef-blue transition-colors duration-300">01</span>
+              </button>
+              <button data-tab="1" class="journey-tab flex flex-col items-center gap-2 bg-transparent border-none p-0 outline-none cursor-pointer">
+                <div class="w-9 h-9 rounded-full border-2 border-ink/10 bg-paper relative z-10 transition-all duration-300" data-tab-circle></div>
+                <span class="font-mono text-[10px] tracking-[0.15em] text-ink/40 transition-colors duration-300">02</span>
+              </button>
+              <button data-tab="2" class="journey-tab flex flex-col items-center gap-2 bg-transparent border-none p-0 outline-none cursor-pointer">
+                <div class="w-9 h-9 rounded-full border-2 border-ink/10 bg-paper relative z-10 transition-all duration-300" data-tab-circle></div>
+                <span class="font-mono text-[10px] tracking-[0.15em] text-ink/40 transition-colors duration-300">03</span>
+              </button>
+              <button data-tab="3" class="journey-tab flex flex-col items-center gap-2 bg-transparent border-none p-0 outline-none cursor-pointer">
+                <div class="w-9 h-9 rounded-full border-2 border-ink/10 bg-paper relative z-10 transition-all duration-300" data-tab-circle></div>
+                <span class="font-mono text-[10px] tracking-[0.15em] text-ink/40 transition-colors duration-300">04</span>
+              </button>
+              <button data-tab="4" class="journey-tab flex flex-col items-center gap-2 bg-transparent border-none p-0 outline-none cursor-pointer">
+                <div class="w-9 h-9 rounded-full border-2 border-ink/10 bg-paper relative z-10 transition-all duration-300" data-tab-circle></div>
+                <span class="font-mono text-[10px] tracking-[0.15em] text-ink/40 transition-colors duration-300">05</span>
+              </button>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 

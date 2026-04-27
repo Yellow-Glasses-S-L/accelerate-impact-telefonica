@@ -265,60 +265,131 @@
     }
 
     /* ─────────────────────────────────────────────
-     * TRACK — data-track-section (journey.html)
+     * JOURNEY TRACK — CSS sticky horizontal scroll (journey.html)
+     * Sin GSAP pin (evita conflicto con Lenis en subpáginas).
+     * La sección recibe altura dinámica; el pin es position:sticky.
      * ───────────────────────────────────────────── */
-    const trackSection = document.querySelector('[data-track-section]');
-    const trackPath    = document.getElementById('trackPath');
-    const trackNodes   = document.querySelectorAll('[data-track-node]');
-    const trackDots    = document.querySelectorAll('[data-track-section] svg circle');
+    const journeySection   = document.getElementById('journey-hscroll-section');
+    const journeyPin       = document.getElementById('journey-hscroll-pin');
+    const journeyTrack     = document.getElementById('journey-track');
+    const journeyBar       = document.getElementById('journey-progress');
+    const journeyBarWrap   = document.getElementById('journey-progress-wrap');
+    const journeyTabs      = document.querySelectorAll('.journey-tab');
+    const journeyActiveNum = document.getElementById('journey-active-num');
+    const JOURNEY_LABELS      = ['01','02','03','04','05'];
+    let journeyCurrentIdx     = -1;
+    let cachedCardW           = 0;
+    const journeyTimelineFill = document.getElementById('journey-timeline-fill');
 
-    if (trackSection && trackPath && trackNodes.length && window.innerWidth >= 768) {
-      const len = trackPath.getTotalLength();
-      gsap.set(trackPath, { strokeDasharray: len, strokeDashoffset: len });
-      gsap.set(trackNodes, { y: 80, opacity: 0, scale: 0.9, filter: 'blur(10px)' });
-      gsap.set(trackDots,  { scale: 0, opacity: 0, transformOrigin: 'center' });
+    if (journeySection && journeyPin && journeyTrack) {
+      const getJourneyMaxX = () => Math.max(0, journeyTrack.scrollWidth - window.innerWidth);
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: trackSection,
-          start: 'top top',
-          end: '+=280%',
-          pin: true,
-          pinSpacing: true,
-          scrub: 0.7,
-          invalidateOnRefresh: true
-        }
+      // Alinear track con el margen del h2 del header (igual que home)
+      const journeyHeaderH2 = document.querySelector('[data-journey-header] h2');
+      function alignJourneyTrack() {
+        if (!journeyHeaderH2) return;
+        const h2Left   = journeyHeaderH2.getBoundingClientRect().left;
+        const sepMx    = 20;
+        const offset   = Math.max(0, h2Left - sepMx);
+        journeyTrack.style.paddingLeft = offset + 'px';
+
+        // Article width = image natural width (aspect 32:27) + card overhang past image right edge
+        // Card width is clamp(288px,31vw,368px); left = imgW-210; right = imgW-210+cardW → overhang = cardW-210
+        // artW = imgW + overhang + buffer = imgW + (368-210) + 70 = imgW + 228 → round to 230
+        const imgH = Math.max(395, Math.min(700, 0.475 * window.innerWidth));
+        const imgW = Math.round(imgH * 32 / 27);
+        const artW = imgW + 230;
+        cachedCardW = artW;
+        journeyTrack.querySelectorAll('.journey-card').forEach(card => {
+          card.style.width = artW + 'px';
+        });
+
+        // paddingRight = viewport - artW - offset  →  total = 4×artW (last card always reachable)
+        const minPadRight = Math.max(64, window.innerWidth - artW - offset);
+        journeyTrack.style.paddingRight = minPadRight + 'px';
+      }
+
+      // La sección necesita altura = viewport + distancia de scroll horizontal
+      function setJourneySectionHeight() {
+        journeySection.style.height = (window.innerHeight + getJourneyMaxX()) + 'px';
+      }
+
+      alignJourneyTrack();
+      setJourneySectionHeight();
+      window.addEventListener('resize', () => {
+        alignJourneyTrack();
+        setJourneySectionHeight();
+        ScrollTrigger.refresh();
       });
 
-      tl.to({}, { duration: 0.08 });
-      trackNodes.forEach((node, i) => {
-        const segmentEnd = len * ((i + 1) / trackNodes.length);
-        tl.to(trackPath, { strokeDashoffset: len - segmentEnd, ease: 'none', duration: 0.5 }, '+=0');
-        if (trackDots[i]) tl.to(trackDots[i], { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' }, '<0.35');
-        tl.to(node, { y: 0, opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.55, ease: 'power3.out' }, '<0.1');
-        tl.to({}, { duration: 0.35 });
-      });
+      function setJourneyActiveCard(idx) {
+        if (idx === journeyCurrentIdx) return;
+        journeyCurrentIdx = idx;
 
-      trackNodes.forEach((node) => {
-        const ghost = node.querySelector('span.absolute');
-        if (ghost) {
-          gsap.to(ghost, {
-            yPercent: -18, ease: 'none',
-            scrollTrigger: { trigger: trackSection, start: 'top top', end: '+=280%', scrub: 0.8 }
+        // Actualizar círculos y labels del timeline (acumulativo: i ≤ idx = activo)
+        journeyTabs.forEach((btn, i) => {
+          const circle = btn.querySelector('[data-tab-circle]');
+          const label  = btn.querySelector('span');
+          const active = i <= idx;
+          if (circle) {
+            circle.classList.toggle('bg-tef-blue',    active);
+            circle.classList.toggle('border-tef-blue', active);
+            circle.classList.toggle('bg-paper',       !active);
+            circle.classList.toggle('border-ink/20',  !active);
+          }
+          if (label) {
+            label.classList.toggle('text-tef-blue', active);
+            label.classList.toggle('text-ink/40',   !active);
+          }
+        });
+
+        if (journeyActiveNum) {
+          gsap.to(journeyActiveNum, {
+            opacity: 0, filter: 'blur(14px)', duration: 0.18,
+            onComplete: () => {
+              journeyActiveNum.textContent = JOURNEY_LABELS[idx];
+              gsap.to(journeyActiveNum, { opacity: 1, filter: 'blur(0px)', duration: 0.28 });
+            }
           });
         }
+      }
+
+      let jst = ScrollTrigger.create({
+        id: 'journey-st',
+        trigger: journeySection,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onEnter:     () => { if (journeyBarWrap) journeyBarWrap.style.opacity = '1'; },
+        onLeave:     () => { if (journeyBarWrap) journeyBarWrap.style.opacity = '0'; },
+        onEnterBack: () => { if (journeyBarWrap) journeyBarWrap.style.opacity = '1'; },
+        onLeaveBack: () => { if (journeyBarWrap) journeyBarWrap.style.opacity = '0'; },
+        onUpdate: (self) => {
+          const total = getJourneyMaxX();
+          gsap.set(journeyTrack, { x: -total * self.progress });
+          if (journeyBar) journeyBar.style.width = (self.progress * 100) + '%';
+          if (journeyTimelineFill) gsap.set(journeyTimelineFill, { scaleX: self.progress });
+          // Active card: which card is nearest to the left-aligned position
+          // Each card i aligns at progress = i*cardW/total → use round(progress*total/cardW)
+          const n   = 5;
+          const cw  = cachedCardW > 0 ? cachedCardW : total / n;
+          const idx = Math.min(Math.max(0, Math.round(self.progress * total / cw)), n - 1);
+          setJourneyActiveCard(idx);
+        }
       });
-    } else if (trackSection && trackPath && trackNodes.length) {
-      const len = trackPath.getTotalLength();
-      gsap.set(trackPath, { strokeDasharray: len, strokeDashoffset: len });
-      gsap.to(trackPath, {
-        strokeDashoffset: 0, ease: 'none',
-        scrollTrigger: { trigger: trackSection, start: 'top 70%', end: 'bottom 70%', scrub: 0.5 }
-      });
-      trackNodes.forEach((node) => {
-        gsap.from(node, {
-          y: 80, opacity: 0, filter: 'blur(8px)', duration: 0.9, ease: 'power3.out',
-          scrollTrigger: { trigger: node, start: 'top 85%' }
+
+      // Click tab → saltar a esa tarjeta
+      journeyTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const i     = parseInt(tab.dataset.tab);
+          const cards = journeyTrack.querySelectorAll('.journey-card');
+          const cardW = cards[0] ? cards[0].offsetWidth : 0;
+          const total = getJourneyMaxX();
+          const progress = Math.max(0, Math.min(1, (i * cardW) / total));
+          const dest = jst.start + progress * (jst.end - jst.start);
+          if (window.__lenis) window.__lenis.scrollTo(dest, { duration: 0.8 });
+          else window.scrollTo({ top: dest, behavior: 'smooth' });
         });
       });
     }
