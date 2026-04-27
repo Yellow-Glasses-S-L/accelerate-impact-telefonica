@@ -66,7 +66,7 @@
 
     @keyframes orbital-spin { to { transform: rotate(360deg); } }
     .orbital-spin { animation: orbital-spin 22s linear infinite; transform-origin: center; }
-    .orbital-spin-rev { animation: orbital-spin 26s linear infinite reverse; transform-origin: center; }
+    .orbital-spin-rev { animation: orbital-spin 14s linear infinite reverse; transform-origin: center; }
 
     @media (prefers-reduced-motion: reduce) {
       .orbital-spin, .orbital-spin-rev, .reveal { animation: none; }
@@ -119,7 +119,7 @@
         radial-gradient(0.8px 0.8px at 71% 18%, rgba(255,255,255,0.35), transparent),
         radial-gradient(0.8px 0.8px at 85% 72%, rgba(255,255,255,0.3), transparent),
         radial-gradient(0.8px 0.8px at 94% 46%, rgba(255,255,255,0.4), transparent);
-      opacity: 0.55;
+      opacity: 0.85;
     }
     .stars-mid {
       background-image:
@@ -129,7 +129,7 @@
         radial-gradient(1.1px 1.1px at 62% 36%, rgba(255,255,255,0.65), transparent),
         radial-gradient(1.1px 1.1px at 79% 62%, rgba(255,255,255,0.55), transparent),
         radial-gradient(1.1px 1.1px at 88% 26%, rgba(255,255,255,0.5), transparent);
-      opacity: 0.7;
+      opacity: 0.95;
     }
     .stars-near {
       background-image:
@@ -525,6 +525,12 @@
   <!-- Global scroll progress bar -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
+  <!-- Hscroll progress bar — fija al fondo del viewport, solo visible en la sección -->
+  <div id="hscroll-progress-wrap" aria-hidden="true"
+       style="position:fixed;bottom:0;left:0;right:0;height:4px;z-index:45;background:rgba(3,26,52,0.1);opacity:0;transition:opacity 0.3s ease;pointer-events:none;">
+    <div id="hscroll-progress" style="width:0%;height:100%;background:#0066FF;transition:none;"></div>
+  </div>
+
   <!-- Atmospheric glow fixed — visible sobre secciones oscuras para unificar intro+hero+globe -->
   <div class="dark-atmosphere" id="darkAtmosphere" aria-hidden="true"></div>
 
@@ -556,13 +562,13 @@
         <defs>
           <linearGradient id="introRing" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%"  stop-color="#0066FF" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#0066FF" stop-opacity="0.55"/>
+            <stop offset="50%" stop-color="#0066FF" stop-opacity="0.85"/>
             <stop offset="100%" stop-color="#0066FF" stop-opacity="0"/>
           </linearGradient>
         </defs>
         <ellipse cx="720" cy="450" rx="680" ry="220" stroke="url(#introRing)" stroke-width="1"
                  stroke-dasharray="4 10" fill="none" class="orbital-spin" style="transform-origin:720px 450px"/>
-        <ellipse cx="720" cy="450" rx="520" ry="170" stroke="rgba(255,255,255,0.22)" stroke-width="0.8"
+        <ellipse cx="720" cy="450" rx="520" ry="170" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"
                  stroke-dasharray="3 9" fill="none" transform="rotate(-14 720 450)"
                  class="orbital-spin-rev" style="transform-origin:720px 450px"/>
       </svg>
@@ -610,18 +616,23 @@
             <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-ink-mute mb-2">Telefónica · 2026</p>
             <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag1')"></p>
             <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag2')"></p>
-            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight" x-text="t('mf_tag3')"></p>
+            <p class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-tef-blue leading-tight">
+              <span x-text="lang==='es' ? '#Responsabilidad' : '#Shared'"></span><br>
+              <span class="inline-block" style="padding-left:1.1ch" x-text="lang==='es' ? 'compartida' : 'responsibility'"></span>
+            </p>
           </div>
 
           <!-- Derecha: manifiesto -->
-          <div data-stagger-item>
-            <p class="font-sans font-normal italic text-ink leading-[1.2]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)">
-              <span x-text="t('mf_l1')"></span>
-              <span x-text="' ' + t('mf_l2')"></span>
-              <span x-text="' ' + t('mf_l3')"></span>
-              <span x-text="' ' + t('mf_l4')"></span>
-              <span x-text="' ' + t('mf_l5')"></span>
+          <div data-stagger-item class="space-y-8">
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)">
+              <span x-text="t('mf_l1')"></span><br>
+              <span x-text="t('mf_l2')"></span>
             </p>
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)">
+              <span x-text="t('mf_l3')"></span><br>
+              <span x-text="t('mf_l4')"></span>
+            </p>
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.6rem, 2.8vw, 2.8rem)" x-text="t('mf_l5')"></p>
           </div>
 
         </div>
@@ -651,74 +662,94 @@
       <div id="hscroll-pin">
 
         <!-- Header fijo dentro del pin -->
-        <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1920px] mx-auto" data-accelerate-header>
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3 accelerate-eyebrow" x-text="t('program_eyebrow')"></p>
-          <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
-              style="font-size: clamp(3.5rem, 7vw, 8rem)">
-            Accelerate <em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">Impact</em>
-          </h2>
+        <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1920px] mx-auto relative" data-accelerate-header>
+          <div class="flex items-end justify-between gap-8">
+            <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
+                style="font-size: clamp(3.5rem, 7vw, 8rem)">
+              La Comunidad de Líderes<br><em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">de Telefónica</em>
+            </h2>
+            <!-- Número activo — alineado a la base del título, cambia con blur -->
+            <span id="hscroll-active-num" class="font-sans font-normal text-tef-blue leading-none flex-shrink-0 select-none"
+                  style="font-size: clamp(80px, 11vw, 150px); letter-spacing:-0.05em; line-height:0.9;">01</span>
+          </div>
+
+          <!-- Tabs -->
+          <div class="flex items-center gap-1 mt-8" id="hscroll-tabs">
+            <button data-tab="0" class="hscroll-tab font-mono text-[11px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-tef-blue bg-tef-blue text-white">Why</button>
+            <button data-tab="1" class="hscroll-tab font-mono text-[11px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">How</button>
+            <button data-tab="2" class="hscroll-tab font-mono text-[11px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">What</button>
+            <button data-tab="3" class="hscroll-tab font-mono text-[11px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">Expect</button>
+          </div>
         </div>
 
         <!-- Track horizontal -->
         <div class="relative overflow-hidden">
-          <div id="hscroll-track" class="flex gap-6 md:gap-8 px-6 md:px-12 lg:px-16 pb-16 md:pb-20" style="width: max-content;">
+          <div id="hscroll-track" class="flex pb-10" style="width: max-content; padding-right: 4rem;">
 
             <!-- WHY -->
-            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">Why</p>
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
-              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
-              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
-              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
-                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">01</span>
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
+              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-4">Why</p>
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_why_label')"></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
+                <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
+              </div>
             </article>
 
             <!-- HOW -->
-            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">How</p>
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
-              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
-              <p class="text-[16px] text-ink-soft leading-relaxed mb-5" x-text="t('b_how_body')"></p>
-              <div class="flex flex-wrap gap-2">
-                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Customer First</span>
-                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Delivering Excellence</span>
-                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Clarity &amp; Courage</span>
-                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Digital Innovation</span>
-                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Driving Ownership</span>
-                <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Growing People</span>
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
+              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
               </div>
-              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
-                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">02</span>
+              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-4">How</p>
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_how_label')"></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
+                <p class="text-[15px] text-ink-soft leading-relaxed mb-4" x-text="t('b_how_body')"></p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Customer First</span>
+                  <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Delivering Excellence</span>
+                  <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Clarity &amp; Courage</span>
+                  <span class="font-mono text-[9px] tracking-[0.15em] uppercase border border-tef-blue/30 text-tef-blue px-2.5 py-1">Digital Innovation</span>
+                </div>
+              </div>
             </article>
 
             <!-- WHAT -->
-            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-ink/10">
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-6">What</p>
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
-              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
-              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
-              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
-                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(0,102,255,0.15); letter-spacing:-0.05em;">03</span>
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
+              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-tef-blue mb-4">What</p>
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_what_label')"></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
+                <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
+              </div>
             </article>
 
             <!-- EXPECT -->
-            <article class="hscroll-card flex-shrink-0 w-[80vw] md:w-[38vw] lg:w-[30vw] flex flex-col pl-5 border-l border-gold/30">
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep mb-6">Expect</p>
-              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
-              <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
-              <p class="text-[16px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
-              <span aria-hidden="true" class="mt-auto pt-6 font-sans font-light leading-none pointer-events-none select-none block"
-                    style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgba(232,181,71,0.25); letter-spacing:-0.05em;">04</span>
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
+              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-gold-deep mb-4">Expect</p>
+                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-mute mb-3" x-text="t('b_exp_label')"></p>
+                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
+                <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
+              </div>
             </article>
 
           </div>
 
-          <!-- Progress bar -->
-          <div class="px-6 md:px-12 lg:px-16 pb-8">
-            <div class="h-px bg-ink/8 w-full relative">
-              <div id="hscroll-progress" class="absolute left-0 top-0 h-px bg-tef-blue transition-none" style="width:0%"></div>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -1358,41 +1389,60 @@
           });
         }
 
-        // ── M2 · Transición "Accelerate Impact" zoom scrubbed ──
-        if (!reduced && typeof ScrollTrigger !== 'undefined') {
-          const head = document.querySelector('[data-accelerate-header]');
-          if (head) {
-            gsap.set(head, { transformOrigin: '50% 50%' });
-            gsap.fromTo(head,
-              { scale: 0.55, opacity: 0, filter: 'blur(10px)' },
-              {
-                scale: 1, opacity: 1, filter: 'blur(0px)',
-                ease: 'power2.out',
-                scrollTrigger: {
-                  trigger: head,
-                  start: 'top 95%',
-                  end: 'top 40%',
-                  scrub: 0.7
-                }
-              }
-            );
-            // Eyebrow clip-path wipe when it enters viewport naturally
-            gsap.from('.accelerate-eyebrow', {
-              clipPath: 'inset(0 100% 0 0)',
-              duration: 1.4, ease: 'power3.inOut',
-              scrollTrigger: { trigger: head, start: 'top 75%' }
-            });
-          }
-        }
 
         // ── M3 · Horizontal scroll — 4 bloques Why/How/What/Expect ──
         if (typeof ScrollTrigger !== 'undefined') {
-          const pin    = document.getElementById('hscroll-pin');
-          const track  = document.getElementById('hscroll-track');
-          const bar    = document.getElementById('hscroll-progress');
+          const pin      = document.getElementById('hscroll-pin');
+          const track    = document.getElementById('hscroll-track');
+          const bar      = document.getElementById('hscroll-progress');
+          const barWrap  = document.getElementById('hscroll-progress-wrap');
+          const tabs     = document.querySelectorAll('.hscroll-tab');
+          const activeNum = document.getElementById('hscroll-active-num');
+          const LABELS   = ['01','02','03','04'];
+          let currentIdx = -1;
+
           if (pin && track) {
             const getScrollWidth = () => track.scrollWidth - window.innerWidth;
-            ScrollTrigger.create({
+
+            // Alinear track: la línea del card 0 queda sobre el left del título
+            const headerH2 = document.querySelector('[data-accelerate-header] h2');
+            function alignTrack() {
+              if (!headerH2) return;
+              const h2Left = headerH2.getBoundingClientRect().left;
+              const sepMx  = 20; // mx-5 = 20px de margen hasta la línea
+              track.style.paddingLeft = Math.max(0, h2Left - sepMx) + 'px';
+            }
+            alignTrack();
+            window.addEventListener('resize', alignTrack);
+
+            function setActiveCard(idx) {
+              if (idx === currentIdx) return;
+              currentIdx = idx;
+
+              // Tab activa
+              tabs.forEach((t, i) => {
+                if (i === idx) {
+                  t.classList.add('border-tef-blue', 'bg-tef-blue', 'text-white');
+                  t.classList.remove('border-ink/15', 'text-ink/50', 'hover:text-ink', 'hover:border-ink/30');
+                } else {
+                  t.classList.remove('border-tef-blue', 'bg-tef-blue', 'text-white');
+                  t.classList.add('border-ink/15', 'text-ink/50', 'hover:text-ink', 'hover:border-ink/30');
+                }
+              });
+
+              // Número con blur transition
+              if (activeNum) {
+                gsap.to(activeNum, {
+                  opacity: 0, filter: 'blur(14px)', duration: 0.18,
+                  onComplete: () => {
+                    activeNum.textContent = LABELS[idx];
+                    gsap.to(activeNum, { opacity: 1, filter: 'blur(0px)', duration: 0.28 });
+                  }
+                });
+              }
+            }
+
+            let hst = ScrollTrigger.create({
               trigger: pin,
               start: 'top top',
               end: () => '+=' + getScrollWidth(),
@@ -1400,10 +1450,36 @@
               pinSpacing: true,
               scrub: 1,
               invalidateOnRefresh: true,
+              onEnter:      () => { if (barWrap) barWrap.style.opacity = '1'; },
+              onLeave:      () => { if (barWrap) barWrap.style.opacity = '0'; },
+              onEnterBack:  () => { if (barWrap) barWrap.style.opacity = '1'; },
+              onLeaveBack:  () => { if (barWrap) barWrap.style.opacity = '0'; },
               onUpdate: (self) => {
-                gsap.set(track, { x: -self.progress * getScrollWidth() });
+                const total = getScrollWidth();
+                gsap.set(track, { x: -self.progress * total });
                 if (bar) bar.style.width = (self.progress * 100) + '%';
+                const n   = 4;
+                const idx = self.progress >= 1 ? n - 1 : Math.min(Math.floor(self.progress * n), n - 1);
+                setActiveCard(idx);
               }
+            });
+
+            // Click tab → alinear la línea del card i con el título
+            tabs.forEach((tab) => {
+              tab.addEventListener('click', () => {
+                const i      = parseInt(tab.dataset.tab);
+                const cards  = track.querySelectorAll('.hscroll-card');
+                const cardW  = cards[0] ? cards[0].offsetWidth : 0;
+                const total  = getScrollWidth();
+                // scrollX necesario = i * cardW (la línea i queda sobre el título)
+                const progress = Math.max(0, Math.min(1, (i * cardW) / total));
+                const dest     = hst.start + progress * (hst.end - hst.start);
+                if (window.__lenis) {
+                  window.__lenis.scrollTo(dest, { duration: 0.8 });
+                } else {
+                  window.scrollTo({ top: dest, behavior: 'smooth' });
+                }
+              });
             });
           }
         }
@@ -1646,6 +1722,22 @@
         run();
       }
     });
+  </script>
+
+  <!-- Alinea el track horizontal con el margen del header -->
+  <script>
+    (function alignHscroll() {
+      function align() {
+        const header = document.querySelector('[data-accelerate-header]');
+        const track  = document.getElementById('hscroll-track');
+        if (!header || !track) return;
+        const rect = header.getBoundingClientRect();
+        const pl   = parseFloat(getComputedStyle(header).paddingLeft) || 0;
+        track.style.paddingLeft = (rect.left + pl) + 'px';
+      }
+      align();
+      window.addEventListener('resize', align);
+    })();
   </script>
 
   <!-- Fit "Accelerate Impact." al 100% del viewport -->
