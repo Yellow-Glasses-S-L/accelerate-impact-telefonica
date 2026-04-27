@@ -12,18 +12,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assessment — Accelerate Impact</title>
+  <title>Autodiagnóstico — Accelerate Impact</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-                        tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            gold: { DEFAULT: '#E8B547', soft: '#F5CD73', deep: '#B8842A' },
             ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
             paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
           },
-                    fontFamily: {
+          fontFamily: {
             sans: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             display: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             mono: ['"Telefonica Sans"', 'sans-serif']
@@ -43,15 +44,24 @@
     *, *::before, *::after { font-family: "Telefonica Sans", sans-serif !important; }
     body, p, span, a, li, td, th, label, input, button, textarea, select { font-family: "Telefonica Sans", sans-serif !important; }
     body { font-feature-settings: "cv11", "ss01"; }
+
+    .bg-tef-gradient-dark { background: radial-gradient(ellipse at 70% 0%, #0d3a7a 0%, #031A34 55%, #020d1f 100%); }
+    .bg-tef-gradient-white { background: linear-gradient(180deg, #F7F7FF 0%, #ECEEF7 50%, #F7F7FF 100%); }
+    .step-body { padding-left: 5rem; }
+    @media (min-width: 768px) { .step-body { padding-left: 7rem; } }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { animation: fadeUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .reveal-1 { animation-delay: 0.1s; }
+    .reveal-2 { animation-delay: 0.25s; }
+    .reveal-3 { animation-delay: 0.4s; }
+
     .grain { position: relative; }
     .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>"); opacity: 0.06; mix-blend-mode: overlay; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes iceFlow { to { stroke-dashoffset: -28; } }
-    .ice-dash { stroke-dasharray: 8 6; animation: iceFlow 1.8s linear infinite; }
-    .reveal { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-    .reveal-1 { animation-delay: 0.05s; }
-    .reveal-2 { animation-delay: 0.15s; }
-    .reveal-3 { animation-delay: 0.25s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; }
+    }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -62,41 +72,62 @@
       nav_journey: { es: 'Journey', en: 'Journey' },
       nav_info: { es: 'Contacto', en: 'Contact' },
 
-      hero_title_1: { es: 'Conócete.', en: 'Know yourself.' },
-      hero_title_2: { es: 'Primero.', en: 'First.' },
+      hero_title_1: { es: 'Primero.', en: 'First.' },
+      hero_title_2: { es: 'Conócete.', en: 'Know yourself.' },
       hero_subtitle: {
-        es: 'Una evaluación basada en ciencia para entender cómo lideras hoy, desde tres dimensiones complementarias.',
-        en: 'A science-based assessment to understand how you lead today, across three complementary dimensions.'
+        es: 'Tu autodiagnóstico de liderazgo. Diseñado para ayudarte a conocer cómo lideras hoy, y cómo puedes amplificar tu impacto como líder de Telefónica.',
+        en: 'Your leadership self-diagnosis. Designed to help you understand how you lead today, and how you can amplify your impact as a Telefónica leader.'
+      },
+
+      disc_banner: {
+        es: 'Este diagnóstico es puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. No es una evaluación de desempeño.',
+        en: 'This diagnosis is purely developmental. Your individual results are only accessible to you and the designated People team. This is not a performance evaluation.'
       },
 
       email_notice: {
-        es: 'Recibirás tu enlace personal al assessment por email.',
-        en: 'You will receive your personal assessment link by email.'
+        es: 'Recibirás tu enlace personal al assessment por email desde kfassessment@kornferry.com.',
+        en: 'You will receive your personal assessment link by email from kfassessment@kornferry.com.'
       },
 
-      // Modules
-      mods_label: { es: 'Tres dimensiones', en: 'Three dimensions' },
-      mods_intro: {
-        es: 'Una evaluación completa de tu perfil de liderazgo: lo que haces, lo que te mueve y quién eres.',
-        en: 'A complete view of your leadership profile: what you do, what drives you, and who you are.'
+      intro_p1: {
+        es: 'A través del autodiagnóstico de liderazgo, ganarás una visión clara sobre cómo lideras hoy, cuáles son tus fortalezas como líder, e identificarás elementos que pueden estar limitando tu impacto y donde pequeños cambios pueden provocar una gran diferencia para tu desarrollo.',
+        en: 'Through the leadership self-diagnosis, you will gain a clear understanding of how you lead today, what your strengths are as a leader, and identify elements that may be limiting your impact — and where small changes can make a big difference.'
       },
-      m1_title: { es: 'Competencias', en: 'Competencies' },
-      m1_sub: { es: 'Lo que haces', en: 'What you do' },
+      intro_p2: {
+        es: 'Esta experiencia está alineada con el nuevo Modelo de Liderazgo de Telefónica, que traslada la ambición cultural en habilidades de liderazgo aplicadas al día a día.',
+        en: 'This experience is aligned with the new Telefónica Leadership Model, which translates cultural ambition into leadership skills applied to everyday work.'
+      },
+      intro_p3: {
+        es: 'Los aprendizajes que obtengas te ayudarán a tomar decisiones más intencionales y te servirán como base para tu desarrollo continuo.',
+        en: 'The learnings you gain will help you make more intentional decisions and will serve as the foundation for your continuous development.'
+      },
+      intro_p4: {
+        es: 'Este espacio es una invitación para pausar, reflexionar y reforzar tu contribución como líder.',
+        en: 'This space is an invitation to pause, reflect and strengthen your contribution as a leader.'
+      },
+
+      stair_eyebrow: { es: 'El modelo en profundidad', en: 'The model in depth' },
+      stair_title: { es: 'Lo que se ve. Y lo que no se ve.', en: 'What you see. And what lies beneath.' },
+      stair_sub: { es: 'Una mirada introspectiva de 45 min para conocer cómo nos comportamos y por qué.', en: 'A 45-min introspective view to understand how we behave and why.' },
+
+      ls_title: { es: 'Leadership Skills', en: 'Leadership Skills' },
+      ls_desc: { es: 'Habilidades específicas de liderazgo aplicadas al Modelo de Liderazgo de Telefónica.', en: 'Specific leadership skills applied to the Telefónica Leadership Model.' },
+
+      m1_label: { es: 'Lo que haces', en: 'What you do' },
+      m1_sub: { es: 'Competencias', en: 'Competencies' },
       m1_desc: { es: 'Habilidades observables evaluadas contra el modelo de liderazgo Telefónica.', en: 'Observable skills evaluated against the Telefónica leadership model.' },
       m1_time: { es: '~20 min', en: '~20 min' },
-      m2_title: { es: 'Drivers', en: 'Drivers' },
-      m2_sub: { es: 'Lo que te mueve', en: 'What drives you' },
+
+      m2_label: { es: 'Lo que te mueve', en: 'What drives you' },
+      m2_sub: { es: 'Drivers', en: 'Drivers' },
       m2_desc: { es: 'Motivaciones y valores que orientan tus decisiones como líder.', en: 'Motivations and values that orient your decisions as a leader.' },
       m2_time: { es: '~10 min', en: '~10 min' },
-      m3_title: { es: 'Traits', en: 'Traits' },
-      m3_sub: { es: 'Quién eres', en: 'Who you are' },
+
+      m3_label: { es: 'Quién eres', en: 'Who you are' },
+      m3_sub: { es: 'Traits', en: 'Traits' },
       m3_desc: { es: 'Rasgos de personalidad que definen tu estilo natural de liderazgo.', en: 'Personality traits that define your natural leadership style.' },
       m3_time: { es: '~15 min', en: '~15 min' },
-      total_label: { es: 'Tiempo total', en: 'Total time' },
-      total_value: { es: '45 – 60 min', en: '45 – 60 min' },
-      total_note: { es: 'Puedes completar los módulos en sesiones separadas.', en: 'You can complete the modules in separate sessions.' },
 
-      // Reports
       reps_label: { es: 'Dos informes', en: 'Two reports' },
       reps_intro: {
         es: 'Dos perspectivas complementarias: la vista panorámica y el análisis en profundidad.',
@@ -118,52 +149,52 @@
       r2_b2: { es: 'Áreas de desarrollo priorizadas', en: 'Prioritized development areas' },
       r2_b3: { es: 'Base para el coaching individual', en: 'Foundation for individual coaching' },
 
-      // Process
       proc_label: { es: 'El proceso', en: 'The process' },
-      proc_intro: { es: 'Cuatro pasos desde el enlace hasta la conversación de coaching.', en: 'Four steps from the link to the coaching conversation.' },
-      s1_t: { es: 'Recibe el enlace', en: 'Receive the link' },
-      s1_d: { es: 'Recibirás tu enlace personal por email.', en: 'You will receive your personal link by email.' },
-      s2_t: { es: 'Completa los 3 módulos', en: 'Complete the 3 modules' },
-      s2_d: { es: '45–60 minutos en total, en una o varias sesiones.', en: '45–60 minutes total, in one or several sessions.' },
-      s3_t: { es: 'Recibe tus informes', en: 'Receive your reports' },
-      s3_d: { es: 'Executive Report + In-Depth Report personalizados.', en: 'Personalized Executive Report + In-Depth Report.' },
-      s4_t: { es: 'Coaching individual', en: 'Individual coaching' },
-      s4_d: { es: 'Sesión 1:1 para interpretar y priorizar tu desarrollo.', en: 'One-on-one session to interpret and prioritize your development.' },
+      proc_intro: { es: 'Tu diagnóstico en 5 pasos:', en: 'Your diagnosis in 5 steps:' },
 
-      disc_banner: { es: 'Este diagnóstico es puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. No es una evaluación de desempeño.', en: 'This diagnosis is purely developmental. Your individual results are only accessible to you and the designated People team. This is not a performance evaluation.' },
+      s1_t: { es: 'Autodiagnóstico de liderazgo online', en: 'Online leadership self-diagnosis' },
+      s1_d: { es: 'Recibirás un email personal de kfassessment@kornferry.com con un link de acceso. ¡Asegúrate de comprobar en spam!', en: 'You will receive a personal email from kfassessment@kornferry.com with an access link. Make sure to check your spam folder!' },
 
-      ice_eyebrow: { es: 'El modelo en profundidad', en: 'The model in depth' },
-      ice_title: { es: 'Lo que ves. Y lo que no se ve.', en: 'What you see. And what lies beneath.' },
-      ice_intro: { es: 'El modelo de liderazgo tiene cuatro capas. Las dos visibles son comportamiento observable. Las dos invisibles son lo que impulsa ese comportamiento.', en: 'The leadership model has four layers. The two visible ones are observable behaviour. The two invisible ones are what drives that behaviour.' },
+      s2_t: { es: 'Informe snapshot', en: 'Snapshot report' },
+      s2_d: { es: 'Recibirás un email con este informe donde ver de un vistazo cómo estás posicionado frente al Modelo de Liderazgo de Telefónica, usando una escala que te ayuda a identificar rápidamente:', en: 'You will receive an email with this report to see at a glance how you are positioned against the Telefónica Leadership Model, using a scale that quickly identifies:' },
+      s2_b1: { es: 'Tus fortalezas', en: 'Your strengths' },
+      s2_b2: { es: 'Tus oportunidades de desarrollo', en: 'Your development opportunities' },
+      s2_b3: { es: 'Donde concentrar tu energía para un mayor impacto', en: 'Where to focus your energy for greater impact' },
 
-      ice_above: { es: 'Sobre la superficie · lo observable', en: 'Above the surface · observable' },
-      ice_below: { es: 'Bajo la superficie · lo que impulsa', en: 'Below the surface · what drives' },
+      s3_t: { es: 'Informe detallado', en: 'Detailed report' },
+      s3_d: { es: 'Recibirás un email con este informe detallado en el que descubrir tus comportamientos de liderazgo, y los rasgos y motivadores que explican esos comportamientos.', en: 'You will receive an email with this detailed report to discover your leadership behaviours, and the traits and motivators that explain those behaviours.' },
 
-      ice_c1_t: { es: 'Competencias', en: 'Competencies' },
-      ice_c1_d: { es: 'Lo que eres capaz de hacer como líder.', en: 'What you are able to do as a leader.' },
+      s4_t: { es: 'Avatar feedback', en: 'Avatar feedback' },
+      s4_d: { es: 'Para apoyarte en la interpretación y ayudarte a sacar el máximo provecho de tus resultados, puedes interactuar con este avatar, una experiencia conversacional interactiva diseñada para complementar tus informes. Te ayudará a:', en: 'To support your interpretation and help you get the most from your results, you can interact with this avatar — an interactive conversational experience designed to complement your reports. It will help you:' },
+      s4_b1: { es: 'Interpretar los resultados', en: 'Interpret your results' },
+      s4_b2: { es: 'Entender los comportamientos detrás de tus puntuaciones', en: 'Understand the behaviours behind your scores' },
+      s4_b3: { es: 'Priorizar las acciones de desarrollo concretas que se ajustan a tu contexto', en: 'Prioritise concrete development actions that fit your context' },
 
-      ice_c2_t: { es: 'Leadership Skills', en: 'Leadership Skills' },
-      ice_c2_d: { es: 'Habilidades específicas de liderazgo aplicadas.', en: 'Specific leadership skills in action.' },
+      s5_t: { es: 'Plan de acción individual', en: 'Individual action plan' },
+      s5_d: { es: 'El valor de este proceso reside en convertir tus resultados en acciones significativas a lo largo del tiempo. Te invitamos a definir tres planes de acción personales basados en las áreas que más deseas fortalecer.', en: 'The value of this process lies in turning your results into meaningful actions over time. We invite you to define three personal action plans based on the areas you most want to strengthen.' },
 
-      ice_c3_t: { es: 'Traits', en: 'Traits' },
-      ice_c3_d: { es: 'Rasgos de personalidad que te definen.', en: 'Personality traits that define you.' },
+      res_intro: { es: 'Si quieres más información sobre el proceso y sus beneficios, descárgate estos documentos:', en: 'For more information about the process and its benefits, download these documents:' },
+      res_dl1: { es: 'Participant book', en: 'Participant book' },
+      res_dl2: { es: 'FAQ sobre el proceso', en: 'Process FAQ' },
+      res_contact: { es: 'Si tienes alguna incidencia técnica, puedes contactar a', en: 'For technical issues, please contact' },
 
-      ice_c4_t: { es: 'Drivers', en: 'Drivers' },
-      ice_c4_d: { es: 'Lo que te motiva y te mueve internamente.', en: 'What motivates and moves you internally.' }
+      back_cta: { es: 'Volver al Hub', en: 'Back to Hub' },
+      meta_science: { es: 'Science-based · Confidencial', en: 'Science-based · Confidential' },
+      label_year: { es: 'Autodiagnóstico · 2026', en: 'Self-Diagnosis · 2026' },
+      level_top: { es: 'Nivel superior', en: 'Top level' },
+      assessment_cta: { es: 'Acceder al assessment', en: 'Access the assessment' }
     };
   </script>
 </head>
 <body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased">
 
-  <!-- HEADER -->
   <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
 
-  <!-- MAIN -->
   <main class="flex-1">
 
     <!-- DISCLAIMER BANNER -->
     <aside class="bg-tef-blue/5 border-b border-tef-blue/20">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex items-start gap-3">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 flex items-start gap-3">
         <svg class="w-5 h-5 text-tef-blue flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="10" cy="10" r="8"/>
           <path d="M10 6v5M10 13.5v.5" stroke-linecap="round"/>
@@ -172,270 +203,474 @@
       </div>
     </aside>
 
-    <!-- HERO -->
-    <section class="bg-paper-deep text-paper grain relative overflow-hidden">
-      <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
-        <div class="reveal reveal-1">
-          <h1 class="font-normal leading-[0.95] tracking-[-0.02em] text-6xl md:text-8xl lg:text-[7rem] mb-8 reveal reveal-2">
+    <!-- HERO — dark gradient -->
+    <section class="bg-tef-gradient-dark text-paper grain relative overflow-hidden">
+      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-32">
+        <div class="reveal reveal-1 max-w-4xl">
+          <h1 class="font-sans font-normal leading-[0.95] tracking-[-0.03em] mb-8 reveal reveal-2"
+              style="font-size: clamp(4rem, 10vw, 9rem)">
             <span x-text="t('hero_title_1')"></span>
             <em class="italic font-normal text-tef-blue" x-text="' ' + t('hero_title_2')"></em>
           </h1>
-          <p class="text-sm md:text-base text-paper/70 max-w-2xl leading-relaxed reveal reveal-3" x-text="t('hero_subtitle')"></p>
+          <p class="text-paper/70 leading-relaxed reveal reveal-3 max-w-2xl"
+             style="font-size: clamp(1rem, 1.5vw, 1.25rem)"
+             x-text="t('hero_subtitle')"></p>
+          <div class="mt-10 reveal reveal-3">
+            <a href="#" class="group inline-flex items-center gap-3 bg-tef-blue text-white px-8 py-4 rounded-br-2xl hover:bg-blue-700 transition-colors">
+              <span class="font-mono text-[11px] tracking-[0.2em] uppercase" x-text="t('assessment_cta')"></span>
+              <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="relative border-t border-paper/10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50">
-          <span>3 módulos · 2 informes · 4 pasos</span>
-          <span class="hidden md:inline" x-text="lang==='es' ? 'Science-based · Confidencial' : 'Science-based · Confidential'"></span>
-          <span x-text="t('total_value')"></span>
+      <!-- Meta strip -->
+      <div class="border-t border-paper/10">
+        <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.22em] uppercase text-paper/40">
+          <span>3 módulos · 2 informes · 5 pasos</span>
+          <span class="hidden md:inline" x-text="t('meta_science')"></span>
+          <span>~45 min</span>
         </div>
       </div>
     </section>
 
     <!-- EMAIL NOTICE -->
-    <section class="border-b border-ink/10 bg-tef-light/40">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-3">
+    <div class="border-b border-ink/10 bg-paper-warm">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 flex items-center gap-3">
         <svg class="w-4 h-4 text-tef-blue flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        <p class="font-mono text-[12px] tracking-[0.15em] uppercase text-ink" x-text="t('email_notice')"></p>
+        <p class="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-soft" x-text="t('email_notice')"></p>
       </div>
-    </section>
+    </div>
 
-    <!-- § 00 — ICEBERG MODEL -->
-    <section class="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
-      <div class="text-center mb-4">
-        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-3" x-text="t('ice_eyebrow')"></p>
-        <h2 class="font-sans font-normal text-5xl md:text-6xl text-ink tracking-tight leading-tight mb-5" x-text="t('ice_title')"></h2>
-        <p class="max-w-2xl mx-auto text-[17px] text-ink-soft leading-relaxed" x-text="t('ice_intro')"></p>
-      </div>
+    <!-- § 00 — INTRO EDITORIAL (manifesto style) -->
+    <section class="bg-paper py-20 md:py-28">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
-      <!-- Iceberg SVG background + 2×2 cards -->
-      <div class="relative overflow-hidden min-h-[740px] md:min-h-[860px] flex items-center">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start" data-reveal-stagger data-stagger-delay="0.12">
 
-        <!-- Background SVG iceberg — detrás de las cards -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-          <!-- Iceberg recreado con paths. ViewBox 300×560, waterline en y=280 (50%) -->
-          <!-- Iceberg recreado con paths. ViewBox 300×560, waterline en y=280 (50%) -->
-          <svg viewBox="0 0 300 560" class="w-[140%] h-auto max-h-[90%] opacity-90" fill="none" stroke="#0066FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" overflow="visible">
-            <defs>
-              <linearGradient id="iceGrad" x1="0" y1="280" x2="0" y2="490" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#0066FF" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#0066FF" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <!-- Degradado bajo el agua — ancho completo de la línea de agua -->
-            <path d="M-200,280 L500,280 L500,490 L-200,490 Z" fill="url(#iceGrad)" stroke="none"/>
-            <!-- Montaña sólida solo sobre el agua: empieza y acaba en el cruce con la waterline -->
-            <path d="M14,280 L68,82 L100,148 L145,10 L172,112 L205,52 L240,150 L283,280"/>
-            <!-- Todo bajo el agua en dashes: extensión perfectamente recta de cada borde exterior -->
-            <!-- Izq: línea (0,330)→(68,82) extendida a y=490 → (-44,490), pasa por (0,330) y (14,280) -->
-            <path d="M-44,490 L14,280" class="ice-dash"/>
-            <!-- Der: línea (240,150)→(300,330) extendida a y=490 → (353,490), pasa por (300,330) y (283,280) -->
-            <path d="M283,280 L353,490" class="ice-dash"/>
-            <!-- Línea de agua extendida -->
-            <line x1="-200" y1="280" x2="500" y2="280"/>
-            <text x="150" y="275" text-anchor="middle" fill="#0066FF" stroke="none" font-size="6.5" letter-spacing="1.4" font-family="monospace" opacity="0.7">LÍNEA DE AGUA · WATERLINE</text>
-          </svg>
-        </div>
-
-        <!-- Foreground: labels + cards -->
-        <div class="relative z-10 w-full max-w-2xl mx-auto py-10 flex flex-col gap-32">
-
-          <!-- Fila 1: Competencias + Leadership Skills -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue mb-3" x-text="t('ice_above')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-ink mb-1" x-text="t('ice_c1_t')"></h3>
-              <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('ice_c1_d')"></p>
-            </div>
-            <div class="bg-white rounded-br-2xl p-5 border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)]">
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-tef-blue mb-3" x-text="t('ice_above')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-ink mb-1" x-text="t('ice_c2_t')"></h3>
-              <p class="text-[15px] text-ink-soft leading-relaxed" x-text="t('ice_c2_d')"></p>
-            </div>
+          <!-- Label column -->
+          <div class="flex flex-col gap-3" data-stagger-item>
+            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue">Accelerate Impact</p>
+            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-ink-mute" x-text="t('label_year')"></p>
           </div>
 
-          <!-- Fila 2: Traits + Drivers -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-tef-dark text-paper rounded-br-2xl p-5 border border-tef-blue/20">
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[#7FB3FF] mb-3" x-text="t('ice_below')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-white mb-1" x-text="t('ice_c3_t')"></h3>
-              <p class="text-[15px] text-paper/70 leading-relaxed" x-text="t('ice_c3_d')"></p>
-            </div>
-            <div class="bg-tef-dark text-paper rounded-br-2xl p-5 border border-tef-blue/20">
-              <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-[#7FB3FF] mb-3" x-text="t('ice_below')"></p>
-              <h3 class="font-normal text-xl tracking-tight text-white mb-1" x-text="t('ice_c4_t')"></h3>
-              <p class="text-[15px] text-paper/70 leading-relaxed" x-text="t('ice_c4_d')"></p>
-            </div>
+          <!-- Text column -->
+          <div class="space-y-8" data-stagger-item>
+            <p class="font-sans font-normal italic text-ink leading-[1.2]"
+               style="font-size: clamp(1.25rem, 2.2vw, 2.1rem)"
+               x-text="t('intro_p1')"></p>
+            <p class="font-sans font-normal text-ink-soft leading-[1.3]"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)"
+               x-text="t('intro_p2')"></p>
+            <p class="font-sans font-normal text-ink-soft leading-[1.3]"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)"
+               x-text="t('intro_p3')"></p>
+            <p class="font-sans font-normal italic text-tef-blue leading-[1.2]"
+               style="font-size: clamp(1.25rem, 2.2vw, 2.1rem)"
+               x-text="t('intro_p4')"></p>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- § 01 — MODULES -->
+    <!-- § 01 — STAIRCASE -->
     <section class="border-t border-ink/10">
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
-      <div class="mb-12 md:mb-16">
-        <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue mb-4" x-text="t('mods_label')"></p>
-        <h2 class="font-normal text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-2xl" x-text="t('mods_intro')"></h2>
+
+      <!-- Iceberg hero — cinematic, like home intro -->
+      <div class="relative overflow-hidden" style="min-height: 70vh;">
+        <!-- Background image -->
+        <img src="iceberg.jpg" alt=""
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             style="transform: scale(1.05);" aria-hidden="true">
+        <!-- Overlay — matching home intro darkness -->
+        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(2,9,20,0.45) 0%, rgba(2,9,20,0.65) 60%, rgba(2,9,20,0.92) 100%);"></div>
+        <!-- Atmospheric glow -->
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70vw 50vh at 50% 40%, rgba(0,102,255,0.12) 0%, transparent 60%);"></div>
+
+        <!-- Text content -->
+        <div class="relative z-10 max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-36 flex flex-col justify-end h-full" style="min-height: 70vh;">
+          <div data-reveal="up">
+            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-5" x-text="t('stair_eyebrow')"></p>
+            <h2 class="font-sans font-normal tracking-tight text-paper leading-[0.95] mb-6"
+                style="font-size: clamp(2.8rem, 6vw, 6.5rem)"
+                x-text="t('stair_title')"></h2>
+            <p class="text-paper/70 max-w-xl leading-relaxed"
+               style="font-size: clamp(1rem, 1.4vw, 1.2rem)"
+               x-text="t('stair_sub')"></p>
+          </div>
+        </div>
       </div>
 
-      <!-- Lab-report style table -->
-      <div class="border-t border-ink/10">
-        <!-- Header row -->
-        <div class="hidden md:grid grid-cols-12 gap-6 py-3 border-b border-ink/10 bg-white px-4">
-          <div class="col-span-1 font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute">#</div>
-          <div class="col-span-3 font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute">Módulo</div>
-          <div class="col-span-3 font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute">Dimensión</div>
-          <div class="col-span-3 font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute">Descripción</div>
-          <div class="col-span-2 font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute text-right">Duración</div>
-        </div>
+      <!-- Staircase cards below -->
+      <div class="bg-paper-warm py-16 md:py-20">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
-        <!-- Row 1 -->
-        <div class="grid grid-cols-12 gap-6 py-6 md:py-8 border-b border-ink/10 items-baseline bg-white px-4">
-          <div class="col-span-1 hidden md:block font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue">01</div>
-          <div class="col-span-12 md:col-span-3">
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue md:hidden mb-1">01</p>
-            <h3 class="font-normal text-4xl md:text-5xl tracking-tight leading-tight" x-text="t('m1_title')"></h3>
+        <!-- Level 1: Leadership Skills — dark gradient banner -->
+        <div class="mb-4" data-reveal="up" data-reveal-delay="0.1">
+          <div class="bg-tef-gradient-dark grain text-paper relative overflow-hidden rounded-br-2xl">
+            <div class="relative px-8 md:px-12 py-12 md:py-16 grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16 items-center">
+              <!-- Left -->
+              <div>
+                <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#7FB3FF] mb-5"
+                   x-text="t('level_top')"></p>
+                <h3 class="font-sans font-normal italic text-white leading-[1.0] tracking-tight"
+                    style="font-size: clamp(2.2rem, 4.5vw, 4.5rem)"
+                    x-text="t('ls_title')"></h3>
+                <p class="text-paper/65 mt-4 leading-relaxed"
+                   style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                   x-text="t('ls_desc')"></p>
+              </div>
+              <!-- Right: photo placeholder -->
+              <div class="aspect-[16/7] bg-paper/5 border border-dashed border-paper/20 rounded-lg flex flex-col items-center justify-center gap-3 text-paper/30">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span class="font-mono text-[10px] tracking-[0.25em] uppercase">Foto</span>
+              </div>
+            </div>
           </div>
-          <div class="col-span-6 md:col-span-3 font-mono text-[12px] tracking-[0.15em] uppercase text-ink-mute" x-text="t('m1_sub')"></div>
-          <div class="col-span-12 md:col-span-3 text-[16px] text-ink-soft leading-relaxed" x-text="t('m1_desc')"></div>
-          <div class="col-span-6 md:col-span-2 font-mono text-sm text-ink md:text-right" x-text="t('m1_time')"></div>
         </div>
 
-        <!-- Row 2 -->
-        <div class="grid grid-cols-12 gap-6 py-6 md:py-8 border-b border-ink/10 items-baseline bg-white px-4">
-          <div class="col-span-1 hidden md:block font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue">02</div>
-          <div class="col-span-12 md:col-span-3">
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue md:hidden mb-1">02</p>
-            <h3 class="font-normal text-4xl md:text-5xl tracking-tight leading-tight" x-text="t('m2_title')"></h3>
-          </div>
-          <div class="col-span-6 md:col-span-3 font-mono text-[12px] tracking-[0.15em] uppercase text-ink-mute" x-text="t('m2_sub')"></div>
-          <div class="col-span-12 md:col-span-3 text-[16px] text-ink-soft leading-relaxed" x-text="t('m2_desc')"></div>
-          <div class="col-span-6 md:col-span-2 font-mono text-sm text-ink md:text-right" x-text="t('m2_time')"></div>
+        <!-- Connector -->
+        <div class="flex pl-8 md:pl-16 mb-4" aria-hidden="true">
+          <div class="w-px h-8 bg-ink/20"></div>
         </div>
 
-        <!-- Row 3 -->
-        <div class="grid grid-cols-12 gap-6 py-6 md:py-8 border-b border-ink/10 items-baseline bg-white px-4">
-          <div class="col-span-1 hidden md:block font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue">03</div>
-          <div class="col-span-12 md:col-span-3">
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue md:hidden mb-1">03</p>
-            <h3 class="font-normal text-4xl md:text-5xl tracking-tight leading-tight" x-text="t('m3_title')"></h3>
-          </div>
-          <div class="col-span-6 md:col-span-3 font-mono text-[12px] tracking-[0.15em] uppercase text-ink-mute" x-text="t('m3_sub')"></div>
-          <div class="col-span-12 md:col-span-3 text-[16px] text-ink-soft leading-relaxed" x-text="t('m3_desc')"></div>
-          <div class="col-span-6 md:col-span-2 font-mono text-sm text-ink md:text-right" x-text="t('m3_time')"></div>
-        </div>
+        <!-- Level 2: 3 modules — hscroll-card DNA, vertical stack on mobile / 3-col desktop -->
+        <div class="md:ml-8 lg:ml-16 grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-l border-ink/10" data-reveal-stagger data-stagger-delay="0.1">
 
-        <!-- Total row -->
-        <div class="grid grid-cols-12 gap-6 py-5 items-baseline bg-white px-4 border-b border-ink/10">
-          <div class="col-span-12 md:col-span-4 md:col-start-2 font-mono text-[11px] tracking-[0.2em] uppercase text-ink" x-text="t('total_label')"></div>
-          <div class="col-span-12 md:col-span-3 text-[15px] text-ink-mute" x-text="t('total_note')"></div>
-          <div class="col-span-6 md:col-span-2 md:col-start-11 md:text-right font-normal text-xl md:text-2xl tracking-tight" x-text="t('total_value')"></div>
+          <!-- Lo que haces -->
+          <article class="border-r border-b border-ink/10 bg-white flex flex-col" data-stagger-item>
+            <!-- Photo placeholder -->
+            <div class="aspect-[4/3] bg-paper-warm border-b border-ink/8 flex flex-col items-center justify-center gap-2 text-ink/20 relative overflow-hidden">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase">Foto</span>
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
+                <span class="text-tef-blue" x-text="t('m1_label')"></span>
+                <span class="text-ink/20">·</span>
+                <span class="text-ink-mute" x-text="t('m1_sub')"></span>
+              </p>
+              <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
+                  style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
+                  x-text="t('m1_sub')"></h3>
+              <p class="text-ink-soft leading-relaxed flex-1"
+                 style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)"
+                 x-text="t('m1_desc')"></p>
+              <p class="font-mono text-[12px] tracking-[0.18em] text-tef-blue mt-6 pt-5 border-t border-ink/8" x-text="t('m1_time')"></p>
+            </div>
+          </article>
+
+          <!-- Lo que te mueve -->
+          <article class="border-r border-b border-ink/10 bg-white flex flex-col" data-stagger-item>
+            <div class="aspect-[4/3] bg-paper-warm border-b border-ink/8 flex flex-col items-center justify-center gap-2 text-ink/20">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase">Foto</span>
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
+                <span class="text-tef-blue" x-text="t('m2_label')"></span>
+                <span class="text-ink/20">·</span>
+                <span class="text-ink-mute" x-text="t('m2_sub')"></span>
+              </p>
+              <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
+                  style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
+                  x-text="t('m2_sub')"></h3>
+              <p class="text-ink-soft leading-relaxed flex-1"
+                 style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)"
+                 x-text="t('m2_desc')"></p>
+              <p class="font-mono text-[12px] tracking-[0.18em] text-tef-blue mt-6 pt-5 border-t border-ink/8" x-text="t('m2_time')"></p>
+            </div>
+          </article>
+
+          <!-- Quién eres -->
+          <article class="border-r border-b border-ink/10 bg-white flex flex-col" data-stagger-item>
+            <div class="aspect-[4/3] bg-paper-warm border-b border-ink/8 flex flex-col items-center justify-center gap-2 text-ink/20">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span class="font-mono text-[10px] tracking-[0.2em] uppercase">Foto</span>
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
+                <span class="text-tef-blue" x-text="t('m3_label')"></span>
+                <span class="text-ink/20">·</span>
+                <span class="text-ink-mute" x-text="t('m3_sub')"></span>
+              </p>
+              <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
+                  style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
+                  x-text="t('m3_sub')"></h3>
+              <p class="text-ink-soft leading-relaxed flex-1"
+                 style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)"
+                 x-text="t('m3_desc')"></p>
+              <p class="font-mono text-[12px] tracking-[0.18em] text-tef-blue mt-6 pt-5 border-t border-ink/8" x-text="t('m3_time')"></p>
+            </div>
+          </article>
+
         </div>
       </div>
       </div>
     </section>
 
-    <!-- § 02 — REPORTS — contrast pair -->
-    <section class="border-t border-ink/10">
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
-        <div class="mb-12">
-          <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue mb-4" x-text="t('reps_label')"></p>
-          <h2 class="font-normal text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-2xl" x-text="t('reps_intro')"></h2>
+    <!-- § 02 — REPORTS -->
+    <section class="border-t border-ink/10 bg-paper">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+
+        <div class="mb-14" data-reveal="up">
+          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('reps_label')"></p>
+          <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95]"
+              style="font-size: clamp(2.5rem, 5vw, 5.5rem)"
+              x-text="t('reps_intro')"></h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 border-t border-l border-ink/10">
+
           <!-- Report 1 — light -->
-          <div class="p-8 md:p-10 border-r border-b border-ink/10 bg-white">
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue mb-6" x-text="t('r1_label')"></p>
-            <h3 class="font-normal text-4xl md:text-5xl tracking-tight leading-tight mb-2" x-text="t('r1_title')"></h3>
-            <p class="font-mono text-[11px] tracking-[0.15em] uppercase text-ink-mute mb-6" x-text="t('r1_sub')"></p>
-            <p class="text-[17px] text-ink-soft leading-relaxed mb-8 max-w-md" x-text="t('r1_desc')"></p>
-            <ul class="space-y-3 pt-5 border-t border-ink/10">
-              <li class="flex gap-3 text-[15px] text-ink-soft"><span class="font-mono text-ink-mute flex-shrink-0">·</span><span x-text="t('r1_b1')"></span></li>
-              <li class="flex gap-3 text-[15px] text-ink-soft"><span class="font-mono text-ink-mute flex-shrink-0">·</span><span x-text="t('r1_b2')"></span></li>
-              <li class="flex gap-3 text-[15px] text-ink-soft"><span class="font-mono text-ink-mute flex-shrink-0">·</span><span x-text="t('r1_b3')"></span></li>
+          <div class="p-10 md:p-12 border-r border-b border-ink/10 bg-white">
+            <p class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue mb-6" x-text="t('r1_label')"></p>
+            <h3 class="font-sans font-normal tracking-tight leading-tight mb-2"
+                style="font-size: clamp(2rem, 3.5vw, 3.5rem)"
+                x-text="t('r1_title')"></h3>
+            <p class="font-mono text-[11px] tracking-[0.18em] uppercase text-ink-mute mb-6" x-text="t('r1_sub')"></p>
+            <p class="text-ink-soft leading-relaxed mb-10 max-w-md"
+               style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+               x-text="t('r1_desc')"></p>
+            <ul class="space-y-3 pt-6 border-t border-ink/10">
+              <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('r1_b1')"></span></li>
+              <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('r1_b2')"></span></li>
+              <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('r1_b3')"></span></li>
             </ul>
           </div>
-          <!-- Report 2 — dark -->
-          <div class="p-8 md:p-10 border-r border-b border-ink/10 bg-paper-deep text-paper grain relative overflow-hidden">
+
+          <!-- Report 2 — dark gradient -->
+          <div class="p-10 md:p-12 border-r border-b border-ink/10 bg-tef-gradient-dark text-paper grain relative overflow-hidden">
             <div class="relative">
-              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/60 mb-6" x-text="t('r2_label')"></p>
-              <h3 class="font-normal text-4xl md:text-5xl tracking-tight leading-tight mb-2">
+              <p class="font-mono text-[11px] tracking-[0.25em] uppercase text-paper/50 mb-6" x-text="t('r2_label')"></p>
+              <h3 class="font-sans font-normal tracking-tight leading-tight mb-2"
+                  style="font-size: clamp(2rem, 3.5vw, 3.5rem)">
                 <em class="italic font-normal text-tef-blue" x-text="t('r2_title')"></em>
               </h3>
-              <p class="font-mono text-[11px] tracking-[0.15em] uppercase text-paper/60 mb-6" x-text="t('r2_sub')"></p>
-              <p class="text-[17px] text-paper/80 leading-relaxed mb-8 max-w-md" x-text="t('r2_desc')"></p>
-              <ul class="space-y-3 pt-5 border-t border-paper/20">
-                <li class="flex gap-3 text-[15px] text-paper/80"><span class="font-mono text-paper/40 flex-shrink-0">·</span><span x-text="t('r2_b1')"></span></li>
-                <li class="flex gap-3 text-[15px] text-paper/80"><span class="font-mono text-paper/40 flex-shrink-0">·</span><span x-text="t('r2_b2')"></span></li>
-                <li class="flex gap-3 text-[15px] text-paper/80"><span class="font-mono text-paper/40 flex-shrink-0">·</span><span x-text="t('r2_b3')"></span></li>
+              <p class="font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50 mb-6" x-text="t('r2_sub')"></p>
+              <p class="text-paper/75 leading-relaxed mb-10 max-w-md"
+                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 x-text="t('r2_desc')"></p>
+              <ul class="space-y-3 pt-6 border-t border-paper/15">
+                <li class="flex gap-3 text-paper/75" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-[#7FB3FF] flex-shrink-0">—</span><span x-text="t('r2_b1')"></span></li>
+                <li class="flex gap-3 text-paper/75" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-[#7FB3FF] flex-shrink-0">—</span><span x-text="t('r2_b2')"></span></li>
+                <li class="flex gap-3 text-paper/75" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-[#7FB3FF] flex-shrink-0">—</span><span x-text="t('r2_b3')"></span></li>
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- § 03 — PROCESS — 4 horizontal steps -->
+    <!-- § 03 — PROCESS: 5 accordion steps -->
+    <section class="border-t border-ink/10 bg-paper-warm">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28">
+
+        <div class="mb-14" data-reveal="up">
+          <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('proc_label')"></p>
+          <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95]"
+              style="font-size: clamp(2.5rem, 5vw, 5.5rem)"
+              x-text="t('proc_intro')"></h2>
+        </div>
+
+        <div x-data="{ open: null, isTouch: window.matchMedia('(hover: none)').matches }" class="border-t border-ink/15">
+
+          <!-- Step 1 -->
+          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 1)" @mouseleave="!isTouch && (open = null)">
+            <button @click="open = open === 1 ? null : 1"
+                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+              <span class="font-normal text-tef-blue leading-none flex-shrink-0"
+                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">01</span>
+              <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
+                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    x-text="t('s1_t')"></span>
+              <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 1 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 1"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-2"
+                 class="pb-8 step-body"
+                 style="display:none">
+              <p class="text-ink-soft leading-relaxed max-w-3xl"
+                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 x-text="t('s1_d')"></p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 2)" @mouseleave="!isTouch && (open = null)">
+            <button @click="open = open === 2 ? null : 2"
+                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+              <span class="font-normal text-tef-blue leading-none flex-shrink-0"
+                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">02</span>
+              <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
+                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    x-text="t('s2_t')"></span>
+              <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 2 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 2"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-2"
+                 class="pb-8 step-body"
+                 style="display:none">
+              <p class="text-ink-soft leading-relaxed max-w-3xl mb-4"
+                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 x-text="t('s2_d')"></p>
+              <ul class="space-y-2 max-w-3xl">
+                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b1')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b2')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b3')"></span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 3)" @mouseleave="!isTouch && (open = null)">
+            <button @click="open = open === 3 ? null : 3"
+                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+              <span class="font-normal text-tef-blue leading-none flex-shrink-0"
+                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">03</span>
+              <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
+                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    x-text="t('s3_t')"></span>
+              <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 3 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 3"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-2"
+                 class="pb-8 step-body"
+                 style="display:none">
+              <p class="text-ink-soft leading-relaxed max-w-3xl"
+                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 x-text="t('s3_d')"></p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 4)" @mouseleave="!isTouch && (open = null)">
+            <button @click="open = open === 4 ? null : 4"
+                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+              <span class="font-normal text-tef-blue leading-none flex-shrink-0"
+                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">04</span>
+              <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
+                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    x-text="t('s4_t')"></span>
+              <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 4 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 4"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-2"
+                 class="pb-8 step-body"
+                 style="display:none">
+              <p class="text-ink-soft leading-relaxed max-w-3xl mb-4"
+                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 x-text="t('s4_d')"></p>
+              <ul class="space-y-2 max-w-3xl">
+                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b1')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b2')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b3')"></span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 5)" @mouseleave="!isTouch && (open = null)">
+            <button @click="open = open === 5 ? null : 5"
+                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+              <span class="font-normal text-tef-blue leading-none flex-shrink-0"
+                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">05</span>
+              <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
+                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    x-text="t('s5_t')"></span>
+              <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 5 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 5"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-2"
+                 class="pb-8 step-body"
+                 style="display:none">
+              <p class="text-ink-soft leading-relaxed max-w-3xl"
+                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 x-text="t('s5_d')"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- § 04 — RESOURCES -->
     <section class="border-t border-ink/10 bg-paper">
-      <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
-        <div class="mb-12">
-          <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-tef-blue mb-4" x-text="t('proc_label')"></p>
-          <h2 class="font-normal text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-2xl" x-text="t('proc_intro')"></h2>
-        </div>
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-14 md:py-20">
+        <div class="flex flex-col md:flex-row md:items-start gap-10 md:gap-20">
 
-        <div class="grid grid-cols-1 md:grid-cols-4 border-t border-l border-ink/10">
-          <div class="p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[200px] bg-white">
-            <p class="font-normal leading-none tracking-[-0.03em] text-tef-blue text-6xl md:text-7xl mb-auto">01</p>
-            <h3 class="font-normal text-xl tracking-tight leading-tight mb-2 mt-8" x-text="t('s1_t')"></h3>
-            <p class="text-[15px] text-ink-mute leading-relaxed" x-text="t('s1_d')"></p>
+          <!-- Downloads -->
+          <div class="flex-1" data-reveal="up">
+            <p class="text-ink-soft leading-relaxed mb-6"
+               style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+               x-text="t('res_intro')"></p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#" class="inline-flex items-center gap-3 border border-ink/20 bg-white hover:border-tef-blue hover:text-tef-blue transition-colors rounded-br-xl px-6 py-4 group">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="font-mono text-[11px] tracking-[0.18em] uppercase" x-text="t('res_dl1')"></span>
+              </a>
+              <a href="#" class="inline-flex items-center gap-3 border border-ink/20 bg-white hover:border-tef-blue hover:text-tef-blue transition-colors rounded-br-xl px-6 py-4 group">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="font-mono text-[11px] tracking-[0.18em] uppercase" x-text="t('res_dl2')"></span>
+              </a>
+            </div>
           </div>
-          <div class="p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[200px] bg-white">
-            <p class="font-normal leading-none tracking-[-0.03em] text-tef-blue text-6xl md:text-7xl mb-auto">02</p>
-            <h3 class="font-normal text-xl tracking-tight leading-tight mb-2 mt-8" x-text="t('s2_t')"></h3>
-            <p class="text-[15px] text-ink-mute leading-relaxed" x-text="t('s2_d')"></p>
+
+          <!-- Contact -->
+          <div class="md:max-w-sm" data-reveal="up" data-reveal-delay="0.1">
+            <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.875rem, 1.1vw, 1rem)">
+              <span x-text="t('res_contact')"></span>
+              <a href="mailto:cts-support@kornferry.com" class="text-tef-blue hover:underline ml-1">cts-support@kornferry.com</a>.
+            </p>
           </div>
-          <div class="p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[200px] bg-white">
-            <p class="font-normal leading-none tracking-[-0.03em] text-tef-blue text-6xl md:text-7xl mb-auto">03</p>
-            <h3 class="font-normal text-xl tracking-tight leading-tight mb-2 mt-8" x-text="t('s3_t')"></h3>
-            <p class="text-[15px] text-ink-mute leading-relaxed" x-text="t('s3_d')"></p>
-          </div>
-          <div class="p-6 md:p-7 border-r border-b border-ink/10 flex flex-col min-h-[200px] bg-white">
-            <p class="font-normal leading-none tracking-[-0.03em] text-tef-blue text-6xl md:text-7xl mb-auto">04</p>
-            <h3 class="font-normal text-xl tracking-tight leading-tight mb-2 mt-8" x-text="t('s4_t')"></h3>
-            <p class="text-[15px] text-ink-mute leading-relaxed" x-text="t('s4_d')"></p>
-          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- NEXT — Tu AI Coach -->
-    <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-7xl mx-auto px-6 md:px-10">
-        <div class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-10 pt-12 pb-20 overflow-hidden">
-          <div>
-            <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-3" x-text="lang==='es' ? 'Siempre contigo' : 'Always with you'"></p>
-            <h3 class="font-sans font-normal text-4xl md:text-5xl leading-[1.05] tracking-tight mb-3">
-              <span x-text="lang==='es' ? 'Tu' : 'Your'"></span>
-              <em class="italic font-normal text-tef-blue" x-text="' AI Coach.'"></em>
-            </h3>
-            <p class="text-[17px] text-paper/70 max-w-md leading-relaxed" x-text="lang==='es' ? 'Interpreta tus resultados y traduce insights en acciones concretas con Nadia.' : 'Interpret your results and turn insights into concrete actions with Nadia.'"></p>
-          </div>
-          <a href="nadia.html" class="group absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 rounded-br-2xl hover:bg-blue-700 transition-colors">
-            <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="lang==='es' ? 'Conectar con Nadia' : 'Connect with Nadia'"></span>
-            <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
+    <!-- BACK TO HUB -->
+    <section class="bg-paper-warm border-t border-ink/10 py-10">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between gap-6 flex-wrap">
+        <a href="index.html" class="group inline-flex items-center gap-4 text-ink hover:text-tef-blue transition-colors">
+          <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span class="font-mono text-[11px] tracking-[0.22em] uppercase" x-text="t('back_cta')"></span>
+        </a>
+        <a href="#" class="group inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-3.5 rounded-br-2xl hover:bg-blue-700 transition-colors">
+          <span class="font-mono text-[11px] tracking-[0.2em] uppercase" x-text="t('assessment_cta')"></span>
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
-
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
