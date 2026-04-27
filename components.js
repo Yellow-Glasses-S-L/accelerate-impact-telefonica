@@ -4,94 +4,143 @@
   if (!sessionStorage.getItem('ai_loaded')) {
     sessionStorage.setItem('ai_loaded', '1');
 
-    var loaderStyle = document.createElement('style');
-    loaderStyle.textContent = `
+    var ls = document.createElement('style');
+    ls.textContent = `
       #page-loader {
         position: fixed; inset: 0; z-index: 99998;
         background: #F7F7FF;
-        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
-        transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 44px;
+        transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+        will-change: transform;
       }
-      #page-loader.out { opacity: 0; pointer-events: none; }
-      @keyframes dotPop {
-        0%   { transform: scale(0); opacity: 0; }
-        65%  { transform: scale(1.15); opacity: 1; }
-        100% { transform: scale(1); opacity: 1; }
+      /* Salida: telón que sube */
+      #page-loader.out { transform: translateY(-100%); }
+
+      /* 1. Entrada de cada círculo: materializa con blur + escala */
+      @keyframes lDotIn {
+        0%   { opacity: 0; transform: scale(0.12); filter: blur(18px); }
+        60%  { opacity: 1; transform: scale(1.09); filter: blur(0); }
+        100% { opacity: 1; transform: scale(1);    filter: blur(0); }
       }
-      @keyframes dotPulse {
-        0%, 100% { opacity: 1; }
-        50%       { opacity: 0.3; }
+      /* 2. Respiro colectivo post-entrada */
+      @keyframes lDotBreath {
+        0%, 100% { transform: scale(1); }
+        50%       { transform: scale(1.06); }
       }
-      @keyframes loaderTextIn {
-        0%   { opacity: 0; transform: translateY(10px); }
-        100% { opacity: 1; transform: translateY(0); }
+      /* 3. Texto slide-up */
+      @keyframes lTextUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
       }
+      /* 4. Barra de progreso automática */
+      @keyframes lBarAuto {
+        from { transform: scaleX(0); }
+        to   { transform: scaleX(0.88); }
+      }
+
       .l-dot {
-        transform-origin: center;
-        transform-box: fill-box;
-        animation: dotPop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+        transform-origin: center; transform-box: fill-box;
+        animation: lDotIn 0.62s cubic-bezier(0.34, 1.1, 0.64, 1) both;
       }
-      .l-dot.pulse { animation: dotPulse 1.5s ease-in-out infinite; }
-      .l-welcome {
-        text-align: center;
-        animation: loaderTextIn 0.6s cubic-bezier(0.2,0.8,0.2,1) 0.6s both;
+      .l-dot.breath {
+        animation: lDotBreath 3.2s ease-in-out infinite;
+      }
+
+      #l-eyebrow {
+        display: block;
+        font-family: 'Telefonica Sans', Inter, sans-serif;
+        font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase;
+        color: #031A34; opacity: 0.38; margin-bottom: 10px;
+        animation: lTextUp 0.55s ease 0.85s both;
+      }
+      #l-title {
+        display: block;
+        font-family: 'Telefonica Sans', Inter, sans-serif;
+        font-size: 27px; letter-spacing: -0.025em; font-weight: 400;
+        color: #031A34;
+        animation: lTextUp 0.6s ease 1.02s both;
+      }
+
+      /* Barra de progreso — esquina inferior */
+      #l-bar {
+        position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+        background: rgba(3,26,52,0.06);
+        overflow: hidden;
+      }
+      #l-bar-fill {
+        height: 100%; background: #0066FF;
+        transform: scaleX(0); transform-origin: left;
+      }
+      #l-bar-fill.running {
+        animation: lBarAuto 3.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
+      }
+      #l-bar-fill.complete {
+        animation: none !important;
+        transform: scaleX(1) !important;
+        transition: transform 0.2s ease;
       }
     `;
-    document.head.appendChild(loaderStyle);
+    document.head.appendChild(ls);
 
+    var lang = localStorage.getItem('lang') || 'es';
     var loader = document.createElement('div');
     loader.id = 'page-loader';
-    var lang = localStorage.getItem('lang') || 'es';
     loader.innerHTML = `
-      <svg viewBox="0 0 464 464" width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle class="l-dot" cx="69.2"  cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0s"/>
-        <circle class="l-dot" cx="232"   cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.1s"/>
-        <circle class="l-dot" cx="394.8" cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.2s"/>
-        <circle class="l-dot" cx="232"   cy="232"   r="69.2" fill="#0066FF" style="animation-delay:0.3s"/>
-        <circle class="l-dot" cx="232"   cy="394.8" r="69.2" fill="#0066FF" style="animation-delay:0.4s"/>
+      <svg viewBox="0 0 464 464" width="72" height="72" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+        <circle class="l-dot" cx="69.2"  cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.05s"/>
+        <circle class="l-dot" cx="232"   cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.22s"/>
+        <circle class="l-dot" cx="394.8" cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.39s"/>
+        <circle class="l-dot" cx="232"   cy="232"   r="69.2" fill="#0066FF" style="animation-delay:0.56s"/>
+        <circle class="l-dot" cx="232"   cy="394.8" r="69.2" fill="#0066FF" style="animation-delay:0.73s"/>
       </svg>
-      <div class="l-welcome">
-        <p style="font-family:'Telefonica Sans',Inter,sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#031A34;opacity:0.4;margin:0 0 8px;">${lang === 'en' ? 'Welcome to' : 'Bienvenido a'}</p>
-        <p style="font-family:'Telefonica Sans',Inter,sans-serif;font-size:22px;letter-spacing:-0.02em;color:#031A34;font-weight:400;margin:0;">Accelerate Impact</p>
+      <div style="text-align:center;">
+        <span id="l-eyebrow">${lang === 'en' ? 'Welcome to' : 'Bienvenido a'}</span>
+        <span id="l-title">Accelerate Impact</span>
       </div>
+      <div id="l-bar"><div id="l-bar-fill"></div></div>
     `;
     document.body.prepend(loader);
 
-    // Tras la animación de entrada, pasa a pulso suave
-    setTimeout(function () {
-      var dots = loader.querySelectorAll('.l-dot');
-      dots.forEach(function (d, i) {
-        d.classList.add('pulse');
-        d.style.animationDelay = (i * 0.12) + 's';
-      });
-    }, 650);
+    // Barra arranca en el siguiente frame para que la animación CSS se active
+    requestAnimationFrame(function () {
+      var fill = document.getElementById('l-bar-fill');
+      if (fill) fill.classList.add('running');
+    });
 
-    var startTime = Date.now();
-    var minDisplay = 1400;
+    // Cuando terminan las entradas (~1.35s), respiro colectivo suave
+    setTimeout(function () {
+      loader.querySelectorAll('.l-dot').forEach(function (d, i) {
+        d.classList.add('breath');
+        d.style.animationDelay = (i * 0.1) + 's';
+      });
+    }, 1400);
+
+    var t0 = Date.now();
+    var MIN = 2400; // mínimo que se ve la animación completa
 
     function dismiss() {
-      var wait = Math.max(0, minDisplay - (Date.now() - startTime));
+      // Barra a 100% antes de salir
+      var fill = document.getElementById('l-bar-fill');
+      if (fill) { fill.classList.remove('running'); fill.classList.add('complete'); }
+      var wait = Math.max(0, MIN - (Date.now() - t0));
       setTimeout(function () {
         loader.classList.add('out');
-        setTimeout(function () { loader.remove(); }, 700);
+        setTimeout(function () { loader.remove(); }, 950);
       }, wait);
     }
 
-    var maxTimeout = setTimeout(dismiss, 4000);
+    var maxT = setTimeout(dismiss, 5500);
 
-    var readyPromises = [document.fonts.ready];
-    var heroVideo = document.querySelector('video');
-    if (heroVideo) {
-      readyPromises.push(new Promise(function (resolve) {
-        if (heroVideo.readyState >= 3) { resolve(); return; }
-        heroVideo.addEventListener('canplaythrough', resolve, { once: true });
+    var promises = [document.fonts.ready];
+    var vid = document.querySelector('video');
+    if (vid) {
+      promises.push(new Promise(function (resolve) {
+        if (vid.readyState >= 3) { resolve(); return; }
+        vid.addEventListener('canplaythrough', resolve, { once: true });
       }));
     }
-
-    Promise.all(readyPromises).then(function () {
-      clearTimeout(maxTimeout);
-      dismiss();
-    });
+    Promise.all(promises).then(function () { clearTimeout(maxT); dismiss(); });
   }
 
   /* ── BASE FONT SIZE — 18px global ── */
