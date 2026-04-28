@@ -236,7 +236,7 @@
     navEl.setAttribute('style', 'background:transparent !important;border:none !important;backdrop-filter:none !important;padding:16px 24px 0;pointer-events:none;');
     navEl.setAttribute('x-data', '{ menuOpen: false }');
     navEl.innerHTML = `
-      <div class="max-w-2xl mx-auto relative">
+      <div class="w-fit mx-auto relative">
 
         <!-- Pill -->
         <div class="navbar-pill pointer-events-auto flex items-center h-14 px-5 gap-3 rounded-full border border-black/[0.08] shadow-md"
@@ -248,7 +248,7 @@
           </a>
 
           <!-- Nav desktop — centrado -->
-          <nav class="hidden md:flex flex-1 items-center justify-center gap-8">
+          <nav class="hidden md:flex items-center gap-8">
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
             ${navLink('nadia.html', 'Nadia', 'nadia')}
             ${navLink('lider-telefonica.html', `<span x-text="t('nav_lider')">Líder Telefónica</span>`, 'lider-telefonica')}
