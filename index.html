@@ -1037,23 +1037,23 @@
         <!-- GLOBO — centrado con labels flotantes -->
         <div class="relative mb-10" data-reveal="up">
 
-          <!-- Etiquetas flotantes — un único contenedor absoluto sobre el globo -->
-          <div class="hidden lg:block pointer-events-none select-none">
+          <!-- Etiquetas flotantes — visibles en todos los tamaños -->
+          <div class="pointer-events-none select-none">
 
-            <!-- Arriba centrado: todos nuestros directivos -->
-            <p class="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-sans font-normal leading-[0.9] z-10"
-               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)">
+            <!-- Arriba centrado -->
+            <p class="absolute top-4 md:top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-sans font-normal leading-[0.9] z-10"
+               style="font-size: clamp(0.65rem, 1.8vw, 2.2rem)">
               <span class="text-paper/20" x-text="lang==='es' ? 'Todos nuestros directivos' : 'All our executives'"></span>
             </p>
 
-            <!-- Izquierda centro: todas nuestras OBs -->
+            <!-- Izquierda centro -->
             <p class="absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap font-sans font-normal text-paper/25 leading-[0.9] z-10"
-               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
+               style="font-size: clamp(0.65rem, 1.8vw, 2.2rem)"
                x-text="lang==='es' ? 'Todas nuestras OBs' : 'All our OBs'"></p>
 
-            <!-- Derecha centro: varias ediciones -->
-            <p class="absolute right-0 top-1/2 -translate-y-1/2 text-right font-sans font-normal text-paper/25 leading-[0.9] max-w-[18%] z-10"
-               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
+            <!-- Derecha centro -->
+            <p class="absolute right-0 top-1/2 -translate-y-1/2 text-right font-sans font-normal text-paper/25 leading-[0.9] z-10"
+               style="font-size: clamp(0.65rem, 1.8vw, 2.2rem); max-width: clamp(60px, 18%, 200px);"
                x-text="lang==='es' ? 'Varias ediciones' : 'Multiple editions'"></p>
 
           </div>
@@ -1077,10 +1077,10 @@
         </div>
 
         <!-- TABS DE PAÍSES -->
-        <div class="flex justify-center gap-2 mb-20 md:mb-24" data-reveal="up">
+        <div class="flex flex-wrap justify-center gap-2 mb-20 md:mb-24" data-reveal="up">
           <template x-for="c in countries" :key="c.code">
             <button @click="flyTo(c)"
-                    class="font-mono text-[12px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200"
+                    class="font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200"
                     :class="active?.code === c.code
                       ? 'border-tef-blue bg-tef-blue text-white'
                       : 'border-paper/20 text-paper/50 hover:text-paper hover:border-paper/40'"
