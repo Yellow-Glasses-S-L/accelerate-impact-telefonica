@@ -254,6 +254,7 @@
           <nav class="hidden md:flex items-center gap-8">
             ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica')}
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
+            ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico')}
             ${navLink('nadia.html', 'Nadia', 'nadia')}
             ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
           </nav>
@@ -294,6 +295,7 @@
           <nav class="px-6 py-5 flex flex-col gap-4">
             ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-base ')}
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-base ')}
+            ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-base ')}
             ${navLink('nadia.html', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-base ')}
             ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-base ')}
           </nav>
