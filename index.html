@@ -253,7 +253,10 @@
     }
     @keyframes twinkle { from { opacity: 0.4; } to { opacity: 0.8; } }
 
-    #globeViz { width: 100%; height: 1000px; cursor: grab; }
+    #globeViz { width: 100%; height: clamp(360px, 80vw, 1000px); cursor: grab; }
+    @media (max-width: 767px) {
+      .hscroll-card { min-height: auto !important; height: auto !important; }
+    }
     #globeViz:active { cursor: grabbing; }
     #globeViz canvas { background: transparent !important; }
 
@@ -757,20 +760,20 @@
         <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1920px] mx-auto relative" data-accelerate-header>
           <div class="flex items-end justify-between gap-8">
             <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
-                style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
+                style="font-size: clamp(1.5rem, 5vw, 5.5rem)">
               La Comunidad de Líderes<br><em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">de Telefónica</em>
             </h2>
             <!-- Número activo — alineado a la base del título, cambia con blur -->
             <span id="hscroll-active-num" class="font-sans font-normal text-tef-blue leading-none flex-shrink-0 select-none"
-                  style="font-size: clamp(80px, 11vw, 150px); letter-spacing:-0.05em; line-height:0.9;">01</span>
+                  style="font-size: clamp(48px, 11vw, 150px); letter-spacing:-0.05em; line-height:0.9;">01</span>
           </div>
 
           <!-- Tabs -->
-          <div class="flex items-center gap-1 mt-8" id="hscroll-tabs">
-            <button data-tab="0" class="hscroll-tab font-mono text-[12px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-tef-blue bg-tef-blue text-white">Why</button>
-            <button data-tab="1" class="hscroll-tab font-mono text-[12px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">How</button>
-            <button data-tab="2" class="hscroll-tab font-mono text-[12px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">What</button>
-            <button data-tab="3" class="hscroll-tab font-mono text-[12px] tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">Expect</button>
+          <div class="flex items-center gap-1 mt-6 md:mt-8 flex-wrap" id="hscroll-tabs">
+            <button data-tab="0" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-tef-blue bg-tef-blue text-white">Why</button>
+            <button data-tab="1" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">How</button>
+            <button data-tab="2" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">What</button>
+            <button data-tab="3" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">Expect</button>
           </div>
         </div>
 
@@ -779,28 +782,34 @@
           <div id="hscroll-track" class="flex pb-10" style="width: max-content; padding-right: 4rem;">
 
             <!-- WHY -->
-            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
-              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
-              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-col md:flex-row">
+              <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=90&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
               </div>
-              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=90&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-7 pb-6">
                 <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">Why</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_why_label')"></span></p>
-                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
+                <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
+                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
               </div>
             </article>
 
             <!-- HOW -->
-            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
-              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
-              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-col md:flex-row">
+              <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=90&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
               </div>
-              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=90&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-7 pb-6">
                 <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">How</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_how_label')"></span></p>
-                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed mb-8" x-text="t('b_how_body')"></p>
+                <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
+                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed mb-6 md:mb-8" x-text="t('b_how_body')"></p>
 
                 <!-- 3 bloques -->
                 <div class="space-y-6">
@@ -849,28 +858,34 @@
             </article>
 
             <!-- WHAT -->
-            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
-              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
-              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-col md:flex-row">
+              <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=90&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
               </div>
-              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=90&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-7 pb-6">
                 <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">What</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_what_label')"></span></p>
-                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
+                <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
+                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
               </div>
             </article>
 
             <!-- EXPECT -->
-            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-row" style="min-height: 480px;">
-              <span class="flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
-              <div class="flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+            <article class="hscroll-card flex-shrink-0 w-[85vw] md:w-[78vw] lg:w-[68vw] flex flex-col md:flex-row">
+              <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
               </div>
-              <div class="flex flex-col flex-1 px-8 pt-7 pb-6">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(395px,47.5vw,700px)"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(395px,47.5vw,700px);">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-7 pb-6">
                 <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">Expect</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_exp_label')"></span></p>
-                <h3 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
+                <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
+                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
               </div>
             </article>
 

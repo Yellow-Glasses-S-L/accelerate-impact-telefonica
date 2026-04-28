@@ -244,7 +244,7 @@
 
           <!-- Logo -->
           <a href="index.html" class="flex-shrink-0">
-            <img src="accelerate-impact-logo.svg" class="h-7 w-auto" alt="Accelerate Impact">
+            <img src="accelerate-impact-logo.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
           </a>
 
           <!-- Nav desktop — centrado -->
