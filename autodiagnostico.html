@@ -82,6 +82,12 @@
         es: 'Este diagnóstico es puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. No es una evaluación de desempeño.',
         en: 'This diagnosis is purely developmental. Your individual results are only accessible to you and the designated People team. This is not a performance evaluation.'
       },
+      disc_modal_eyebrow: { es: 'Antes de empezar', en: 'Before you start' },
+      disc_modal_body: {
+        es: 'Este viaje incluye un autodiagnóstico de liderazgo puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. Los datos agregados preservan la confidencialidad individual. Esto no es una evaluación de desempeño.',
+        en: 'This journey includes a purely developmental leadership self-diagnosis. Your individual results are only accessible to you and the designated People team. Aggregated data preserves individual confidentiality. This is not a performance evaluation.'
+      },
+      disc_modal_cta: { es: 'Entendido, continuar', en: 'Got it, continue' },
 
       email_notice: {
         es: 'Recibirás tu enlace personal al assessment por email desde kfassessment@kornferry.com.',
@@ -660,6 +666,30 @@
 
   </main>
 
+  <!-- MODAL — Antes de empezar -->
+  <div id="disc-modal"
+       class="fixed inset-0 z-[99997] flex items-center justify-center px-4"
+       style="background: rgba(3,26,52,0.7); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;">
+    <div class="bg-paper rounded-2xl shadow-2xl max-w-lg w-full p-8 md:p-10"
+         style="transform: translateY(16px); transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);">
+      <!-- Icono -->
+      <div class="w-10 h-10 rounded-full bg-tef-blue/10 flex items-center justify-center mb-6">
+        <svg class="w-5 h-5 text-tef-blue" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="10" cy="10" r="8"/>
+          <path d="M10 6v5M10 13.5v.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <!-- Eyebrow -->
+      <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3" x-text="t('disc_modal_eyebrow')"></p>
+      <!-- Body -->
+      <p class="font-sans text-ink/70 leading-relaxed mb-8" style="font-size: clamp(0.9rem, 1.2vw, 1rem);" x-text="t('disc_modal_body')"></p>
+      <!-- CTA -->
+      <button id="disc-modal-close"
+              class="w-full bg-tef-blue text-white font-mono text-[11px] tracking-[0.2em] uppercase py-4 rounded-xl hover:bg-blue-600 transition-colors"
+              x-text="t('disc_modal_cta')"></button>
+    </div>
+  </div>
+
   <!-- STICKY NADIA PANEL — aparece al salir del hero -->
   <aside id="nadia-sticky"
          class="fixed bottom-6 right-6 z-40 w-72 overflow-hidden pointer-events-none"
@@ -696,6 +726,29 @@
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
+  <script>
+    (function () {
+      if (sessionStorage.getItem('disc_seen')) return;
+      var modal = document.getElementById('disc-modal');
+      var card  = modal ? modal.querySelector('div') : null;
+      if (!modal) return;
+      // Mostrar tras el loader (espera a que Alpine esté listo)
+      setTimeout(function () {
+        modal.style.opacity = '1';
+        modal.style.pointerEvents = 'auto';
+        if (card) card.style.transform = 'translateY(0)';
+      }, 300);
+      function close() {
+        sessionStorage.setItem('disc_seen', '1');
+        modal.style.opacity = '0';
+        modal.style.pointerEvents = 'none';
+        if (card) card.style.transform = 'translateY(16px)';
+        setTimeout(function () { modal.remove(); }, 450);
+      }
+      document.getElementById('disc-modal-close').addEventListener('click', close);
+      modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    })();
+  </script>
   <script>
     (function () {
       var hero = document.querySelector('[data-nav-dark]');
