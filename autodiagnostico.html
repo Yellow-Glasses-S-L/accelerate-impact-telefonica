@@ -2,11 +2,16 @@
 <html lang="es" x-data="{
   lang: localStorage.getItem('lang') || 'es',
   page: 'auto',
+  autoDiscSeen: sessionStorage.getItem('disc_seen') === '1',
   init() {
     this.$watch('lang', v => localStorage.setItem('lang', v));
   },
   t(key) {
     return i18n[key] ? (i18n[key][this.lang] || i18n[key]['es']) : key;
+  },
+  acceptAutoDisc() {
+    sessionStorage.setItem('disc_seen', '1');
+    this.autoDiscSeen = true;
   }
 }">
 <head>
@@ -667,26 +672,18 @@
   </main>
 
   <!-- MODAL — Antes de empezar -->
-  <div id="disc-modal"
-       class="fixed inset-0 z-[99997] flex items-center justify-center px-4"
-       style="background: rgba(3,26,52,0.7); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.4s ease; pointer-events: none;">
-    <div class="bg-paper rounded-2xl shadow-2xl max-w-lg w-full p-8 md:p-10"
-         style="transform: translateY(16px); transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);">
-      <!-- Icono -->
-      <div class="w-10 h-10 rounded-full bg-tef-blue/10 flex items-center justify-center mb-6">
-        <svg class="w-5 h-5 text-tef-blue" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6">
-          <circle cx="10" cy="10" r="8"/>
-          <path d="M10 6v5M10 13.5v.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <!-- Eyebrow -->
-      <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-tef-blue mb-3" x-text="t('disc_modal_eyebrow')"></p>
-      <!-- Body -->
-      <p class="font-sans text-ink/70 leading-relaxed mb-8" style="font-size: clamp(0.9rem, 1.2vw, 1rem);" x-text="t('disc_modal_body')"></p>
-      <!-- CTA -->
-      <button id="disc-modal-close"
-              class="w-full bg-tef-blue text-white font-mono text-[11px] tracking-[0.2em] uppercase py-4 rounded-xl hover:bg-blue-600 transition-colors"
-              x-text="t('disc_modal_cta')"></button>
+  <div x-show="!autoDiscSeen" x-transition.opacity
+       class="fixed inset-0 z-[99997] flex items-center justify-center p-4 bg-tef-dark/60 backdrop-blur-sm"
+       style="display:none" x-cloak>
+    <div class="max-w-lg w-full bg-paper rounded-br-2xl shadow-2xl pb-20 pt-8 px-8 md:pt-10 md:px-10 relative overflow-hidden">
+      <div class="mb-6"><img src="accelerate-impact-logo.svg" class="h-7 w-auto"></div>
+      <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4" x-text="t('disc_modal_eyebrow')"></h2>
+      <p class="text-sm text-ink-soft leading-relaxed" x-text="t('disc_modal_body')"></p>
+      <button @click="acceptAutoDisc()"
+              class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group rounded-br-2xl">
+        <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('disc_modal_cta')"></span>
+        <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
     </div>
   </div>
 
@@ -726,29 +723,6 @@
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
-  <script>
-    (function () {
-      if (sessionStorage.getItem('disc_seen')) return;
-      var modal = document.getElementById('disc-modal');
-      var card  = modal ? modal.querySelector('div') : null;
-      if (!modal) return;
-      // Mostrar tras el loader (espera a que Alpine esté listo)
-      setTimeout(function () {
-        modal.style.opacity = '1';
-        modal.style.pointerEvents = 'auto';
-        if (card) card.style.transform = 'translateY(0)';
-      }, 300);
-      function close() {
-        sessionStorage.setItem('disc_seen', '1');
-        modal.style.opacity = '0';
-        modal.style.pointerEvents = 'none';
-        if (card) card.style.transform = 'translateY(16px)';
-        setTimeout(function () { modal.remove(); }, 450);
-      }
-      document.getElementById('disc-modal-close').addEventListener('click', close);
-      modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
-    })();
-  </script>
   <script>
     (function () {
       var hero = document.querySelector('[data-nav-dark]');
