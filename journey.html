@@ -124,9 +124,9 @@
       },
 
       /* Track nodos — claims rojos Laura + verbatim validados */
-      n0_meta: { es: 'Correo de invitación', en: 'Invitation email' },
-      n0_title: { es: 'El correo que lo cambia todo.', en: 'The email that changes everything.' },
-      n0_body: { es: 'Te dará acceso a este reto. Será tu primer contacto con el programa y el punto de partida del recorrido.', en: 'It will give you access to this challenge. Your first contact with the program and the starting point of the journey.' },
+      n0_meta: { es: 'Online', en: 'Online' },
+      n0_title: { es: 'Te damos la bienvenida.', en: 'Welcome aboard.' },
+      n0_body: { es: 'Recibirás un correo de invitación a la sesión de inauguración del programa. Un espacio virtual en el que descubrirás todas las claves de Accelerate Impact y conocerás de primera mano a Nadia, tu AI Leadership Coach, que te acompañará a lo largo de todo el proceso.', en: 'You will receive an invitation email to the programme inauguration session. A virtual space where you will discover all the keys to Accelerate Impact and meet Nadia, your AI Leadership Coach, who will accompany you throughout the whole process.' },
 
       n1_meta: { es: 'Sesiones online para conocer Nadia', en: 'Online sessions to meet Nadia' },
       n1_title: { es: 'Conoce a tu coach.', en: 'Meet your coach.' },
@@ -137,12 +137,12 @@
       n2_body: { es: 'Conocerás el programa, su estructura y los compañeros con los que compartirás este camino.', en: 'You will get to know the program, its structure and the colleagues you will share this journey with.' },
 
       n3_meta: { es: 'Online', en: 'Online' },
-      n3_title: { es: 'Autodiagnóstico de liderazgo.', en: 'Leadership self-diagnosis.' },
+      n3_title: { es: 'Mírate al espejo.', en: 'Look at yourself in the mirror.' },
       n3_body: { es: 'Te ayudará a comprender cómo lideras hoy e identificar cómo puedes amplificar tu impacto como líder.', en: 'It will help you understand how you lead today and identify how you can amplify your impact as a leader.' },
       n3_cta: { es: 'Más información', en: 'More information' },
 
       n4_meta: { es: 'Presencial Universitas', en: 'In-person Universitas' },
-      n4_title: { es: 'Residential Action Learning Week en Universitas.', en: 'Residential Action Learning Week at Universitas.' },
+      n4_title: { es: 'Tres días que no olvidarás.', en: 'Three days you will never forget.' },
       n4_body: { es: 'Vivirás una experiencia presencial de tres días en Universitas. Es el corazón del programa y el momento en el que todo converge: reflexión, aprendizaje y acción.', en: 'Three in-person days at Universitas. The heart of the program — the moment where everything converges: reflection, learning and action.' },
       n4_cta: { es: 'Ver agenda', en: 'See agenda' },
 
@@ -217,7 +217,7 @@
               <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(-1.5deg);">
                 <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
               </div>
-              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6" style="left:calc(clamp(300px,min(36vw,53vh),550px)*1.185 - 200px); width:clamp(288px,31vw,368px); box-shadow:0 2px 20px rgba(3,26,52,0.06); transform:rotate(0.7deg);">
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 pt-6 pb-14" style="left:calc(clamp(300px,min(36vw,53vh),550px)*1.185 - 100px); width:clamp(346px,37vw,442px); min-height:65%; box-shadow:0 2px 20px rgba(3,26,52,0.06); transform:rotate(0.7deg);">
                 <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
                 <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
                 <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
@@ -225,6 +225,10 @@
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">01</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n0_meta')"></span></p>
                 <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n0_title')"></h3>
                 <p class="text-[17px] text-ink/60 leading-relaxed" x-text="t('n0_body')"></p>
+                <a href="nadia.html" class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-5 py-3 hover:bg-blue-700 transition-colors group font-mono text-[10px] tracking-[0.18em] uppercase">
+                  <span x-text="t('nav_nadia')"></span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
               </div>
             </article>
 
@@ -233,15 +237,15 @@
               <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(1.4deg);">
                 <img src="https://images.unsplash.com/flagged/photo-1569744068983-6dfc2f27deb8?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
               </div>
-              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6 flex flex-col" style="left:calc(clamp(300px,min(36vw,53vh),550px)*1.185 - 200px); width:clamp(288px,31vw,368px); box-shadow:0 2px 20px rgba(3,26,52,0.06); transform:rotate(-0.8deg);">
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 pt-6 pb-14" style="left:calc(clamp(300px,min(36vw,53vh),550px)*1.185 - 100px); width:clamp(346px,37vw,442px); min-height:65%; box-shadow:0 2px 20px rgba(3,26,52,0.06); transform:rotate(-0.8deg);">
                 <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
                 <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
                 <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
                 <span class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-ink/30"></span>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">02</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n3_meta')"></span></p>
                 <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n3_title')"></h3>
-                <p class="text-[17px] text-ink/60 leading-relaxed mb-4" x-text="t('n3_body')"></p>
-                <a href="autodiagnostico.html" class="inline-flex items-center gap-3 bg-tef-blue text-white px-5 py-3 hover:bg-blue-700 transition-colors group font-mono text-[10px] tracking-[0.18em] uppercase w-fit">
+                <p class="text-[17px] text-ink/60 leading-relaxed" x-text="t('n3_body')"></p>
+                <a href="autodiagnostico.html" class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-5 py-3 hover:bg-blue-700 transition-colors group font-mono text-[10px] tracking-[0.18em] uppercase">
                   <span x-text="t('n3_cta')"></span>
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
@@ -253,15 +257,15 @@
               <div class="absolute left-0 top-0 h-full overflow-hidden" style="aspect-ratio:32/27; box-shadow:8px 0 32px rgba(3,26,52,0.1); transform:rotate(-1.1deg);">
                 <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=90&fit=crop&crop=center" alt="" class="w-full h-full object-cover">
               </div>
-              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 py-6 flex flex-col" style="left:calc(clamp(300px,min(36vw,53vh),550px)*1.185 - 200px); width:clamp(346px,37vw,442px); box-shadow:0 2px 20px rgba(3,26,52,0.06); transform:rotate(0.6deg);">
+              <div class="absolute bottom-8 bg-paper border border-ink/15 px-7 pt-6 pb-14" style="left:calc(clamp(300px,min(36vw,53vh),550px)*1.185 - 100px); width:clamp(346px,37vw,442px); min-height:65%; box-shadow:0 2px 20px rgba(3,26,52,0.06); transform:rotate(0.6deg);">
                 <span class="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-ink/30"></span>
                 <span class="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-ink/30"></span>
                 <span class="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-ink/30"></span>
                 <span class="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-ink/30"></span>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 flex items-center gap-2"><span class="text-tef-blue">03</span><span class="text-ink/20">·</span><span class="text-ink/50" x-text="t('n4_meta')"></span></p>
                 <h3 class="font-sans font-normal text-2xl md:text-3xl leading-tight tracking-tight text-ink mb-4" x-text="t('n4_title')"></h3>
-                <p class="text-[17px] text-ink/60 leading-relaxed mb-4" x-text="t('n4_body')"></p>
-                <a href="agenda.html" class="inline-flex items-center gap-3 bg-tef-blue text-white px-5 py-3 hover:bg-blue-700 transition-colors group font-mono text-[10px] tracking-[0.18em] uppercase w-fit">
+                <p class="text-[17px] text-ink/60 leading-relaxed" x-text="t('n4_body')"></p>
+                <a href="agenda.html" class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-5 py-3 hover:bg-blue-700 transition-colors group font-mono text-[10px] tracking-[0.18em] uppercase">
                   <span x-text="t('n4_cta')"></span>
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
