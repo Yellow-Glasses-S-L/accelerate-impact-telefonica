@@ -75,6 +75,8 @@
     const i18n = {
       nav_journey: { es: 'Journey', en: 'Journey' },
       nav_info: { es: 'Contacto', en: 'Contact' },
+      nav_back_journey: { es: 'Volver a Journey', en: 'Back to Journey' },
+      nav_next_agenda: { es: 'Ver Agenda', en: 'View Agenda' },
 
       hero_title_1: { es: 'Primero.', en: 'First.' },
       hero_title_2: { es: 'Conócete.', en: 'Know yourself.' },
@@ -596,6 +598,22 @@
       </div>
     </section>
 
+
+    <!-- Page navigation -->
+    <section class="border-t border-ink/10">
+      <div class="max-w-[1920px] mx-auto flex items-stretch">
+        <a href="journey.html"
+           class="flex-1 inline-flex items-center gap-3 px-8 md:px-12 lg:px-16 py-5 text-ink hover:bg-ink/5 transition-colors group border-r border-ink/10">
+          <svg class="w-4 h-4 shrink-0 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span class="font-mono text-[10px] tracking-[0.18em] uppercase" x-text="t('nav_back_journey')"></span>
+        </a>
+        <a href="agenda.html"
+           class="flex-1 inline-flex items-center justify-end gap-3 px-8 md:px-12 lg:px-16 py-5 bg-tef-blue text-white hover:bg-blue-700 transition-colors group">
+          <span class="font-mono text-[10px] tracking-[0.18em] uppercase" x-text="t('nav_next_agenda')"></span>
+          <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
 
   </main>
 
