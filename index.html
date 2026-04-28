@@ -1037,23 +1037,28 @@
         <!-- GLOBO — centrado con labels flotantes -->
         <div class="relative mb-10" data-reveal="up">
 
-          <!-- Etiquetas flotantes — visibles en todos los tamaños -->
-          <div class="pointer-events-none select-none">
+          <!-- Etiquetas flotantes — desktop: posición absoluta alrededor del globo / móvil: lista arriba -->
+          <div class="md:hidden flex flex-col items-center gap-1 mb-4 pointer-events-none select-none">
+            <p class="font-sans font-normal text-paper/30 leading-snug text-center text-sm" x-text="lang==='es' ? 'Todos nuestros directivos' : 'All our executives'"></p>
+            <p class="font-sans font-normal text-paper/30 leading-snug text-center text-sm" x-text="lang==='es' ? 'Todas nuestras OBs' : 'All our OBs'"></p>
+            <p class="font-sans font-normal text-paper/30 leading-snug text-center text-sm" x-text="lang==='es' ? 'Varias ediciones' : 'Multiple editions'"></p>
+          </div>
+          <div class="hidden md:block pointer-events-none select-none">
 
             <!-- Arriba centrado -->
-            <p class="absolute top-4 md:top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-sans font-normal leading-[0.9] z-10"
-               style="font-size: clamp(0.65rem, 1.8vw, 2.2rem)">
+            <p class="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-sans font-normal leading-[0.9] z-10"
+               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)">
               <span class="text-paper/20" x-text="lang==='es' ? 'Todos nuestros directivos' : 'All our executives'"></span>
             </p>
 
             <!-- Izquierda centro -->
             <p class="absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap font-sans font-normal text-paper/25 leading-[0.9] z-10"
-               style="font-size: clamp(0.65rem, 1.8vw, 2.2rem)"
+               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
                x-text="lang==='es' ? 'Todas nuestras OBs' : 'All our OBs'"></p>
 
             <!-- Derecha centro -->
-            <p class="absolute right-0 top-1/2 -translate-y-1/2 text-right font-sans font-normal text-paper/25 leading-[0.9] z-10"
-               style="font-size: clamp(0.65rem, 1.8vw, 2.2rem); max-width: clamp(60px, 18%, 200px);"
+            <p class="absolute right-0 top-1/2 -translate-y-1/2 text-right font-sans font-normal text-paper/25 leading-[0.9] max-w-[18%] z-10"
+               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
                x-text="lang==='es' ? 'Varias ediciones' : 'Multiple editions'"></p>
 
           </div>
