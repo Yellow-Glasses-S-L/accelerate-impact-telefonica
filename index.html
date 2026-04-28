@@ -398,15 +398,18 @@
         es: 'Para conseguir nuestros objetivos de negocio, contamos con un nuevo modelo de liderazgo que nos da las herramientas que necesitamos para transformarnos. Porque lo que transforma a Telefónica es cómo decidimos, cómo colaboramos y cómo actuamos.',
         en: 'To achieve our business goals, we have a new leadership model that gives us the tools we need to transform. Because what transforms Telefónica is how we decide, how we collaborate, and how we act.'
       },
-      b_how_c1_claim: { es: 'Damos lo mejor de nosotros.', en: 'We give our best.' },
+      b_how_c1_claim: { es: 'Damos lo mejor de nosotros', en: 'We give our best' },
       b_how_c1_sub:   { es: 'Porque lo bueno no basta.', en: 'Because good is not enough.' },
       b_how_c1_ctx:   { es: 'El negocio necesita relevancia.', en: 'The business needs relevance.' },
-      b_how_c2_claim: { es: 'Cuestionamos nuestros propios límites.', en: 'We challenge our own limits.' },
+      b_how_c1_body:  { es: 'Porque lo bueno no basta. El negocio necesita relevancia.', en: 'Because good is not enough. The business needs relevance.' },
+      b_how_c2_claim: { es: 'Cuestionamos nuestros propios límites', en: 'We challenge our own limits' },
       b_how_c2_sub:   { es: 'Y los rompemos.', en: 'And we break them.' },
       b_how_c2_ctx:   { es: 'El negocio necesita velocidad y eficiencia.', en: 'The business needs speed and efficiency.' },
-      b_how_c3_claim: { es: 'Crecemos juntos.', en: 'We grow together.' },
+      b_how_c2_body:  { es: 'Y los rompemos. El negocio necesita velocidad y eficiencia.', en: 'And we break them. The business needs speed and efficiency.' },
+      b_how_c3_claim: { es: 'Crecemos juntos', en: 'We grow together' },
       b_how_c3_sub:   { es: 'O no crecemos.', en: 'Or we do not grow at all.' },
       b_how_c3_ctx:   { es: 'El negocio necesita resultados y un talento preparado para lograrlos.', en: 'The business needs results and the talent ready to achieve them.' },
+      b_how_c3_body:  { es: 'O no crecemos. El negocio necesita resultados y un talento preparado para lograrlos.', en: 'Or we don\'t grow. The business needs results and talent ready to achieve them.' },
 
       b_what_label: { es: 'Accelerate Impact', en: 'Accelerate Impact' },
       b_what_title: { es: 'El programa que te convierte en el líder que Telefónica necesita.',
@@ -828,13 +831,13 @@
                 <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed mb-6 md:mb-8" x-text="t('b_how_body')"></p>
 
                 <!-- 3 bloques -->
-                <div class="space-y-6">
+                <div class="space-y-4">
 
                   <!-- Bloque 1 -->
                   <div>
-                    <p class="font-sans font-normal text-[19px] leading-tight tracking-tight text-ink uppercase mb-1" x-text="t('b_how_c1_claim')"></p>
-                    <p class="text-[17px] italic text-tef-blue mb-1" x-text="t('b_how_c1_sub')"></p>
-                    <p class="text-[15px] text-ink-mute mb-3" x-text="t('b_how_c1_ctx')"></p>
+                    <p class="text-[15px] text-ink-soft mb-2 leading-relaxed">
+                      <span class="font-sans font-semibold text-[14px] text-ink uppercase tracking-wide" x-text="t('b_how_c1_claim')"></span>: <span x-text="t('b_how_c1_body')"></span>
+                    </p>
                     <div class="flex items-center gap-2 flex-wrap">
                       <span class="font-mono text-[10px] tracking-[0.12em] uppercase border border-tef-blue/30 text-tef-blue px-2 py-0.5">#Customer First</span>
                       <span class="font-mono text-[10px] tracking-[0.12em] uppercase border border-tef-blue/30 text-tef-blue px-2 py-0.5">#Delivering Excellence</span>
@@ -845,9 +848,9 @@
 
                   <!-- Bloque 2 -->
                   <div>
-                    <p class="font-sans font-normal text-[19px] leading-tight tracking-tight text-ink uppercase mb-1" x-text="t('b_how_c2_claim')"></p>
-                    <p class="text-[17px] italic text-tef-blue mb-1" x-text="t('b_how_c2_sub')"></p>
-                    <p class="text-[15px] text-ink-mute mb-3" x-text="t('b_how_c2_ctx')"></p>
+                    <p class="text-[15px] text-ink-soft mb-2 leading-relaxed">
+                      <span class="font-sans font-semibold text-[14px] text-ink uppercase tracking-wide" x-text="t('b_how_c2_claim')"></span>: <span x-text="t('b_how_c2_body')"></span>
+                    </p>
                     <div class="flex items-center gap-2 flex-wrap">
                       <span class="font-mono text-[10px] tracking-[0.12em] uppercase border border-tef-blue/30 text-tef-blue px-2 py-0.5">#Digital Innovation</span>
                       <span class="font-mono text-[10px] tracking-[0.12em] uppercase border border-tef-blue/30 text-tef-blue px-2 py-0.5">#Clarity &amp; Courage</span>
@@ -858,9 +861,9 @@
 
                   <!-- Bloque 3 -->
                   <div>
-                    <p class="font-sans font-normal text-[19px] leading-tight tracking-tight text-ink uppercase mb-1" x-text="t('b_how_c3_claim')"></p>
-                    <p class="text-[17px] italic text-tef-blue mb-1" x-text="t('b_how_c3_sub')"></p>
-                    <p class="text-[15px] text-ink-mute mb-3" x-text="t('b_how_c3_ctx')"></p>
+                    <p class="text-[15px] text-ink-soft mb-2 leading-relaxed">
+                      <span class="font-sans font-semibold text-[14px] text-ink uppercase tracking-wide" x-text="t('b_how_c3_claim')"></span>: <span x-text="t('b_how_c3_body')"></span>
+                    </p>
                     <div class="flex items-center gap-2 flex-wrap">
                       <span class="font-mono text-[10px] tracking-[0.12em] uppercase border border-tef-blue/30 text-tef-blue px-2 py-0.5">#Driving Ownership</span>
                       <span class="font-mono text-[10px] tracking-[0.12em] uppercase border border-tef-blue/30 text-tef-blue px-2 py-0.5">#Growing People</span>
