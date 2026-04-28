@@ -71,8 +71,70 @@
       display: block;
     }
 
-    /* Alpine transition */
-    [x-show] { transition: opacity 0.2s ease; }
+    /* Alpine transition — enhanced with smooth scale */
+    [x-show] { transition: opacity 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+    /* Hero title clip-reveal animation */
+    @keyframes clipReveal {
+      from {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0;
+      }
+      to {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+      }
+    }
+
+    .hero-word-inner {
+      display: block;
+      animation: clipReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    /* Facilitator photo hover */
+    .fac-photo {
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(3, 26, 52, 0.06);
+    }
+
+    /* CTA button hover glow */
+    .cta-button {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .cta-button:hover {
+      box-shadow: 0 0 20px rgba(0, 102, 255, 0.25);
+      transform: translateY(-1px);
+    }
+
+    /* Day badge pulse animation */
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .badge-enter {
+      animation: badgePulse 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Respeto a prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .hero-word-inner,
+      .fac-photo,
+      .badge-enter {
+        animation: none !important;
+      }
+    }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -668,5 +730,6 @@
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
+  <script src="animations.js"></script>
 </body>
 </html>
