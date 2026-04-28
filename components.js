@@ -247,13 +247,17 @@
             <img src="accelerate-impact-logo.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
           </a>
 
-          <!-- Nav desktop — centrado -->
+          <span class="hidden md:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
+
+          <!-- Nav desktop -->
           <nav class="hidden md:flex items-center gap-8">
             ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica')}
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
             ${navLink('nadia.html', 'Nadia', 'nadia')}
             ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
           </nav>
+
+          <span class="hidden md:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
 
           <!-- Right: lang + hamburger -->
           <div class="flex items-center gap-1 flex-shrink-0">
