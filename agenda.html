@@ -59,10 +59,12 @@
     .fac-photo {
       width: 80px;
       height: 80px;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
       flex-shrink: 0;
-      background: #E8F0FF;
+      background: #F7F7FF;
+      border: 1px solid rgba(3,26,52,0.05);
+      box-shadow: none;
     }
     .fac-photo img {
       width: 100%;
@@ -226,7 +228,7 @@
         </div>
       </div>
       <div class="relative border-t border-paper/10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50">
+        <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50">
           <span x-text="t('venue')"></span>
           <span class="hidden md:inline">3 días · Action Learning Week</span>
         </div>
@@ -234,8 +236,8 @@
     </section>
 
     <!-- DAY SELECTOR — top-[79px] para no solapar con navbar -->
-    <section class="border-b border-ink/10 sticky top-[79px] z-40 bg-paper/95 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto px-6">
+    <section class="border-b border-ink/10 bg-paper">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
         <div class="grid grid-cols-3">
 
           <button @click="activeDay=1" class="relative py-6 md:py-10 pl-4 md:pl-6 text-left transition-all" :class="activeDay===1 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
@@ -264,13 +266,18 @@
     </section>
 
     <!-- SCHEDULE -->
-    <section class="max-w-7xl mx-auto px-6 py-14 md:py-16">
+    <section class="bg-paper">
+    <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-14 md:py-16">
 
       <!-- DAY 1 -->
       <div x-show="activeDay===1" x-transition.opacity.duration.200ms>
 
-        <div class="relative bg-white rounded-br-2xl border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)] px-8 md:px-12 py-10 mb-12 overflow-hidden">
-          <span class="absolute right-0 -top-2 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[6rem] md:text-[8rem] opacity-15 select-none pointer-events-none">01</span>
+        <div class="relative bg-white border border-ink/10 px-8 md:px-12 py-10 mb-12" style="box-shadow:0 2px 20px rgba(3,26,52,0.06);">
+          <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+          <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+          <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+          <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+          <span class="absolute right-6 top-4 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[6rem] md:text-[8rem] select-none pointer-events-none">01</span>
           <div class="relative">
             <div class="flex items-center gap-3 mb-5">
               <div class="flex gap-1.5">
@@ -315,7 +322,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Equipo+Universitas&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Equipo Universitas" />
                 </div>
@@ -348,7 +355,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Laura+Martin&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Laura Martín" />
                 </div>
@@ -381,7 +388,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Carlos+Ruiz&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Carlos Ruiz" />
                 </div>
@@ -414,7 +421,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Diego+Guerrero&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Diego Guerrero" />
                 </div>
@@ -437,8 +444,12 @@
       <!-- DAY 2 -->
       <div x-show="activeDay===2" x-cloak x-transition.opacity.duration.200ms>
 
-        <div class="relative bg-white rounded-br-2xl border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)] px-8 md:px-12 py-10 mb-12 overflow-hidden">
-          <span class="absolute right-0 -top-2 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[6rem] md:text-[8rem] opacity-15 select-none pointer-events-none">02</span>
+        <div class="relative bg-white border border-ink/10 px-8 md:px-12 py-10 mb-12" style="box-shadow:0 2px 20px rgba(3,26,52,0.06);">
+          <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+          <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+          <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+          <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+          <span class="absolute right-6 top-4 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[6rem] md:text-[8rem] select-none pointer-events-none">02</span>
           <div class="relative">
             <div class="flex items-center gap-3 mb-5">
               <div class="flex gap-1.5">
@@ -484,7 +495,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Ana+Torres&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Ana Torres" />
                 </div>
@@ -517,7 +528,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Marcos+Vidal&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Marcos Vidal" />
                 </div>
@@ -550,7 +561,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Elena+Navarro&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Elena Navarro" />
                 </div>
@@ -573,8 +584,12 @@
       <!-- DAY 3 -->
       <div x-show="activeDay===3" x-cloak x-transition.opacity.duration.200ms>
 
-        <div class="relative bg-white rounded-br-2xl border border-tef-dark/15 shadow-[0_6px_20px_rgba(3,26,52,0.06)] px-8 md:px-12 py-10 mb-12 overflow-hidden">
-          <span class="absolute right-0 -top-2 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[6rem] md:text-[8rem] opacity-15 select-none pointer-events-none">03</span>
+        <div class="relative bg-white border border-ink/10 px-8 md:px-12 py-10 mb-12" style="box-shadow:0 2px 20px rgba(3,26,52,0.06);">
+          <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+          <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+          <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+          <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+          <span class="absolute right-6 top-4 font-normal leading-none tracking-[-0.03em] text-tef-blue text-[6rem] md:text-[8rem] select-none pointer-events-none">03</span>
           <div class="relative">
             <div class="flex items-center gap-3 mb-5">
               <div class="flex gap-1.5">
@@ -620,7 +635,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Rafael+Vazquez&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Rafael Vázquez" />
                 </div>
@@ -653,7 +668,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Amanda+Carmo&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Amanda Carmo" />
                 </div>
@@ -685,7 +700,7 @@
             </div>
             <div class="col-span-12 md:col-span-3">
               <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="t('facilitator')"></p>
-              <div class="rounded-xl bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
+              <div class="bg-ink/[0.03] border border-ink/5 p-4 flex items-start gap-3">
                 <div class="fac-photo">
                   <img src="https://api.dicebear.com/9.x/initials/svg?seed=Javier+Alvares&backgroundColor=E8F0FF&textColor=0066FF&fontSize=36" alt="Javier Alvares" />
                 </div>
@@ -705,6 +720,7 @@
         </div>
       </div>
 
+    </div>
     </section>
 
     <!-- Page navigation -->
