@@ -281,7 +281,7 @@
     let cachedCardW           = 0;
     const journeyTimelineFill = document.getElementById('journey-timeline-fill');
 
-    if (journeySection && journeyPin && journeyTrack) {
+    if (journeySection && journeyPin && journeyTrack && window.innerWidth >= 768) {
       const getJourneyMaxX = () => Math.max(0, journeyTrack.scrollWidth - window.innerWidth);
 
       // Alinear track con el margen del h2 del header (igual que home)

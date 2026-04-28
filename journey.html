@@ -57,6 +57,54 @@
       .ascent-breathe, .orbit, .reveal { animation: none; }
     }
 
+    /* ── MOBILE: stack cards vertically, disable horizontal scroll ── */
+    @media (max-width: 767px) {
+      #journey-hscroll-pin {
+        position: static !important;
+        height: auto !important;
+        display: block !important;
+      }
+      #journey-hscroll-section { height: auto !important; }
+      #journey-track {
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 1.5rem 1.5rem 2rem !important;
+        transform: none !important;
+        gap: 2rem;
+      }
+      .journey-card {
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      /* Image: relative flow, full width */
+      .journey-card > div:first-child {
+        position: relative !important;
+        width: 100% !important;
+        height: 56vw !important;
+        left: auto !important; top: auto !important;
+        aspect-ratio: auto !important;
+        transform: none !important;
+        box-shadow: none !important;
+        flex-shrink: 0;
+      }
+      /* Text card: normal flow below image */
+      .journey-card > div:nth-child(2) {
+        position: relative !important;
+        left: auto !important; bottom: auto !important;
+        width: 100% !important;
+        transform: none !important;
+        margin-top: 0.75rem;
+      }
+      #journey-tabs,
+      #journey-progress-wrap { display: none !important; }
+      #journey-active-num { display: none !important; }
+      [data-journey-header] {
+        padding-top: 1.5rem !important;
+        padding-bottom: 0.5rem !important;
+      }
+    }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -118,7 +166,7 @@
     <!-- HERO -->
     <section class="bg-tef-gradient-dark text-paper relative overflow-hidden" data-journey-hero data-nav-dark style="margin-top:-79px;">
       <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-20 md:pt-40 md:pb-28">
-        <h1 class="font-sans font-normal leading-[0.95] tracking-tight text-6xl md:text-8xl lg:text-[7rem] mb-6">
+        <h1 class="font-sans font-normal leading-[0.95] tracking-tight text-4xl md:text-8xl lg:text-[7rem] mb-6">
           <span x-text="t('hero_title_1')"></span>
           <em class="italic font-normal text-tef-blue" x-text="' ' + t('hero_title_2')"></em>
         </h1>
@@ -143,14 +191,14 @@
           <div class="flex items-end justify-between gap-8">
             <div>
               <h2 class="font-sans font-normal tracking-tight text-tef-dark leading-[0.95]"
-                  style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
+                  style="font-size: clamp(1.5rem, 5vw, 5.5rem)">
                 <span x-text="t('track_title_1')"></span>
                 <em class="font-normal italic text-tef-blue" x-text="' ' + t('track_title_2')"></em>
               </h2>
             </div>
             <!-- Número activo — igual que home -->
             <span id="journey-active-num" class="font-sans font-normal text-tef-blue leading-none flex-shrink-0 select-none"
-                  style="font-size: clamp(80px, 11vw, 150px); letter-spacing:-0.05em; line-height:0.9;">01</span>
+                  style="font-size: clamp(40px, 11vw, 150px); letter-spacing:-0.05em; line-height:0.9;">01</span>
           </div>
         </div>
 
