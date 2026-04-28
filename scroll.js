@@ -276,7 +276,7 @@
     const journeyBarWrap   = document.getElementById('journey-progress-wrap');
     const journeyTabs      = document.querySelectorAll('.journey-tab');
     const journeyActiveNum = document.getElementById('journey-active-num');
-    const JOURNEY_LABELS      = ['01','02','03','04','05'];
+    const JOURNEY_LABELS      = ['01','02','03'];
     let journeyCurrentIdx     = -1;
     let cachedCardW           = 0;
     const journeyTimelineFill = document.getElementById('journey-timeline-fill');
