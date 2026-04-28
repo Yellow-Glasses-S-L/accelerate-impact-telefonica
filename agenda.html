@@ -20,11 +20,11 @@
       theme: {
         extend: {
           colors: {
-                        tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
             ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
             paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
           },
-                    fontFamily: {
+          fontFamily: {
             sans: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             display: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
             mono: ['"Telefonica Sans"', 'sans-serif']
@@ -52,6 +52,35 @@
     .reveal-1 { animation-delay: 0.05s; }
     .reveal-2 { animation-delay: 0.15s; }
     .reveal-3 { animation-delay: 0.25s; }
+
+    /* Facilitator photo card */
+    .facilitator-photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      background: #031A3414;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .facilitator-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .facilitator-photo .initials {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: #58617A;
+    }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -72,34 +101,41 @@
 
       day: { es: 'Día', en: 'Day' },
       facilitator: { es: 'Facilitador', en: 'Facilitator' },
+      back_journey: { es: '← Volver al Journey', en: '← Back to Journey' },
 
-      /* DÍA 1 — Prepara el escenario para tu impacto */
-      d1_title: { es: 'Prepara el escenario para tu impacto.', en: 'Set the stage for your impact.' },
+      /* DÍA 1 */
+      d1_title: { es: 'Entiende el reto', en: 'Understand the challenge' },
       d1_hours: '9:00 — 22:00',
 
-      /* DÍA 2 — Expande tu manera de liderar */
-      d2_title: { es: 'Expande tu manera de liderar.', en: 'Expand the way you lead.' },
+      /* DÍA 2 */
+      d2_title: { es: 'Expande tu liderazgo', en: 'Expand your leadership' },
       d2_hours: '9:00 — 22:00',
 
-      /* DÍA 3 — Lidera más allá de ti mismo */
-      d3_title: { es: 'Lidera más allá de ti mismo.', en: 'Lead beyond yourself.' },
+      /* DÍA 3 */
+      d3_title: { es: 'Trasciende más allá', en: 'Transcend beyond' },
       d3_hours: '9:00 — 18:00',
 
-      /* Intros día (verbatim de Laura) */
-      d1_intro: { es: 'Nos situamos en el contexto de transformación de Telefónica y las habilidades de liderazgo necesarias para hacer realidad la estrategia. Conectamos las prioridades de la organización con el papel que desempeñan los directivos para materializarlas en todos los negocios, equipos y mercados. A partir de ahí, la atención se centra en uno de los temas más importantes que surgen de la experiencia: la claridad y la valentía. Explorarás qué se necesita para generar confianza, seguridad psicológica, un debate constructivo y una mejor toma de decisiones en entornos complejos donde la alineación, la rapidez y la responsabilidad no siempre se consiguen fácilmente.',
-        en: 'We ground ourselves in Telefónica\'s transformation context and the leadership skills needed to make strategy real. We connect the organisation\'s priorities with the role executives play in delivering them across all businesses, teams and markets. From there, focus shifts to one of the experience\'s most important themes: clarity and courage. You will explore what it takes to generate trust, psychological safety, constructive debate and better decision-making in complex environments where alignment, speed and accountability are not always easy to achieve.' },
+      /* Intros por día */
+      d1_intro: {
+        es: 'Conecta la estrategia de Telefónica y sus prioridades con el liderazgo que es necesario para convertirla en una realidad.\n\nA través de un debate constructivo, exploramos qué se necesita para una mejor toma de decisiones en entornos complejos donde la alineación, la rapidez y la responsabilidad no se consiguen fácilmente.',
+        en: 'Connect Telefónica\'s strategy and priorities with the leadership needed to turn it into reality.\n\nThrough constructive debate, we explore what it takes to make better decisions in complex environments where alignment, speed and accountability are not easily achieved.'
+      },
       d1_hl1: { es: 'Contexto de transformación Telefónica', en: 'Telefónica transformation context' },
       d1_hl2: { es: 'Clarity & Courage en acción', en: 'Clarity & Courage in action' },
       d1_hl3: { es: 'Driving Ownership aplicado', en: 'Driving Ownership applied' },
 
-      d2_intro: { es: 'Te sumergirás en la evolución del liderazgo en la era de la IA. En lugar de centrarse únicamente en la tecnología, la experiencia te ayudará a reflexionar sobre el juicio, la creatividad, la experimentación, la colaboración y cómo liderar equipos en tiempos de incertidumbre y cambios en las capacidades. Tras explorar el contexto, girarás la mirada hacia dentro, a la introspección. Mediante una reflexión guiada, explorarás experiencias de vida, valores, el propósito y los patrones que dan forma a tu liderazgo — para una respuesta más humana y arraigada: más intencional, más auténtica y más sostenible bajo presión.',
-        en: 'You will dive into the evolution of leadership in the AI era. Rather than focusing solely on technology, the experience will help you reflect on judgment, creativity, experimentation, collaboration and how to lead teams in times of uncertainty and shifting capabilities. After exploring the context, you will turn your gaze inward, to introspection. Through guided reflection, you will explore life experiences, values, purpose and the patterns that shape your leadership — for a more human and grounded response: more intentional, more authentic and more sustainable under pressure.' },
+      d2_intro: {
+        es: 'Sumérgete en la evolución del liderazgo en la era de la IA. Juicio, creatividad, experimentación, colaboración y liderazgo de equipos en tiempos donde la incertidumbre y la tecnología imponen la transformación de capacidades.\n\nAñadimos una reflexión guiada, en la que explorar experiencias propias, valores, propósito y aquellos patrones que dan forma a tu liderazgo para una respuesta más humana y arraigada: más intencional, más auténtica y más sostenible.',
+        en: 'Dive into the evolution of leadership in the age of AI. Judgment, creativity, experimentation, collaboration and team leadership in times when uncertainty and technology drive the transformation of capabilities.\n\nWe add a guided reflection to explore your own experiences, values, purpose and the patterns that shape your leadership for a more human and grounded response: more intentional, more authentic and more sustainable.'
+      },
       d2_hl1: { es: 'Liderar en la era de la IA', en: 'Leading in the AI era' },
       d2_hl2: { es: 'Reflexión guiada sobre propósito', en: 'Guided purpose reflection' },
       d2_hl3: { es: 'Digital Innovation aplicada', en: 'Digital Innovation applied' },
 
-      d3_intro: { es: 'Hoy cambiarás la perspectiva desde dentro hacia fuera. Tras explorar la estrategia, el coraje y el propósito personal, te enfrentarás a la pregunta más difícil del camino: ¿qué se necesita realmente para liderar al más alto nivel? Se traza la evolución de la madurez del liderazgo: el cambio de mentalidad y comportamiento que distingue a los líderes que generan resultados a nivel personal de aquellos que multiplican su impacto a través de sus equipos y en toda la organización. Explorarás las posibilidades del alto rendimiento y descubrirás lo que necesitas para mantener un alto impacto a lo largo del tiempo, no solo mediante la estrategia y la ejecución, sino también mediante las disciplinas físicas y mentales que permiten a los líderes rendir al máximo cuando más importa. Cerrarás la experiencia con un compromiso personal basado en propósito, retado por tus compañeros y respaldado por un ritmo de rendición de cuentas estructurado que se extiende mucho más allá de los tres días.',
-        en: 'Today you shift perspective from inside out. Having explored strategy, courage and personal purpose, you will face the hardest question of the journey: what does it truly take to lead at the highest level? The evolution of leadership maturity is mapped: the mindset and behaviour shift that distinguishes leaders who deliver personal results from those who multiply their impact through their teams and across the whole organisation. You will explore the possibilities of high performance and discover what you need to sustain high impact over time — not just through strategy and execution, but through the physical and mental disciplines that allow leaders to perform at their best when it matters most. You will close the experience with a personal, purpose-based commitment, challenged by your peers and backed by a structured accountability rhythm that extends well beyond these three days.' },
+      d3_intro: {
+        es: 'Elevamos el debate con una pregunta incómoda: ¿qué significa realmente liderar un equipo de alto rendimiento?\n\nExploramos el cambio de mentalidad y de comportamientos que distingue a los líderes que generan resultados de aquellos que multiplican el impacto a través de sus equipos y trascienden a su propia organización. Creamos además un espacio para evidenciar otras disciplinas que permiten a los líderes rendir al máximo nivel de manera sostenible.\n\nCerramos con un compromiso personal que se extiende más allá de estos tres días.',
+        en: 'We raise the debate with an uncomfortable question: what does it really mean to lead a high-performance team?\n\nWe explore the mindset and behaviour shift that distinguishes leaders who deliver results from those who multiply impact through their teams and transcend their own organisation. We also create space to explore disciplines that allow leaders to perform at their highest level sustainably.\n\nWe close with a personal commitment that extends well beyond these three days.'
+      },
       d3_hl1: { es: 'Del rendimiento individual al impacto colectivo', en: 'From individual performance to collective impact' },
       d3_hl2: { es: 'Disciplinas físicas y mentales para sostener', en: 'Physical & mental disciplines for sustaining' },
       d3_hl3: { es: 'Compromiso personal + ritmo de accountability', en: 'Personal commitment + accountability rhythm' }
@@ -128,8 +164,8 @@
       <div class="relative border-t border-paper/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50">
           <span x-text="t('venue')"></span>
-          <span class="hidden md:inline">3 días · 10 sesiones</span>
-          <a href="#" class="hover:text-paper transition-colors" x-text="lang==='es' ? 'Descargar PDF →' : 'Download PDF →'"></a>
+          <span class="hidden md:inline">3 días · Action Learning Week</span>
+          <a href="journey.html" class="hover:text-paper transition-colors" x-text="t('back_journey')"></a>
         </div>
       </div>
     </section>
@@ -174,7 +210,7 @@
             <div class="flex flex-col gap-6">
               <div>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('d1_intro')"></p>
+                <p class="text-[17px] text-ink-soft leading-relaxed whitespace-pre-line" x-text="t('d1_intro')"></p>
               </div>
               <div>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
@@ -190,7 +226,7 @@
 
         <!-- Sessions -->
         <div class="border-t border-ink/10">
-          <!-- Session -->
+
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">9:00 — 9:30</p>
@@ -205,13 +241,23 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">TU</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Equipo Universitas</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">TU</span>
+                    <img src="facilitators/equipo-universitas.jpg" alt="Equipo Universitas" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Equipo Universitas</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
 
@@ -230,13 +276,23 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">LM</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Laura Martín</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">LM</span>
+                    <img src="facilitators/laura-martin.jpg" alt="Laura Martín" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Laura Martín</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
 
@@ -255,13 +311,23 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">CR</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Carlos Ruiz</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">CR</span>
+                    <img src="facilitators/carlos-ruiz.jpg" alt="Carlos Ruiz" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Carlos Ruiz</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
 
@@ -280,15 +346,26 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">DG</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Diego Guerrero</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">DG</span>
+                    <img src="facilitators/diego-guerrero.jpg" alt="Diego Guerrero" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Diego Guerrero</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
+
         </div>
       </div>
 
@@ -303,7 +380,7 @@
             <div class="flex flex-col gap-6">
               <div>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('d2_intro')"></p>
+                <p class="text-[17px] text-ink-soft leading-relaxed whitespace-pre-line" x-text="t('d2_intro')"></p>
               </div>
               <div>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
@@ -318,6 +395,7 @@
         </div>
 
         <div class="border-t border-ink/10">
+
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">9:00 — 13:00</p>
@@ -333,13 +411,23 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">AT</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Ana Torres</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">AT</span>
+                    <img src="facilitators/ana-torres.jpg" alt="Ana Torres" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Ana Torres</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
 
@@ -358,13 +446,23 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">MV</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Marcos Vidal</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">MV</span>
+                    <img src="facilitators/marcos-vidal.jpg" alt="Marcos Vidal" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Marcos Vidal</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
 
@@ -383,15 +481,26 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">EN</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Elena Navarro</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">EN</span>
+                    <img src="facilitators/elena-navarro.jpg" alt="Elena Navarro" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Elena Navarro</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
+
         </div>
       </div>
 
@@ -406,7 +515,7 @@
             <div class="flex flex-col gap-6">
               <div>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3" x-text="lang==='es' ? 'Introducción' : 'Overview'"></p>
-                <p class="text-[17px] text-ink-soft leading-relaxed" x-text="t('d3_intro')"></p>
+                <p class="text-[17px] text-ink-soft leading-relaxed whitespace-pre-line" x-text="t('d3_intro')"></p>
               </div>
               <div>
                 <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-3">Highlights</p>
@@ -421,6 +530,7 @@
         </div>
 
         <div class="border-t border-ink/10">
+
           <article class="grid grid-cols-12 gap-6 py-8 md:py-10 border-b border-ink/10">
             <div class="col-span-12 md:col-span-2">
               <p class="font-mono text-sm md:text-base text-ink tracking-tight">9:00 — 12:30</p>
@@ -436,13 +546,23 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">RV</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Rafael Vázquez</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">RV</span>
+                    <img src="facilitators/rafael-vazquez.jpg" alt="Rafael Vázquez" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Rafael Vázquez</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
 
@@ -461,13 +581,23 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">AC</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Amanda Carmo</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">AC</span>
+                    <img src="facilitators/amanda-carmo.jpg" alt="Amanda Carmo" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Amanda Carmo</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
 
@@ -485,33 +615,43 @@
               </ul>
             </div>
             <div class="col-span-12 md:col-span-3">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 hover:text-tef-blue transition-colors">
-                <div class="w-9 h-9 bg-ink/5 border border-ink/10 rounded-full flex items-center justify-center text-[11px] font-mono tracking-wider text-ink flex-shrink-0">JA</div>
-                <div class="flex flex-col">
-                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></span>
-                  <span class="text-[15px] font-medium text-ink group-hover:text-tef-blue transition-colors">Javier Alvares</span>
+              <div class="flex flex-col gap-3">
+                <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="t('facilitator')"></p>
+                <div class="flex items-start gap-3">
+                  <div class="facilitator-photo">
+                    <span class="initials">JA</span>
+                    <img src="facilitators/javier-alvares.jpg" alt="Javier Alvares" onerror="this.style.display='none'" />
+                  </div>
+                  <div class="flex flex-col gap-1.5 pt-0.5">
+                    <span class="font-medium text-ink text-[15px] leading-tight">Javier Alvares</span>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-1.5 text-[11px] font-mono tracking-[0.12em] uppercase text-tef-blue hover:opacity-70 transition-opacity">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </div>
           </article>
+
         </div>
       </div>
 
     </section>
 
-    <!-- NEXT — Nadia CTA -->
-    <section class="bg-paper py-14 md:py-16">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="relative bg-tef-dark text-paper rounded-br-2xl px-8 md:px-12 pt-12 pb-20 overflow-hidden">
-          <h3 class="font-sans font-normal text-3xl md:text-5xl leading-[1.05] tracking-tight mb-3">
-            <span x-text="lang==='es' ? 'Conecta con ' : 'Connect with '"></span><em class="italic text-tef-blue">Nadia.</em>
-          </h3>
-          <p class="text-[17px] text-paper/70 max-w-xl leading-relaxed" x-text="lang==='es' ? 'Prepara tu action plan con tu AI Coach antes de llegar a Madrid.' : 'Prepare your action plan with your AI Coach before arriving in Madrid.'"></p>
-          <a href="nadia.html" class="group absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 rounded-br-2xl hover:bg-blue-700 transition-colors">
-            <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="lang==='es' ? 'Ir a Nadia' : 'Go to Nadia'"></span>
-            <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+    <!-- VOLVER AL JOURNEY -->
+    <section class="bg-paper-warm border-t border-ink/10 py-12 md:py-14">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-ink-mute mb-1" x-text="lang==='es' ? 'Continúa tu recorrido' : 'Continue your journey'"></p>
+          <p class="font-normal text-2xl md:text-3xl tracking-tight text-ink" x-text="lang==='es' ? 'Ve cómo encaja esta semana en el programa completo.' : 'See how this week fits into the full programme.'"></p>
         </div>
+        <a href="journey.html"
+           class="group inline-flex items-center gap-3 bg-tef-dark text-paper px-7 py-4 rounded-br-2xl hover:bg-ink-soft transition-colors flex-shrink-0">
+          <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="lang==='es' ? 'Volver al Journey' : 'Back to Journey'"></span>
+          <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </section>
 
