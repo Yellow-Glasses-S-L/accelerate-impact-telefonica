@@ -249,9 +249,9 @@
 
           <!-- Nav desktop — centrado -->
           <nav class="hidden md:flex items-center gap-8">
+            ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica')}
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
             ${navLink('nadia.html', 'Nadia', 'nadia')}
-            ${navLink('lider-telefonica.html', `<span x-text="t('nav_lider')">Líder Telefónica</span>`, 'lider-telefonica')}
             ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
           </nav>
 
@@ -287,9 +287,9 @@
              class="absolute top-full left-0 right-0 mt-2 rounded-2xl border border-black/[0.08] shadow-lg pointer-events-auto overflow-hidden"
              style="background:rgba(247,247,255,0.95);backdrop-filter:blur(18px);display:none" x-cloak>
           <nav class="px-6 py-5 flex flex-col gap-4">
+            ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-base ')}
             ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-base ')}
             ${navLink('nadia.html', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-base ')}
-            ${navLink('lider-telefonica.html', `<span x-text="t('nav_lider')">Líder Telefónica</span>`, 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-base ')}
             ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-base ')}
           </nav>
         </div>
