@@ -363,8 +363,11 @@
          class="fixed bottom-6 right-6 z-40 w-72 overflow-hidden pointer-events-none rounded-2xl"
          style="opacity:0; transform:translateX(2rem); transition: opacity 0.5s cubic-bezier(0.2,0.8,0.2,1), transform 0.5s cubic-bezier(0.2,0.8,0.2,1); box-shadow: 0 8px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.07);"
          aria-label="Hablar con Nadia">
-    <div class="bg-tef-gradient-dark grain rounded-2xl overflow-hidden">
+    <div class="bg-tef-gradient-dark grain rounded-2xl overflow-hidden relative">
       <div class="h-[3px] bg-tef-blue w-full"></div>
+      <button id="nadia-close" class="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-paper/30 hover:text-paper transition-colors" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-4 h-4"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
       <div class="p-6">
         <div class="flex items-center gap-3 mb-6">
           <div class="relative shrink-0">
@@ -399,8 +402,19 @@
     (function () {
       var hero = document.querySelector('[data-nadia-hero]');
       var panel = document.getElementById('nadia-sticky');
+      var closeBtn = document.getElementById('nadia-close');
+      var closed = false;
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+          closed = true;
+          panel.style.opacity = '0';
+          panel.style.transform = 'translateX(2rem)';
+          panel.style.pointerEvents = 'none';
+        });
+      }
       if (hero && panel) {
         new IntersectionObserver(function (entries) {
+          if (closed) return;
           var out = !entries[0].isIntersecting;
           panel.style.opacity = out ? '1' : '0';
           panel.style.transform = out ? 'translateX(0)' : 'translateX(2rem)';
