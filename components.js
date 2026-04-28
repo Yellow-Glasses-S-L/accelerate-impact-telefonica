@@ -170,6 +170,7 @@
     #site-navbar.nav-on-dark .navbar-pill button.text-tef-dark { color: #F7F7FF !important; }
     #site-navbar.nav-on-dark .navbar-pill span.text-tef-dark\\/20 { color: rgba(247,247,255,0.3) !important; }
     #site-navbar.nav-on-dark .navbar-pill button[aria-label] span { background-color: rgba(247,247,255,0.85) !important; }
+    #site-navbar.nav-on-dark .navbar-pill span.bg-black\\/10 { background-color: rgba(247,247,255,0.2) !important; }
   `;
   document.head.appendChild(navDarkStyle);
 
