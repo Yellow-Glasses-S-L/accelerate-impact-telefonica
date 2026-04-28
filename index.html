@@ -253,7 +253,10 @@
     }
     @keyframes twinkle { from { opacity: 0.4; } to { opacity: 0.8; } }
 
-    #globeViz { width: 100%; height: clamp(360px, 80vw, 1000px); cursor: grab; }
+    #globeViz { width: 100%; height: clamp(280px, 90vw, 1000px); cursor: grab; }
+    @media (max-width: 767px) {
+      #globeViz { height: min(80vw, 360px) !important; }
+    }
     @media (max-width: 767px) {
       .hscroll-card { min-height: auto !important; height: auto !important; }
       /* Disable sticky horizontal scroll — stack cards vertically */
@@ -1209,6 +1212,7 @@
             size: 0.6 + Math.log(c.count + 1) * 0.35
           }));
 
+          const globeH = el.clientHeight || Math.min(Math.round(window.innerWidth * 0.9), 360);
           const world = Globe()(el)
             .backgroundColor('rgba(0,0,0,0)')
             .showGlobe(true)
@@ -1217,7 +1221,7 @@
             .atmosphereAltitude(0.22)
             .globeImageUrl(null)
             .width(el.clientWidth)
-            .height(1000);
+            .height(globeH);
 
           // Ocean — deep navy, darker than the section background (#020914)
           const globeMat = world.globeMaterial();
@@ -1338,7 +1342,7 @@
 
           // Responsive resize
           const ro = new ResizeObserver(() => {
-            world.width(el.clientWidth);
+            world.width(el.clientWidth).height(el.clientHeight);
           });
           ro.observe(el);
 
