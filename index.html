@@ -844,19 +844,19 @@
                   <!-- Bloque 1 -->
                   <div class="flex items-center gap-2">
                     <span class="font-sans font-semibold text-[12px] text-tef-blue uppercase tracking-wide" x-text="t('b_how_c1_claim')"></span>
-                    <button @click="howPopup = 'c1'" class="w-4 h-4 rounded-full border border-ink/25 text-ink-mute text-[10px] font-mono leading-none flex items-center justify-center hover:border-tef-blue hover:text-tef-blue transition-colors flex-shrink-0">+</button>
+                    <button @click="howPopup = 'c1'" class="w-4 h-4 rounded-full border border-tef-blue text-tef-blue text-[10px] font-mono leading-none flex items-center justify-center hover:bg-tef-blue hover:text-white transition-colors flex-shrink-0">+</button>
                   </div>
 
                   <!-- Bloque 2 -->
                   <div class="flex items-center gap-2">
                     <span class="font-sans font-semibold text-[12px] text-tef-blue uppercase tracking-wide" x-text="t('b_how_c2_claim')"></span>
-                    <button @click="howPopup = 'c2'" class="w-4 h-4 rounded-full border border-ink/25 text-ink-mute text-[10px] font-mono leading-none flex items-center justify-center hover:border-tef-blue hover:text-tef-blue transition-colors flex-shrink-0">+</button>
+                    <button @click="howPopup = 'c2'" class="w-4 h-4 rounded-full border border-tef-blue text-tef-blue text-[10px] font-mono leading-none flex items-center justify-center hover:bg-tef-blue hover:text-white transition-colors flex-shrink-0">+</button>
                   </div>
 
                   <!-- Bloque 3 -->
                   <div class="flex items-center gap-2">
                     <span class="font-sans font-semibold text-[12px] text-tef-blue uppercase tracking-wide" x-text="t('b_how_c3_claim')"></span>
-                    <button @click="howPopup = 'c3'" class="w-4 h-4 rounded-full border border-ink/25 text-ink-mute text-[10px] font-mono leading-none flex items-center justify-center hover:border-tef-blue hover:text-tef-blue transition-colors flex-shrink-0">+</button>
+                    <button @click="howPopup = 'c3'" class="w-4 h-4 rounded-full border border-tef-blue text-tef-blue text-[10px] font-mono leading-none flex items-center justify-center hover:bg-tef-blue hover:text-white transition-colors flex-shrink-0">+</button>
                   </div>
 
                 </div>
@@ -1063,8 +1063,6 @@
                 <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#7FB3FF] mb-1" x-text="active?.region || ''"></p>
                 <h4 class="font-sans text-lg text-paper leading-tight mb-1"
                     x-text="(lang==='es' ? active?.name_es : active?.name) || ''"></h4>
-                <p style="font-size:13px;color:#7FB3FF;font-variant-numeric:tabular-nums"
-                   x-text="(active?.count || '') + ' ' + t('globe_total')"></p>
               </div>
             </div>
           </div>
@@ -1258,10 +1256,9 @@
                   const c = this.countries.find(x => x.code === iso);
                   if (!c) return '';
                   const nm = this.lang === 'es' ? c.name_es : c.name;
-                  const tot = this.lang === 'es' ? 'participantes' : 'participants';
                   return `<div class="globe-tooltip">
                     <div class="tt-name">${nm}</div>
-                    <div class="tt-count">${c.count} ${tot}</div>
+                    <div class="tt-hint">${c.region}</div>
                   </div>`;
                 })
                 .onPolygonClick(feat => {
@@ -1296,7 +1293,7 @@
               const nm = this.lang === 'es' ? d.name_es : d.name;
               return `<div class="globe-tooltip">
                 <div class="tt-name">${nm}</div>
-                <div class="tt-count">${d.count} ${this.lang === 'es' ? 'participantes' : 'participants'}</div>
+                <div class="tt-hint">${d.region}</div>
               </div>`;
             })
             .onPointClick(d => this.flyTo(d));
