@@ -165,8 +165,13 @@
   <main class="flex-1">
 
     <!-- HERO -->
-    <section class="bg-tef-gradient-dark text-paper relative overflow-hidden flex flex-col justify-end" data-journey-hero data-nav-dark style="margin-top:-79px; min-height:100vh;">
-      <div class="relative max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-20 md:pt-40 md:pb-28 w-full">
+    <section class="text-paper grain relative overflow-hidden flex flex-col justify-end" data-journey-hero data-nav-dark style="margin-top:-79px; min-height:100vh;">
+      <img src="journey-gif.gif" alt="" aria-hidden="true"
+           class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+           style="z-index:0; transform:scale(1.03);">
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 0%, #0d3a7a 0%, #031A34 55%, #020d1f 100%); opacity: 0.82; z-index:1;"></div>
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60vw 40vh at 30% 20%, rgba(0,102,255,0.18) 0%, transparent 60%); z-index:1;"></div>
+      <div class="relative w-full max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-20 md:pt-40 md:pb-28" style="z-index:2;">
         <h1 class="font-sans font-normal leading-[0.95] tracking-tight text-4xl md:text-8xl lg:text-[7rem] mb-6">
           <span x-text="t('hero_title_1')"></span>
           <em class="italic font-normal text-tef-blue" x-text="' ' + t('hero_title_2')"></em>
