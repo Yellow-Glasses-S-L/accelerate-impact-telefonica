@@ -98,7 +98,7 @@
 
   <!-- MAIN — the letter / postcard -->
   <main class="flex-1 flex items-start justify-center py-14 md:py-20 px-6" data-info-page>
-    <div class="w-full max-w-2xl">
+    <div class="w-full max-w-3xl">
 
       <!-- Envelope meta row -->
       <div class="flex items-center justify-between mb-6" data-info-meta>
@@ -134,7 +134,7 @@
       </article>
 
       <!-- Contact "stamp" card — overlapping slightly rotated -->
-      <aside class="md:-mt-10 mt-10 md:ml-auto md:mr-8 md:w-80 relative" data-info-stamp>
+      <aside class="md:-mt-10 mt-10 md:ml-auto md:mr-8 md:w-96 relative" data-info-stamp>
         <div class="bg-paper-deep text-paper p-6 relative md:rotate-[1.5deg] shadow-xl">
           <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-paper/60 mb-5" x-text="t('card_label')"></p>
           <p class="font-normal text-xl leading-tight tracking-tight mb-1" x-text="t('card_name')"></p>
@@ -144,26 +144,25 @@
               <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/40 w-10">mail</span>
               <span x-text="t('card_email')"></span>
             </a>
-            <a href="tel:+34000000000" class="flex items-center gap-3 text-sm text-paper/80 hover:text-tef-blue transition-colors">
-              <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/40 w-10">tel</span>
-              <span x-text="t('card_phone')"></span>
-            </a>
           </div>
           <p class="font-mono text-[10px] tracking-[0.15em] italic text-paper/40 mt-5" x-text="t('card_note')"></p>
         </div>
       </aside>
 
 
-      <!-- Back link -->
-      <div class="mt-16 md:mt-20 pt-8 border-t border-ink/10" data-reveal="up">
-        <a href="index.html" class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
-          <span class="text-xl group-hover:-translate-x-1 transition-transform">←</span>
-          <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('back')"></span>
-        </a>
-      </div>
-
     </div>
   </main>
+
+    <!-- Page navigation -->
+    <section class="bg-paper-warm border-t border-ink/10 py-8">
+      <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center">
+        <a href="index.html"
+           class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
+          <svg class="w-4 h-4 shrink-0 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span class="font-mono text-[12px] tracking-[0.2em] uppercase" x-text="t('back')"></span>
+        </a>
+      </div>
+    </section>
 
   <!-- FOOTER -->
   <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
