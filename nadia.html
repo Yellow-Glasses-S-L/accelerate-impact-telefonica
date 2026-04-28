@@ -360,37 +360,36 @@
 
   <!-- STICKY NADIA PANEL -->
   <aside id="nadia-sticky"
-         class="fixed bottom-6 right-6 z-40 w-72 overflow-hidden pointer-events-none rounded-2xl"
-         style="opacity:0; transform:translateX(2rem); transition: opacity 0.5s cubic-bezier(0.2,0.8,0.2,1), transform 0.5s cubic-bezier(0.2,0.8,0.2,1); box-shadow: 0 8px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.07);"
-         aria-label="Hablar con Nadia">
-    <div class="bg-tef-gradient-dark grain rounded-2xl overflow-hidden relative">
+         class="fixed bottom-6 right-6 z-40 w-72 overflow-hidden pointer-events-none rounded-br-2xl"
+         style="opacity:0; transform:translateX(2rem); transition: opacity 0.5s cubic-bezier(0.2,0.8,0.2,1), transform 0.5s cubic-bezier(0.2,0.8,0.2,1); box-shadow: 0 8px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.07);">
+    <div class="bg-white rounded-br-2xl overflow-hidden relative">
       <div class="h-[3px] bg-tef-blue w-full"></div>
-      <button id="nadia-close" class="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-paper/30 hover:text-paper transition-colors" aria-label="Cerrar">
+      <button id="nadia-close" class="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-ink/30 hover:text-ink transition-colors" aria-label="Cerrar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-4 h-4"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
-      <div class="p-6">
+      <div class="p-6 pb-20">
         <div class="flex items-center gap-3 mb-6">
           <div class="relative shrink-0">
-            <div class="absolute inset-0 rounded-full bg-tef-blue/40 blur-xl breathe" style="width:44px;height:44px;"></div>
-            <div class="relative w-11 h-11 rounded-full border border-paper/20 bg-paper/5 flex items-center justify-center" style="backdrop-filter:blur(8px);">
-              <span class="font-normal italic text-paper" style="font-size:1.15rem;">N</span>
+            <div class="absolute inset-0 rounded-full bg-tef-blue/20 blur-xl" style="width:44px;height:44px;animation:breathe 7s ease-in-out infinite;"></div>
+            <div class="relative w-11 h-11 rounded-full border border-tef-blue/20 bg-tef-blue/5 flex items-center justify-center">
+              <span class="font-normal italic text-tef-blue" style="font-size:1.15rem;">N</span>
             </div>
           </div>
           <div>
-            <p class="font-sans font-normal text-paper leading-none mb-0.5" style="font-size:0.95rem;">Nadia</p>
-            <p class="font-mono text-[9px] tracking-[0.22em] uppercase text-paper/40">AI Coach · 24/7</p>
+            <p class="font-sans font-normal text-ink leading-none mb-0.5" style="font-size:0.95rem;">Nadia</p>
+            <p class="font-mono text-[9px] tracking-[0.22em] uppercase text-ink-mute">AI Coach · 24/7</p>
           </div>
         </div>
-        <div class="bg-paper/6 border border-paper/10 rounded-xl rounded-tl-none px-4 py-3 mb-5">
-          <p class="font-sans font-normal text-paper leading-snug mb-1" style="font-size:0.95rem;" x-text="t('sticky_intro')"></p>
+        <div class="bg-paper-warm border border-ink/10 rounded-xl rounded-tl-none px-4 py-3">
+          <p class="font-sans font-normal text-ink leading-snug mb-1" style="font-size:0.95rem;" x-text="t('sticky_intro')"></p>
           <p class="font-sans font-normal italic text-tef-blue" style="font-size:0.95rem;" x-text="t('sticky_q')"></p>
         </div>
-        <a href="javascript:void(0)"
-           class="group w-full inline-flex items-center justify-between gap-2 bg-tef-blue text-white px-5 py-3 rounded-xl hover:bg-blue-500 transition-colors">
-          <span class="font-mono text-[10px] tracking-[0.16em] uppercase" x-text="t('cta_button')"></span>
-          <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
       </div>
+      <a href="javascript:void(0)"
+         class="absolute bottom-0 left-0 right-0 inline-flex items-center justify-between gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group">
+        <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('cta_button')"></span>
+        <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </aside>
 
