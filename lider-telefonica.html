@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" x-data="{
+  lang: localStorage.getItem('lang') || 'es',
+  page: 'lider-telefonica',
+  init() {
+    this.$watch('lang', v => localStorage.setItem('lang', v));
+  },
+  t(key) {
+    return i18n[key] ? (i18n[key][this.lang] || i18n[key]['es']) : key;
+  }
+}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Líder Telefónica — Accelerate Impact</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tef: { blue: '#0066FF', dark: '#031A34', light: '#D1D5E4' },
+            ink: { DEFAULT: '#031A34', soft: '#2B3447', mute: '#58617A' },
+            paper: { DEFAULT: '#F7F7FF', warm: '#ECEEF7', deep: '#031A34' }
+          },
+          fontFamily: {
+            sans: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
+            display: ['"Telefonica Sans"', 'Inter', 'sans-serif'],
+            mono: ['"Telefonica Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_DemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    @font-face { font-family: 'Telefonica Sans'; src: url('fonts/Telefonica_Sans_Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    *, *::before, *::after { font-family: "Telefonica Sans", sans-serif !important; }
+    body { font-feature-settings: "cv11", "ss01"; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .reveal-1 { animation-delay: 0.1s; }
+    .reveal-2 { animation-delay: 0.25s; }
+    .reveal-3 { animation-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) { .reveal { animation: none; } }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    const i18n = {
+      nav_journey:        { es: 'Journey', en: 'Journey' },
+      nav_nadia:          { es: 'Nadia', en: 'Nadia' },
+      nav_lider:          { es: 'Líder Telefónica', en: 'Telefónica Leader' },
+      nav_info:           { es: 'Contacto', en: 'Contact' },
+      nav_back_journey:   { es: 'Volver a Journey', en: 'Back to Journey' },
+
+      hero_title:    { es: 'El Líder Telefónica.', en: 'The Telefónica Leader.' },
+      hero_subtitle: { es: "It's On Us.", en: "It's On Us." },
+    };
+  </script>
+</head>
+<body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased">
+
+  <!-- HEADER -->
+  <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
+
+  <main class="flex-1">
+
+    <!-- HERO -->
+    <section class="text-paper relative overflow-hidden flex flex-col justify-end" data-nav-dark style="margin-top:-79px; min-height:100vh;">
+      <img src="journey-gif.gif" alt="" aria-hidden="true"
+           class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+           style="z-index:0; transform:scale(1.03);">
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 0%, #0d3a7a 0%, #031A34 55%, #020d1f 100%); opacity: 0.82; z-index:1;"></div>
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60vw 40vh at 30% 20%, rgba(0,102,255,0.18) 0%, transparent 60%); z-index:1;"></div>
+      <div class="relative w-full max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-20 md:pt-40 md:pb-28" style="z-index:2;">
+        <h1 class="font-sans font-normal leading-[0.95] tracking-tight text-4xl md:text-8xl lg:text-[7rem] mb-6 reveal reveal-1"
+            x-text="t('hero_title')"></h1>
+        <p class="text-2xl md:text-4xl lg:text-5xl text-paper/80 font-normal italic reveal reveal-2"
+           x-text="t('hero_subtitle')"></p>
+      </div>
+    </section>
+
+    <!-- FULL-BLEED IMAGE -->
+    <section>
+      <img src="lider-telefonica-banner.png" alt="El Líder Telefónica"
+           class="w-full block object-cover"
+           style="max-height: 80vh; object-position: center;">
+    </section>
+
+    <!-- Page navigation -->
+    <section class="bg-paper-warm border-t border-ink/10 py-8">
+      <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center">
+        <a href="journey.html"
+           class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
+          <svg class="w-4 h-4 shrink-0 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span class="font-mono text-[12px] tracking-[0.2em] uppercase" x-text="t('nav_back_journey')"></span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
+
+  <script src="components.js"></script>
+  <script src="scroll.js"></script>
+</body>
+</html>
