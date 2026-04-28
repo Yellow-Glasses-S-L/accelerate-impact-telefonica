@@ -2,16 +2,11 @@
 <html lang="es" x-data="{
   lang: localStorage.getItem('lang') || 'es',
   page: 'auto',
-  autoDiscSeen: sessionStorage.getItem('disc_seen') === '1',
   init() {
     this.$watch('lang', v => localStorage.setItem('lang', v));
   },
   t(key) {
     return i18n[key] ? (i18n[key][this.lang] || i18n[key]['es']) : key;
-  },
-  acceptAutoDisc() {
-    sessionStorage.setItem('disc_seen', '1');
-    this.autoDiscSeen = true;
   }
 }">
 <head>
@@ -620,22 +615,6 @@
     </section>
 
   </main>
-
-  <!-- MODAL — Antes de empezar -->
-  <div x-show="!autoDiscSeen" x-transition.opacity
-       class="fixed inset-0 z-[99997] flex items-center justify-center p-4 bg-tef-dark/60 backdrop-blur-sm"
-       style="display:none" x-cloak>
-    <div class="max-w-lg w-full bg-paper rounded-br-2xl shadow-2xl pb-20 pt-8 px-8 md:pt-10 md:px-10 relative overflow-hidden">
-      <div class="mb-6"><img src="accelerate-impact-logo.svg" class="h-7 w-auto"></div>
-      <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4" x-text="t('disc_modal_eyebrow')"></h2>
-      <p class="text-sm text-ink-soft leading-relaxed" x-text="t('disc_modal_body')"></p>
-      <button @click="acceptAutoDisc()"
-              class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group rounded-br-2xl">
-        <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('disc_modal_cta')"></span>
-        <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-    </div>
-  </div>
 
   <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
 
