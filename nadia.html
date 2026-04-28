@@ -2,11 +2,16 @@
 <html lang="es" x-data="{
   lang: localStorage.getItem('lang') || 'es',
   page: 'nadia',
+  nadiaDiscSeen: sessionStorage.getItem('disc_seen') === '1',
   init() {
     this.$watch('lang', v => localStorage.setItem('lang', v));
   },
   t(key) {
     return i18n[key] ? (i18n[key][this.lang] || i18n[key]['es']) : key;
+  },
+  acceptNadiaDisc() {
+    sessionStorage.setItem('disc_seen', '1');
+    this.nadiaDiscSeen = true;
   }
 }">
 <head>
@@ -110,7 +115,14 @@
       sticky_q:     { es: '¿Empezamos?', en: 'Shall we start?' },
       cta_button:   { es: 'Abrir conversación', en: 'Open conversation' },
       back_cta:     { es: 'Volver al Journey', en: 'Back to Journey' },
-      meta_avail:   { es: '24/7 · Confidencial · Contextual', en: '24/7 · Confidential · Contextual' }
+      meta_avail:   { es: '24/7 · Confidencial · Contextual', en: '24/7 · Confidential · Contextual' },
+
+      disc_modal_eyebrow: { es: 'Antes de empezar', en: 'Before you start' },
+      disc_modal_body: {
+        es: 'Este viaje incluye un autodiagnóstico de liderazgo puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. Los datos agregados preservan la confidencialidad individual. Esto no es una evaluación de desempeño.',
+        en: 'This journey includes a purely developmental leadership self-diagnosis. Your individual results are only accessible to you and the designated People team. Aggregated data preserves individual confidentiality. This is not a performance evaluation.'
+      },
+      disc_modal_cta: { es: 'Entendido, continuar', en: 'Got it, continue' }
     };
   </script>
 </head>
@@ -329,6 +341,22 @@
     </section>
 
   </main>
+
+  <!-- MODAL — Antes de empezar -->
+  <div x-show="!nadiaDiscSeen" x-transition.opacity
+       class="fixed inset-0 z-[99997] flex items-center justify-center p-4 bg-tef-dark/60 backdrop-blur-sm"
+       style="display:none" x-cloak>
+    <div class="max-w-lg w-full bg-paper rounded-br-2xl shadow-2xl pb-20 pt-8 px-8 md:pt-10 md:px-10 relative overflow-hidden">
+      <div class="mb-6"><img src="accelerate-impact-logo.svg" class="h-7 w-auto"></div>
+      <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4" x-text="t('disc_modal_eyebrow')"></h2>
+      <p class="text-sm text-ink-soft leading-relaxed" x-text="t('disc_modal_body')"></p>
+      <button @click="acceptNadiaDisc()"
+              class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group rounded-br-2xl">
+        <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('disc_modal_cta')"></span>
+        <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
 
   <!-- STICKY NADIA PANEL -->
   <aside id="nadia-sticky"
