@@ -53,6 +53,14 @@
     body, p, span, a, li, td, th, label, input, button, textarea, select { font-family: "Telefonica Sans", sans-serif !important; }
     body { font-feature-settings: "cv11", "ss01"; }
 
+    /* Carousel image: smaller on laptop screens (<1280px) */
+    @media (min-width: 768px) and (max-width: 1279px) {
+      .hscroll-card-img { height: clamp(200px,25vw,380px) !important; }
+    }
+    @media (min-width: 1280px) {
+      .hscroll-card-img { height: clamp(260px,30vw,600px); }
+    }
+
     /* Fondos oficiales toolkit Telefónica */
     .bg-tef-gradient-dark { background: radial-gradient(ellipse at 70% 0%, #0d3a7a 0%, #031A34 55%, #020d1f 100%); }
     .bg-tef-gradient-white { background: linear-gradient(180deg, #F7F7FF 0%, #ECEEF7 50%, #F7F7FF 100%); }
@@ -805,8 +813,8 @@
               <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1502904550040-7534597429ae?w=1600&q=90&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
               </div>
-              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(260px,30vw,600px)"></span>
-              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(260px,30vw,600px);">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5 hscroll-card-img"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start hscroll-card-img" style="aspect-ratio:32/27;">
                 <img src="https://images.unsplash.com/photo-1502904550040-7534597429ae?w=1600&q=90&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
@@ -821,8 +829,8 @@
               <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1491911923017-19f90d8d7f83?w=1600&q=90&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
               </div>
-              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(260px,30vw,600px)"></span>
-              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(260px,30vw,600px);">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5 hscroll-card-img"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start hscroll-card-img" style="aspect-ratio:32/27;">
                 <img src="https://images.unsplash.com/photo-1491911923017-19f90d8d7f83?w=1600&q=90&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
@@ -872,8 +880,8 @@
               <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1712844470079-d9cc7ebd69a5?w=1600&q=90&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
               </div>
-              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(260px,30vw,600px)"></span>
-              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(260px,30vw,600px);">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5 hscroll-card-img"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start hscroll-card-img" style="aspect-ratio:32/27;">
                 <img src="https://images.unsplash.com/photo-1712844470079-d9cc7ebd69a5?w=1600&q=90&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
@@ -888,8 +896,8 @@
               <div class="md:hidden w-full overflow-hidden flex-shrink-0" style="height:44vw; max-height:240px;">
                 <img src="https://images.unsplash.com/photo-1584907600887-9732fa3647ac?w=1600&q=90&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
               </div>
-              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5" style="height:clamp(260px,30vw,600px)"></span>
-              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start" style="aspect-ratio:32/27; height:clamp(260px,30vw,600px);">
+              <span class="hidden md:block flex-shrink-0 self-start w-px bg-ink/20 mx-5 hscroll-card-img"></span>
+              <div class="hidden md:block flex-shrink-0 overflow-hidden self-start hscroll-card-img" style="aspect-ratio:32/27;">
                 <img src="https://images.unsplash.com/photo-1584907600887-9732fa3647ac?w=1600&q=90&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
