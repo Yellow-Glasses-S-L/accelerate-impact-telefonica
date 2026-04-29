@@ -261,7 +261,7 @@
     }
     @keyframes twinkle { from { opacity: 0.4; } to { opacity: 0.8; } }
 
-    #globeViz { width: 100%; height: clamp(280px, 90vw, 1000px); cursor: grab; }
+    #globeViz { width: 100%; height: clamp(260px, 45vw, 560px); cursor: grab; }
     @media (max-width: 767px) {
       #globeViz { height: min(80vw, 360px) !important; }
     }
@@ -399,7 +399,7 @@
         en: 'Transform & Grow depends on us. The future of Telefónica is in our hands. We face it with optimism, a clear mission and one very firm conviction: the business needs its people. This is not just about understanding the strategy. It is about applying it. It is not about what you will start doing tomorrow — it is about what you do today. Right now.'
       },
 
-      b_how_label:  { es: '¿Cómo?', en: 'How?' },
+      b_how_label:  { es: '¿Cómo lo haremos?', en: 'How will we do it?' },
       b_how_title:  { es: 'Te damos las herramientas. Tú decides hasta dónde llegas.',
                       en: 'We give you the tools. You decide how far you go.' },
       b_how_body:   {
@@ -427,7 +427,7 @@
         en: 'A training and coaching experience to accelerate the execution of the strategic plan. Designed to help leaders make better decisions in complex contexts, prioritise what creates real impact, and act with clarity, focus and shared responsibility.'
       },
 
-      b_exp_label:  { es: 'Qué te llevas', en: 'What you take with you' },
+      b_exp_label:  { es: 'What you take with you', en: 'What you take with you' },
       b_exp_title:  { es: 'Lo que te llevas de aquí no se queda aquí.',
                       en: 'What you take from here does not stay here.' },
       b_exp_body:   {
@@ -643,7 +643,7 @@
     <section class="intro-hero text-paper" data-nav-dark>
       <!-- Vídeo de fondo -->
       <video id="hero-video" muted playsinline
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.4;">
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;opacity:0.65;">
         <source src="telefonica-wow.mp4" type="video/mp4">
       </video>
       <script>
@@ -673,7 +673,7 @@
         })();
       </script>
       <!-- Overlay oscuro sobre el vídeo -->
-      <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,9,20,0.5) 0%,rgba(2,9,20,0.3) 50%,rgba(2,9,20,0.5) 100%);"></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,9,20,0.35) 0%,rgba(2,9,20,0.15) 50%,rgba(2,9,20,0.35) 100%);"></div>
 
       <!-- 3 capas de estrellas con parallax distinto -->
       <div class="stars-far" style="z-index:2;position:absolute;inset:0;" data-parallax="0.15" aria-hidden="true"></div>
@@ -700,9 +700,9 @@
       <div style="position:relative;z-index:3;" class="min-h-screen flex flex-col">
 
         <!-- Centro: eyebrow + claim pequeño -->
-        <div class="flex-1 flex flex-col items-center justify-center px-6 text-center">
+        <div class="flex-1 flex flex-col items-center justify-center px-6 text-center pt-[20vh]">
           <h2 class="intro-claim opacity-0 font-sans font-normal text-paper leading-[1.1] tracking-tight"
-              style="font-size: clamp(3.5rem, 7.5vw, 7rem)"
+              style="font-size: clamp(2rem, 4vw, 4rem)"
               x-text="t('intro_claim')"></h2>
           <p class="intro-sub opacity-0 mt-4 font-sans font-light text-paper/55 leading-snug"
              style="font-size: clamp(1.1rem, 1.8vw, 1.4rem)"
@@ -711,11 +711,13 @@
 
         <!-- Bottom: "Accelerate Impact" + scroll indicator -->
         <div class="w-full overflow-hidden">
-          <div class="intro-word opacity-0 w-full text-center" aria-hidden="false">
-            <p id="intro-word-text" class="font-sans font-normal text-paper whitespace-nowrap"
-               style="font-size: 9vw; letter-spacing: -0.04em; line-height: 1; display:block; width:100%;">
-              Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
-            </p>
+          <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
+            <div class="intro-word opacity-0 w-full" aria-hidden="false">
+              <p id="intro-word-text" class="font-sans font-normal text-paper whitespace-nowrap"
+                 style="font-size: 6.5vw; letter-spacing: -0.04em; line-height: 1; display:block; width:100%;">
+                Accelerate <em class="italic text-tef-blue font-normal">Impact.</em>
+              </p>
+            </div>
           </div>
           <div class="intro-scroll opacity-0 w-full text-center py-6 md:py-8" data-scroll-hide>
             <div class="inline-flex flex-col items-center gap-3">
@@ -737,9 +739,9 @@
 
           <!-- Izquierda: hashtags -->
           <div class="flex flex-col gap-4" data-stagger-item>
-            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)" x-text="t('mf_tag1')"></p>
-            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)" x-text="t('mf_tag2')"></p>
-            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)">
+            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)" x-text="t('mf_tag1')"></p>
+            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)" x-text="t('mf_tag2')"></p>
+            <p class="font-sans font-normal text-tef-blue leading-tight" style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)">
               <span x-text="lang==='es' ? '#Responsabilidad' : '#Shared'"></span><br>
               <span class="inline-block" style="padding-left:1.1ch" x-text="lang==='es' ? 'compartida' : 'responsibility'"></span>
             </p>
@@ -747,15 +749,15 @@
 
           <!-- Derecha: manifiesto -->
           <div data-stagger-item class="space-y-8">
-            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)">
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)">
               <span x-text="t('mf_l1')"></span><br>
               <span x-text="t('mf_l2')"></span>
             </p>
-            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)">
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)">
               <span x-text="t('mf_l3')"></span><br>
               <span x-text="t('mf_l4')"></span>
             </p>
-            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.43rem, 2.47vw, 2.47rem)" x-text="t('mf_l5')"></p>
+            <p class="font-sans font-normal italic text-ink leading-[1.15]" style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)" x-text="t('mf_l5')"></p>
           </div>
 
         </div>
@@ -787,7 +789,7 @@
         <div class="px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 max-w-[1920px] mx-auto relative" data-accelerate-header>
           <div class="flex items-end justify-between gap-8">
             <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95] accelerate-title"
-                style="font-size: clamp(1.5rem, 5vw, 5.5rem)">
+                style="font-size: clamp(2rem, 4.5vw, 5.2rem)">
               La Comunidad de Líderes<br><em class="font-normal italic text-tef-blue" style="letter-spacing:-0.02em">de Telefónica</em>
             </h2>
             <!-- Número activo — alineado a la base del título, cambia con blur -->
@@ -818,9 +820,9 @@
                 <img src="https://images.unsplash.com/photo-1502904550040-7534597429ae?w=1600&q=90&fit=crop&crop=center" alt="Why" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
-                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">Why</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_why_label')"></span></p>
+                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue" x-text="t('b_why_label')"></span></p>
                 <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_why_title')"></h3>
-                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
+                <p class="text-[20px] text-ink-soft leading-relaxed" x-text="t('b_why_body')"></p>
               </div>
             </article>
 
@@ -834,32 +836,15 @@
                 <img src="https://images.unsplash.com/photo-1491911923017-19f90d8d7f83?w=1600&q=90&fit=crop&crop=center" alt="How" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
-                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">How</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_how_label')"></span></p>
+                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue" x-text="t('b_how_label')"></span></p>
                 <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_how_title')"></h3>
-                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed mb-6 md:mb-8" x-text="t('b_how_body')"></p>
+                <p class="text-[20px] text-ink-soft leading-relaxed mb-6 md:mb-8" x-text="t('b_how_body')"></p>
 
-                <!-- 3 bloques -->
-                <div class="space-y-2">
-
-                  <!-- Bloque 1 -->
-                  <div class="flex items-center gap-2">
-                    <span class="font-sans font-semibold text-[12px] text-tef-blue uppercase tracking-wide" x-text="t('b_how_c1_claim')"></span>
-                    <button @click="howPopup = 'c1'" class="w-4 h-4 rounded-full border border-tef-blue text-tef-blue text-[10px] font-mono leading-none flex items-center justify-center hover:bg-tef-blue hover:text-white transition-colors flex-shrink-0">+</button>
-                  </div>
-
-                  <!-- Bloque 2 -->
-                  <div class="flex items-center gap-2">
-                    <span class="font-sans font-semibold text-[12px] text-tef-blue uppercase tracking-wide" x-text="t('b_how_c2_claim')"></span>
-                    <button @click="howPopup = 'c2'" class="w-4 h-4 rounded-full border border-tef-blue text-tef-blue text-[10px] font-mono leading-none flex items-center justify-center hover:bg-tef-blue hover:text-white transition-colors flex-shrink-0">+</button>
-                  </div>
-
-                  <!-- Bloque 3 -->
-                  <div class="flex items-center gap-2">
-                    <span class="font-sans font-semibold text-[12px] text-tef-blue uppercase tracking-wide" x-text="t('b_how_c3_claim')"></span>
-                    <button @click="howPopup = 'c3'" class="w-4 h-4 rounded-full border border-tef-blue text-tef-blue text-[10px] font-mono leading-none flex items-center justify-center hover:bg-tef-blue hover:text-white transition-colors flex-shrink-0">+</button>
-                  </div>
-
-                </div>
+                <a href="lider-telefonica.html"
+                   class="group self-start inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
+                  <span x-text="lang==='es' ? 'El Líder Telefónica' : 'The Telefónica Leader'"></span>
+                  <span class="text-[14px] leading-none">+</span>
+                </a>
               </div>
             </article>
 
@@ -873,9 +858,9 @@
                 <img src="https://images.unsplash.com/photo-1712844470079-d9cc7ebd69a5?w=1600&q=90&fit=crop&crop=center" alt="What" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
-                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">What</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_what_label')"></span></p>
+                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue" x-text="t('b_what_label')"></span></p>
                 <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_what_title')"></h3>
-                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
+                <p class="text-[20px] text-ink-soft leading-relaxed" x-text="t('b_what_body')"></p>
               </div>
             </article>
 
@@ -889,9 +874,9 @@
                 <img src="https://images.unsplash.com/photo-1584907600887-9732fa3647ac?w=1600&q=90&fit=crop&crop=center" alt="Expect" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-col flex-1 px-6 md:px-8 pt-6 md:pt-0 pb-6">
-                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue">Expect</span><span class="text-ink/20">·</span><span class="text-ink-mute" x-text="t('b_exp_label')"></span></p>
+                <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2"><span class="text-tef-blue" x-text="t('b_exp_label')"></span></p>
                 <h3 class="font-sans font-normal text-xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight text-ink mb-4" x-text="t('b_exp_title')"></h3>
-                <p class="text-[15px] md:text-[17px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
+                <p class="text-[20px] text-ink-soft leading-relaxed" x-text="t('b_exp_body')"></p>
               </div>
             </article>
 
@@ -910,7 +895,7 @@
           <!-- Izquierda: título grande sticky -->
           <div class="lg:sticky lg:top-28" data-reveal="up">
             <h2 class="font-sans font-normal tracking-tight leading-[0.95]"
-                style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
+                style="font-size: clamp(2rem, 4.5vw, 5.2rem)">
               <span class="text-tef-blue">Accelerate Impact</span><br>
               <em class="font-normal italic text-ink" x-text="t('ai_intro')"></em>
             </h2>
@@ -921,7 +906,7 @@
 
             <!-- Card 01 — número izquierda -->
             <article class="relative w-full bg-paper border border-ink/10 px-10 py-10"
-                     style="position:sticky;top:5.5rem;z-index:1;box-shadow:0 2px 20px rgba(3,26,52,0.06);transform:rotate(-1.8deg);transform-origin:50% 0%"
+                     style="position:sticky;top:5.5rem;z-index:1;box-shadow:0 2px 20px rgba(3,26,52,0.06);"
                      data-stack-card>
               <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
               <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
@@ -933,11 +918,11 @@
                    style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)" x-text="t('ai_q1')"></p>
               </div>
             </article>
-            <div style="height:15vh" aria-hidden="true"></div>
+            <div style="height:8vh" aria-hidden="true"></div>
 
             <!-- Card 02 — número derecha -->
             <article class="relative w-full bg-paper border border-ink/10 px-10 py-10"
-                     style="position:sticky;top:5.5rem;z-index:2;box-shadow:0 2px 20px rgba(3,26,52,0.06);transform:rotate(1.3deg);transform-origin:50% 0%"
+                     style="position:sticky;top:5.5rem;z-index:2;box-shadow:0 2px 20px rgba(3,26,52,0.06);"
                      data-stack-card>
               <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
               <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
@@ -949,11 +934,11 @@
                 <span class="font-normal text-6xl tracking-[-0.03em] text-tef-blue leading-none shrink-0">02</span>
               </div>
             </article>
-            <div style="height:15vh" aria-hidden="true"></div>
+            <div style="height:8vh" aria-hidden="true"></div>
 
             <!-- Card 03 — número izquierda -->
             <article class="relative w-full bg-paper border border-ink/10 px-10 py-10"
-                     style="position:sticky;top:5.5rem;z-index:3;box-shadow:0 2px 20px rgba(3,26,52,0.06);transform:rotate(-0.9deg);transform-origin:50% 0%"
+                     style="position:sticky;top:5.5rem;z-index:3;box-shadow:0 2px 20px rgba(3,26,52,0.06);"
                      data-stack-card>
               <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
               <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
@@ -965,11 +950,11 @@
                    style="font-size: clamp(1.1rem, 1.8vw, 1.75rem)" x-text="t('ai_q3')"></p>
               </div>
             </article>
-            <div style="height:15vh" aria-hidden="true"></div>
+            <div style="height:8vh" aria-hidden="true"></div>
 
             <!-- Card 04 — número derecha -->
             <article class="relative w-full bg-paper border border-ink/10 px-10 py-10"
-                     style="position:sticky;top:5.5rem;z-index:4;box-shadow:0 4px 28px rgba(3,26,52,0.1);transform:rotate(1.6deg);transform-origin:50% 0%"
+                     style="position:sticky;top:5.5rem;z-index:4;box-shadow:0 4px 28px rgba(3,26,52,0.1);"
                      data-stack-card>
               <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/30"></span>
               <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/30"></span>
@@ -994,136 +979,105 @@
         <!-- TÍTULO full-width -->
         <div class="mb-14 md:mb-18" data-reveal="up">
           <h2 class="font-sans font-normal tracking-tight leading-[0.95]"
-              style="font-size: clamp(2.5rem, 5vw, 5.5rem)">
+              style="font-size: clamp(2rem, 4.5vw, 5.2rem)">
             <em class="font-normal italic text-paper" x-text="t('ai_essence_label')"></em>
           </h2>
         </div>
 
         <!-- ESENCIA LIST — full width -->
         <ol class="mb-20 md:mb-28">
-          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+          <li class="flex items-start gap-5 py-3 border-t border-paper/10" data-stagger-item>
             <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">01</span>
             <span class="text-xl md:text-2xl text-paper/75 leading-snug" x-text="t('ai_e1')"></span>
           </li>
-          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+          <li class="flex items-start gap-5 py-3 border-t border-paper/10" data-stagger-item>
             <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">02</span>
             <span class="text-xl md:text-2xl text-paper/75 leading-snug" x-text="t('ai_e2')"></span>
           </li>
-          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+          <li class="flex items-start gap-5 py-3 border-t border-paper/10" data-stagger-item>
             <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">03</span>
             <span class="text-xl md:text-2xl text-paper/75 leading-snug" x-text="t('ai_e3')"></span>
           </li>
-          <li class="flex items-start gap-5 py-5 border-t border-paper/10" data-stagger-item>
+          <li class="flex items-start gap-5 py-3 border-t border-paper/10" data-stagger-item>
             <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">04</span>
             <span class="text-xl md:text-2xl text-paper/50 leading-snug italic" x-text="t('ai_e4')"></span>
           </li>
-          <li class="flex items-start gap-5 py-6 border-t border-paper/10 border-b border-paper/10" data-stagger-item>
+          <li class="flex items-start gap-5 py-3 border-t border-paper/10 border-b border-paper/10" data-stagger-item>
             <span class="font-mono text-[10px] tracking-[0.2em] text-tef-blue/50 mt-2 flex-shrink-0 w-5">05</span>
             <span class="font-sans font-normal text-tef-blue leading-snug" style="font-size: clamp(1.4rem, 2.4vw, 2.6rem)"
                   x-text="t('ai_e5')"></span>
           </li>
         </ol>
 
-        <!-- GLOBO — centrado con labels flotantes -->
-        <div class="relative mb-10" data-reveal="up">
+        <!-- GLOBO + COMUNIDAD — dos columnas -->
+        <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center" data-reveal="up">
 
-          <!-- Etiquetas flotantes — desktop: posición absoluta alrededor del globo / móvil: lista arriba -->
-          <div class="md:hidden flex flex-col items-center gap-1 mb-4 pointer-events-none select-none">
-            <p class="font-sans font-normal text-paper/30 leading-snug text-center text-sm" x-text="lang==='es' ? 'Todos nuestros directivos' : 'All our executives'"></p>
-            <p class="font-sans font-normal text-paper/30 leading-snug text-center text-sm" x-text="lang==='es' ? 'Todas nuestras OBs' : 'All our OBs'"></p>
-            <p class="font-sans font-normal text-paper/30 leading-snug text-center text-sm" x-text="lang==='es' ? 'Varias ediciones' : 'Multiple editions'"></p>
-          </div>
-          <div class="hidden md:block pointer-events-none select-none">
-
-            <!-- Arriba centrado -->
-            <p class="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-sans font-normal leading-[0.9] z-10"
-               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)">
-              <span class="text-paper/20" x-text="lang==='es' ? 'Todos nuestros directivos' : 'All our executives'"></span>
-            </p>
-
-            <!-- Izquierda centro -->
-            <p class="absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap font-sans font-normal text-paper/25 leading-[0.9] z-10"
-               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
-               x-text="lang==='es' ? 'Todas nuestras OBs' : 'All our OBs'"></p>
-
-            <!-- Derecha centro -->
-            <p class="absolute right-0 top-1/2 -translate-y-1/2 text-right font-sans font-normal text-paper/25 leading-[0.9] max-w-[18%] z-10"
-               style="font-size: clamp(1.2rem, 1.8vw, 2.2rem)"
-               x-text="lang==='es' ? 'Varias ediciones' : 'Multiple editions'"></p>
-
-          </div>
-
-          <!-- Globo -->
-          <div class="w-full relative">
-            <div id="globeViz" aria-label="Global cohort distribution"></div>
+          <!-- Izquierda: globo + tabs países -->
+          <div class="w-full lg:w-[48%] flex flex-col items-center">
+            <div id="globeViz" aria-label="Global cohort distribution" class="w-full"></div>
             <!-- Label país activo -->
-            <div x-show="active" x-transition.opacity
-                 class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center whitespace-nowrap" style="display:none" x-cloak>
-              <div class="bg-black/50 backdrop-blur-md border border-tef-blue/40 px-6 py-3 shadow-[0_12px_40px_rgba(0,102,255,0.25)]">
-                <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#7FB3FF] mb-1" x-text="active?.region || ''"></p>
-                <h4 class="font-sans text-lg text-paper leading-tight mb-1"
-                    x-text="(lang==='es' ? active?.name_es : active?.name) || ''"></h4>
-              </div>
+            <div x-show="active" x-transition.opacity class="text-center mt-3" style="display:none" x-cloak>
+              <p class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#7FB3FF] mb-0.5" x-text="active?.region || ''"></p>
+              <h4 class="font-sans text-base text-paper leading-tight" x-text="(lang==='es' ? active?.name_es : active?.name) || ''"></h4>
             </div>
-          </div>
-
-        </div>
-
-        <!-- TABS DE PAÍSES -->
-        <div class="flex flex-wrap justify-center gap-2 mb-20 md:mb-24" data-reveal="up">
-          <template x-for="c in countries" :key="c.code">
-            <button @click="flyTo(c)"
-                    class="font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200"
-                    :class="active?.code === c.code
-                      ? 'border-tef-blue bg-tef-blue text-white'
-                      : 'border-paper/20 text-paper/50 hover:text-paper hover:border-paper/40'"
-                    x-text="lang==='es' ? c.name_es : c.name">
-            </button>
-          </template>
-        </div>
-
-        <!-- COMUNIDAD / COHORTES -->
-        <div class="max-w-2xl mx-auto text-center border-t border-paper/10 pt-16" data-reveal="up">
-          <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight mb-3" x-text="t('cohort_title')"></h3>
-          <p class="text-[17px] text-paper/70 mb-8" x-text="t('cohort_body')"></p>
-
-          <div class="relative text-left z-50" @click.outside="cohortOpen=false">
-            <button @click="cohortOpen = !cohortOpen"
-                    class="w-full group flex items-center justify-between gap-4 border border-paper/20 hover:border-tef-blue transition-colors px-5 py-4">
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-tef-blue" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <rect x="3" y="3" width="14" height="14" rx="2"/>
-                  <path d="M7 10h6M7 7h6M7 13h3"/>
-                </svg>
-                <span class="font-medium text-paper text-sm" x-text="t('cohort_cta')"></span>
-              </div>
-              <svg class="w-4 h-4 text-paper/50 transition-transform" :class="cohortOpen && 'rotate-180'" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <path d="M4 6l4 4 4-4"/>
-              </svg>
-            </button>
-            <div x-show="cohortOpen" x-transition.opacity
-                 class="absolute bottom-full left-0 right-0 mb-2 bg-[#031A34] border border-paper/20 shadow-xl z-50"
-                 style="display:none" x-cloak>
-              <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/40 px-5 pt-4 pb-2" x-text="t('cohort_select')"></p>
-              <template x-for="n in [1,2,3,4,5,6]" :key="n">
-                <a :href="'https://teams.microsoft.com/l/team/cohorte-' + n"
-                   target="_blank" rel="noopener"
-                   class="flex items-center justify-between gap-3 px-5 py-3 text-sm text-paper/80 hover:bg-paper/5 transition-colors border-t border-paper/10">
-                  <span>
-                    <span x-text="lang==='es' ? 'Cohorte ' : 'Cohort '"></span><span x-text="n"></span>
-                  </span>
-                  <span class="text-tef-blue">→</span>
-                </a>
+            <!-- Tabs países -->
+            <div class="flex flex-wrap justify-center gap-2 mt-5">
+              <template x-for="c in countries" :key="c.code">
+                <button @click="flyTo(c)"
+                        class="font-mono text-[10px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border transition-all duration-200"
+                        :class="active?.code === c.code
+                          ? 'border-tef-blue bg-tef-blue text-white'
+                          : 'border-paper/20 text-paper/50 hover:text-paper hover:border-paper/40'"
+                        x-text="lang==='es' ? c.name_es : c.name">
+                </button>
               </template>
             </div>
           </div>
 
-          <a href="journey.html"
-             class="mt-6 inline-flex items-center gap-2 text-paper/40 hover:text-tef-blue transition-colors group">
-            <span class="font-mono text-[11px] tracking-[0.2em] uppercase"
-                  x-text="lang==='es' ? 'Conoce tu journey en detalle' : 'Explore your journey in detail'"></span>
-            <span class="group-hover:translate-x-1 transition-transform">→</span>
-          </a>
+          <!-- Derecha: Connect with peers -->
+          <div class="w-full lg:w-[52%] lg:border-l lg:border-paper/10 lg:pl-16 pt-10 lg:pt-0 border-t border-paper/10 lg:border-t-0">
+            <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight mb-3" x-text="t('cohort_title')"></h3>
+            <p class="text-[17px] text-paper/70 mb-8" x-text="t('cohort_body')"></p>
+
+            <div class="relative text-left z-50" @click.outside="cohortOpen=false">
+              <button @click="cohortOpen = !cohortOpen"
+                      class="w-full group flex items-center justify-between gap-4 border border-paper/20 hover:border-tef-blue transition-colors px-5 py-4">
+                <div class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-tef-blue" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <rect x="3" y="3" width="14" height="14" rx="2"/>
+                    <path d="M7 10h6M7 7h6M7 13h3"/>
+                  </svg>
+                  <span class="font-medium text-paper text-sm" x-text="t('cohort_cta')"></span>
+                </div>
+                <svg class="w-4 h-4 text-paper/50 transition-transform" :class="cohortOpen && 'rotate-180'" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4"/>
+                </svg>
+              </button>
+              <div x-show="cohortOpen" x-transition.opacity
+                   class="absolute bottom-full left-0 right-0 mb-2 bg-[#031A34] border border-paper/20 shadow-xl z-50"
+                   style="display:none" x-cloak>
+                <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/40 px-5 pt-4 pb-2" x-text="t('cohort_select')"></p>
+                <template x-for="n in [1,2,3,4,5,6]" :key="n">
+                  <a :href="'https://teams.microsoft.com/l/team/cohorte-' + n"
+                     target="_blank" rel="noopener"
+                     class="flex items-center justify-between gap-3 px-5 py-3 text-sm text-paper/80 hover:bg-paper/5 transition-colors border-t border-paper/10">
+                    <span>
+                      <span x-text="lang==='es' ? 'Cohorte ' : 'Cohort '"></span><span x-text="n"></span>
+                    </span>
+                    <span class="text-tef-blue">→</span>
+                  </a>
+                </template>
+              </div>
+            </div>
+
+            <a href="journey.html"
+               class="mt-6 inline-flex items-center gap-2 text-paper/40 hover:text-tef-blue transition-colors group">
+              <span class="font-mono text-[11px] tracking-[0.2em] uppercase"
+                    x-text="lang==='es' ? 'Conoce tu journey en detalle' : 'Explore your journey in detail'"></span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </div>
+
         </div>
 
       </div>
@@ -1677,7 +1631,8 @@
       function fit() {
         el.style.fontSize = '300px';           /* tamaño grande de referencia */
         const naturalWidth = el.scrollWidth;   /* cuánto mide el texto a 300px */
-        const newSize = (window.innerWidth / naturalWidth) * 300 * 0.99;
+        const containerWidth = el.parentElement.clientWidth; /* ancho del max-w container */
+        const newSize = (containerWidth / naturalWidth) * 300 * 0.99;
         el.style.fontSize = newSize + 'px';
       }
       /* Esperar a que la fuente cargue para medir bien */

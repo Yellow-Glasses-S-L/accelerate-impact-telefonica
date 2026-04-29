@@ -153,13 +153,6 @@
 
           <!-- Left: title block -->
           <div>
-            <!-- "N" circle — above title -->
-            <div class="relative mb-4 pointer-events-none" aria-hidden="true" style="width:fit-content;">
-              <div class="absolute rounded-full bg-tef-blue/25 blur-[60px] breathe" style="width:200px;height:200px;top:-30px;left:-30px;"></div>
-              <div class="relative w-14 h-14 md:w-20 md:h-20 rounded-full border border-paper/10 bg-paper/5 flex items-center justify-center" style="backdrop-filter:blur(8px);">
-                <span class="font-normal italic text-paper/60" style="font-size: clamp(1.5rem, 2.5vw, 2.5rem)">N</span>
-              </div>
-            </div>
             <h1 class="font-sans font-normal leading-[0.92] tracking-[-0.03em] reveal reveal-2"
                 style="font-size: clamp(4.5rem, 12vw, 11rem)">
               <em class="italic font-normal text-white" x-text="t('hero_title')"></em>
@@ -193,82 +186,74 @@
     </section>
 
     <!-- § ¿CUÁNDO HABLAR CON NADIA? -->
-    <section class="border-t border-ink/10 bg-paper-warm py-20 md:py-28 overflow-x-hidden">
+    <section class="border-t border-ink/10 bg-paper-warm pt-20 md:pt-28 pb-0 overflow-x-hidden">
       <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
         <div class="mb-16 md:mb-20 text-center" data-reveal="up">
           <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('when_eyebrow')"></p>
           <h2 class="font-sans font-normal leading-[0.95] tracking-[-0.03em] text-ink"
-              style="font-size: clamp(2.5rem, 6vw, 6rem)"
+              style="font-size: clamp(2rem, 4.5vw, 5.2rem)"
               x-text="t('uses_claim')"></h2>
         </div>
 
-        <!-- 4 rotated cards — wider layout -->
-        <div class="max-w-3xl mx-auto flex flex-col gap-5">
+        <!-- 4 utilidades — grid 2×2 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" data-reveal-stagger data-stagger-delay="0.15">
 
-          <div class="slide-wrap" data-slide="left">
-            <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[1.5deg] hover:rotate-0" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow:0 2px 20px rgba(3,26,52,0.06);">
-              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
-              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
-              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
-              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
-              <div class="flex items-start gap-8 md:gap-12">
-                <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">01</span>
-                <div>
-                  <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use1_t')"></h3>
-                  <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use1_d')"></p>
-                </div>
+          <article class="relative bg-paper border border-ink/10 px-8 md:px-10 py-8 md:py-10" style="box-shadow:0 2px 20px rgba(3,26,52,0.06);" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-6">
+              <span class="font-normal text-tef-blue leading-none shrink-0" style="font-size: 67px; letter-spacing:-0.03em">01</span>
+              <div>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.15rem, 1.8vw, 1.5rem)" x-text="t('use1_t')"></h3>
+                <p class="text-ink-soft leading-relaxed text-[15px]" x-text="t('use1_d')"></p>
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
 
-          <div class="slide-wrap" data-slide="right">
-            <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.2deg] hover:rotate-0" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow:0 2px 20px rgba(3,26,52,0.06);">
-              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
-              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
-              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
-              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
-              <div class="flex items-start gap-8 md:gap-12 flex-row-reverse">
-                <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">02</span>
-                <div>
-                  <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use2_t')"></h3>
-                  <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use2_d')"></p>
-                </div>
+          <article class="relative bg-paper border border-ink/10 px-8 md:px-10 py-8 md:py-10" style="box-shadow:0 2px 20px rgba(3,26,52,0.06);" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-6">
+              <span class="font-normal text-tef-blue leading-none shrink-0" style="font-size: 67px; letter-spacing:-0.03em">02</span>
+              <div>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.15rem, 1.8vw, 1.5rem)" x-text="t('use2_t')"></h3>
+                <p class="text-ink-soft leading-relaxed text-[15px]" x-text="t('use2_d')"></p>
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
 
-          <div class="slide-wrap" data-slide="left">
-            <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 -rotate-[0.8deg] hover:rotate-0" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow:0 2px 20px rgba(3,26,52,0.06);">
-              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
-              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
-              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
-              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
-              <div class="flex items-start gap-8 md:gap-12">
-                <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">03</span>
-                <div>
-                  <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use3_t')"></h3>
-                  <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use3_d')"></p>
-                </div>
+          <article class="relative bg-paper border border-ink/10 px-8 md:px-10 py-8 md:py-10" style="box-shadow:0 2px 20px rgba(3,26,52,0.06);" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-6">
+              <span class="font-normal text-tef-blue leading-none shrink-0" style="font-size: 67px; letter-spacing:-0.03em">03</span>
+              <div>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.15rem, 1.8vw, 1.5rem)" x-text="t('use3_t')"></h3>
+                <p class="text-ink-soft leading-relaxed text-[15px]" x-text="t('use3_d')"></p>
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
 
-          <div class="slide-wrap" data-slide="right">
-            <article class="relative bg-paper border border-ink/10 px-10 md:px-14 py-10 md:py-12 rotate-[1.4deg] hover:rotate-0" style="transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow:0 2px 20px rgba(3,26,52,0.06);">
-              <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
-              <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
-              <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
-              <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
-              <div class="flex items-start gap-8 md:gap-12 flex-row-reverse">
-                <span class="font-normal text-tef-blue leading-none shrink-0 mt-1" style="font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing:-0.03em">04</span>
-                <div>
-                  <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.3rem, 2vw, 1.75rem)" x-text="t('use4_t')"></h3>
-                  <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)" x-text="t('use4_d')"></p>
-                </div>
+          <article class="relative bg-paper border border-ink/10 px-8 md:px-10 py-8 md:py-10" style="box-shadow:0 2px 20px rgba(3,26,52,0.06);" data-stagger-item>
+            <span class="absolute top-3 left-3 w-4 h-4 border-t border-l border-ink/25"></span>
+            <span class="absolute top-3 right-3 w-4 h-4 border-t border-r border-ink/25"></span>
+            <span class="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-ink/25"></span>
+            <span class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-ink/25"></span>
+            <div class="flex items-start gap-6">
+              <span class="font-normal text-tef-blue leading-none shrink-0" style="font-size: 67px; letter-spacing:-0.03em">04</span>
+              <div>
+                <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.15rem, 1.8vw, 1.5rem)" x-text="t('use4_t')"></h3>
+                <p class="text-ink-soft leading-relaxed text-[15px]" x-text="t('use4_d')"></p>
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
 
         </div>
 
@@ -284,13 +269,13 @@
     </section>
 
     <!-- § ¿CÓMO HABLAR CON NADIA? -->
-    <section class="bg-tef-gradient-dark grain text-paper border-t border-paper/10 py-20 md:py-28" data-nav-dark>
+    <section class="bg-tef-gradient-dark grain text-paper border-t border-paper/10 py-14 md:py-20" data-nav-dark>
       <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
-        <div class="mb-16 md:mb-20" data-reveal="up">
+        <div class="mb-10 md:mb-12" data-reveal="up">
           <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper/50 mb-4" x-text="t('how_eyebrow')"></p>
           <h2 class="font-sans font-normal leading-[0.95] tracking-[-0.03em] text-white"
-              style="font-size: clamp(2.5rem, 6vw, 6rem)">
+              style="font-size: clamp(2rem, 4.5vw, 5.2rem)">
             <span x-text="t('tips_claim_line1')"></span><br>
             <em class="italic font-normal text-tef-blue" x-text="t('tips_claim_line2')"></em>
           </h2>
@@ -301,24 +286,24 @@
           <!-- Tips column -->
           <div class="border-t border-paper/10">
 
-            <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
-              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">01</span>
+            <div class="py-5 md:py-6 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-12 items-center" data-reveal="up">
+              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(1.8rem, 3vw, 2.8rem); letter-spacing:-0.03em">01</span>
               <p class="font-sans font-normal text-paper/80 leading-relaxed"
-                 style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+                 style="font-size: clamp(0.95rem, 1.4vw, 1.15rem)"
                  x-text="t('tip1')"></p>
             </div>
 
-            <div class="py-10 md:py-12 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
-              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">02</span>
+            <div class="py-5 md:py-6 border-b border-paper/10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-12 items-center" data-reveal="up">
+              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(1.8rem, 3vw, 2.8rem); letter-spacing:-0.03em">02</span>
               <p class="font-sans font-normal text-paper/80 leading-relaxed"
-                 style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+                 style="font-size: clamp(0.95rem, 1.4vw, 1.15rem)"
                  x-text="t('tip2')"></p>
             </div>
 
-            <div class="py-10 md:py-12 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-16 items-start" data-reveal="up">
-              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing:-0.03em">03</span>
+            <div class="py-5 md:py-6 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-12 items-center" data-reveal="up">
+              <span class="font-normal text-tef-blue leading-none" style="font-size: clamp(1.8rem, 3vw, 2.8rem); letter-spacing:-0.03em">03</span>
               <p class="font-sans font-normal text-paper/80 leading-relaxed"
-                 style="font-size: clamp(1.1rem, 1.8vw, 1.6rem)"
+                 style="font-size: clamp(0.95rem, 1.4vw, 1.15rem)"
                  x-text="t('tip3')"></p>
             </div>
 
@@ -327,7 +312,7 @@
           <!-- Visual accent — columna par en desktop -->
           <div class="hidden lg:flex items-center shrink-0" data-reveal="up">
             <img src="nadia-como.png" alt="" aria-hidden="true"
-                 class="object-cover rounded-2xl"
+                 class="object-cover"
                  style="width:320px; height:420px; object-position:center; mix-blend-mode:screen;">
           </div>
 
@@ -337,10 +322,10 @@
     </section>
 
     <!-- Page navigation -->
-    <section class="bg-paper-warm border-t border-ink/10 py-8">
+    <section class="border-t border-paper/10 border-b border-paper/20 py-8" style="background:#02172e;">
       <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center">
         <a href="journey.html"
-           class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
+           class="group inline-flex items-center gap-3 text-paper/50 hover:text-tef-blue transition-colors">
           <svg class="w-4 h-4 shrink-0 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
           <span class="font-mono text-[12px] tracking-[0.2em] uppercase" x-text="t('nav_back_journey')"></span>
         </a>

@@ -265,16 +265,16 @@
           <!-- Text column -->
           <div class="space-y-8" data-stagger-item>
             <p class="font-sans font-normal italic text-ink leading-[1.2]"
-               style="font-size: clamp(1.25rem, 2.2vw, 2.1rem)"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)"
                x-text="t('intro_p1')"></p>
             <p class="font-sans font-normal text-ink leading-[1.2]"
-               style="font-size: clamp(1.25rem, 2.2vw, 2.1rem)"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)"
                x-text="t('intro_p2')"></p>
             <p class="font-sans font-normal text-ink leading-[1.2]"
-               style="font-size: clamp(1.25rem, 2.2vw, 2.1rem)"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)"
                x-text="t('intro_p3')"></p>
             <p class="font-sans font-normal italic text-tef-blue leading-[1.2]"
-               style="font-size: clamp(1.25rem, 2.2vw, 2.1rem)"
+               style="font-size: clamp(1.1rem, 1.8vw, 1.9rem)"
                x-text="t('intro_p4')"></p>
           </div>
 
@@ -314,40 +314,27 @@
       <div class="bg-paper-warm py-16 md:py-20">
       <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
 
-        <!-- Level 1: Leadership Skills — dark gradient banner -->
-        <div class="mb-4" data-reveal="up" data-reveal-delay="0.1">
-          <div class="bg-tef-gradient-dark grain text-paper relative overflow-hidden rounded-br-2xl">
-            <div class="relative px-8 md:px-12 py-12 md:py-16 grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16 items-center">
-              <!-- Left -->
-              <div>
-                <h3 class="font-sans font-normal italic text-white leading-[1.0] tracking-tight"
-                    style="font-size: clamp(2.2rem, 4.5vw, 4.5rem)"
-                    x-text="t('ls_title')"></h3>
-                <p class="text-paper/65 mt-4 leading-relaxed"
-                   style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
-                   x-text="t('ls_desc')"></p>
-              </div>
-              <!-- Right: photo -->
-              <div class="aspect-[16/7] rounded-lg relative overflow-hidden">
-                <img src="autodiag-m4.png" alt="" class="absolute inset-0 w-full h-full object-cover">
-              </div>
-            </div>
-          </div>
+        <!-- Leadership Skills — entradilla + cards fusionadas -->
+        <div class="mb-10 md:mb-12" data-reveal="up">
+          <h3 class="font-sans font-normal italic text-ink leading-[1.0] tracking-tight mb-3"
+              style="font-size: clamp(2rem, 4.5vw, 5.2rem)"
+              x-text="t('ls_title')"></h3>
+          <p class="text-ink-soft leading-relaxed max-w-2xl"
+             style="font-size: 17px"
+             x-text="t('ls_desc')"></p>
         </div>
 
-        <!-- Level 2: 3 modules — hscroll-card DNA, vertical stack on mobile / 3-col desktop -->
+        <!-- 3 modules -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-0" data-reveal-stagger data-stagger-delay="0.1">
 
           <!-- Lo que haces -->
-          <article class="border-r border-b border-ink/10 bg-white flex flex-col" data-stagger-item>
+          <article class="border-r border-b border-ink/10 flex flex-col" style="background:#F7F7FF;" data-stagger-item>
             <div class="aspect-[4/3] border-b border-ink/8 relative overflow-hidden">
               <img src="autodiag-m1.png" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
             <div class="p-8 flex flex-col flex-1">
               <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
                 <span class="text-tef-blue" x-text="t('m1_label')"></span>
-                <span class="text-ink/20">·</span>
-                <span class="text-ink-mute" x-text="t('m1_sub')"></span>
               </p>
               <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
                   style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
@@ -360,15 +347,13 @@
           </article>
 
           <!-- Lo que te mueve -->
-          <article class="border-r border-b border-ink/10 bg-white flex flex-col" data-stagger-item>
+          <article class="border-r border-b border-ink/10 flex flex-col" style="background:#F7F7FF;" data-stagger-item>
             <div class="aspect-[4/3] border-b border-ink/8 relative overflow-hidden">
               <img src="autodiag-m2.png" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
             <div class="p-8 flex flex-col flex-1">
               <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
                 <span class="text-tef-blue" x-text="t('m2_label')"></span>
-                <span class="text-ink/20">·</span>
-                <span class="text-ink-mute" x-text="t('m2_sub')"></span>
               </p>
               <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
                   style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
@@ -381,15 +366,13 @@
           </article>
 
           <!-- Quién eres -->
-          <article class="border-r border-b border-ink/10 bg-white flex flex-col" data-stagger-item>
+          <article class="border-r border-b border-ink/10 flex flex-col" style="background:#F7F7FF;" data-stagger-item>
             <div class="aspect-[4/3] border-b border-ink/8 relative overflow-hidden">
               <img src="autodiag-m6.png" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
             <div class="p-8 flex flex-col flex-1">
               <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
                 <span class="text-tef-blue" x-text="t('m3_label')"></span>
-                <span class="text-ink/20">·</span>
-                <span class="text-ink-mute" x-text="t('m3_sub')"></span>
               </p>
               <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
                   style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
@@ -413,7 +396,7 @@
         <div class="mb-14" data-reveal="up">
           <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-4" x-text="t('proc_label')"></p>
           <h2 class="font-sans font-normal tracking-tight text-ink leading-[0.95]"
-              style="font-size: clamp(2.5rem, 5vw, 5.5rem)"
+              style="font-size: clamp(2rem, 4.5vw, 5.2rem)"
               x-text="t('proc_intro')"></h2>
         </div>
 
@@ -422,11 +405,11 @@
           <!-- Step 1 -->
           <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 1)">
             <button @click="open = open === 1 ? null : 1"
-                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+                    class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
-                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">01</span>
+                    style="font-size: clamp(1.6rem, 2.8vw, 2.8rem); letter-spacing: -0.03em">01</span>
               <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
-                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    style="font-size: clamp(1rem, 1.4vw, 1.25rem)"
                     x-text="t('s1_t')"></span>
               <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 1 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
@@ -440,7 +423,7 @@
                  class="pb-8 step-body"
                  style="display:none">
               <p class="text-ink-soft leading-relaxed max-w-3xl"
-                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 style="font-size: 17px"
                  x-text="t('s1_d')"></p>
             </div>
           </div>
@@ -448,11 +431,11 @@
           <!-- Step 2 -->
           <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 2)">
             <button @click="open = open === 2 ? null : 2"
-                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+                    class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
-                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">02</span>
+                    style="font-size: clamp(1.6rem, 2.8vw, 2.8rem); letter-spacing: -0.03em">02</span>
               <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
-                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    style="font-size: clamp(1rem, 1.4vw, 1.25rem)"
                     x-text="t('s2_t')"></span>
               <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 2 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
@@ -466,12 +449,12 @@
                  class="pb-8 step-body"
                  style="display:none">
               <p class="text-ink-soft leading-relaxed max-w-3xl mb-4"
-                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 style="font-size: 17px"
                  x-text="t('s2_d')"></p>
               <ul class="space-y-2 max-w-3xl">
-                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b1')"></span></li>
-                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b2')"></span></li>
-                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b3')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size: 17px"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b1')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size: 17px"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b2')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size: 17px"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s2_b3')"></span></li>
               </ul>
             </div>
           </div>
@@ -479,11 +462,11 @@
           <!-- Step 3 -->
           <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 3)">
             <button @click="open = open === 3 ? null : 3"
-                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+                    class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
-                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">03</span>
+                    style="font-size: clamp(1.6rem, 2.8vw, 2.8rem); letter-spacing: -0.03em">03</span>
               <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
-                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    style="font-size: clamp(1rem, 1.4vw, 1.25rem)"
                     x-text="t('s3_t')"></span>
               <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 3 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
@@ -497,7 +480,7 @@
                  class="pb-8 step-body"
                  style="display:none">
               <p class="text-ink-soft leading-relaxed max-w-3xl"
-                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 style="font-size: 17px"
                  x-text="t('s3_d')"></p>
             </div>
           </div>
@@ -505,11 +488,11 @@
           <!-- Step 4 -->
           <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 4)">
             <button @click="open = open === 4 ? null : 4"
-                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+                    class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
-                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">04</span>
+                    style="font-size: clamp(1.6rem, 2.8vw, 2.8rem); letter-spacing: -0.03em">04</span>
               <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
-                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    style="font-size: clamp(1rem, 1.4vw, 1.25rem)"
                     x-text="t('s4_t')"></span>
               <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 4 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
@@ -523,12 +506,12 @@
                  class="pb-8 step-body"
                  style="display:none">
               <p class="text-ink-soft leading-relaxed max-w-3xl mb-4"
-                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 style="font-size: 17px"
                  x-text="t('s4_d')"></p>
               <ul class="space-y-2 max-w-3xl">
-                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b1')"></span></li>
-                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b2')"></span></li>
-                <li class="flex gap-3 text-ink-soft" style="font-size:clamp(0.875rem,1.1vw,1rem)"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b3')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size: 17px"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b1')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size: 17px"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b2')"></span></li>
+                <li class="flex gap-3 text-ink-soft" style="font-size: 17px"><span class="text-tef-blue flex-shrink-0">—</span><span x-text="t('s4_b3')"></span></li>
               </ul>
             </div>
           </div>
@@ -536,11 +519,11 @@
           <!-- Step 5 -->
           <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 5)">
             <button @click="open = open === 5 ? null : 5"
-                    class="w-full flex items-center gap-6 md:gap-10 py-7 md:py-8 text-left">
+                    class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
-                    style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em">05</span>
+                    style="font-size: clamp(1.6rem, 2.8vw, 2.8rem); letter-spacing: -0.03em">05</span>
               <span class="font-sans font-normal tracking-tight flex-1 transition-colors group-hover:text-tef-blue"
-                    style="font-size: clamp(1.15rem, 2vw, 1.75rem)"
+                    style="font-size: clamp(1rem, 1.4vw, 1.25rem)"
                     x-text="t('s5_t')"></span>
               <svg class="w-5 h-5 text-ink-mute flex-shrink-0 transition-transform duration-300" :class="{ 'rotate-180 !text-tef-blue': open === 5 }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
@@ -554,7 +537,7 @@
                  class="pb-8 step-body"
                  style="display:none">
               <p class="text-ink-soft leading-relaxed max-w-3xl"
-                 style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+                 style="font-size: 17px"
                  x-text="t('s5_d')"></p>
             </div>
           </div>
@@ -571,7 +554,7 @@
           <!-- Downloads -->
           <div class="flex-1" data-reveal="up">
             <p class="text-ink-soft leading-relaxed mb-6"
-               style="font-size: clamp(0.95rem, 1.3vw, 1.1rem)"
+               style="font-size: 17px"
                x-text="t('res_intro')"></p>
             <div class="flex flex-col sm:flex-row gap-3">
               <a href="javascript:void(0)" class="inline-flex items-center gap-3 bg-tef-blue text-white hover:bg-blue-700 transition-colors px-6 py-4 group">

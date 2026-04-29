@@ -2,6 +2,7 @@
 <html lang="es" x-data="{
   lang: localStorage.getItem('lang') || 'es',
   page: 'lider-telefonica',
+  liderPopup: null,
   init() {
     this.$watch('lang', v => localStorage.setItem('lang', v));
   },
@@ -60,6 +61,21 @@
 
       hero_title:    { es: 'El Líder Telefónica.', en: 'The Telefónica Leader.' },
       hero_subtitle: { es: "It's On Us.", en: "It's On Us." },
+
+      pilars_eyebrow: { es: "It's On Us", en: "It's On Us" },
+      pilars_title:   { es: 'Tres compromisos que nos definen.', en: 'Three commitments that define us.' },
+
+      p1_claim: { es: 'Damos lo mejor de nosotros', en: 'We give our best' },
+      p1_sub:   { es: 'Porque lo bueno no basta.', en: 'Because good is not enough.' },
+      p1_body:  { es: 'El negocio necesita relevancia.', en: 'The business needs relevance.' },
+
+      p2_claim: { es: 'Cuestionamos nuestros propios límites', en: 'We challenge our own limits' },
+      p2_sub:   { es: 'Y los rompemos.', en: 'And we break them.' },
+      p2_body:  { es: 'El negocio necesita velocidad y eficiencia.', en: 'The business needs speed and efficiency.' },
+
+      p3_claim: { es: 'Crecemos juntos', en: 'We grow together' },
+      p3_sub:   { es: 'O no crecemos.', en: 'Or we do not grow at all.' },
+      p3_body:  { es: 'El negocio necesita resultados y un talento preparado para lograrlos.', en: 'The business needs results and talent ready to achieve them.' },
     };
   </script>
 </head>
@@ -92,6 +108,84 @@
            class="w-full block">
     </section>
 
+    <!-- TRES COMPROMISOS -->
+    <section class="bg-paper-warm py-20 md:py-28">
+      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
+
+        <!-- Header -->
+        <div class="mb-14 md:mb-20 reveal reveal-1">
+          <p class="font-mono text-[11px] tracking-[0.25em] uppercase text-tef-blue mb-5" x-text="t('pilars_eyebrow')"></p>
+          <h2 class="font-sans font-normal tracking-tight leading-[0.95] text-ink"
+              style="font-size: clamp(2rem, 4.5vw, 5.2rem)">
+            <span x-text="lang==='es' ? 'Tres compromisos' : 'Three commitments'"></span><br>
+            <em class="italic font-normal text-tef-blue" x-text="lang==='es' ? 'que nos definen.' : 'that define us.'"></em>
+          </h2>
+        </div>
+
+        <!-- 3 tarjetas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10">
+
+          <!-- 01 -->
+          <div class="bg-paper-warm flex flex-col px-8 md:px-10 py-10 md:py-14 reveal reveal-1">
+            <span class="font-mono text-tef-blue leading-none mb-8 select-none"
+                  style="font-size: clamp(3rem, 7vw, 7rem); letter-spacing:-0.05em;">01</span>
+            <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4"
+                x-text="t('p1_claim')"></h3>
+            <p class="font-sans italic text-tef-blue text-lg md:text-xl leading-snug mb-4"
+               x-text="t('p1_sub')"></p>
+            <p class="text-[17px] text-ink-soft leading-relaxed pt-6 border-t border-ink/10"
+               x-text="t('p1_body')"></p>
+            <div class="mt-auto pt-8">
+              <button @click="liderPopup = 'p1'"
+                      class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
+                <span>Más información</span>
+                <span class="text-[14px] leading-none">+</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 02 -->
+          <div class="bg-paper-warm flex flex-col px-8 md:px-10 py-10 md:py-14 reveal reveal-2">
+            <span class="font-mono text-tef-blue leading-none mb-8 select-none"
+                  style="font-size: clamp(3rem, 7vw, 7rem); letter-spacing:-0.05em;">02</span>
+            <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4"
+                x-text="t('p2_claim')"></h3>
+            <p class="font-sans italic text-tef-blue text-lg md:text-xl leading-snug mb-4"
+               x-text="t('p2_sub')"></p>
+            <p class="text-[17px] text-ink-soft leading-relaxed pt-6 border-t border-ink/10"
+               x-text="t('p2_body')"></p>
+            <div class="mt-auto pt-8">
+              <button @click="liderPopup = 'p2'"
+                      class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
+                <span>Más información</span>
+                <span class="text-[14px] leading-none">+</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 03 -->
+          <div class="bg-paper-warm flex flex-col px-8 md:px-10 py-10 md:py-14 reveal reveal-3">
+            <span class="font-mono text-tef-blue leading-none mb-8 select-none"
+                  style="font-size: clamp(3rem, 7vw, 7rem); letter-spacing:-0.05em;">03</span>
+            <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4"
+                x-text="t('p3_claim')"></h3>
+            <p class="font-sans italic text-tef-blue text-lg md:text-xl leading-snug mb-4"
+               x-text="t('p3_sub')"></p>
+            <p class="text-[17px] text-ink-soft leading-relaxed pt-6 border-t border-ink/10"
+               x-text="t('p3_body')"></p>
+            <div class="mt-auto pt-8">
+              <button @click="liderPopup = 'p3'"
+                      class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
+                <span>Más información</span>
+                <span class="text-[14px] leading-none">+</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- Page navigation -->
     <section class="bg-paper-warm border-t border-ink/10 py-8">
       <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center justify-end">
@@ -107,6 +201,63 @@
 
   <!-- FOOTER -->
   <footer id="site-footer" class="bg-tef-dark text-paper mt-auto"></footer>
+
+  <!-- POPUP -->
+  <div x-show="liderPopup !== null"
+       x-transition.opacity
+       @click.self="liderPopup = null"
+       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tef-dark/60 backdrop-blur-sm"
+       style="display:none" x-cloak>
+    <div class="max-w-lg w-full bg-paper rounded-br-2xl shadow-2xl pb-20 pt-8 px-8 md:pt-10 md:px-10 relative overflow-hidden">
+      <div class="mb-6">
+        <img src="accelerate-impact-logo.svg" class="h-7 w-auto" alt="Accelerate Impact">
+      </div>
+
+      <template x-if="liderPopup === 'p1'">
+        <div>
+          <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4">Damos lo mejor de nosotros.</h2>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Y si queremos convertirnos en socios de confianza de nuestros clientes, necesitamos profesionales que simplifiquen, prioricen y se enfoquen en lo que realmente genera impacto.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos skills clave:</p>
+          <ul class="space-y-3 text-sm text-ink-soft">
+            <li><span class="font-medium text-ink">Customer First:</span> el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.</li>
+            <li><span class="font-medium text-ink">Delivering Excellence:</span> la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.</li>
+          </ul>
+        </div>
+      </template>
+
+      <template x-if="liderPopup === 'p2'">
+        <div>
+          <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4">Cuestionamos nuestros propios límites.</h2>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Si queremos ser competitivos, necesitamos profesionales valientes y curiosos, que cuestionen los límites, estén dispuestos a tomar decisiones difíciles, asumir riesgos controlados y utilizar la tecnología para resolver problemas reales.</p>
+          <p class="text-sm text-ink-soft italic leading-relaxed mb-3">Las compañías que avanzan no son las que convierten sus rutinas en dogma, sino las que se atreven a cuestionarlas.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos skills clave:</p>
+          <ul class="space-y-3 text-sm text-ink-soft">
+            <li><span class="font-medium text-ink">Digital Innovation:</span> creamos entornos para sentirnos libres, compartir ideas, generar soluciones creativas e innovar con propósito.</li>
+            <li><span class="font-medium text-ink">Clarity &amp; Courage:</span> la claridad guía decisiones valientes. Impulsamos la toma de decisiones sin miedo, el debate abierto y sincero, y el cuestionamiento riguroso.</li>
+          </ul>
+        </div>
+      </template>
+
+      <template x-if="liderPopup === 'p3'">
+        <div>
+          <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4">Crecemos juntos.</h2>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Si queremos transformarnos para liderar el futuro, necesitamos desarrollar hoy las capacidades que el negocio demandará mañana. Necesitamos profesionales que promuevan que cada persona asuma la responsabilidad por el todo, no solo por su parte.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos skills clave:</p>
+          <ul class="space-y-3 text-sm text-ink-soft mb-4">
+            <li><span class="font-medium text-ink">Driving Ownership:</span> el resultado depende de nosotros. Asumimos la responsabilidad por el todo y buscamos soluciones.</li>
+            <li><span class="font-medium text-ink">Growing People:</span> el crecimiento construye futuro. Aprendemos de la experiencia, lideramos con el ejemplo e impulsamos a las personas.</li>
+          </ul>
+          <p class="text-xs text-ink-mute italic leading-relaxed">El crecimiento de la compañía depende del crecimiento de cada equipo. Y el crecimiento de cada equipo comienza con las personas. Depende de nuestra ambición. De nuestra iniciativa. <em class="not-italic font-medium text-ink">It's on us.</em></p>
+        </div>
+      </template>
+
+      <button @click="liderPopup = null"
+              class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group rounded-br-2xl">
+        <span class="font-mono text-xs tracking-[0.18em] uppercase">Cerrar</span>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
 
   <script src="components.js"></script>
   <script src="scroll.js"></script>
