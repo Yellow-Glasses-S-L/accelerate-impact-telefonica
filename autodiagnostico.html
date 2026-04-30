@@ -549,31 +549,29 @@
     <!-- § 04 — RESOURCES -->
     <section class="border-t border-ink/10 bg-paper">
       <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-14 md:py-20">
-        <div class="flex flex-col md:flex-row md:items-start gap-10 md:gap-20">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-20">
 
-          <!-- Downloads -->
-          <div class="flex-1" data-reveal="up">
-            <p class="text-ink-soft leading-relaxed mb-6"
+          <!-- Texto: intro + contacto -->
+          <div class="flex-1 space-y-4" data-reveal="up">
+            <p class="text-ink-soft leading-relaxed"
                style="font-size: 17px"
                x-text="t('res_intro')"></p>
-            <div class="flex flex-col sm:flex-row gap-3">
-              <a href="javascript:void(0)" class="inline-flex items-center gap-3 bg-tef-blue text-white hover:bg-blue-700 transition-colors px-6 py-4 group">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                <span class="font-mono text-[11px] tracking-[0.18em] uppercase" x-text="t('res_dl1')"></span>
-              </a>
-              <a href="javascript:void(0)" class="inline-flex items-center gap-3 bg-tef-blue text-white hover:bg-blue-700 transition-colors px-6 py-4 group">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                <span class="font-mono text-[11px] tracking-[0.18em] uppercase" x-text="t('res_dl2')"></span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Contact -->
-          <div class="md:max-w-sm" data-reveal="up" data-reveal-delay="0.1">
             <p class="text-ink-soft leading-relaxed" style="font-size: clamp(0.875rem, 1.1vw, 1rem)">
               <span x-text="t('res_contact')"></span>
               <a href="mailto:cts-support@kornferry.com" class="text-tef-blue hover:underline ml-1">cts-support@kornferry.com</a>.
             </p>
+          </div>
+
+          <!-- Botones -->
+          <div class="flex flex-col sm:flex-row gap-3 shrink-0" data-reveal="up" data-reveal-delay="0.1">
+            <a href="javascript:void(0)" class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
+              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span x-text="t('res_dl1')"></span>
+            </a>
+            <a href="javascript:void(0)" class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
+              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span x-text="t('res_dl2')"></span>
+            </a>
           </div>
 
         </div>

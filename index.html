@@ -2,15 +2,10 @@
 <html lang="es" x-data="{
   lang: localStorage.getItem('lang') || 'es',
   page: 'home',
-  disclaimerSeen: localStorage.getItem('disclaimerSeen') === '1',
   cohortOpen: false,
   howPopup: null,
   init() {
     this.$watch('lang', v => localStorage.setItem('lang', v));
-  },
-  acceptDisclaimer() {
-    localStorage.setItem('disclaimerSeen', '1');
-    this.disclaimerSeen = true;
   },
   t(key) {
     return i18n[key] ? (i18n[key][this.lang] || i18n[key]['es']) : key;
@@ -488,14 +483,6 @@
       cohort_cta: { es: 'Elegir cohorte', en: 'Pick cohort' },
       cohort_select: { es: 'Selecciona tu cohorte', en: 'Select your cohort' },
 
-      /* DISCLAIMER */
-      disc_title: { es: 'Antes de empezar', en: 'Before you start' },
-      disc_body: {
-        es: 'Este viaje incluye un autodiagnóstico de liderazgo puramente de desarrollo. Tus resultados individuales sólo son accesibles para ti y el equipo People designado. Los datos agregados preservan la confidencialidad individual. Esto no es una evaluación de desempeño.',
-        en: "This journey includes a purely developmental leadership self-diagnosis. Your individual results are only accessible to you and the designated People team. Aggregated data preserves individual confidentiality. This is not a performance evaluation."
-      },
-      disc_cta: { es: 'Lo entiendo', en: 'I understand' },
-
       /* 3 PILLARS verbatim — claims rojos + verbatim negro */
       p1_title: { es: 'Damos lo mejor de nosotros.', en: 'We give our best.' },
       p1_kicker: { es: 'Porque lo bueno no basta.', en: 'Because good enough is not enough.' },
@@ -544,25 +531,6 @@
 
   <!-- HEADER — 4 items -->
   <header id="site-navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-ink/10"></header>
-
-  <!-- DISCLAIMER POP-UP -->
-  <div x-show="!disclaimerSeen"
-       x-transition.opacity
-       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tef-dark/60 backdrop-blur-sm"
-       style="display:none" x-cloak>
-    <div class="max-w-lg w-full bg-paper rounded-br-2xl shadow-2xl pb-20 pt-8 px-8 md:pt-10 md:px-10 relative overflow-hidden">
-      <div class="mb-6">
-        <img src="accelerate-impact-logo.svg" class="h-7 w-auto" alt="Accelerate Impact">
-      </div>
-      <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4" x-text="t('disc_title')"></h2>
-      <p class="text-sm text-ink-soft leading-relaxed" x-text="t('disc_body')"></p>
-      <button @click="acceptDisclaimer()"
-              class="absolute bottom-0 right-0 inline-flex items-center gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group rounded-br-2xl">
-        <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('disc_cta')"></span>
-        <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-    </div>
-  </div>
 
   <!-- HOW SKILL POPUPS -->
   <div x-show="howPopup !== null"
@@ -799,10 +767,10 @@
 
           <!-- Tabs -->
           <div class="flex items-center gap-1 mt-6 md:mt-8 flex-wrap" id="hscroll-tabs">
-            <button data-tab="0" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-tef-blue bg-tef-blue text-white">Why</button>
-            <button data-tab="1" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">How</button>
-            <button data-tab="2" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">What</button>
-            <button data-tab="3" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 rounded-full border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">Expect</button>
+            <button data-tab="0" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 border transition-all duration-200 border-tef-blue bg-tef-blue text-white">Why</button>
+            <button data-tab="1" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">How</button>
+            <button data-tab="2" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">What</button>
+            <button data-tab="3" class="hscroll-tab font-mono text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-3 md:px-5 py-1.5 md:py-2 border transition-all duration-200 border-ink/15 text-ink/50 hover:text-ink hover:border-ink/30">Expect</button>
           </div>
         </div>
 
@@ -1024,7 +992,7 @@
             <div class="flex flex-wrap justify-center gap-2 mt-5">
               <template x-for="c in countries" :key="c.code">
                 <button @click="flyTo(c)"
-                        class="font-mono text-[10px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border transition-all duration-200"
+                        class="font-mono text-[10px] tracking-[0.15em] uppercase px-3 py-1.5 border transition-all duration-200"
                         :class="active?.code === c.code
                           ? 'border-tef-blue bg-tef-blue text-white'
                           : 'border-paper/20 text-paper/50 hover:text-paper hover:border-paper/40'"
@@ -1450,6 +1418,16 @@
                 }
               });
             });
+
+            // Auto-activar bloque del carrusel desde URL hash (#carousel-N, 1-based)
+            const hashMatch = window.location.hash.match(/^#carousel-(\d+)$/);
+            if (hashMatch) {
+              const idx = parseInt(hashMatch[1]) - 1;
+              if (idx >= 0 && idx < tabs.length) {
+                history.replaceState(null, '', window.location.pathname);
+                setTimeout(() => tabs[idx].click(), 700);
+              }
+            }
           }
         }
 

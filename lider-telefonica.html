@@ -71,14 +71,20 @@
       p1_claim: { es: 'Damos lo mejor de nosotros', en: 'We give our best' },
       p1_sub:   { es: 'Porque lo bueno no basta.', en: 'Because good is not enough.' },
       p1_body:  { es: 'El negocio necesita relevancia.', en: 'The business needs relevance.' },
+      p1_skill1: { es: 'Customer First', en: 'Customer First' },
+      p1_skill2: { es: 'Delivering Excellence', en: 'Delivering Excellence' },
 
       p2_claim: { es: 'Cuestionamos nuestros propios límites', en: 'We challenge our own limits' },
       p2_sub:   { es: 'Y los rompemos.', en: 'And we break them.' },
       p2_body:  { es: 'El negocio necesita velocidad y eficiencia.', en: 'The business needs speed and efficiency.' },
+      p2_skill1: { es: 'Digital Innovation', en: 'Digital Innovation' },
+      p2_skill2: { es: 'Clarity & Courage', en: 'Clarity & Courage' },
 
       p3_claim: { es: 'Crecemos juntos', en: 'We grow together' },
       p3_sub:   { es: 'O no crecemos.', en: 'Or we do not grow at all.' },
       p3_body:  { es: 'El negocio necesita resultados y un talento preparado para lograrlos.', en: 'The business needs results and talent ready to achieve them.' },
+      p3_skill1: { es: 'Driving Ownership', en: 'Driving Ownership' },
+      p3_skill2: { es: 'Growing People', en: 'Growing People' },
     };
   </script>
 </head>
@@ -125,20 +131,24 @@
           </h2>
         </div>
 
-        <!-- 3 tarjetas -->
-        <div class="grid grid-cols-1 md:grid-cols-3 divide-x divide-ink/10" data-reveal-stagger data-stagger-delay="0.18">
+        <!-- 3 tarjetas — subgrid para alinear filas entre las 3 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 md:[grid-template-rows:auto_auto_auto_auto_auto_auto] divide-x divide-ink/10" data-reveal-stagger data-stagger-delay="0.18">
 
           <!-- 01 -->
-          <div class="bg-paper-warm flex flex-col px-8 md:px-10 py-10 md:py-14" data-stagger-item>
-            <span class="font-mono text-tef-blue leading-none mb-8 select-none"
-                  style="font-size: clamp(3rem, 7vw, 7rem); letter-spacing:-0.05em;">01</span>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4"
+          <div class="bg-paper-warm px-8 md:px-10 py-10 md:py-14 grid md:[grid-template-rows:subgrid] md:[grid-row:span_6] gap-y-4" data-stagger-item>
+            <span class="font-mono text-tef-blue leading-none select-none"
+                  style="font-size: clamp(2.5rem, 5.5vw, 5.5rem); letter-spacing:-0.05em;">01</span>
+            <h3 class="font-sans font-normal text-xl md:text-2xl leading-[1.1] tracking-tight text-ink"
                 x-text="t('p1_claim')"></h3>
-            <p class="font-sans italic text-tef-blue text-lg md:text-xl leading-snug mb-4"
+            <p class="font-sans italic text-tef-blue text-base md:text-lg leading-snug"
                x-text="t('p1_sub')"></p>
-            <p class="text-[17px] text-ink-soft leading-relaxed pt-6 border-t border-ink/10"
+            <p class="text-[14px] md:text-[15px] text-ink-soft leading-snug pt-4 border-t border-ink/10"
                x-text="t('p1_body')"></p>
-            <div class="mt-auto pt-8">
+            <div class="flex flex-wrap gap-2 content-start">
+              <span class="font-mono text-[10px] tracking-[0.14em] uppercase border border-tef-blue/40 text-tef-blue px-3 py-1.5" x-text="t('p1_skill1')"></span>
+              <span class="font-mono text-[10px] tracking-[0.14em] uppercase border border-tef-blue/40 text-tef-blue px-3 py-1.5" x-text="t('p1_skill2')"></span>
+            </div>
+            <div class="self-end">
               <button @click="liderPopup = 'p1'"
                       class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
                 <span>Más información</span>
@@ -148,16 +158,20 @@
           </div>
 
           <!-- 02 -->
-          <div class="bg-paper-warm flex flex-col px-8 md:px-10 py-10 md:py-14" data-stagger-item>
-            <span class="font-mono text-tef-blue leading-none mb-8 select-none"
-                  style="font-size: clamp(3rem, 7vw, 7rem); letter-spacing:-0.05em;">02</span>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4"
+          <div class="bg-paper-warm px-8 md:px-10 py-10 md:py-14 grid md:[grid-template-rows:subgrid] md:[grid-row:span_6] gap-y-4" data-stagger-item>
+            <span class="font-mono text-tef-blue leading-none select-none"
+                  style="font-size: clamp(2.5rem, 5.5vw, 5.5rem); letter-spacing:-0.05em;">02</span>
+            <h3 class="font-sans font-normal text-xl md:text-2xl leading-[1.1] tracking-tight text-ink"
                 x-text="t('p2_claim')"></h3>
-            <p class="font-sans italic text-tef-blue text-lg md:text-xl leading-snug mb-4"
+            <p class="font-sans italic text-tef-blue text-base md:text-lg leading-snug"
                x-text="t('p2_sub')"></p>
-            <p class="text-[17px] text-ink-soft leading-relaxed pt-6 border-t border-ink/10"
+            <p class="text-[14px] md:text-[15px] text-ink-soft leading-snug pt-4 border-t border-ink/10"
                x-text="t('p2_body')"></p>
-            <div class="mt-auto pt-8">
+            <div class="flex flex-wrap gap-2 content-start">
+              <span class="font-mono text-[10px] tracking-[0.14em] uppercase border border-tef-blue/40 text-tef-blue px-3 py-1.5" x-text="t('p2_skill1')"></span>
+              <span class="font-mono text-[10px] tracking-[0.14em] uppercase border border-tef-blue/40 text-tef-blue px-3 py-1.5" x-text="t('p2_skill2')"></span>
+            </div>
+            <div class="self-end">
               <button @click="liderPopup = 'p2'"
                       class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
                 <span>Más información</span>
@@ -167,16 +181,20 @@
           </div>
 
           <!-- 03 -->
-          <div class="bg-paper-warm flex flex-col px-8 md:px-10 py-10 md:py-14" data-stagger-item>
-            <span class="font-mono text-tef-blue leading-none mb-8 select-none"
-                  style="font-size: clamp(3rem, 7vw, 7rem); letter-spacing:-0.05em;">03</span>
-            <h3 class="font-sans font-normal text-2xl md:text-3xl leading-[1.05] tracking-tight text-ink mb-4"
+          <div class="bg-paper-warm px-8 md:px-10 py-10 md:py-14 grid md:[grid-template-rows:subgrid] md:[grid-row:span_6] gap-y-4" data-stagger-item>
+            <span class="font-mono text-tef-blue leading-none select-none"
+                  style="font-size: clamp(2.5rem, 5.5vw, 5.5rem); letter-spacing:-0.05em;">03</span>
+            <h3 class="font-sans font-normal text-xl md:text-2xl leading-[1.1] tracking-tight text-ink"
                 x-text="t('p3_claim')"></h3>
-            <p class="font-sans italic text-tef-blue text-lg md:text-xl leading-snug mb-4"
+            <p class="font-sans italic text-tef-blue text-base md:text-lg leading-snug"
                x-text="t('p3_sub')"></p>
-            <p class="text-[17px] text-ink-soft leading-relaxed pt-6 border-t border-ink/10"
+            <p class="text-[14px] md:text-[15px] text-ink-soft leading-snug pt-4 border-t border-ink/10"
                x-text="t('p3_body')"></p>
-            <div class="mt-auto pt-8">
+            <div class="flex flex-wrap gap-2 content-start">
+              <span class="font-mono text-[10px] tracking-[0.14em] uppercase border border-tef-blue/40 text-tef-blue px-3 py-1.5" x-text="t('p3_skill1')"></span>
+              <span class="font-mono text-[10px] tracking-[0.14em] uppercase border border-tef-blue/40 text-tef-blue px-3 py-1.5" x-text="t('p3_skill2')"></span>
+            </div>
+            <div class="self-end">
               <button @click="liderPopup = 'p3'"
                       class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
                 <span>Más información</span>
@@ -191,11 +209,11 @@
 
     <!-- Page navigation -->
     <section class="bg-paper-warm border-t border-ink/10 py-8">
-      <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center justify-end">
-        <a href="journey.html"
+      <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center">
+        <a href="index.html#carousel-2"
            class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
-          <span class="font-mono text-[12px] tracking-[0.2em] uppercase">IR A JOURNEY</span>
-          <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg class="w-4 h-4 shrink-0 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span class="font-mono text-[12px] tracking-[0.2em] uppercase">Volver</span>
         </a>
       </div>
     </section>
