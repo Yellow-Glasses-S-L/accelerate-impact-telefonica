@@ -9,11 +9,15 @@
       #page-loader {
         position: fixed; inset: 0; z-index: 99998;
         background: #F7F7FF;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        gap: 44px;
+        display: flex; align-items: center; justify-content: center;
         transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
         will-change: transform;
       }
+      #l-row {
+        display: flex; align-items: center; gap: 32px;
+        padding: 0 24px;
+      }
+      #l-text { display: flex; flex-direction: column; text-align: left; }
       /* Salida: telón que sube */
       #page-loader.out { transform: translateY(-100%); }
 
@@ -46,12 +50,33 @@
       .l-dot.breath {
         animation: lDotBreath 3.2s ease-in-out infinite;
       }
+      /* Wordmark "telefónica" — entra tras los puntos */
+      @keyframes lWordIn {
+        from { opacity: 0; transform: translateX(-12px); filter: blur(10px); }
+        to   { opacity: 1; transform: translateX(0);     filter: blur(0); }
+      }
+      .l-word {
+        transform-origin: left center; transform-box: fill-box;
+        animation: lWordIn 0.7s cubic-bezier(0.34, 1.1, 0.64, 1) 0.9s both;
+      }
+      /* Divisor vertical entre logo y texto */
+      @keyframes lDividerIn {
+        from { transform: scaleY(0); opacity: 0; }
+        to   { transform: scaleY(1); opacity: 1; }
+      }
+      #l-divider {
+        width: 1px; height: 56px;
+        background: rgba(3,26,52,0.18);
+        transform-origin: center;
+        animation: lDividerIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) 1.15s both;
+        flex-shrink: 0;
+      }
 
       #l-eyebrow {
         display: block;
         font-family: 'Telefonica Sans', Inter, sans-serif;
         font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase;
-        color: #031A34; opacity: 0.38; margin-bottom: 10px;
+        color: #031A34; opacity: 0.38; margin-bottom: 4px;
         animation: lTextUp 0.55s ease 0.85s both;
       }
       #l-title {
@@ -87,16 +112,22 @@
     var loader = document.createElement('div');
     loader.id = 'page-loader';
     loader.innerHTML = `
-      <svg viewBox="0 0 464 464" width="72" height="72" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
-        <circle class="l-dot" cx="69.2"  cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.05s"/>
-        <circle class="l-dot" cx="232"   cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.22s"/>
-        <circle class="l-dot" cx="394.8" cy="69.2"  r="69.2" fill="#0066FF" style="animation-delay:0.39s"/>
-        <circle class="l-dot" cx="232"   cy="232"   r="69.2" fill="#0066FF" style="animation-delay:0.56s"/>
-        <circle class="l-dot" cx="232"   cy="394.8" r="69.2" fill="#0066FF" style="animation-delay:0.73s"/>
-      </svg>
-      <div style="text-align:center;">
-        <span id="l-eyebrow">${lang === 'en' ? 'Welcome to' : 'Bienvenido a'}</span>
-        <span id="l-title">Accelerate Impact</span>
+      <div id="l-row">
+        <svg viewBox="0 0 1041.7 250" width="240" height="58" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible; flex-shrink:0;">
+          <g fill="#0066FF">
+            <path class="l-dot" style="animation-delay:0.05s" d="M74.6 37.3C74.6 16.7 57.9 0 37.3 0S0 16.7 0 37.3s16.7 37.3 37.3 37.3 37.3-16.7 37.3-37.3"/>
+            <path class="l-dot" style="animation-delay:0.22s" d="M162.3 37.3C162.3 16.7 145.6 0 125 0S87.7 16.7 87.7 37.3s16.7 37.3 37.3 37.3 37.3-16.7 37.3-37.3"/>
+            <path class="l-dot" style="animation-delay:0.39s" d="M250 37.3C250 16.7 233.3 0 212.7 0s-37.3 16.7-37.3 37.3 16.7 37.3 37.3 37.3S250 57.9 250 37.3"/>
+            <path class="l-dot" style="animation-delay:0.56s" d="M162.3 125c0-20.6-16.7-37.3-37.3-37.3S87.7 104.4 87.7 125s16.7 37.3 37.3 37.3 37.3-16.7 37.3-37.3"/>
+            <path class="l-dot" style="animation-delay:0.73s" d="M162.3 212.7c0-20.6-16.7-37.3-37.3-37.3s-37.3 16.7-37.3 37.3S104.4 250 125 250s37.3-16.7 37.3-37.3"/>
+            <path class="l-word" d="M329.5 95.9h-34.7V75.2h91v20.7H351v95.2h-21.5zM440.3 141.5c-1.8-10.8-8.9-19-20.7-19-12.6 0-19.9 8.3-22.4 19zm18.2 24.8c-1.8 6.6-12.3 26.5-38.9 26.5-24.8 0-43-18.2-43-43.9s18.2-43.9 43-43.9c23.2 0 41.4 18.2 41.4 42.2 0 2.5-.3 4.5-.5 6l-.3 2.3h-62.9c1.8 11.8 10.6 19.9 22.4 19.9 9.8 0 15.7-5.6 17.4-9.1zM473.4 75.2h20.7v115.9h-20.7zM570.2 141.5c-1.8-10.8-8.9-19-20.7-19-12.6 0-19.9 8.3-22.4 19zm18.3 24.8c-1.8 6.6-12.3 26.5-38.9 26.5-24.8 0-43-18.2-43-43.9s18.2-43.9 43-43.9c23.2 0 41.4 18.2 41.4 42.2 0 2.5-.3 4.5-.5 6l-.3 2.3h-62.9c1.8 11.8 10.6 19.9 22.4 19.9 9.8 0 15.7-5.6 17.4-9.1zM610 126.6h-14.1v-19.9H610V94.3c0-12.6 8.1-20.7 20.7-20.7h18.2v18.2h-12.4c-3.3 0-5.8 2.5-5.8 5.8v9.1h18.2v19.9h-18.2v64.6H610zM750.5 106.7h19l1.7 8.3h.8c1.5-1.8 3.5-3.5 5.6-5 3.8-2.5 9.6-5 17.6-5 19 0 33.1 14.1 33.1 35.6v50.5h-20.7v-48.8c0-10.8-7.5-18.2-18.2-18.2-10.8 0-18.2 7.5-18.2 18.2v48.8h-20.7zM960.1 159.7c-2.7 13.2-13.1 33.1-39.7 33.1-24.8 0-43-18.2-43-43.9s18.2-43.9 43-43.9c26.7 0 37.1 19.9 39.7 32.3h-20.7c-1.8-4.8-6.6-13.2-19-13.2S898 134 898 148.9s9.9 24.8 22.4 24.8 17.2-8.3 19-14.1h20.7zM1021 154.7h-17.4c-10.8 0-15.7 4.1-15.7 10.8 0 6.6 4.8 10.8 13.2 10.8 12.6 0 19.9-7.3 19.9-19zm1.6 28.2h-.8c-1.5 1.8-3.5 3.5-5.8 5-4 2.5-9.8 5-18.2 5-19.2 0-30.6-11.8-30.6-25.7 0-16.6 11.6-28.2 34.8-28.2h19v-1.7c0-9.3-5.6-15.7-14.9-15.7s-14.1 6-14.9 10.8h-20.7c1.8-13.9 13.1-27.3 35.6-27.3 21.5 0 35.6 14.2 35.6 32.3v53.8h-17.4zM844.2 106.7h20.7v84.4h-20.7zm22.6-24.4c0-6.8-5.5-12.3-12.3-12.3s-12.3 5.5-12.3 12.3 5.5 12.3 12.3 12.3c6.8-.1 12.3-5.5 12.3-12.3M717.4 148.9c0-14.9-9.9-24.8-22.4-24.8-12.4 0-22.4 9.9-22.4 24.8s9.9 24.8 22.4 24.8 22.4-9.9 22.4-24.8m20.7 0c0 25.7-18.2 43.9-43.1 43.9-24.8 0-43-18.2-43-43.9s18.2-43.9 43-43.9c24.9 0 43.1 18.2 43.1 43.9m-35.6-77.8H724l-19.9 24h-17.4z"/>
+          </g>
+        </svg>
+        <div id="l-divider"></div>
+        <div id="l-text">
+          <span id="l-eyebrow">${lang === 'en' ? 'Welcome to' : 'Bienvenido a'}</span>
+          <span id="l-title">Accelerate Impact</span>
+        </div>
       </div>
       <div id="l-bar"><div id="l-bar-fill"></div></div>
     `;
@@ -245,7 +276,7 @@
 
           <!-- Logo -->
           <a href="index.html" class="flex-shrink-0">
-            <img src="accelerate-impact-logo.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
+            <img src="telefonica-5.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
           </a>
 
           <span class="hidden md:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
@@ -314,7 +345,7 @@
 
         <!-- Top: logo -->
         <div class="pb-10 border-b border-paper/10">
-          <img src="accelerate-impact-logo.svg" class="h-10 md:h-12 w-auto brightness-0 invert" alt="Accelerate Impact">
+          <img src="telefonica-5.svg" class="h-10 md:h-12 w-auto brightness-0 invert" alt="Accelerate Impact">
         </div>
 
         <!-- Middle: columns -->
