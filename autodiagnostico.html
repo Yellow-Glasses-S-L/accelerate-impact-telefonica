@@ -61,6 +61,102 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { animation: none; }
     }
+
+    /* ── ICEBERG INTERACTIVE MARKERS ── */
+    .iceberg-marker {
+      position: relative; display: block; width: 18px; height: 18px;
+      cursor: pointer; border: 0; padding: 0; background: transparent;
+    }
+    .marker-core {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: #0066FF;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      box-shadow: 0 0 18px rgba(0,102,255,0.85);
+      transition: transform 0.25s ease;
+    }
+    .iceberg-marker:hover .marker-core,
+    .iceberg-marker.active .marker-core { transform: scale(1.35); }
+    .marker-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1.5px solid rgba(0,102,255,0.7);
+      animation: markerPulse 2.6s ease-out infinite;
+    }
+    .marker-ring-2 { animation-delay: 1.3s; }
+    @keyframes markerPulse {
+      0%   { transform: scale(1);   opacity: 0.85; }
+      100% { transform: scale(4.2); opacity: 0; }
+    }
+    .marker-label {
+      position: absolute; top: 50%; left: 100%;
+      transform: translateY(-50%);
+      display: flex; align-items: center;
+      pointer-events: none; white-space: nowrap;
+    }
+    .marker-line {
+      display: block; width: 56px; height: 1px;
+      background: linear-gradient(to right, rgba(0,102,255,0.75), rgba(255,255,255,0.35));
+      margin-left: 14px;
+    }
+    .marker-label-text {
+      margin-left: 14px;
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 0 14px rgba(2,9,20,0.7);
+    }
+    .marker-card {
+      position: absolute; top: 50%; left: 100%;
+      transform: translateY(-50%);
+      margin-left: 96px;
+      width: 320px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-radius: 4px;
+      padding: 0; overflow: hidden;
+      box-shadow: 0 18px 56px rgba(2,9,20,0.45), 0 0 0 1px rgba(0,102,255,0.18);
+      z-index: 30;
+    }
+    /* Variante: abrir hacia la izquierda */
+    .marker-card.marker-card-left {
+      left: auto; right: 100%;
+      margin-left: 0; margin-right: 96px;
+    }
+    /* Variante: abrir hacia arriba-derecha (para markers cercanos al borde inferior) */
+    .marker-card.marker-card-up {
+      top: auto; bottom: 100%;
+      transform: translateY(0);
+      margin-bottom: 12px;
+    }
+    .marker-card-img {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      background: #ECEEF7; overflow: hidden;
+    }
+    .marker-card-img img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .marker-card-body { padding: 20px 24px 18px; }
+    .marker-card .card-eyebrow {
+      font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #0066FF; margin-bottom: 8px;
+    }
+    .marker-card .card-title {
+      font-size: 1.5rem; font-weight: 400; color: #031A34;
+      margin-bottom: 8px; line-height: 1.2; letter-spacing: -0.01em;
+    }
+    .marker-card .card-desc {
+      font-size: 0.94rem; color: rgba(3,26,52,0.72);
+      line-height: 1.55; margin-bottom: 14px;
+    }
+    .marker-card .card-time {
+      font-size: 11px; letter-spacing: 0.18em;
+      color: #0066FF; padding-top: 12px;
+      border-top: 1px solid rgba(3,26,52,0.1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marker-ring { animation: none; opacity: 0; }
+    }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -96,8 +192,8 @@
       disc_modal_cta: { es: 'Entendido, continuar', en: 'Got it, continue' },
 
       email_notice: {
-        es: 'Recibirás tu enlace personal al assessment por email desde kfassessment@kornferry.com.',
-        en: 'You will receive your personal assessment link by email from kfassessment@kornferry.com.'
+        es: 'Recibirás tu enlace personal al autodiagnóstico por email desde kfassessment@kornferry.com.',
+        en: 'You will receive your personal self-diagnosis link by email from kfassessment@kornferry.com.'
       },
 
       intro_p1: {
@@ -105,7 +201,7 @@
         en: 'Through the leadership self-diagnosis, you will gain a clear understanding of how you lead today, what your strengths are as a leader, and identify elements that may be limiting your impact — and where small changes can make a big difference.'
       },
       intro_p2: {
-        es: 'Esta experiencia está alineada con el nuevo Modelo de Liderazgo de Telefónica, que traslada la ambición cultural en habilidades de liderazgo aplicadas al día a día.',
+        es: 'Esta experiencia está alineada con el nuevo Modelo de Liderazgo de Telefónica, que traslada la ambición cultural en skills de liderazgo aplicadas al día a día.',
         en: 'This experience is aligned with the new Telefónica Leadership Model, which translates cultural ambition into leadership skills applied to everyday work.'
       },
       intro_p3: {
@@ -119,6 +215,8 @@
 
       stair_eyebrow: { es: 'El modelo en profundidad', en: 'The model in depth' },
       stair_title: { es: 'Lo que se ve. Y lo que no se ve.', en: 'What you see. And what lies beneath.' },
+      stair_title_top: { es: 'Lo que se ve.', en: 'What you see.' },
+      stair_title_bottom: { es: 'Y lo que no se ve.', en: 'And what lies beneath.' },
       stair_sub: { es: 'Una mirada introspectiva de 45 min para conocer cómo nos comportamos y por qué.', en: 'A 45-min introspective view to understand how we behave and why.' },
 
       ls_title: { es: 'Leadership Skills', en: 'Leadership Skills' },
@@ -282,110 +380,195 @@
       </div>
     </section>
 
-    <!-- § 01 — STAIRCASE -->
+    <!-- § 01 — ICEBERG UNIFICADO -->
     <section class="border-t border-ink/10">
 
-      <!-- Iceberg hero — cinematic, like home intro -->
-      <div class="relative overflow-hidden grain" style="min-height: 70vh;">
-        <!-- Background image -->
-        <img src="iceberg.jpg" alt=""
-             class="absolute inset-0 w-full h-full object-cover object-center"
-             style="transform: scale(1.05);" aria-hidden="true">
-        <!-- Overlay — matching home intro darkness -->
-        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(2,9,20,0.45) 0%, rgba(2,9,20,0.65) 60%, rgba(2,9,20,0.92) 100%);"></div>
-        <!-- Atmospheric glow -->
-        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70vw 50vh at 50% 40%, rgba(0,102,255,0.12) 0%, transparent 60%);"></div>
+      <!-- DESKTOP: iceberg full-bleed bg + 2-col content overlay -->
+      <div class="hidden md:block relative"
+           x-data="{ open: null, isTouch: window.matchMedia('(hover: none)').matches }"
+           @click.outside="open = null"
+           style="min-height: 90vh;">
 
-        <!-- Text content -->
-        <div class="relative z-10 max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-36 flex flex-col justify-end h-full" style="min-height: 70vh;">
-          <div data-reveal="up">
-            <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-tef-blue mb-5" x-text="t('stair_eyebrow')"></p>
-            <h2 class="font-sans font-normal tracking-tight text-paper leading-[0.95] mb-6"
-                style="font-size: clamp(2.8rem, 6vw, 6.5rem)"
-                x-text="t('stair_title')"></h2>
-            <p class="text-paper/70 max-w-xl leading-relaxed"
-               style="font-size: clamp(1rem, 1.4vw, 1.2rem)"
-               x-text="t('stair_sub')"></p>
+        <!-- Full-width iceberg image (clipped) -->
+        <div class="absolute inset-0 overflow-hidden grain">
+          <img src="iceberg.jpg" alt=""
+               class="absolute inset-0 w-full h-full object-cover object-center"
+               style="transform: scale(1.05);" aria-hidden="true">
+          <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(2,9,20,0.55) 0%, rgba(2,9,20,0.55) 45%, rgba(2,9,20,0.92) 100%);"></div>
+          <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70vw 55vh at 50% 35%, rgba(0,102,255,0.15) 0%, transparent 65%);"></div>
+        </div>
+
+        <!-- 2-column content overlay -->
+        <div class="relative z-10 grid grid-cols-2 max-w-[1920px] mx-auto" style="min-height: 90vh;">
+
+          <!-- Left column: titles vertically centered -->
+          <div class="px-8 md:px-12 lg:px-16 py-[5.75rem] flex flex-col justify-center gap-10 lg:gap-14">
+            <div data-reveal="up">
+              <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper mb-5" x-text="t('stair_eyebrow')"></p>
+              <h2 class="font-sans font-normal tracking-tight text-paper leading-[0.95]"
+                  style="font-size: clamp(2rem, 4.2vw, 4.6rem)"
+                  x-text="t('stair_title_top')"></h2>
+            </div>
+            <div data-reveal="up">
+              <h2 class="font-sans font-normal tracking-tight text-paper leading-[0.95] mb-5"
+                  style="font-size: clamp(2rem, 4.2vw, 4.6rem)"
+                  x-text="t('stair_title_bottom')"></h2>
+              <p class="text-paper/70 leading-relaxed"
+                 style="font-size: clamp(0.95rem, 1.2vw, 1.1rem)"
+                 x-text="t('stair_sub')"></p>
+            </div>
+          </div>
+
+          <!-- Right column: markers absolutely positioned, tooltips can extend -->
+          <div class="relative pointer-events-none">
+
+            <!-- Marker 1 — Lo que haces (peak / above water) — RIGHT -->
+            <div class="absolute pointer-events-auto" style="top: 22%; left: 15%;">
+              <button type="button"
+                      @click="open = open === 'm1' ? null : 'm1'"
+                      @mouseenter="!isTouch && (open = 'm1')"
+                      @mouseleave="!isTouch && (open = null)"
+                      :class="open === 'm1' && 'active'"
+                      class="iceberg-marker"
+                      :aria-label="t('m1_label')">
+                <span class="marker-ring"></span>
+                <span class="marker-ring marker-ring-2"></span>
+                <span class="marker-core"></span>
+              </button>
+              <span class="marker-label" x-show="open !== 'm1'" x-transition.opacity>
+                <span class="marker-line"></span>
+                <span class="marker-label-text" x-text="t('m1_label')"></span>
+              </span>
+              <div class="marker-card" x-show="open === 'm1'" x-transition>
+                <div class="marker-card-img"><img src="autodiag-m1.png" alt=""></div>
+                <div class="marker-card-body">
+                  <p class="card-eyebrow" x-text="t('m1_sub')"></p>
+                  <h3 class="card-title" x-text="t('m1_label')"></h3>
+                  <p class="card-desc" x-text="t('m1_desc')"></p>
+                  <p class="card-time" x-text="t('m1_time')"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Marker 2 — Lo que te mueve (waterline) — RIGHT -->
+            <div class="absolute pointer-events-auto" style="top: 50%; left: 15%;">
+              <button type="button"
+                      @click="open = open === 'm2' ? null : 'm2'"
+                      @mouseenter="!isTouch && (open = 'm2')"
+                      @mouseleave="!isTouch && (open = null)"
+                      :class="open === 'm2' && 'active'"
+                      class="iceberg-marker"
+                      :aria-label="t('m2_label')">
+                <span class="marker-ring"></span>
+                <span class="marker-ring marker-ring-2"></span>
+                <span class="marker-core"></span>
+              </button>
+              <span class="marker-label" x-show="open !== 'm2'" x-transition.opacity>
+                <span class="marker-line"></span>
+                <span class="marker-label-text" x-text="t('m2_label')"></span>
+              </span>
+              <div class="marker-card" x-show="open === 'm2'" x-transition>
+                <div class="marker-card-img"><img src="autodiag-m2.png" alt=""></div>
+                <div class="marker-card-body">
+                  <p class="card-eyebrow" x-text="t('m2_sub')"></p>
+                  <h3 class="card-title" x-text="t('m2_label')"></h3>
+                  <p class="card-desc" x-text="t('m2_desc')"></p>
+                  <p class="card-time" x-text="t('m2_time')"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Marker 3 — Quién eres (deep base) — RIGHT, opens UPWARD to avoid bottom cutoff -->
+            <div class="absolute pointer-events-auto" style="top: 78%; left: 15%;">
+              <button type="button"
+                      @click="open = open === 'm3' ? null : 'm3'"
+                      @mouseenter="!isTouch && (open = 'm3')"
+                      @mouseleave="!isTouch && (open = null)"
+                      :class="open === 'm3' && 'active'"
+                      class="iceberg-marker"
+                      :aria-label="t('m3_label')">
+                <span class="marker-ring"></span>
+                <span class="marker-ring marker-ring-2"></span>
+                <span class="marker-core"></span>
+              </button>
+              <span class="marker-label" x-show="open !== 'm3'" x-transition.opacity>
+                <span class="marker-line"></span>
+                <span class="marker-label-text" x-text="t('m3_label')"></span>
+              </span>
+              <div class="marker-card marker-card-up" x-show="open === 'm3'" x-transition>
+                <div class="marker-card-img"><img src="autodiag-m6.png" alt=""></div>
+                <div class="marker-card-body">
+                  <p class="card-eyebrow" x-text="t('m3_sub')"></p>
+                  <h3 class="card-title" x-text="t('m3_label')"></h3>
+                  <p class="card-desc" x-text="t('m3_desc')"></p>
+                  <p class="card-time" x-text="t('m3_time')"></p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      <!-- Staircase cards below -->
-      <div class="bg-paper-warm py-16 md:py-20">
-      <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16">
-
-        <!-- Leadership Skills — entradilla + cards fusionadas -->
-        <div class="mb-10 md:mb-12" data-reveal="up">
-          <h3 class="font-sans font-normal italic text-ink leading-[1.0] tracking-tight mb-3"
-              style="font-size: clamp(2rem, 4.5vw, 5.2rem)"
-              x-text="t('ls_title')"></h3>
-          <p class="text-ink-soft leading-relaxed max-w-2xl"
-             style="font-size: 17px"
-             x-text="t('ls_desc')"></p>
+      <!-- MOBILE: iceberg with title + cards below -->
+      <div class="md:hidden">
+        <!-- Iceberg with title overlay -->
+        <div class="relative overflow-hidden grain" style="min-height: 60vh;">
+          <img src="iceberg.jpg" alt=""
+               class="absolute inset-0 w-full h-full object-cover object-center" aria-hidden="true">
+          <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(2,9,20,0.45) 0%, rgba(2,9,20,0.55) 50%, rgba(2,9,20,0.92) 100%);"></div>
+          <div class="relative z-10 px-6 py-14 flex flex-col justify-center gap-8" style="min-height: 60vh;">
+            <div data-reveal="up">
+              <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-paper mb-3" x-text="t('stair_eyebrow')"></p>
+              <h2 class="font-sans font-normal tracking-tight text-paper leading-[0.95]"
+                  style="font-size: clamp(2rem, 8vw, 3rem)"
+                  x-text="t('stair_title_top')"></h2>
+            </div>
+            <div data-reveal="up">
+              <h2 class="font-sans font-normal tracking-tight text-paper leading-[0.95] mb-3"
+                  style="font-size: clamp(2rem, 8vw, 3rem)"
+                  x-text="t('stair_title_bottom')"></h2>
+              <p class="text-paper/70 leading-relaxed text-[0.95rem]" x-text="t('stair_sub')"></p>
+            </div>
+          </div>
         </div>
 
-        <!-- 3 modules -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0" data-reveal-stagger data-stagger-delay="0.1">
-
-          <!-- Lo que haces -->
-          <article class="border-r border-b border-ink/10 flex flex-col" style="background:#F7F7FF;" data-stagger-item>
-            <div class="aspect-[4/3] border-b border-ink/8 relative overflow-hidden">
+        <!-- Cards below (with image) -->
+        <div class="bg-paper-warm py-10 px-6 space-y-6" data-reveal-stagger data-stagger-delay="0.1">
+          <article class="bg-paper border border-ink/10 overflow-hidden" data-stagger-item>
+            <div class="relative w-full bg-[#ECEEF7]" style="aspect-ratio: 16/9;">
               <img src="autodiag-m1.png" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
-            <div class="p-8 flex flex-col flex-1">
-              <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
-                <span class="text-tef-blue" x-text="t('m1_label')"></span>
-              </p>
-              <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
-                  style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
-                  x-text="t('m1_label')"></h3>
-              <p class="text-ink-soft leading-relaxed flex-1"
-                 style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)"
-                 x-text="t('m1_desc')"></p>
-              <p class="font-mono text-[12px] tracking-[0.18em] text-tef-blue mt-6 pt-5 border-t border-ink/8" x-text="t('m1_time')"></p>
+            <div class="p-5">
+              <p class="font-mono text-[10px] tracking-[0.22em] uppercase text-tef-blue mb-2" x-text="t('m1_sub')"></p>
+              <h3 class="font-sans font-normal text-2xl text-ink leading-tight mb-2" x-text="t('m1_label')"></h3>
+              <p class="text-ink-soft text-[15px] leading-relaxed mb-4" x-text="t('m1_desc')"></p>
+              <p class="font-mono text-[11px] tracking-[0.18em] text-tef-blue pt-3 border-t border-ink/8" x-text="t('m1_time')"></p>
             </div>
           </article>
-
-          <!-- Lo que te mueve -->
-          <article class="border-r border-b border-ink/10 flex flex-col" style="background:#F7F7FF;" data-stagger-item>
-            <div class="aspect-[4/3] border-b border-ink/8 relative overflow-hidden">
+          <article class="bg-paper border border-ink/10 overflow-hidden" data-stagger-item>
+            <div class="relative w-full bg-[#ECEEF7]" style="aspect-ratio: 16/9;">
               <img src="autodiag-m2.png" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
-            <div class="p-8 flex flex-col flex-1">
-              <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
-                <span class="text-tef-blue" x-text="t('m2_label')"></span>
-              </p>
-              <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
-                  style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
-                  x-text="t('m2_label')"></h3>
-              <p class="text-ink-soft leading-relaxed flex-1"
-                 style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)"
-                 x-text="t('m2_desc')"></p>
-              <p class="font-mono text-[12px] tracking-[0.18em] text-tef-blue mt-6 pt-5 border-t border-ink/8" x-text="t('m2_time')"></p>
+            <div class="p-5">
+              <p class="font-mono text-[10px] tracking-[0.22em] uppercase text-tef-blue mb-2" x-text="t('m2_sub')"></p>
+              <h3 class="font-sans font-normal text-2xl text-ink leading-tight mb-2" x-text="t('m2_label')"></h3>
+              <p class="text-ink-soft text-[15px] leading-relaxed mb-4" x-text="t('m2_desc')"></p>
+              <p class="font-mono text-[11px] tracking-[0.18em] text-tef-blue pt-3 border-t border-ink/8" x-text="t('m2_time')"></p>
             </div>
           </article>
-
-          <!-- Quién eres -->
-          <article class="border-r border-b border-ink/10 flex flex-col" style="background:#F7F7FF;" data-stagger-item>
-            <div class="aspect-[4/3] border-b border-ink/8 relative overflow-hidden">
+          <article class="bg-paper border border-ink/10 overflow-hidden" data-stagger-item>
+            <div class="relative w-full bg-[#ECEEF7]" style="aspect-ratio: 16/9;">
               <img src="autodiag-m6.png" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
-            <div class="p-8 flex flex-col flex-1">
-              <p class="font-mono text-[11px] tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
-                <span class="text-tef-blue" x-text="t('m3_label')"></span>
-              </p>
-              <h3 class="font-sans font-normal tracking-tight text-ink leading-tight mb-3"
-                  style="font-size: clamp(1.5rem, 2.5vw, 2.2rem)"
-                  x-text="t('m3_label')"></h3>
-              <p class="text-ink-soft leading-relaxed flex-1"
-                 style="font-size: clamp(0.9rem, 1.2vw, 1.05rem)"
-                 x-text="t('m3_desc')"></p>
-              <p class="font-mono text-[12px] tracking-[0.18em] text-tef-blue mt-6 pt-5 border-t border-ink/8" x-text="t('m3_time')"></p>
+            <div class="p-5">
+              <p class="font-mono text-[10px] tracking-[0.22em] uppercase text-tef-blue mb-2" x-text="t('m3_sub')"></p>
+              <h3 class="font-sans font-normal text-2xl text-ink leading-tight mb-2" x-text="t('m3_label')"></h3>
+              <p class="text-ink-soft text-[15px] leading-relaxed mb-4" x-text="t('m3_desc')"></p>
+              <p class="font-mono text-[11px] tracking-[0.18em] text-tef-blue pt-3 border-t border-ink/8" x-text="t('m3_time')"></p>
             </div>
           </article>
-
         </div>
-      </div>
       </div>
     </section>
 

@@ -209,11 +209,16 @@
 
     <!-- Page navigation -->
     <section class="bg-paper-warm border-t border-ink/10 py-8">
-      <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center">
+      <div class="max-w-[1920px] mx-auto px-8 md:px-12 lg:px-16 flex items-center justify-between gap-4">
         <a href="index.html#carousel-2"
            class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
           <svg class="w-4 h-4 shrink-0 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
-          <span class="font-mono text-[12px] tracking-[0.2em] uppercase">Volver</span>
+          <span class="font-mono text-[12px] tracking-[0.2em] uppercase" x-text="lang==='es' ? 'Volver' : 'Back'"></span>
+        </a>
+        <a href="journey.html"
+           class="group inline-flex items-center gap-3 text-ink-mute hover:text-tef-blue transition-colors">
+          <span class="font-mono text-[12px] tracking-[0.2em] uppercase" x-text="lang==='es' ? 'Ir a Journey' : 'Go to Journey'"></span>
+          <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
     </section>
@@ -236,12 +241,12 @@
 
       <template x-if="liderPopup === 'p1'">
         <div>
-          <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4">Damos lo mejor de nosotros.</h2>
-          <p class="text-sm text-ink-soft leading-relaxed mb-3">Y si queremos convertirnos en socios de confianza de nuestros clientes, necesitamos profesionales que simplifiquen, prioricen y se enfoquen en lo que realmente genera impacto.</p>
-          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos skills clave:</p>
-          <ul class="space-y-3 text-sm text-ink-soft">
-            <li><span class="font-medium text-ink">Customer First:</span> el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.</li>
-            <li><span class="font-medium text-ink">Delivering Excellence:</span> la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.</li>
+          <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4">Dando lo mejor de nosotros.</h2>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Y si queremos convertirnos en socios de confianza de nuestros clientes, necesitamos profesionales que <strong class="text-ink font-semibold">simplifiquen, prioricen y se enfoquen en lo que realmente genera impacto</strong>.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos <em>skills</em> clave:</p>
+          <ul class="space-y-3 text-sm text-ink-soft list-disc list-outside ml-5">
+            <li><span class="font-semibold text-ink">Customer First</span>: el momento del cliente es ahora. Escuchamos y resolvemos con rapidez.</li>
+            <li><span class="font-semibold text-ink">Delivering Excellence</span>: la excelencia es nuestro estándar. Menos es más. Obsesión por la simplicidad.</li>
           </ul>
         </div>
       </template>
@@ -249,12 +254,12 @@
       <template x-if="liderPopup === 'p2'">
         <div>
           <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4">Cuestionamos nuestros propios límites.</h2>
-          <p class="text-sm text-ink-soft leading-relaxed mb-3">Si queremos ser competitivos, necesitamos profesionales valientes y curiosos, que cuestionen los límites, estén dispuestos a tomar decisiones difíciles, asumir riesgos controlados y utilizar la tecnología para resolver problemas reales.</p>
-          <p class="text-sm text-ink-soft italic leading-relaxed mb-3">Las compañías que avanzan no son las que convierten sus rutinas en dogma, sino las que se atreven a cuestionarlas.</p>
-          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos skills clave:</p>
-          <ul class="space-y-3 text-sm text-ink-soft">
-            <li><span class="font-medium text-ink">Digital Innovation:</span> creamos entornos para sentirnos libres, compartir ideas, generar soluciones creativas e innovar con propósito.</li>
-            <li><span class="font-medium text-ink">Clarity &amp; Courage:</span> la claridad guía decisiones valientes. Impulsamos la toma de decisiones sin miedo, el debate abierto y sincero, y el cuestionamiento riguroso.</li>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Si queremos ser competitivos, necesitamos profesionales <strong class="text-ink font-semibold">valientes y curiosos</strong>, que cuestionen los límites, estén dispuestos a tomar decisiones difíciles, asumir riesgos controlados y utilizar la tecnología para resolver problemas reales.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Las compañías que avanzan no son las que convierten sus rutinas en dogma, sino las que se atreven a cuestionarlas.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos <em>skills</em> clave:</p>
+          <ul class="space-y-3 text-sm text-ink-soft list-disc list-outside ml-5">
+            <li><span class="font-semibold text-ink">Digital Innovation</span>: creamos entornos para sentirnos libres, compartir ideas, generar soluciones creativas e innovar con propósito.</li>
+            <li><span class="font-semibold text-ink">Clarity &amp; Courage</span>: la claridad guía decisiones valientes. Impulsamos la toma de decisiones sin miedo, el debate abierto y sincero, y el cuestionamiento riguroso.</li>
           </ul>
         </div>
       </template>
@@ -262,13 +267,15 @@
       <template x-if="liderPopup === 'p3'">
         <div>
           <h2 class="font-sans font-normal text-3xl md:text-4xl text-ink leading-tight mb-4">Crecemos juntos.</h2>
-          <p class="text-sm text-ink-soft leading-relaxed mb-3">Si queremos transformarnos para liderar el futuro, necesitamos desarrollar hoy las capacidades que el negocio demandará mañana. Necesitamos profesionales que promuevan que cada persona asuma la responsabilidad por el todo, no solo por su parte.</p>
-          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos skills clave:</p>
-          <ul class="space-y-3 text-sm text-ink-soft mb-4">
-            <li><span class="font-medium text-ink">Driving Ownership:</span> el resultado depende de nosotros. Asumimos la responsabilidad por el todo y buscamos soluciones.</li>
-            <li><span class="font-medium text-ink">Growing People:</span> el crecimiento construye futuro. Aprendemos de la experiencia, lideramos con el ejemplo e impulsamos a las personas.</li>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Si queremos transformarnos para liderar el futuro, necesitamos desarrollar hoy las capacidades que el negocio demandará mañana.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">Necesitamos profesionales que promuevan que cada persona <strong class="text-ink font-semibold">asuma la responsabilidad por el todo</strong>, no solo por su parte. Que se reten a sí mismos e impulsen a sus equipos más allá de lo conocido.</p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-4">Esto, hoy, en Telefónica, lo expresamos a través de dos <em>skills</em> clave:</p>
+          <ul class="space-y-3 text-sm text-ink-soft list-disc list-outside ml-5 mb-4">
+            <li><span class="font-semibold text-ink">Driving Ownership</span>: el resultado depende de nosotros. Asumimos la responsabilidad por el todo y buscamos soluciones.</li>
+            <li><span class="font-semibold text-ink">Growing People</span>: el crecimiento construye futuro. Aprendemos de la experiencia, lideramos con el ejemplo e impulsamos a las personas.</li>
           </ul>
-          <p class="text-xs text-ink-mute italic leading-relaxed">El crecimiento de la compañía depende del crecimiento de cada equipo. Y el crecimiento de cada equipo comienza con las personas. Depende de nuestra ambición. De nuestra iniciativa. <em class="not-italic font-medium text-ink">It's on us.</em></p>
+          <p class="text-sm text-ink-soft leading-relaxed mb-3">El crecimiento de la compañía depende del crecimiento de cada equipo.<br>Y el crecimiento de cada equipo comienza con las personas.</p>
+          <p class="text-sm text-ink-soft leading-relaxed">Depende de nuestra ambición.<br>De nuestra iniciativa.<br>It's on us.</p>
         </div>
       </template>
 

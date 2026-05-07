@@ -96,7 +96,7 @@
       use1_d: { es: 'Define tus compromisos de liderazgo con claridad.', en: 'Define your leadership commitments with clarity.' },
 
       use2_t: { es: 'Reflexiona sobre tus resultados', en: 'Reflect on your results' },
-      use2_d: { es: 'Consigue acciones concretas. Traduce insights en pequeños pasos que puedas medir en tu día a día.', en: 'Get concrete actions. Turn insights into small steps you can measure in your day-to-day.' },
+      use2_d: { es: 'Consigue acciones concretas. Traduce <em>insights</em> en pequeños pasos que puedas medir en tu día a día.', en: 'Get concrete actions. Turn <em>insights</em> into small steps you can measure in your day-to-day.' },
 
       use3_t: { es: 'Practica conversaciones difíciles', en: 'Rehearse difficult conversations' },
       use3_d: { es: 'Simula diálogos antes de que ocurran: feedback, decisiones duras, gestión de conflicto. Ensaya, anticipa reacciones, afina tu mensaje.', en: 'Rehearse dialogues before they happen: feedback, hard decisions, conflict management. Practice, anticipate reactions, refine your message.' },
@@ -114,7 +114,7 @@
 
       sticky_intro: { es: 'Soy Nadia, estoy aquí.', en: "I'm Nadia, I'm here." },
       sticky_q:     { es: '¿Empezamos?', en: 'Shall we start?' },
-      cta_button:   { es: 'Abrir conversación', en: 'Open conversation' },
+      cta_button:   { es: 'Acceder a Nadia', en: 'Access Nadia' },
       back_cta:     { es: 'Volver al Journey', en: 'Back to Journey' },
       meta_avail:   { es: '24/7 · Confidencial · Contextual', en: '24/7 · Confidential · Contextual' },
 
@@ -222,7 +222,7 @@
               <span class="font-normal text-tef-blue leading-none shrink-0" style="font-size: 67px; letter-spacing:-0.03em">02</span>
               <div>
                 <h3 class="font-sans font-normal tracking-tight leading-tight mb-2 text-ink" style="font-size: clamp(1.15rem, 1.8vw, 1.5rem)" x-text="t('use2_t')"></h3>
-                <p class="text-ink-soft leading-relaxed text-[15px]" x-text="t('use2_d')"></p>
+                <p class="text-ink-soft leading-relaxed text-[15px]" x-html="t('use2_d')"></p>
               </div>
             </div>
           </article>
@@ -349,7 +349,8 @@
           <p class="font-sans font-normal italic text-tef-blue" style="font-size:0.95rem;" x-text="t('sticky_q')"></p>
         </div>
       </div>
-      <a href="javascript:void(0)"
+      <a href="https://coach-eu.valence.co/accounts/login/telefonica"
+         target="_blank" rel="noopener"
          class="absolute bottom-0 left-0 right-0 inline-flex items-center justify-between gap-3 bg-tef-blue text-white px-7 py-4 hover:bg-blue-700 transition-colors group">
         <span class="font-mono text-xs tracking-[0.18em] uppercase" x-text="t('cta_button')"></span>
         <svg class="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
