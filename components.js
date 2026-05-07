@@ -201,7 +201,33 @@
     #site-navbar.nav-on-dark .navbar-pill button.text-tef-dark { color: #F7F7FF !important; }
     #site-navbar.nav-on-dark .navbar-pill span.text-tef-dark\\/20 { color: rgba(247,247,255,0.3) !important; }
     #site-navbar.nav-on-dark .navbar-pill button[aria-label] span { background-color: rgba(247,247,255,0.85) !important; }
+    #site-navbar.nav-on-dark .navbar-pill button[aria-label] svg { color: rgba(247,247,255,0.92) !important; }
     #site-navbar.nav-on-dark .navbar-pill span.bg-black\\/10 { background-color: rgba(247,247,255,0.2) !important; }
+
+    /* ── DROPDOWN del hamburguesa — adaptativo light/dark ── */
+    .navbar-dropdown {
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+    .navbar-dropdown a {
+      display: block;
+      padding: 8px 16px;
+      margin: -8px -16px;
+      border-radius: 8px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .navbar-dropdown a:hover { background: rgba(0,0,0,0.06); }
+    #site-navbar.nav-on-dark .navbar-dropdown {
+      background: rgba(2,9,20,0.15) !important;
+      border-color: rgba(247,247,255,0.12) !important;
+      backdrop-filter: blur(24px) saturate(150%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+    }
+    #site-navbar.nav-on-dark .navbar-dropdown a { color: rgba(247,247,255,0.72) !important; }
+    #site-navbar.nav-on-dark .navbar-dropdown a:hover {
+      color: #F7F7FF !important;
+      background: rgba(247,247,255,0.1) !important;
+    }
+    #site-navbar.nav-on-dark .navbar-dropdown a.text-tef-dark { color: #F7F7FF !important; }
   `;
   document.head.appendChild(navDarkStyle);
 
@@ -247,6 +273,7 @@
 
   const path = window.location.pathname;
   const current =
+    path.includes('lider-telefonica') ? 'lider-telefonica' :
     path.includes('nadia') ? 'nadia' :
     path.includes('info') ? 'info' :
     path.includes('journey') ? 'journey' :
@@ -274,46 +301,51 @@
         <div class="navbar-pill pointer-events-auto flex items-center h-14 px-5 gap-3 rounded-full border border-black/[0.08] shadow-md"
              style="background:rgba(247,247,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
 
-          <!-- Logo -->
-          <a href="index.html" class="flex-shrink-0">
-            <img src="telefonica-5.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
-          </a>
+            <!-- Logo -->
+            <a href="index.html" class="flex-shrink-0">
+              <img src="telefonica-5.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
+            </a>
 
-          <span class="hidden md:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
+            <span class="hidden xl:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
 
-          <!-- Nav desktop -->
-          <nav class="hidden md:flex items-center gap-8">
-            ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica')}
-            ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
-            ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico')}
-            ${navLink('nadia.html', 'Nadia', 'nadia')}
-            ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
-          </nav>
+            <!-- Nav desktop (xl+) -->
+            <nav class="hidden xl:flex items-center gap-8">
+              ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica')}
+              ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
+              ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico')}
+              ${navLink('nadia.html', 'Nadia', 'nadia')}
+              ${navLink('agenda.html', 'Agenda', 'agenda')}
+              ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
+            </nav>
 
-          <span class="hidden md:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
+            <span class="hidden xl:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
 
-          <!-- Right: lang + hamburger -->
-          <div class="flex items-center gap-1 flex-shrink-0">
-            <div class="flex items-center gap-0 font-mono text-xs tracking-[0.18em]">
-              <button @click="lang='es'" :class="lang==='es' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">ES</button>
-              <span class="text-tef-dark/20">/</span>
-              <button @click="lang='en'" :class="lang==='en' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">EN</button>
+            <!-- Right: lang + hamburger -->
+            <div class="flex items-center gap-1 flex-shrink-0">
+              <div class="flex items-center gap-0 font-mono text-xs tracking-[0.18em]">
+                <button @click="lang='es'" :class="lang==='es' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">ES</button>
+                <span class="text-tef-dark/20">/</span>
+                <button @click="lang='en'" :class="lang==='en' ? 'text-tef-dark' : 'text-tef-dark/40 hover:text-tef-dark'" class="px-2 py-1 transition-colors uppercase">EN</button>
+              </div>
+              <button @click="menuOpen = !menuOpen"
+                      class="xl:hidden relative flex justify-center items-center w-8 h-8 focus:outline-none ml-1"
+                      aria-label="Menú">
+                <!-- Hamburger (3 lines) -->
+                <span x-show="!menuOpen" class="absolute inset-0 flex flex-col justify-center items-center gap-1.5">
+                  <span class="block w-5 h-px bg-tef-dark"></span>
+                  <span class="block w-5 h-px bg-tef-dark"></span>
+                  <span class="block w-5 h-px bg-tef-dark"></span>
+                </span>
+                <!-- X (close icon) — centrado por SVG -->
+                <svg x-show="menuOpen" class="w-5 h-5 text-tef-dark" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                  <path d="M5 5l10 10M15 5L5 15"/>
+                </svg>
+              </button>
             </div>
-            <button @click="menuOpen = !menuOpen"
-                    class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none ml-1"
-                    aria-label="Menú">
-              <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
-                    :class="menuOpen ? 'rotate-45 translate-y-[7px]' : ''"></span>
-              <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
-                    :class="menuOpen ? 'opacity-0' : ''"></span>
-              <span class="block w-5 h-px bg-tef-dark transition-all duration-300"
-                    :class="menuOpen ? '-rotate-45 -translate-y-[7px]' : ''"></span>
-            </button>
-          </div>
 
         </div>
 
-        <!-- Mobile dropdown -->
+        <!-- Hamburger dropdown — width matches pill (parent w-fit) -->
         <div x-show="menuOpen"
              x-transition:enter="transition ease-out duration-200"
              x-transition:enter-start="opacity-0 -translate-y-2"
@@ -321,15 +353,19 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
-             class="absolute top-full left-0 right-0 mt-2 rounded-2xl border border-black/[0.08] shadow-lg pointer-events-auto overflow-hidden"
-             style="background:rgba(247,247,255,0.95);backdrop-filter:blur(18px);display:none" x-cloak>
-          <nav class="px-6 py-5 flex flex-col gap-4">
-            ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-base ')}
-            ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-base ')}
-            ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-base ')}
-            ${navLink('nadia.html', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-base ')}
-            ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-base ')}
-          </nav>
+             class="absolute top-full left-0 right-0 mt-2 pointer-events-auto"
+             style="display:none" x-cloak>
+          <div class="navbar-dropdown rounded-2xl border border-black/[0.08] shadow-md overflow-hidden"
+               style="background:rgba(247,247,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
+            <nav class="px-5 py-5 flex flex-col gap-3.5">
+              ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('nadia.html', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('agenda.html', 'Agenda', 'agenda').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+            </nav>
+          </div>
         </div>
 
       </div>`;
@@ -364,10 +400,11 @@
             <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-4"
                x-text="lang==='es' ? 'Explorar' : 'Explore'"></p>
             <ul class="space-y-2 text-sm">
+              <li><a href="lider-telefonica.html" class="text-paper/80 hover:text-tef-blue transition-colors">Líder Telefónica</a></li>
               <li><a href="journey.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
-              <li><a href="agenda.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Agenda' : 'Agenda'"></a></li>
-              <li><a href="autodiagnostico.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Tu Autodiagnóstico' : 'Self-Diagnosis'"></a></li>
+              <li><a href="autodiagnostico.html" class="text-paper/80 hover:text-tef-blue transition-colors">Autodiagnóstico</a></li>
               <li><a href="nadia.html" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
+              <li><a href="agenda.html" class="text-paper/80 hover:text-tef-blue transition-colors">Agenda</a></li>
               <li><a href="info.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_info')"></a></li>
             </ul>
           </div>
@@ -398,4 +435,19 @@
 
       </div>`;
   }
+
+  /* ── PAGE READY: fade-in suave para evitar destello entre páginas ── */
+  const markLoaded = () => document.documentElement.classList.add('loaded');
+  // Esperamos a window.load + 200ms para que scroll.js registre sus gsap.from
+  // (que snapean elementos a estados iniciales async tras cargar split-type)
+  const reveal = () => {
+    setTimeout(() => requestAnimationFrame(() => requestAnimationFrame(markLoaded)), 200);
+  };
+  if (document.readyState === 'complete') {
+    reveal();
+  } else {
+    window.addEventListener('load', reveal, { once: true });
+  }
+  // Safety net global
+  setTimeout(markLoaded, 1800);
 })();
