@@ -113,7 +113,7 @@
       width: 320px;
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(10px);
-      border-radius: 4px;
+      border-radius: 0;
       padding: 0; overflow: hidden;
       box-shadow: 0 18px 56px rgba(2,9,20,0.45), 0 0 0 1px rgba(0,102,255,0.18);
       z-index: 30;
@@ -428,8 +428,6 @@
             <div class="absolute pointer-events-auto" style="top: 22%; left: 15%;">
               <button type="button"
                       @click="open = open === 'm1' ? null : 'm1'"
-                      @mouseenter="!isTouch && (open = 'm1')"
-                      @mouseleave="!isTouch && (open = null)"
                       :class="open === 'm1' && 'active'"
                       class="iceberg-marker"
                       :aria-label="t('m1_label')">
@@ -442,7 +440,7 @@
                 <span class="marker-label-text" x-text="t('m1_label')"></span>
               </span>
               <div class="marker-card" x-show="open === 'm1'" x-transition>
-                <div class="marker-card-img"><img src="autodiag-m1.png" alt=""></div>
+                <div class="marker-card-img"><img src="Autodiagnóstico Leadership Skills 01 - young-parkour-freerunning-women-doing-backflip-from-wall.jpg" alt=""></div>
                 <div class="marker-card-body">
                   <p class="card-eyebrow" x-text="t('m1_sub')"></p>
                   <h3 class="card-title" x-text="t('m1_label')"></h3>
@@ -456,8 +454,6 @@
             <div class="absolute pointer-events-auto" style="top: 50%; left: 15%;">
               <button type="button"
                       @click="open = open === 'm2' ? null : 'm2'"
-                      @mouseenter="!isTouch && (open = 'm2')"
-                      @mouseleave="!isTouch && (open = null)"
                       :class="open === 'm2' && 'active'"
                       class="iceberg-marker"
                       :aria-label="t('m2_label')">
@@ -470,7 +466,7 @@
                 <span class="marker-label-text" x-text="t('m2_label')"></span>
               </span>
               <div class="marker-card" x-show="open === 'm2'" x-transition>
-                <div class="marker-card-img"><img src="autodiag-m2.png" alt=""></div>
+                <div class="marker-card-img"><img src="Autodiagnóstico Leadership Skills 02- person-with-neutral-gendered-haircut-from-the-back__21562.png" alt=""></div>
                 <div class="marker-card-body">
                   <p class="card-eyebrow" x-text="t('m2_sub')"></p>
                   <h3 class="card-title" x-text="t('m2_label')"></h3>
@@ -484,8 +480,6 @@
             <div class="absolute pointer-events-auto" style="top: 78%; left: 15%;">
               <button type="button"
                       @click="open = open === 'm3' ? null : 'm3'"
-                      @mouseenter="!isTouch && (open = 'm3')"
-                      @mouseleave="!isTouch && (open = null)"
                       :class="open === 'm3' && 'active'"
                       class="iceberg-marker"
                       :aria-label="t('m3_label')">
@@ -498,7 +492,7 @@
                 <span class="marker-label-text" x-text="t('m3_label')"></span>
               </span>
               <div class="marker-card marker-card-up" x-show="open === 'm3'" x-transition>
-                <div class="marker-card-img"><img src="autodiag-m6.png" alt=""></div>
+                <div class="marker-card-img"><img src="Autodiagnóstico Leadership Skills 03 - close-up-boy-wearing-earphones.jpg" alt=""></div>
                 <div class="marker-card-body">
                   <p class="card-eyebrow" x-text="t('m3_sub')"></p>
                   <h3 class="card-title" x-text="t('m3_label')"></h3>
@@ -539,7 +533,7 @@
         <div class="bg-paper-warm py-10 px-6 space-y-6" data-reveal-stagger data-stagger-delay="0.1">
           <article class="bg-paper border border-ink/10 overflow-hidden" data-stagger-item>
             <div class="relative w-full bg-[#ECEEF7]" style="aspect-ratio: 16/9;">
-              <img src="autodiag-m1.png" alt="" class="absolute inset-0 w-full h-full object-cover">
+              <img src="Autodiagnóstico Leadership Skills 01 - young-parkour-freerunning-women-doing-backflip-from-wall.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
             <div class="p-5">
               <p class="font-mono text-[10px] tracking-[0.22em] uppercase text-tef-blue mb-2" x-text="t('m1_sub')"></p>
@@ -550,7 +544,7 @@
           </article>
           <article class="bg-paper border border-ink/10 overflow-hidden" data-stagger-item>
             <div class="relative w-full bg-[#ECEEF7]" style="aspect-ratio: 16/9;">
-              <img src="autodiag-m2.png" alt="" class="absolute inset-0 w-full h-full object-cover">
+              <img src="Autodiagnóstico Leadership Skills 02- person-with-neutral-gendered-haircut-from-the-back__21562.png" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
             <div class="p-5">
               <p class="font-mono text-[10px] tracking-[0.22em] uppercase text-tef-blue mb-2" x-text="t('m2_sub')"></p>
@@ -561,7 +555,7 @@
           </article>
           <article class="bg-paper border border-ink/10 overflow-hidden" data-stagger-item>
             <div class="relative w-full bg-[#ECEEF7]" style="aspect-ratio: 16/9;">
-              <img src="autodiag-m6.png" alt="" class="absolute inset-0 w-full h-full object-cover">
+              <img src="Autodiagnóstico Leadership Skills 03 - close-up-boy-wearing-earphones.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
             </div>
             <div class="p-5">
               <p class="font-mono text-[10px] tracking-[0.22em] uppercase text-tef-blue mb-2" x-text="t('m3_sub')"></p>
@@ -588,7 +582,7 @@
         <div x-data="{ open: null, isTouch: window.matchMedia('(hover: none)').matches }" class="border-t border-ink/15">
 
           <!-- Step 1 -->
-          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 1)">
+          <div class="border-b border-ink/15 group">
             <button @click="open = open === 1 ? null : 1"
                     class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
@@ -614,7 +608,7 @@
           </div>
 
           <!-- Step 2 -->
-          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 2)">
+          <div class="border-b border-ink/15 group">
             <button @click="open = open === 2 ? null : 2"
                     class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
@@ -645,7 +639,7 @@
           </div>
 
           <!-- Step 3 -->
-          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 3)">
+          <div class="border-b border-ink/15 group">
             <button @click="open = open === 3 ? null : 3"
                     class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
@@ -671,7 +665,7 @@
           </div>
 
           <!-- Step 4 -->
-          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 4)">
+          <div class="border-b border-ink/15 group">
             <button @click="open = open === 4 ? null : 4"
                     class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
@@ -702,7 +696,7 @@
           </div>
 
           <!-- Step 5 -->
-          <div class="border-b border-ink/15 group" @mouseenter="!isTouch && (open = 5)">
+          <div class="border-b border-ink/15 group">
             <button @click="open = open === 5 ? null : 5"
                     class="w-full flex items-center gap-6 md:gap-10 py-4 md:py-5 text-left">
               <span class="font-normal text-tef-blue leading-none flex-shrink-0"
@@ -749,13 +743,13 @@
 
           <!-- Botones -->
           <div class="flex flex-col sm:flex-row gap-3 shrink-0" data-reveal="up" data-reveal-delay="0.1">
-            <a href="javascript:void(0)" class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <a href="playbook.html" class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
               <span x-text="t('res_dl1')"></span>
+              <span class="text-base leading-none group-hover:translate-x-0.5 transition-transform">→</span>
             </a>
-            <a href="javascript:void(0)" class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <a href="faq.html" class="group inline-flex items-center gap-2 bg-tef-blue text-white px-4 py-2 text-[11px] font-mono tracking-[0.18em] uppercase hover:bg-blue-700 transition-colors">
               <span x-text="t('res_dl2')"></span>
+              <span class="text-base leading-none group-hover:translate-x-0.5 transition-transform">→</span>
             </a>
           </div>
 
