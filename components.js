@@ -303,7 +303,7 @@
 
             <!-- Logo -->
             <a href="index.html" class="flex-shrink-0">
-              <img src="telefonica-5.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
+              <img src="images/brand/telefonica-5.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
             </a>
 
             <span class="hidden xl:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
@@ -381,7 +381,7 @@
 
         <!-- Top: logo -->
         <div class="pb-10 border-b border-paper/10">
-          <img src="telefonica-5.svg" class="h-10 md:h-12 w-auto brightness-0 invert" alt="Accelerate Impact">
+          <img src="images/brand/telefonica-5.svg" class="h-10 md:h-12 w-auto brightness-0 invert" alt="Accelerate Impact">
         </div>
 
         <!-- Middle: columns -->
@@ -428,7 +428,7 @@
           <div class="flex items-center gap-5">
             <a href="https://yellowglasses.es" target="_blank" rel="noopener"
                class="text-paper/50 hover:text-paper transition-colors" aria-label="Powered by Yellow Glasses">
-              <img src="powered-by-YG.svg" alt="Powered by Yellow Glasses" class="h-6 w-auto" />
+              <img src="images/brand/powered-by-YG.svg" alt="Powered by Yellow Glasses" class="h-6 w-auto" />
             </a>
           </div>
         </div>
