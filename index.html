@@ -2,7 +2,6 @@
 <html lang="es" x-data="{
   lang: localStorage.getItem('lang') || 'es',
   page: 'home',
-  cohortOpen: false,
   howPopup: null,
   init() {
     this.$watch('lang', v => localStorage.setItem('lang', v));
@@ -481,10 +480,14 @@
 
       /* COHORTES */
       cohort_title: { es: 'Conecta con tus compañeros', en: 'Connect with your peers' },
-      cohort_body: { es: 'Nosotros somos los protagonistas de todo. Conecta con tus compañeros.<br><br>Cada cohorte tiene su espacio privado en Microsoft Teams. Elige la tuya.', en: 'We are the protagonists of everything. Connect with your peers.<br><br>Each cohort has its private space in Microsoft Teams. Pick yours.' },
-      cohort_cta: { es: 'Elegir cohorte', en: 'Pick cohort' },
-      cohort_select: { es: 'Selecciona tu cohorte', en: 'Select your cohort' },
-      cohort_locked: { es: 'Los accesos a las cohortes se habilitarán cuando estén disponibles.', en: 'Cohort access will be enabled when available.' },
+      cohort_body: {
+        es: 'Nosotros somos los protagonistas de todo. La transformación se construye en comunidad — compartiendo, retándonos y aprendiendo juntos.<br><br>Cada cohorte tendrá su propio espacio privado en Microsoft Teams.',
+        en: 'We are the protagonists of everything. Transformation is built as a community — sharing, challenging each other and learning together.<br><br>Each cohort will have its own private space in Microsoft Teams.'
+      },
+      cohort_notice: {
+        es: 'Cuando llegue el turno de tu cohorte, recibirás un email con tu enlace de acceso personal para conectar con el resto de líderes del programa.',
+        en: 'When your cohort\'s time comes, you will receive an email with your personal access link to connect with the rest of the program leaders.'
+      },
 
       /* 3 PILLARS verbatim — claims rojos + verbatim negro */
       p1_title: { es: 'Damos lo mejor de nosotros.', en: 'We give our best.' },
@@ -1027,21 +1030,12 @@
             <h3 class="font-sans font-normal text-3xl md:text-4xl leading-[1.05] tracking-tight mb-3" x-text="t('cohort_title')"></h3>
             <p class="text-[17px] text-paper/70 mb-8" x-html="t('cohort_body')"></p>
 
-            <div class="relative text-left z-50">
-              <button type="button" disabled aria-disabled="true"
-                      class="w-full flex items-center justify-between gap-4 border border-paper/20 px-5 py-4 opacity-60 cursor-not-allowed">
-                <div class="flex items-center gap-3">
-                  <svg class="w-5 h-5 text-tef-blue" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                    <rect x="4" y="9" width="12" height="8" rx="1.5"/>
-                    <path d="M7 9V6.5a3 3 0 0 1 6 0V9"/>
-                  </svg>
-                  <span class="font-medium text-paper text-sm" x-text="t('cohort_cta')"></span>
-                </div>
-                <svg class="w-4 h-4 text-paper/50" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                  <path d="M4 6l4 4 4-4"/>
-                </svg>
-              </button>
-              <p class="mt-3 text-[12px] text-paper/50 leading-relaxed" x-text="t('cohort_locked')"></p>
+            <div class="flex items-start gap-4 border-l-2 border-tef-blue/60 bg-paper/[0.04] px-5 py-4">
+              <svg class="w-5 h-5 text-tef-blue flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+                <path d="M3 7l9 6 9-6"/>
+              </svg>
+              <p class="text-[14px] text-paper/85 leading-relaxed" x-text="t('cohort_notice')"></p>
             </div>
 
             <a href="journey.html"
