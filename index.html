@@ -69,12 +69,8 @@
     .reveal-3 { animation-delay: 0.4s; }
     .reveal-4 { animation-delay: 0.55s; }
 
-    @keyframes orbital-spin { to { transform: rotate(360deg); } }
-    .orbital-spin { animation: orbital-spin 22s linear infinite; transform-origin: center; }
-    .orbital-spin-rev { animation: orbital-spin 14s linear infinite reverse; transform-origin: center; }
-
     @media (prefers-reduced-motion: reduce) {
-      .orbital-spin, .orbital-spin-rev, .reveal { animation: none; }
+      .reveal { animation: none; }
     }
 
     /* Fondo oscuro continuo */
@@ -655,24 +651,7 @@
       <div class="stars-mid" style="z-index:2;position:absolute;inset:0;" data-parallax="0.5" aria-hidden="true"></div>
       <div class="stars-near" style="z-index:2;position:absolute;inset:0;" data-parallax="1.1" aria-hidden="true"></div>
 
-      <!-- Orbital rings pasan lentos detrás -->
-      <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 900"
-           preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-parallax="0.3">
-        <defs>
-          <linearGradient id="introRing" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"  stop-color="#0066FF" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#0066FF" stop-opacity="0.85"/>
-            <stop offset="100%" stop-color="#0066FF" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <ellipse cx="720" cy="450" rx="680" ry="220" stroke="url(#introRing)" stroke-width="1"
-                 stroke-dasharray="4 10" fill="none" class="orbital-spin" style="transform-origin:720px 450px"/>
-        <ellipse cx="720" cy="450" rx="520" ry="170" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"
-                 stroke-dasharray="3 9" fill="none" transform="rotate(-14 720 450)"
-                 class="orbital-spin-rev" style="transform-origin:720px 450px"/>
-      </svg>
-
-      <div style="position:relative;z-index:3;" class="min-h-screen flex flex-col">
+<div style="position:relative;z-index:3;" class="min-h-screen flex flex-col">
 
         <!-- Centro: eyebrow + claim pequeño -->
         <div class="flex-1 flex flex-col items-center justify-center px-6 text-center pt-[20vh]">
