@@ -302,7 +302,7 @@
              style="background:rgba(247,247,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
 
             <!-- Logo -->
-            <a href="index.html" class="flex-shrink-0">
+            <a href="/" class="flex-shrink-0">
               <img src="images/brand/telefonica-5.svg" class="h-5 md:h-7 w-auto" alt="Accelerate Impact">
             </a>
 
@@ -310,12 +310,12 @@
 
             <!-- Nav desktop (xl+) -->
             <nav class="hidden xl:flex items-center gap-8">
-              ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica')}
-              ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
-              ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico')}
-              ${navLink('nadia.html', 'Nadia', 'nadia')}
-              ${navLink('agenda.html', 'Agenda', 'agenda')}
-              ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
+              ${navLink('lider-telefonica', 'Líder Telefónica', 'lider-telefonica')}
+              ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
+              ${navLink('autodiagnostico', 'Autodiagnóstico', 'autodiagnostico')}
+              ${navLink('nadia', 'Nadia', 'nadia')}
+              ${navLink('agenda', 'Agenda', 'agenda')}
+              ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
             </nav>
 
             <span class="hidden xl:block w-px h-4 bg-black/10 mx-3 flex-shrink-0"></span>
@@ -358,12 +358,12 @@
           <div class="navbar-dropdown rounded-2xl border border-black/[0.08] shadow-md overflow-hidden"
                style="background:rgba(247,247,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
             <nav class="px-5 py-5 flex flex-col gap-3.5">
-              ${navLink('lider-telefonica.html', 'Líder Telefónica', 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('journey.html', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('autodiagnostico.html', 'Autodiagnóstico', 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('nadia.html', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('agenda.html', 'Agenda', 'agenda').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('info.html', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('lider-telefonica', 'Líder Telefónica', 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('autodiagnostico', 'Autodiagnóstico', 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('nadia', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('agenda', 'Agenda', 'agenda').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-sm ')}
             </nav>
           </div>
         </div>
@@ -400,12 +400,12 @@
             <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-4"
                x-text="lang==='es' ? 'Explorar' : 'Explore'"></p>
             <ul class="space-y-2 text-sm">
-              <li><a href="lider-telefonica.html" class="text-paper/80 hover:text-tef-blue transition-colors">Líder Telefónica</a></li>
-              <li><a href="journey.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
-              <li><a href="autodiagnostico.html" class="text-paper/80 hover:text-tef-blue transition-colors">Autodiagnóstico</a></li>
-              <li><a href="nadia.html" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
-              <li><a href="agenda.html" class="text-paper/80 hover:text-tef-blue transition-colors">Agenda</a></li>
-              <li><a href="info.html" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_info')"></a></li>
+              <li><a href="lider-telefonica" class="text-paper/80 hover:text-tef-blue transition-colors">Líder Telefónica</a></li>
+              <li><a href="journey" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
+              <li><a href="autodiagnostico" class="text-paper/80 hover:text-tef-blue transition-colors">Autodiagnóstico</a></li>
+              <li><a href="nadia" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
+              <li><a href="agenda" class="text-paper/80 hover:text-tef-blue transition-colors">Agenda</a></li>
+              <li><a href="info" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_info')"></a></li>
             </ul>
           </div>
           <div class="col-span-6 md:col-span-4">

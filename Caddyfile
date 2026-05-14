@@ -10,6 +10,14 @@
 :{$PORT:8080} {
 	root * /app
 	encode gzip zstd
+
+	# Clean URLs: /journey.html -> /journey (301)
+	@hasHtmlExt path_regexp hashtml ^/(.+)\.html$
+	redir @hasHtmlExt /{re.hashtml.1} 301
+
+	# Serve /journey by mapping to /journey.html on disk
+	try_files {path} {path}.html
+
 	file_server
 
 	# CSP permisiva para que Alpine.js (que usa eval) funcione
@@ -26,8 +34,6 @@
 	}
 	header @assets Cache-Control "public, max-age=31536000, immutable"
 
-	@html {
-		path *.html /
-	}
+	@html path_regexp ^/([^./]*|.+\.html)$
 	header @html Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
 }
