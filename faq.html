@@ -325,9 +325,9 @@
               <p class="text-[16px] md:text-[17px] text-ink-soft leading-relaxed max-w-3xl mb-5" x-html="t('q6_body')"></p>
               <div class="border border-ink/10 overflow-hidden max-w-4xl">
                 <div class="grid grid-cols-12 bg-paper-warm border-b border-ink/10">
-                  <div class="col-span-5 md:col-span-4 px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute">Módulo</div>
-                  <div class="col-span-5 md:col-span-6 px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute border-l border-ink/10">Descripción</div>
-                  <div class="col-span-2 px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute border-l border-ink/10">Tiempo</div>
+                  <div class="col-span-5 md:col-span-4 px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute" x-text="lang==='es' ? 'Módulo' : 'Module'"></div>
+                  <div class="col-span-5 md:col-span-6 px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute border-l border-ink/10" x-text="lang==='es' ? 'Descripción' : 'Description'"></div>
+                  <div class="col-span-2 px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-ink-mute border-l border-ink/10" x-text="lang==='es' ? 'Tiempo' : 'Time'"></div>
                 </div>
                 <div class="grid grid-cols-12 border-b border-ink/10 bg-paper text-[14.5px]">
                   <div class="col-span-5 md:col-span-4 px-5 py-4 font-medium text-ink" x-text="t('q6_mod1_t')"></div>

@@ -180,15 +180,15 @@
 
       d1_title: { es: 'Awake', en: 'Awake' },
       d1_subtitle: { es: 'De la alineación pasiva a impulsar una ejecución valiente', en: 'From passive alignment to driving courageous execution' },
-      d1_hours: '9:00 — 22:00',
+      d1_hours: { es: '9:00 — 22:00', en: '9:00 — 22:00' },
 
       d2_title: { es: 'Expand', en: 'Expand' },
       d2_subtitle: { es: 'De esperar la certeza a liderar en un contexto de negocio impulsado por la IA', en: 'From waiting for certainty to leading in an AI-driven business context' },
-      d2_hours: '9:00 — 22:00',
+      d2_hours: { es: '9:00 — 22:00', en: '9:00 — 22:00' },
 
       d3_title: { es: 'Transcend', en: 'Transcend' },
       d3_subtitle: { es: 'Del rendimiento individual al impacto sostenible y al legado', en: 'From individual performance to sustainable impact and legacy' },
-      d3_hours: '9:00 — 18:00',
+      d3_hours: { es: '9:00 — 18:00', en: '9:00 — 18:00' },
 
       d1_intro: {
         es: 'Conecta la estrategia y prioridades de Telefónica con el liderazgo necesario para hacer que el plan sea una realidad.\n\nA través de un debate constructivo, entenderemos el cambio de mentalidad de liderazgo necesario para asumir la ejecución de la estrategia, construyendo un liderazgo basado en la confianza, abordando el conflicto con valentía y tomando mejores decisiones colectivas.',
@@ -251,7 +251,7 @@
       <div class="relative border-t border-paper/10">
         <div class="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 py-4 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] tracking-[0.18em] uppercase text-paper/50">
           <span x-text="t('venue')"></span>
-          <span class="hidden md:inline">3 días · Action Learning Week</span>
+          <span class="hidden md:inline" x-text="lang==='es' ? '3 días · Action Learning Week' : '3 days · Action Learning Week'"></span>
         </div>
       </div>
     </section>
@@ -262,7 +262,7 @@
         <div class="grid grid-cols-3">
 
           <button @click="activeDay=1" class="relative py-6 md:py-10 pl-4 md:pl-6 pr-4 md:pr-6 text-left transition-all" :class="activeDay===1 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
-            <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===1 ? 'text-tef-blue' : ''">Día · 01</p>
+            <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===1 ? 'text-tef-blue' : ''" x-text="t('day') + ' · 01'"></p>
             <p class="font-normal text-xs md:text-2xl tracking-tight leading-tight" x-text="t('d1_title')"></p>
             <p class="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase mt-2 hidden md:block leading-snug" :class="activeDay===1 ? 'text-tef-blue' : 'text-ink-mute'" x-text="t('d1_subtitle')"></p>
             <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mt-1.5 hidden md:block" :class="activeDay===1 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d1_hours')"></p>
@@ -270,7 +270,7 @@
           </button>
 
           <button @click="activeDay=2" class="relative py-6 md:py-10 pl-4 md:pl-6 pr-4 md:pr-6 text-left transition-all border-l border-ink/10" :class="activeDay===2 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
-            <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===2 ? 'text-tef-blue' : ''">Día · 02</p>
+            <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===2 ? 'text-tef-blue' : ''" x-text="t('day') + ' · 02'"></p>
             <p class="font-normal text-xs md:text-2xl tracking-tight leading-tight" x-text="t('d2_title')"></p>
             <p class="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase mt-2 hidden md:block leading-snug" :class="activeDay===2 ? 'text-tef-blue' : 'text-ink-mute'" x-text="t('d2_subtitle')"></p>
             <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mt-1.5 hidden md:block" :class="activeDay===2 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d2_hours')"></p>
@@ -278,7 +278,7 @@
           </button>
 
           <button @click="activeDay=3" class="relative py-6 md:py-10 pl-4 md:pl-6 pr-4 md:pr-6 text-left transition-all border-l border-ink/10" :class="activeDay===3 ? 'text-ink bg-tef-dark/5' : 'text-ink-mute hover:text-ink hover:bg-paper-warm'">
-            <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===3 ? 'text-tef-blue' : ''">Día · 03</p>
+            <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mb-1" :class="activeDay===3 ? 'text-tef-blue' : ''" x-text="t('day') + ' · 03'"></p>
             <p class="font-normal text-xs md:text-2xl tracking-tight leading-tight" x-text="t('d3_title')"></p>
             <p class="font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase mt-2 hidden md:block leading-snug" :class="activeDay===3 ? 'text-tef-blue' : 'text-ink-mute'" x-text="t('d3_subtitle')"></p>
             <p class="font-mono text-[10px] md:text-[11px] tracking-[0.2em] uppercase mt-1.5 hidden md:block" :class="activeDay===3 ? 'text-ink-soft' : 'text-ink-mute'" x-text="t('d3_hours')"></p>

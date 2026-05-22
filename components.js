@@ -310,9 +310,9 @@
 
             <!-- Nav desktop (xl+) -->
             <nav class="hidden xl:flex items-center gap-8">
-              ${navLink('lider-telefonica', 'Líder Telefónica', 'lider-telefonica')}
+              ${navLink('lider-telefonica', `<span x-text="lang==='es' ? 'Líder Telefónica' : 'Telefónica Leader'">Líder Telefónica</span>`, 'lider-telefonica')}
               ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
-              ${navLink('autodiagnostico', 'Autodiagnóstico', 'autodiagnostico')}
+              ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</span>`, 'autodiagnostico')}
               ${navLink('nadia', 'Nadia', 'nadia')}
               ${navLink('agenda', 'Agenda', 'agenda')}
               ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
@@ -329,7 +329,7 @@
               </div>
               <button @click="menuOpen = !menuOpen"
                       class="xl:hidden relative flex justify-center items-center w-8 h-8 focus:outline-none ml-1"
-                      aria-label="Menú">
+                      :aria-label="lang==='es' ? 'Menú' : 'Menu'">
                 <!-- Hamburger (3 lines) -->
                 <span x-show="!menuOpen" class="absolute inset-0 flex flex-col justify-center items-center gap-1.5">
                   <span class="block w-5 h-px bg-tef-dark"></span>
@@ -358,9 +358,9 @@
           <div class="navbar-dropdown rounded-2xl border border-black/[0.08] shadow-md overflow-hidden"
                style="background:rgba(247,247,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
             <nav class="px-5 py-5 flex flex-col gap-3.5">
-              ${navLink('lider-telefonica', 'Líder Telefónica', 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('lider-telefonica', `<span x-text="lang==='es' ? 'Líder Telefónica' : 'Telefónica Leader'">Líder Telefónica</span>`, 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('autodiagnostico', 'Autodiagnóstico', 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</span>`, 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('nadia', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('agenda', 'Agenda', 'agenda').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-sm ')}
@@ -400,9 +400,9 @@
             <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-4"
                x-text="lang==='es' ? 'Explorar' : 'Explore'"></p>
             <ul class="space-y-2 text-sm">
-              <li><a href="lider-telefonica" class="text-paper/80 hover:text-tef-blue transition-colors">Líder Telefónica</a></li>
+              <li><a href="lider-telefonica" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Líder Telefónica' : 'Telefónica Leader'">Líder Telefónica</a></li>
               <li><a href="journey" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
-              <li><a href="autodiagnostico" class="text-paper/80 hover:text-tef-blue transition-colors">Autodiagnóstico</a></li>
+              <li><a href="autodiagnostico" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</a></li>
               <li><a href="nadia" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
               <li><a href="agenda" class="text-paper/80 hover:text-tef-blue transition-colors">Agenda</a></li>
               <li><a href="info" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_info')"></a></li>
