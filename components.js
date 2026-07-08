@@ -314,7 +314,7 @@
               ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
               ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</span>`, 'autodiagnostico')}
               ${navLink('nadia', 'Nadia', 'nadia')}
-              ${navLink('agenda', 'Agenda', 'agenda')}
+              ${'' /* AGENDA oculto (branch Ocutar-agenda-y-botones-de-navegacion) */}
               ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
             </nav>
 
@@ -362,7 +362,7 @@
               ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</span>`, 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('nadia', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('agenda', 'Agenda', 'agenda').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${'' /* AGENDA oculto (branch Ocutar-agenda-y-botones-de-navegacion) */}
               ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-sm ')}
             </nav>
           </div>
@@ -404,7 +404,9 @@
               <li><a href="journey" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
               <li><a href="autodiagnostico" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</a></li>
               <li><a href="nadia" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
+              <!-- AGENDA oculto (branch Ocutar-agenda-y-botones-de-navegacion)
               <li><a href="agenda" class="text-paper/80 hover:text-tef-blue transition-colors">Agenda</a></li>
+              -->
               <li><a href="info" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_info')"></a></li>
             </ul>
           </div>
