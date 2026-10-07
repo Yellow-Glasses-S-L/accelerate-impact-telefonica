@@ -105,7 +105,7 @@ Si después de un push los cambios no se ven en producción:
 
 ### 2026-05-22 — Auditoría i18n completa
 Cliente reportó que la versión EN seguía con texto en español. Auditoría sistemática + correcciones:
-- `components.js` (navbar+footer compartido): "Líder Telefónica" → "Telefónica Leader", "Autodiagnóstico" → "Self-Assessment", aria "Menú" → "Menu"
+- `components.js` (navbar+footer compartido): "Líder Telefónica" → "Telefónica Leader", "Autodiagnóstico" → "Self-Diagnosis", aria "Menú" → "Menu"
 - `index.html`: título "La Comunidad de Líderes de Telefónica", 3 popups completos del bloque HOW, "Cerrar", "Vídeo · Próximamente"
 - `lider-telefonica.html`: 3 botones "Más información" → "More info", 3 popups completos
 - `modelo.html`: hero strip, "Capítulo · 0X / 03" → "Chapter · 0X / 03", "Siguiente"
