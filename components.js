@@ -312,7 +312,7 @@
             <nav class="hidden xl:flex items-center gap-8">
               ${navLink('lider-telefonica', `<span x-text="lang==='es' ? 'Líder Telefónica' : 'Telefónica Leader'">Líder Telefónica</span>`, 'lider-telefonica')}
               ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey')}
-              ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</span>`, 'autodiagnostico')}
+              ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Diagnosis'">Autodiagnóstico</span>`, 'autodiagnostico')}
               ${navLink('nadia', 'Nadia', 'nadia')}
               ${'' /* AGENDA oculto (branch Ocutar-agenda-y-botones-de-navegacion) */}
               ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info')}
@@ -360,7 +360,7 @@
             <nav class="px-5 py-5 flex flex-col gap-3.5">
               ${navLink('lider-telefonica', `<span x-text="lang==='es' ? 'Líder Telefónica' : 'Telefónica Leader'">Líder Telefónica</span>`, 'lider-telefonica').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('journey', `<span x-text="t('nav_journey')">Journey</span>`, 'journey').replace('class="', '@click="menuOpen=false" class="text-sm ')}
-              ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</span>`, 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
+              ${navLink('autodiagnostico', `<span x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Diagnosis'">Autodiagnóstico</span>`, 'autodiagnostico').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${navLink('nadia', 'Nadia', 'nadia').replace('class="', '@click="menuOpen=false" class="text-sm ')}
               ${'' /* AGENDA oculto (branch Ocutar-agenda-y-botones-de-navegacion) */}
               ${navLink('info', `<span x-text="t('nav_info')">Contacto</span>`, 'info').replace('class="', '@click="menuOpen=false" class="text-sm ')}
@@ -402,7 +402,7 @@
             <ul class="space-y-2 text-sm">
               <li><a href="lider-telefonica" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Líder Telefónica' : 'Telefónica Leader'">Líder Telefónica</a></li>
               <li><a href="journey" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="t('nav_journey')"></a></li>
-              <li><a href="autodiagnostico" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Assessment'">Autodiagnóstico</a></li>
+              <li><a href="autodiagnostico" class="text-paper/80 hover:text-tef-blue transition-colors" x-text="lang==='es' ? 'Autodiagnóstico' : 'Self-Diagnosis'">Autodiagnóstico</a></li>
               <li><a href="nadia" class="text-paper/80 hover:text-tef-blue transition-colors">Nadia</a></li>
               <!-- AGENDA oculto (branch Ocutar-agenda-y-botones-de-navegacion)
               <li><a href="agenda" class="text-paper/80 hover:text-tef-blue transition-colors">Agenda</a></li>
