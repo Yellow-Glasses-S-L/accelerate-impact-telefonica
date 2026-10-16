@@ -422,7 +422,7 @@
 
         <!-- Disclaimer — always shown -->
         <p class="py-5 text-[12px] text-paper/50 leading-relaxed max-w-3xl"
-           x-text="lang==='en' ? '* The self-diagnosis is confidential and non-evaluative. Only you and the designated People team have access.' : '* El autodiagnóstico es confidencial y no evaluativo. Sólo accederás tú y el equipo People designado.'"></p>
+           x-text="lang==='en' ? '* The self-diagnosis is confidential and non-evaluative. You and the designated People team have access.' : '* El autodiagnóstico es confidencial y no evaluativo. Accederás tú y el equipo People designado.'"></p>
 
         <!-- Bottom: legal + YG -->
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-paper/10">
